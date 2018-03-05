@@ -12,9 +12,7 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "https://github.com/EVRYAS/elementsui-react",
-	"files": [
-		"lib"
-	],
+	"files": ["lib"],
 	"keywords": [
 		"components",
 		"react",
@@ -29,7 +27,8 @@
 	},
 	"scripts": {
 		"prestart": "npm run gen:docs",
-		"start": "npm-run-all --parallel start:docs gen:docs-watch gen:types-watch",
+		"start":
+			"npm-run-all --parallel start:docs gen:docs-watch gen:types-watch",
 		"start:docs": "node scripts/start.js",
 		"gen:index": "node scripts/updateComponentIndex.js",
 		"gen:types": "node scripts/generateTypings.js",
@@ -40,23 +39,31 @@
 		"test": "node scripts/test.js --env=jsdom",
 		"build:css": "cpx \"./src/components/**/*.css\" ./lib",
 		"prebuild:lib": "rimraf lib",
-		"build:lib": "npm-run-all --parallel build:commonjs build:css gen:types gen:index build:copy-files",
+		"build:lib":
+			"npm-run-all --parallel build:commonjs build:css gen:types gen:index build:copy-files",
 		"build:copy-package-files": "node scripts/copyBuildFiles.js",
 		"build:typings": "cpx \"./src/components/**/*.d.ts\" ./lib",
 		"build:index": "cpx \"./src/components/index.js\" ./lib",
-		"build:copy-files": "npm-run-all --parallel build:copy-package-files build:typings build:index",
+		"build:copy-files":
+			"npm-run-all --parallel build:copy-package-files build:typings build:index",
 		"predeploy:docs": "npm run build:docs",
 		"deploy:docs": "gh-pages -d build",
-		"build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
+		"build:commonjs":
+			"cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
 		"prepublish": "npm run build:lib"
 	},
+	"prettier": {
+		"useTabs": true,
+		"tabWidth": 4,
+		"semi": true,
+		"singleQuote": true,
+		"bracketSpacing": true,
+		"jsxBracketSameLine": true,
+		"arrowParens": "always"
+	},
 	"jest": {
-		"collectCoverageFrom": [
-			"src/**/*.{js,jsx,mjs}"
-		],
-		"setupFiles": [
-			"<rootDir>/config/polyfills.js"
-		],
+		"collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],
+		"setupFiles": ["<rootDir>/config/polyfills.js"],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
 			"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -66,7 +73,8 @@
 		"transform": {
 			"^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-			"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+			"^(?!.*\\.(js|jsx|mjs|css|json)$)":
+				"<rootDir>/config/jest/fileTransform.js"
 		},
 		"transformIgnorePatterns": [
 			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
@@ -85,9 +93,7 @@
 		]
 	},
 	"babel": {
-		"presets": [
-			"react-app"
-		]
+		"presets": ["react-app"]
 	},
 	"eslintConfig": {
 		"extends": "react-app"
