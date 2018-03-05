@@ -16,7 +16,7 @@ class Navigation extends React.Component {
 	filterComponents(filter) {
 		this.setState({
 			components: this.props.components.filter(
-				(x) => x.toLowerCase().indexOf(filter.toLowerCase()) !== -1
+				x => x.toLowerCase().indexOf(filter.toLowerCase()) !== -1
 			)
 		});
 	}
@@ -26,7 +26,7 @@ class Navigation extends React.Component {
 			<div className="left-menu">
 				<ComponentFilter onChange={this.filterComponents} />
 				<ul className="navigation">
-					{this.state.components.map((name) => {
+					{this.state.components.map(name => {
 						return (
 							<li key={name}>
 								<a href={`#${name}`}>{name}</a>
