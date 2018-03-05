@@ -26,3 +26,5 @@ launch.json
 .vscode
 .idea
 config/componentData.js
+yarn.lock
+package-lock.json
