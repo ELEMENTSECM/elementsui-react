@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button displays \`Foo\` as label 1`] = `
+<button
+  aria-describedby={null}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-pressed={undefined}
+  className="ms-Button ms-Button--primary root-36"
+  data-is-focusable={true}
+  disabled={undefined}
+  type="button"
+>
+  <div
+    className="ms-Button-flexContainer flexContainer-37"
+  >
+    <div
+      className="ms-Button-textContainer textContainer-38"
+    >
+      <div
+        className="ms-Button-label label-40"
+        id="id__0"
+      >
+        Foo
+      </div>
+    </div>
+  </div>
+</button>
+`;
