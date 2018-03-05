@@ -3,7 +3,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import PropTypes from 'prop-types';
 
 /** Button example */
-function Button({ htmlId, label, disabled = false }) {
+function Button({ label, disabled = false }) {
 	return (
 		<DefaultButton disabled={disabled} primary={true}>
 			{label}
@@ -12,8 +12,6 @@ function Button({ htmlId, label, disabled = false }) {
 }
 
 Button.propTypes = {
-	/** Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing. */
-	htmlId: PropTypes.string.isRequired,
 	/** Button label */
 	label: PropTypes.string,
 	/** Button is disabled */

@@ -3,10 +3,6 @@
 
     export interface ButtonProps {
         /**
-         * Unique HTML ID. Used for tying label to HTML input. Handy hook for automated testing.
-         */
-        htmlId: string;
-        /**
          * Button label
          */
         label?: string;
@@ -25,11 +21,20 @@
 
     export interface InputFieldProps {
         /**
-         * Do you want a fancy placeholder?
+         * Input field placeholder text
          */
         placeholder?: string;
+        /**
+         * Input field is marked with red asterisk as required if set to true
+         */
         required?: boolean;
+        /**
+         * Input field is disabled is set to true
+         */
         disabled?: boolean;
+        /**
+         * Error message shown under the input field
+         */
         errorMessage?: string;
     }
 
