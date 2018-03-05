@@ -27,7 +27,7 @@ function generate(paths) {
 	var errors = [];
 	var componentData = utils
 		.getDirectories(paths.components)
-		.map(componentName => {
+		.map((componentName) => {
 			try {
 				return getComponentData(paths, componentName);
 			} catch (error) {

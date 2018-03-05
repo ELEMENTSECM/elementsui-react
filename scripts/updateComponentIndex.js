@@ -6,8 +6,8 @@ const indexPath = path.join(components, 'index.js');
 const exportStrings = utils
 	.getDirectories(components)
 	.map(
-		componentName =>
-			`export {default as ${componentName}} from './${componentName}';`
+		(componentName) =>
+			`export { default as ${componentName} } from './${componentName}';`
 	);
 
 utils.writeFile(indexPath, exportStrings.join('\r'));
