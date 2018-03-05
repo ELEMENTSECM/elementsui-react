@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import ComponentFilter from './ComponentFIlter';
+import ComponentFilter from './ComponentFilter';
 
 class Navigation extends React.Component {
 	constructor(props) {
@@ -9,17 +9,15 @@ class Navigation extends React.Component {
 		this.state = {
 			components: this.props.components
 		};
-
-		this.filterComponents = this.filterComponents.bind(this);
 	}
 
-	filterComponents(filter) {
+	filterComponents = filter => {
 		this.setState({
 			components: this.props.components.filter(
 				x => x.toLowerCase().indexOf(filter.toLowerCase()) !== -1
 			)
 		});
-	}
+	};
 
 	render() {
 		return (
