@@ -152,5 +152,14 @@
 		"webpack-dev-server": "2.9.4",
 		"webpack-manifest-plugin": "1.3.2",
 		"whatwg-fetch": "2.0.3"
+	},
+	"prettier": {
+		"useTabs": true,
+		"tabWidth": 4,
+		"semi": true,
+		"singleQuote": true,
+		"bracketSpacing": true,
+		"jsxBracketSameLine": true,
+		"arrowParens": "always"
 	}
 }
