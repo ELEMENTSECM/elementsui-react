@@ -58,8 +58,7 @@
 		"semi": true,
 		"singleQuote": true,
 		"bracketSpacing": true,
-		"jsxBracketSameLine": true,
-		"arrowParens": "always"
+		"jsxBracketSameLine": true
 	},
 	"jest": {
 		"collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],

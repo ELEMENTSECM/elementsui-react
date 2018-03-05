@@ -17,7 +17,7 @@ if (enableWatchMode) {
 function generate(components) {
 	var errors = [];
 	const typeDefPath = path.join(components, 'index.d.ts');
-	var typeDefs = utils.getDirectories(components).map(componentName => {
+	var typeDefs = utils.getDirectories(components).map((componentName) => {
 		try {
 			const filePath = path.join(
 				components,
