@@ -25,4 +25,4 @@ yarn-error.log*
 launch.json
 .vscode
 .idea
-/config/componentData.js
+config/componentData.js
