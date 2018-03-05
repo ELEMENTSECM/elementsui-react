@@ -1,8 +1,8 @@
 {
-	"name": "elementsui-react",
+	"name": "elementsui-react-build-template",
 	"version": "0.1.0",
 	"main": "./lib/index.js",
-	"private": false,
+	"private": true,
 	"engines": {
 		"node": ">=4.0.0"
 	},
