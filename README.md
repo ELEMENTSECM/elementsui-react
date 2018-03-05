@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/EVRYAS/elementsui-react.svg?branch=master)](https://travis-ci.org/EVRYAS/elementsui-react)
 # ElementsUI React Components
 
 A library of React components for the Elements family.

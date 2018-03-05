@@ -1,6 +1,6 @@
 {
-	"name": "elementsui-react",
-	"version": "0.1.0",
+	"name": "elementsui-react-build-template",
+	"version": "1.0.0",
 	"main": "./lib/index.js",
 	"private": true,
 	"engines": {
@@ -11,7 +11,7 @@
 		"email": "nicklas.pouey-winger@evry.com",
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
-	"homepage": "https://github.com/EVRYAS/elementsui-react",
+	"homepage": "http://evryas.github.io/elementsui-react/",
 	"files": [
 		"lib"
 	],
@@ -19,8 +19,7 @@
 		"components",
 		"react",
 		"react-component",
-		"toolkit",
-		"pluralsight"
+		"elements"
 	],
 	"dependencies": {
 		"office-ui-fabric-react": "^5.58.0",
@@ -95,6 +94,12 @@
 	},
 	"babel": {
 		"presets": [
+			[
+				"env",
+				{
+					"modules": "commonjs"
+				}
+			],
 			"react-app"
 		]
 	},
