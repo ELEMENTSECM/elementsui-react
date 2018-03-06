@@ -1,5 +1,5 @@
 import * as React from 'react';
-import InputField from 'elements-ui/Inputs/InputField';
+import InputField from 'elements-ui/Inputs/Atomic/InputField';
 
 /** Input field with placeholder */
 export default function InputFieldDefault() {

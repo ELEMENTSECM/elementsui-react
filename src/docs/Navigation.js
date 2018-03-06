@@ -12,30 +12,14 @@ class Navigation extends React.Component {
 		};
 	}
 
-	filterComponents(filter) {
-		const filtered = filter
-			? this.getComponents(filter, this.props.components[0])
-			: this.props.components;
+	filterComponents = filter => {
 		this.setState({
-			components: filtered
+			components: getComponents(filter, this.props.components)
 		});
-	}
-
-	getComponents = (name, node) => {
-		if (node.name.toLowerCase().indexOf(name.toLowerCase()) !== -1) {
-			return node.component;
-		} else if (node.children.length > 0) {
-			return node.children.map(x => this.getComponents(name, x));
-		}
-
-		return null;
 	};
 
-	getTree = components => {
-		if (!components) {
-			components = this.props.components;
-		}
-		return components.map((node, i) => {
+	getTree() {
+		return this.state.components.map((node, i) => {
 			if (node) {
 				const name = node.name;
 				const hasChildren = node.children && node.children.length;
@@ -61,13 +45,13 @@ class Navigation extends React.Component {
 
 			return '';
 		});
-	};
+	}
 
 	render() {
 		return (
 			<div className="left-menu">
-				<ComponentFilter onChange={this.filterComponents.bind(this)} />
-				{this.getTree(this.state.components)}
+				<ComponentFilter onChange={this.filterComponents} />
+				{this.getTree()}
 			</div>
 		);
 	}
@@ -76,5 +60,20 @@ class Navigation extends React.Component {
 Navigation.propTypes = {
 	components: PropTypes.array.isRequired
 };
+
+function getComponents(name, node) {
+	return node.filter(function(o) {
+		const match = o.name.toLowerCase().indexOf(name.toLowerCase()) !== -1;
+		if (o.children && o.children.length > 0) {
+			if (!match) {
+				o.children = getComponents(name, o.children);
+			}
+			if (o.children.length > 0) {
+				return true;
+			}
+		}
+		return match;
+	});
+}
 
 export default Navigation;

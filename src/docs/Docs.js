@@ -17,11 +17,16 @@ export default class Docs extends React.Component {
 		});
 	}
 
-	getComponents(node = componentData[0]) {
-		if (node.component) {
+	getComponent(name, node = componentData[0]) {
+		if (node.name === name || (!name && node.component)) {
 			return node.component;
 		} else if (node.children.length > 0) {
-			return node.children.map(x => this.getComponents(x));
+			let i;
+			let result = null;
+			for (i = 0; result == null && i < node.children.length; i++) {
+				result = this.getComponent(name, node.children[i]);
+			}
+			return result;
 		}
 
 		return null;
@@ -29,9 +34,7 @@ export default class Docs extends React.Component {
 
 	render() {
 		const { route } = this.state;
-		const component = route
-			? this.getComponents().filter(x => x.name === route)[0]
-			: this.getComponents()[0];
+		const component = this.getComponent(route);
 
 		return (
 			<div>
