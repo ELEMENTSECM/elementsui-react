@@ -24,7 +24,8 @@
 	"dependencies": {
 		"office-ui-fabric-react": "^5.58.0",
 		"react": "^16.2.0",
-		"react-dom": "^16.2.0"
+		"react-dom": "^16.2.0",
+		"react-treeview": "^0.4.7"
 	},
 	"scripts": {
 		"prestart": "npm run gen:docs",

@@ -15,26 +15,21 @@ if (enableWatchMode) {
 }
 
 function generate(components) {
-	var errors = [];
+	var typeDefs = [];
 	const typeDefPath = path.join(components, 'index.d.ts');
-	var typeDefs = utils.getDirectories(components).map((componentName) => {
-		try {
-			const filePath = path.join(
-				components,
-				componentName,
-				componentName + '.js'
-			);
-
-			return generator.generateFromFile(componentName, filePath);
-		} catch (error) {
-			errors.push(
-				'An error occurred while attempting to generate type definition for ' +
-					componentName +
-					'. ' +
-					error
-			);
-		}
-	});
+	generateTypings(components, typeDefs);
 
 	utils.writeFile(typeDefPath, typeDefs.join('\r'));
+}
+
+function generateTypings(folder, typings) {
+	return utils.getDirectories(folder).map(x => {
+		const children = generateTypings(path.join(folder, x), typings);
+
+		if (!children || children.length === 0) {
+			const filePath = path.join(folder, x, x + '.js');
+			const typeDef = generator.generateFromFile(x, filePath);
+			typings.push(typeDef);
+		}
+	});
 }
