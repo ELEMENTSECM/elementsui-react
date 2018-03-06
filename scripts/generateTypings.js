@@ -15,7 +15,7 @@ if (enableWatchMode) {
 }
 
 function generate(components) {
-	var typeDefs = [];
+	let typeDefs = [];
 	const typeDefPath = path.join(components, 'index.d.ts');
 	generateTypings(components, typeDefs);
 

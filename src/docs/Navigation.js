@@ -43,12 +43,16 @@ class Navigation extends React.Component {
 				const label = hasChildren ? (
 					<span className="node">{name}</span>
 				) : (
-					<a href={`#${name}`}>
-						<span className="node">{name}</span>
-					</a>
+					<li className="component-link" key={name}>
+						<a href={`#${name}`}>
+							<span className="node">{name}</span>
+						</a>
+					</li>
 				);
 
-				return (
+				return !hasChildren ? (
+					label
+				) : (
 					<TreeView key={name + '|' + i} nodeLabel={label} defaultCollapsed={!hasChildren}>
 						{hasChildren ? this.getTree(node.children) : ''}
 					</TreeView>

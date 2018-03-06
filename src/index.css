@@ -107,3 +107,8 @@ td {
 	-ms-transform: rotate(-90deg);
 	transform: rotate(-90deg);
 }
+
+.component-link {
+	list-style: none;
+	padding-left: 20px;
+}

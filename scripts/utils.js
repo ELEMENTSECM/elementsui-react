@@ -26,9 +26,14 @@ function readFile(filePath) {
 	return fs.readFileSync(filePath, 'utf-8');
 }
 
+function join(...paths) {
+	return path.join(...paths).replace(/\\/g, '/');
+}
+
 module.exports = {
 	writeFile,
 	getDirectories,
 	getFiles,
-	readFile
+	readFile,
+	join
 };

@@ -22,9 +22,9 @@ if (enableWatchMode) {
 }
 
 function generate(paths) {
-	var errors = [];
+	let errors = [];
 
-	var componentData = generateComponentData(paths.components);
+	const componentData = generateComponentData(paths.components);
 	utils.writeFile(
 		paths.output,
 		'module.exports = /* eslint-disable */ ' + JSON.stringify(errors.length ? errors : componentData)
@@ -33,7 +33,7 @@ function generate(paths) {
 
 function generateComponentData(filepath, relativePath = '') {
 	return utils.getDirectories(filepath).map(x => {
-		const currentPath = path.join(relativePath, x);
+		const currentPath = utils.join(relativePath, x);
 		const children = generateComponentData(path.join(filepath, x), currentPath);
 
 		const nodePath = path.join(filepath, x);
@@ -45,8 +45,8 @@ function generateComponentData(filepath, relativePath = '') {
 
 		if (!node.children || node.children.length === 0) {
 			try {
-				var content = utils.readFile(path.join(nodePath, node.name + '.js'));
-				var info = parse(content);
+				const content = utils.readFile(path.join(nodePath, node.name + '.js'));
+				const info = parse(content);
 				node.component = {
 					name: node.name,
 					description: info.description,
@@ -68,11 +68,11 @@ function generateComponentData(filepath, relativePath = '') {
 
 function getExampleData(componentPath) {
 	componentPath = componentPath.replace(paths.components, paths.examples);
-	var examples = getExampleFiles(componentPath);
+	const examples = getExampleFiles(componentPath);
 	return examples.map(function(file) {
-		var filePath = path.join(componentPath, file);
-		var content = utils.readFile(filePath);
-		var info = parse(content);
+		const filePath = path.join(componentPath, file);
+		const content = utils.readFile(filePath);
+		const info = parse(content);
 		return {
 			// By convention, component name should match the filename.
 			// So remove the .js extension to get the component name.
@@ -84,7 +84,7 @@ function getExampleData(componentPath) {
 }
 
 function getExampleFiles(componentPath) {
-	var exampleFiles = [];
+	let exampleFiles = [];
 	try {
 		exampleFiles = utils.getFiles(componentPath);
 	} catch (error) {
