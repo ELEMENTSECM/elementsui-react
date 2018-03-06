@@ -13,11 +13,9 @@ const paths = {
 const enableWatchMode = process.argv.slice(2) === '--watch';
 if (enableWatchMode) {
 	// Regenerate component metadata when components or examples change.
-	chokidar
-		.watch([paths.examples, paths.components])
-		.on('change', function(event, path) {
-			generate(paths);
-		});
+	chokidar.watch([paths.examples, paths.components]).on('change', function(event, path) {
+		generate(paths);
+	});
 } else {
 	// Generate component metadata
 	generate(paths);
@@ -25,46 +23,54 @@ if (enableWatchMode) {
 
 function generate(paths) {
 	var errors = [];
-	var componentData = utils
-		.getDirectories(paths.components)
-		.map((componentName) => {
-			try {
-				return getComponentData(paths, componentName);
-			} catch (error) {
-				errors.push(
-					'An error occurred while attempting to generate metadata for ' +
-						componentName +
-						'. ' +
-						error
-				);
-				return null;
-			}
-		});
+
+	var componentData = generateComponentData(paths.components);
 	utils.writeFile(
 		paths.output,
-		'module.exports = /* eslint-disable */ ' +
-			JSON.stringify(errors.length ? errors : componentData)
+		'module.exports = /* eslint-disable */ ' + JSON.stringify(errors.length ? errors : componentData)
 	);
 }
 
-function getComponentData(paths, componentName) {
-	var content = utils.readFile(
-		path.join(paths.components, componentName, componentName + '.js')
-	);
-	var info = parse(content);
-	return {
-		name: componentName,
-		description: info.description,
-		props: info.props,
-		code: content,
-		examples: getExampleData(paths.examples, componentName)
-	};
+function generateComponentData(filepath, relativePath = '') {
+	return utils.getDirectories(filepath).map(x => {
+		const currentPath = path.join(relativePath, x);
+		const children = generateComponentData(path.join(filepath, x), currentPath);
+
+		const nodePath = path.join(filepath, x);
+		let node = {
+			name: x,
+			children,
+			relativePath: currentPath
+		};
+
+		if (!node.children || node.children.length === 0) {
+			try {
+				var content = utils.readFile(path.join(nodePath, node.name + '.js'));
+				var info = parse(content);
+				node.component = {
+					name: node.name,
+					description: info.description,
+					props: info.props,
+					code: content,
+					examples: getExampleData(nodePath),
+					relativePath: currentPath
+				};
+			} catch (error) {
+				errors.push(
+					`An error occurred while attempting to generate metadata for ${node.name}. ${error}`
+				);
+			}
+		}
+
+		return node;
+	});
 }
 
-function getExampleData(examplesPath, componentName) {
-	var examples = getExampleFiles(examplesPath, componentName);
+function getExampleData(componentPath) {
+	componentPath = componentPath.replace(paths.components, paths.examples);
+	var examples = getExampleFiles(componentPath);
 	return examples.map(function(file) {
-		var filePath = path.join(examplesPath, componentName, file);
+		var filePath = path.join(componentPath, file);
 		var content = utils.readFile(filePath);
 		var info = parse(content);
 		return {
@@ -77,12 +83,12 @@ function getExampleData(examplesPath, componentName) {
 	});
 }
 
-function getExampleFiles(examplesPath, componentName) {
+function getExampleFiles(componentPath) {
 	var exampleFiles = [];
 	try {
-		exampleFiles = utils.getFiles(path.join(examplesPath, componentName));
+		exampleFiles = utils.getFiles(componentPath);
 	} catch (error) {
-		console.log(chalk.red(`No examples found for ${componentName}.`));
+		console.log(chalk.red(`No examples found for ${componentPath}.`));
 	}
 	return exampleFiles;
 }
