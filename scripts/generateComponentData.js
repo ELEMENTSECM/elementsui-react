@@ -24,7 +24,7 @@ if (enableWatchMode) {
 function generate(paths) {
 	let errors = [];
 
-	var componentData = generateComponentData(paths.components);
+	const componentData = generateComponentData(paths.components);
 	utils.writeFile(
 		paths.output,
 		'module.exports = /* eslint-disable */ ' + JSON.stringify(errors.length ? errors : componentData)
@@ -68,7 +68,7 @@ function generateComponentData(filepath, relativePath = '') {
 
 function getExampleData(componentPath) {
 	componentPath = componentPath.replace(paths.components, paths.examples);
-	var examples = getExampleFiles(componentPath);
+	const examples = getExampleFiles(componentPath);
 	return examples.map(function(file) {
 		const filePath = path.join(componentPath, file);
 		const content = utils.readFile(filePath);
