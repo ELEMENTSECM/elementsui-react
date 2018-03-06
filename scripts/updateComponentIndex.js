@@ -13,7 +13,7 @@ function getExportStrings(filePath, relativePath = '.') {
 		const children = getExportStrings(path.join(filePath, x), path.join(relativePath, x));
 
 		if (!children || children.length === 0) {
-			exportStrings.push(`export { default as ${x} } from '${path.join(relativePath, x)}';`);
+			exportStrings.push(`export { default as ${x} } from '${utils.join(relativePath, x)}';`);
 		}
 	});
 }
