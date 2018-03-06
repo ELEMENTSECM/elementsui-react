@@ -6,4 +6,9 @@ import './index.css';
 import '../node_modules/highlight.js/styles/github-gist.css';
 
 ReactDOM.render(<Docs />, document.getElementById('root'));
+
+if (module.hot) {
+  module.hot.accept();
+}
+
 registerServiceWorker();
