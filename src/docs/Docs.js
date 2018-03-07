@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import ComponentPage from './ComponentPage';
 import componentData from '../../config/componentData';
+import DocsOverview from './DocsOverview';
 
 export default class Docs extends React.Component {
 	constructor(props) {
@@ -29,14 +30,12 @@ export default class Docs extends React.Component {
 
 	render() {
 		const { route } = this.state;
-		const component = route
-			? this.getComponents().filter(x => x.name === route)[0]
-			: this.getComponents()[0];
+		const component = route && this.getComponents().filter(x => x.name === route)[0];
 
 		return (
 			<div>
 				<Navigation components={componentData} />
-				<ComponentPage component={component} />
+				{component ? <ComponentPage component={component} /> : <DocsOverview />}
 			</div>
 		);
 	}

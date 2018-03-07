@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const parse = require('react-docgen').parse;
 const chokidar = require('chokidar');
 const utils = require('./utils');
+let errors = [];
 
 const paths = {
 	examples: path.join(__dirname, '../src', 'docs', 'examples'),
@@ -22,7 +23,7 @@ if (enableWatchMode) {
 }
 
 function generate(paths) {
-	let errors = [];
+	// let errors = [];
 
 	const componentData = generateComponentData(paths.components);
 	utils.writeFile(

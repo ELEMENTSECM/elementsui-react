@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CodeExample from './CodeExample';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -23,9 +24,10 @@ class Example extends React.Component {
 		return (
 			<div className="example">
 				{description && <h4>{description}</h4>}
-
-				<ExampleComponent />
-
+				{/* Wrap example component in <Fabric> to enable proper focusing, styles etc.*/}
+				<Fabric>
+					<ExampleComponent />
+				</Fabric>
 				<p>
 					<a href="" onClick={this.toggleCode}>
 						{showCode ? 'Hide' : 'Show'} Code
