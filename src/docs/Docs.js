@@ -3,6 +3,13 @@ import Navigation from './Navigation';
 import ComponentPage from './ComponentPage';
 import componentData from '../../config/componentData';
 import DocsOverview from './DocsOverview';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+
+const Child = ({ match }) => (
+	<div>
+		<h3>ID: {match.params.id}</h3>
+	</div>
+);
 
 export default class Docs extends React.Component {
 	constructor(props) {
@@ -29,13 +36,36 @@ export default class Docs extends React.Component {
 	}
 
 	render() {
+		// return (
+		// 	<div>
+		// 		<h2>Accounts</h2>
+		// 		<ul>
+		// 			<li>
+		// 				<Link to="/netflix">Netflix</Link>
+		// 			</li>
+		// 			<li>
+		// 				<Link to="/zillow-group">Zillow Group</Link>
+		// 			</li>
+		// 			<li>
+		// 				<Link to="/yahoo">Yahoo</Link>
+		// 			</li>
+		// 			<li>
+		// 				<Link to="/modus-create">Modus Create</Link>
+		// 			</li>
+		// 		</ul>
+		// 		<Route path="/:id" component={Child} />
+		// 	</div>
+		// );
 		const { route } = this.state;
 		const component = route && this.getComponents().filter(x => x.name === route)[0];
 
 		return (
 			<div>
 				<Navigation components={componentData} />
-				{component ? <ComponentPage component={component} /> : <DocsOverview />}
+				<Route exact path="/" component={DocsOverview} />
+				{this.getComponents().map(component => {
+					return <Route path={`/${component.name}`} component={ComponentPage} />;
+				})}
 			</div>
 		);
 	}
