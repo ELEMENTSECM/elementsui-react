@@ -4,7 +4,7 @@ import Docs from './docs/Docs';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 import '../node_modules/highlight.js/styles/github-gist.css';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
 	<Router>

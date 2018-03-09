@@ -1,15 +1,11 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import _ from 'lodash';
+
 import Navigation from './Navigation';
 import ComponentPage from './ComponentPage';
 import componentData from '../../config/componentData';
 import DocsOverview from './DocsOverview';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-
-const Child = ({ match }) => (
-	<div>
-		<h3>ID: {match.params.id}</h3>
-	</div>
-);
 
 export default class Docs extends React.Component {
 	constructor(props) {
@@ -25,46 +21,30 @@ export default class Docs extends React.Component {
 		});
 	}
 
-	getComponents(node = componentData[0]) {
-		if (node.component) {
-			return node.component;
-		} else if (node.children.length > 0) {
-			return node.children.map(x => this.getComponents(x));
-		}
-
-		return null;
-	}
+	getTree = components => {
+		// TODO: Assuming one level of children for now
+		return _.flatMap(components, component => {
+			return _.each(component.children, child => {
+				return child;
+			});
+		});
+	};
 
 	render() {
-		// return (
-		// 	<div>
-		// 		<h2>Accounts</h2>
-		// 		<ul>
-		// 			<li>
-		// 				<Link to="/netflix">Netflix</Link>
-		// 			</li>
-		// 			<li>
-		// 				<Link to="/zillow-group">Zillow Group</Link>
-		// 			</li>
-		// 			<li>
-		// 				<Link to="/yahoo">Yahoo</Link>
-		// 			</li>
-		// 			<li>
-		// 				<Link to="/modus-create">Modus Create</Link>
-		// 			</li>
-		// 		</ul>
-		// 		<Route path="/:id" component={Child} />
-		// 	</div>
-		// );
-		const { route } = this.state;
-		const component = route && this.getComponents().filter(x => x.name === route)[0];
-
 		return (
 			<div>
 				<Navigation components={componentData} />
 				<Route exact path="/" component={DocsOverview} />
-				{this.getComponents().map(component => {
-					return <Route path={`/${component.name}`} component={ComponentPage} />;
+
+				{this.getTree(componentData).map(child => {
+					const { component } = child;
+					return (
+						<Route
+							key={component.name}
+							path={`/${component.name}`}
+							render={props => <ComponentPage {...props} component={component} />}
+						/>
+					);
 				})}
 			</div>
 		);
