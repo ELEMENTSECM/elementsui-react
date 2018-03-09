@@ -1,4 +1,18 @@
-/* Auto-generated code. Do not modify manually */declare module 'Button' {
+/* Auto-generated code. Do not modify manually */declare module 'Spinner' {
+    import * as React from 'react';
+
+    export interface SpinnerProps {
+        /**
+         * Spinner label
+         */
+        label?: string;
+    }
+
+    export default type Spinner = React.SFC<SpinnerProps>;
+
+}
+
+declare module 'Button' {
     import * as React from 'react';
 
     export interface ButtonProps {

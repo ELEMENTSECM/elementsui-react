@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import ComponentFilter from './ComponentFilter';
 import TreeView from 'react-treeview';
+import { Link } from 'react-router-dom';
 
 class Navigation extends React.Component {
 	constructor(props) {
@@ -44,9 +45,9 @@ class Navigation extends React.Component {
 					<span className="node">{name}</span>
 				) : (
 					<li className="component-link" key={name}>
-						<a href={`#${name}`}>
-							<span className="node">{name}</span>
-						</a>
+						<Link to={name} className="node">
+							{name}
+						</Link>
 					</li>
 				);
 

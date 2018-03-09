@@ -1,4 +1,7 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import _ from 'lodash';
+
 import Navigation from './Navigation';
 import ComponentPage from './ComponentPage';
 import componentData from '../../config/componentData';
@@ -18,24 +21,31 @@ export default class Docs extends React.Component {
 		});
 	}
 
-	getComponents(node = componentData[0]) {
-		if (node.component) {
-			return node.component;
-		} else if (node.children.length > 0) {
-			return node.children.map(x => this.getComponents(x));
-		}
-
-		return null;
-	}
+	getTree = components => {
+		// TODO: Assuming one level of children for now
+		return _.flatMap(components, component => {
+			return _.each(component.children, child => {
+				return child;
+			});
+		});
+	};
 
 	render() {
-		const { route } = this.state;
-		const component = route && this.getComponents().filter(x => x.name === route)[0];
-
 		return (
 			<div>
 				<Navigation components={componentData} />
-				{component ? <ComponentPage component={component} /> : <DocsOverview />}
+				<Route exact path="/" component={DocsOverview} />
+
+				{this.getTree(componentData).map(child => {
+					const { component } = child;
+					return (
+						<Route
+							key={component.name}
+							path={`/${component.name}`}
+							render={props => <ComponentPage {...props} component={component} />}
+						/>
+					);
+				})}
 			</div>
 		);
 	}
