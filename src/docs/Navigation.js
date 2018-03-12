@@ -68,6 +68,7 @@ class Navigation extends React.Component {
 		return (
 			<div className="left-menu">
 				<ComponentFilter onChange={this.filterComponents.bind(this)} />
+				<Link to="/">ElementsUI</Link>
 				{this.getTree(this.state.components)}
 			</div>
 		);
