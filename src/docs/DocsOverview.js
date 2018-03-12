@@ -11,13 +11,6 @@ const DocsOverview = () => {
 				</span>
 			</p>
 			<p>
-				Should we also include react-router so we have solid routing, and not this homegrown{' '}
-				<span role="img" aria-label="herb">
-					🌿
-				</span>{' '}
-				solution?
-			</p>
-			<p>
 				Fabric’s robust, up-to-date components are built with the React framework. Look through the
 				component list to see the building blocks that are available using Fabric React.
 			</p>
