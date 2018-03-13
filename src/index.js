@@ -7,7 +7,7 @@ import '../node_modules/highlight.js/styles/github-gist.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-	<Router>
+	<Router basename={process.env.PUBLIC_URL}>
 		<div>
 			<Docs />
 		</div>
