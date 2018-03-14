@@ -1,4 +1,5 @@
-import { React, PropTypes} from "common/componentImport";
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Checkbox as UIFabCheckbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 

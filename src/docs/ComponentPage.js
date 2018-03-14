@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Example from './Example';
 import Props from './Props';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+initializeIcons();
 
 const ComponentPage = ({ component }) => {
 	const { name, description, props, examples, relativePath } = component;

@@ -5,7 +5,7 @@
         /**
          * Spinner label
          */
-        label?: any;
+        label?: string;
     }
 
     export default type Spinner = React.SFC<SpinnerProps>;
@@ -19,11 +19,11 @@
         /**
          * Button label
          */
-        label?: any;
+        label?: string;
         /**
          * Button is disabled
          */
-        disabled?: any;
+        disabled?: boolean;
     }
 
     export default type Button = React.SFC<ButtonProps>;
@@ -37,15 +37,15 @@
         /**
          * Checkbox label
          */
-        label?: any;
+        label?: string;
         /**
          * Checkbox is disabled
          */
-        disabled?: any;
+        disabled?: boolean;
         /**
          * Checkbox description
          */
-        ariaDescribedBy?: any;
+        ariaDescribedBy?: string;
     }
 
     export default type Checkbox = React.SFC<CheckboxProps>;
@@ -59,19 +59,19 @@
         /**
          * Input field placeholder text
          */
-        placeholder?: any;
+        placeholder?: string;
         /**
          * Input field is marked with red asterisk as required if set to true
          */
-        required?: any;
+        required?: boolean;
         /**
          * Input field is disabled is set to true
          */
-        disabled?: any;
+        disabled?: boolean;
         /**
          * Error message shown under the input field
          */
-        errorMessage?: any;
+        errorMessage?: string;
     }
 
     export default type InputField = React.SFC<InputFieldProps>;
@@ -85,19 +85,19 @@
         /**
          * Toggle label
          */
-        label?: any;
+        label?: string;
         /**
          * Toggle is disabled
          */
-        disabled?: any;
+        disabled?: boolean;
         /**
          * Toggle description
          */
-        ariaDescribedBy?: any;
+        ariaDescribedBy?: string;
         /**
          * Toggle checked
          */
-        defaultChecked?: any;
+        defaultChecked?: boolean;
     }
 
     export default type Toggle = React.SFC<ToggleProps>;
