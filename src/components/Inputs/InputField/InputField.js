@@ -1,6 +1,5 @@
-import * as React from 'react';
+import { React, PropTypes} from "common/componentImport";
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import PropTypes from 'prop-types';
 
 function InputField({ placeholder, required, disabled, errorMessage }) {
 	return (
