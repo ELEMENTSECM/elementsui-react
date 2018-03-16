@@ -29,7 +29,6 @@ margin-bottom: 3px;
 }
 /*-------------------- Generic --------------------*/
 
-
 ul {
     padding: 0;
     margin: 0 0 10px 0;
@@ -53,6 +52,28 @@ a{
     clear: both;
 }
 
+/*-------------------- Context --------------------*/
+.article-content.landing-page{
+    border: solid 1px #d3d3d3;
+    padding: 16px;
+    background-color: #f4f6f9;
+}
+.pageheader .logo{
+        background: url(../public/new-elements-logo-svg.svg) no-repeat;
+        width: 151px;
+        height: 33px;
+        position: absolute;
+        background-size: contain;
+}
+.pageheader  .logo-title{
+    font-size: 0.5em;
+    display: block;
+    margin-left: 62px;
+    padding-top: 26px;
+    color: #2d8498;
+    font-weight: normal;
+
+}
 /*--------------------Examples-------------------*/
 
 .example {
@@ -85,8 +106,6 @@ a{
     -ms-user-select: none;
     user-select: none;
     position: absolute;
-    
-    
     text-align: right;
 }
 
@@ -103,7 +122,6 @@ a{
     -ms-transform: rotate(-180deg);
     transform: rotate(-180deg);
 }
-
 
 /*--------------------Table--------------------*/
 

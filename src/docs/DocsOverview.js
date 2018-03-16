@@ -2,7 +2,7 @@ import React from 'react';
 
 const DocsOverview = () => {
 	return (
-		<div>
+		<div className="article-content landing-page">
 			<p>
 				Lots of dummy text from Fabrics docs. We should write our own that includes info on how to
 				install, what this is etc.{' '}

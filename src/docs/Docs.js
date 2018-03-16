@@ -25,7 +25,7 @@ export default class Docs extends React.Component {
 		return (
 			<Fabric>
 					<header>
-						<h1 className={"pageheader"}>ElementsUI</h1>
+						<h1 className={"pageheader"}><span className="logo"></span><span className="logo-title">ElementsUI</span></h1>
 					</header>
 					<main>
 						<Navigation components={componentData} />
