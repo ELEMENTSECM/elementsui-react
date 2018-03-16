@@ -7,6 +7,8 @@ import ComponentPage from './ComponentPage';
 import componentData from '../../config/componentData';
 import DocsOverview from './DocsOverview';
 import NoMatch from './NoMatch';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+
 
 export default class Docs extends React.Component {
 	getTree = components => {
@@ -18,10 +20,16 @@ export default class Docs extends React.Component {
 		});
 	};
 
+
 	render() {
 		return (
-			<div>
-				<Navigation components={componentData} />
+			<Fabric>
+					<header>
+						<h1 className={"pageheader"}>ElementsUI</h1>
+					</header>
+					<main>
+						<Navigation components={componentData} />
+			
 				<Switch>
 					<Route exact path="/" component={DocsOverview} />
 					{this.getTree(componentData).map(child => {
@@ -36,7 +44,8 @@ export default class Docs extends React.Component {
 					})}
 					<Route component={NoMatch} />
 				</Switch>
-			</div>
+				</main>
+			</Fabric>
 		);
 	}
 }

@@ -1,114 +1,125 @@
-/* Global styles */
+/*----------------- High scope -----------------*/
+
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #666666;
+}
+.search-nav{
+    width: 200px;
+    float: left;
+}
+.search-nav .navigation-menu {
+    float: left;
+    width: 200px
 }
 
-a,
-a:visited {
-	color: #666666;
+.search-nav .component-search{
+    margin-bottom: 2px;
+}
+.article-content {
+    margin-left: 215px;
+}
+.article-content .components-header{
+    background: #2d8498;
+    color: white;
+    padding: 1px 7px 5px 7px;
+}
+.article-content  .component-properties-header, .article-content  .component-example-header{
+margin-bottom: 3px;
+}
+/*-------------------- Generic --------------------*/
+
+
+ul {
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 1px;
+}
+li:hover{
+    background: #bee2ea;
+}
+a{
+    color: #666666;
+    text-decoration: none;
+    display: block;
+    padding: 2px 0 3px 12px;
 }
 
 .clear {
-	clear: both;
+    clear: both;
 }
 
-td {
-	border-top: solid 1px #d3d3d3;
-}
+/*--------------------Examples-------------------*/
 
-td,
-th {
-	padding: 10px;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-/* Documentation site component styles */
 .example {
-	border: solid 1px #d3d3d3;
-	padding: 16px;
-	margin-bottom: 16px;
-	background-color: #f4f6f9;
+    border: solid 1px #d3d3d3;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #f4f6f9;
 }
 
-.example h4:first-of-type {
-	margin-top: 0;
-}
-
-.example p:last-of-type {
-	margin-bottom: 0;
-}
-
-.props tr td:last-of-type {
-	text-align: center;
-}
-
-.props th,
-td {
-	text-align: left;
-	padding: 5px;
-}
-
-.navigation {
-	float: left;
-	width: 250px;
-	list-style-type: none;
-	padding: 0;
-}
-
-.componentpage {
-	margin-left: 275px;
-}
-
-.left-menu {
-	width: 200px;
-}
-
-/* Tree view */
-/* the tree node's style */
-.tree-view {
-	overflow-y: hidden;
-}
-
+/*--------------------Tree view--------------------*/
 .tree-view_item {
-	/* immediate child of .tree-view, for styling convenience */
+    padding: 2px 2px 4px 4px;
+    font-size: 1.2em;
+    background: #2d8498;
+    color: white;
+    position: relative;
 }
-
-/* style for the children nodes container */
-.tree-view_children {
-	margin-left: 16px;
-}
-
-.tree-view_children-collapsed {
-	height: 0px;
+.tree-view_item  > span{
+    vertical-align: bottom;
 }
 
 .tree-view_arrow {
-	cursor: pointer;
-	margin-right: 6px;
-	display: inline-block;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+     width: 200px;
+    margin-top: -4px;
+    right: 0;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute;
+    
+    
+    text-align: right;
 }
 
 .tree-view_arrow:after {
 	content: '▾';
+	font-size: 1.5em;
 }
 
-/* rotate the triangle to close it */
-.tree-view_arrow-collapsed {
-	-webkit-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	-ms-transform: rotate(-90deg);
-	transform: rotate(-90deg);
+.tree-view_arrow:not(.tree-view_arrow-collapsed) {
+    text-align: left;
+    margin-top: -3px;
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
 
-.component-link {
-	list-style: none;
-	padding-left: 20px;
+
+/*--------------------Table--------------------*/
+
+.table-props {
+    border-collapse: collapse;
+    background: #f4f6f9;
+    width: 100%;
+    border: solid 1px #d3d3d3;
+}
+
+.table-props th,
+.table-props td {
+    text-align: left;
+    padding: 10px;
+}
+
+.table-props td {
+    border-top: solid 1px #d3d3d3;
 }
