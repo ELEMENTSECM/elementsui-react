@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //import ComponentFilter from './ComponentFilter';
 import TreeView from 'react-treeview';
 import { Link } from 'react-router-dom';
-import { SearchBox } from 'office-ui-fabric-react';
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import _ from 'lodash';
 class Navigation extends React.Component {
 	constructor(props) {
@@ -66,7 +66,11 @@ class Navigation extends React.Component {
 	render() {
 		return (
 			<div className="search-nav">
-				<SearchBox className="component-search" onChange={this.filterComponents.bind(this)} />
+				<SearchBox
+					className="component-search"
+					placeholder={'Search'}
+					onChange={this.filterComponents.bind(this)}
+				/>
 				<nav className="navigation-menu">{this.getTree(this.state.components)}</nav>
 			</div>
 		);
