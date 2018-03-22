@@ -43,12 +43,8 @@
 		"build:copy-files": "npm-run-all --parallel build:copy-package-files build:typings build:index",
 		"predeploy:docs": "npm run build:docs",
 		"deploy:docs": "gh-pages -d build",
-<<<<<<< HEAD
 		"build:commonjs":
 			"cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
-=======
-		"build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
->>>>>>> cc7272091dd30871b156ede86a539dd85c87f4b1
 		"prepublish": "npm run build:lib",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
 	},
