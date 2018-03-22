@@ -4,3 +4,8 @@ node_js:
  - "7"
 notifications:
   slack: elements-ecm:WLCa2W2bak78Hh8j7KzvojzJ
+script:
+  - npm run test:unit -- --coverage && npm run test:snapshot -- --coverage && npm run test:cypress
+
+after_script:
+  - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
