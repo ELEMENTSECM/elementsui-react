@@ -1,9 +1,10 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import ComponentFilter from './ComponentFilter';
+//import ComponentFilter from './ComponentFilter';
 import TreeView from 'react-treeview';
 import { Link } from 'react-router-dom';
-
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import _ from 'lodash';
 class Navigation extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,22 +15,20 @@ class Navigation extends React.Component {
 	}
 
 	filterComponents(filter) {
-		const filtered = filter
-			? this.getComponents(filter, this.props.components[0])
-			: this.props.components;
+		const filtered = filter ? this.getComponents(filter, this.props.components) : this.props.components;
 		this.setState({
 			components: filtered
 		});
 	}
 
 	getComponents = (name, node) => {
-		if (node.name.toLowerCase().indexOf(name.toLowerCase()) !== -1) {
-			return node.component;
-		} else if (node.children.length > 0) {
-			return node.children.map(x => this.getComponents(name, x));
-		}
+		let nodeArray = _.unionBy(node[0].children, node[1].children, 'name');
 
-		return null;
+		return _.map(nodeArray, function(comp) {
+			if (_.startsWith(_.toLower(comp.name), _.toLower(name))) {
+				return comp;
+			}
+		});
 	};
 
 	getTree = components => {
@@ -55,7 +54,7 @@ class Navigation extends React.Component {
 					label
 				) : (
 					<TreeView key={name + '|' + i} nodeLabel={label} defaultCollapsed={!hasChildren}>
-						{hasChildren ? this.getTree(node.children) : ''}
+						{hasChildren ? <ul>{this.getTree(node.children)}</ul> : ''}
 					</TreeView>
 				);
 			}
@@ -66,10 +65,13 @@ class Navigation extends React.Component {
 
 	render() {
 		return (
-			<div className="left-menu">
-				<ComponentFilter onChange={this.filterComponents.bind(this)} />
-				<Link to="/">ElementsUI</Link>
-				{this.getTree(this.state.components)}
+			<div className="search-nav">
+				<SearchBox
+					className="component-search"
+					placeholder={'Search'}
+					onChange={this.filterComponents.bind(this)}
+				/>
+				<nav className="navigation-menu">{this.getTree(this.state.components)}</nav>
 			</div>
 		);
 	}

@@ -1,1 +1,1 @@
-/* Auto-generated code. Do not modify manually */export { default as Spinner } from 'Indicators/Spinner';export { default as Button } from 'Inputs/Button';export { default as InputField } from 'Inputs/InputField';
+/* Auto-generated code. Do not modify manually */export { default as Spinner } from 'Indicators/Spinner';export { default as Button } from 'Inputs/Button';export { default as Checkbox } from 'Inputs/Checkbox';export { default as InputField } from 'Inputs/InputField';export { default as Toggle } from 'Inputs/Toggle';

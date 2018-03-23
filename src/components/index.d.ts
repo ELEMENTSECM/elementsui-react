@@ -30,6 +30,28 @@
 
 }
 
+declare module 'Checkbox' {
+    import * as React from 'react';
+
+    export interface CheckboxProps {
+        /**
+         * Checkbox label
+         */
+        label?: string;
+        /**
+         * Checkbox is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Checkbox description
+         */
+        ariaDescribedBy?: string;
+    }
+
+    export default type Checkbox = React.SFC<CheckboxProps>;
+
+}
+
 declare module 'InputField' {
     import * as React from 'react';
 
@@ -53,6 +75,32 @@
     }
 
     export default type InputField = React.SFC<InputFieldProps>;
+
+}
+
+declare module 'Toggle' {
+    import * as React from 'react';
+
+    export interface ToggleProps {
+        /**
+         * Toggle label
+         */
+        label?: string;
+        /**
+         * Toggle is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Toggle description
+         */
+        ariaDescribedBy?: string;
+        /**
+         * Toggle checked
+         */
+        defaultChecked?: boolean;
+    }
+
+    export default type Toggle = React.SFC<ToggleProps>;
 
 }
 

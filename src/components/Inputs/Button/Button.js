@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import PropTypes from 'prop-types';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 /** Button example */
 function Button({ label, disabled = false }) {
