@@ -1,14 +1,27 @@
 /* Auto-generated code. Do not modify manually */declare module 'elementsui-react' {
 	import * as React from 'react';
 
-	export interface SpinnerProps {
-        /**
-         * Spinner label
-         */
-        label?: string;
+	export interface LoggedInBarLabels {
+        logout?: string;
+        loggedInAs?: string;
     }
 
-    export const Spinner: React.SFC<SpinnerProps>;
+    export interface LoggedInBarProps {
+        /**
+         * Logged in user's name
+         */
+        name?: string;
+        /**
+         * Log ou mouse click event handler
+         */
+        handleLogoutClick?: (...args: any[])=>any;
+        /**
+         * Labels
+         */
+        labels?: LoggedInBarLabels;
+    }
+
+    export const LoggedInBar: React.SFC<LoggedInBarProps>;
 
 
 export interface ButtonProps {
@@ -83,6 +96,60 @@
     export const Dropdown: React.SFC<DropdownProps>;
 
 
+export interface SpinnerProps {
+        /**
+         * Spinner label
+         */
+        label?: string;
+    }
+
+    export const Spinner: React.SFC<SpinnerProps>;
+
+
+export interface InputFieldProps {
+        /**
+         * Input field placeholder text
+         */
+        placeholder?: string;
+        /**
+         * Input field is marked with red asterisk as required if set to true
+         */
+        required?: boolean;
+        /**
+         * Input field is disabled is set to true
+         */
+        disabled?: boolean;
+        /**
+         * Error message shown under the input field
+         */
+        errorMessage?: string;
+    }
+
+    export const InputField: React.SFC<InputFieldProps>;
+
+
+export interface ToggleProps {
+        /**
+         * Toggle label
+         */
+        label?: string;
+        /**
+         * Toggle is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Toggle description
+         */
+        ariaDescribedBy?: string;
+        /**
+         * Toggle checked
+         */
+        defaultChecked?: boolean;
+    }
+
+    export const Toggle: React.SFC<ToggleProps>;
+
+
 export interface TenantSelectorTenants {
         _id?: string;
         _childId?: string;
@@ -142,49 +209,5 @@
         render(): JSX.Element;
 
     }
-export interface InputFieldProps {
-        /**
-         * Input field placeholder text
-         */
-        placeholder?: string;
-        /**
-         * Input field is marked with red asterisk as required if set to true
-         */
-        required?: boolean;
-        /**
-         * Input field is disabled is set to true
-         */
-        disabled?: boolean;
-        /**
-         * Error message shown under the input field
-         */
-        errorMessage?: string;
-    }
-
-    export const InputField: React.SFC<InputFieldProps>;
-
-
-export interface ToggleProps {
-        /**
-         * Toggle label
-         */
-        label?: string;
-        /**
-         * Toggle is disabled
-         */
-        disabled?: boolean;
-        /**
-         * Toggle description
-         */
-        ariaDescribedBy?: string;
-        /**
-         * Toggle checked
-         */
-        defaultChecked?: boolean;
-    }
-
-    export const Toggle: React.SFC<ToggleProps>;
-
-
 
 }

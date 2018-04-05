@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../Inputs/Button';
 import Dropdown from '../../Inputs/Dropdown';
 import Spinner from '../../Indicators/Spinner';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-
+import LoggedInBar from '../LoggedInBar';
 /** TenantSelector example */
 class TenantSelector extends React.Component {
 	static defaultProps = {
@@ -73,12 +71,14 @@ class TenantSelector extends React.Component {
 						<div>{this.props.isSpinnerVisible && <Spinner />}</div>
 					</div>
 				) : (
-					<MessageBar messageBarType={MessageBarType.info}>
-						{`${this.props.labels.loggedInAs} '${this.props.name}'. `}
-						<Link href="" onClick={this.props.handleLogoutClick}>
-							{this.props.labels.logout}
-						</Link>
-					</MessageBar>
+					<LoggedInBar
+						labels={{
+							logout: this.props.labels.logout,
+							loggedInAs: this.props.labels.loggedInAs
+						}}
+						name={this.props.name}
+						handleLogoutClick={this.props.handleLogoutClick}
+					/>
 				)}
 			</div>
 		);
