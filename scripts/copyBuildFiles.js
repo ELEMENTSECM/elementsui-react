@@ -41,7 +41,8 @@ function createPackageFile() {
 				bugs,
 				homepage,
 				peerDependencies,
-				dependencies
+				dependencies,
+				typings
 			} = packageData;
 
 			const minimalPackage = {
@@ -56,7 +57,8 @@ function createPackageFile() {
 				bugs,
 				homepage,
 				peerDependencies,
-				dependencies
+				dependencies,
+				typings
 			};
 
 			return new Promise(resolve => {
