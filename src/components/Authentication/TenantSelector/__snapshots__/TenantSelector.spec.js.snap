@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TenantSelector displays tenants and labels correctly 1`] = `
+<div>
+  <div>
+    <div>
+      <div
+        className="ms-Dropdown-container"
+      >
+        <label
+          className="ms-Label ms-Dropdown-label root-37"
+          htmlFor="databaseDropdown"
+          id="databaseDropdown-label"
+          required={undefined}
+        >
+          Select database:
+        </label>
+        <div
+          aria-activedescendant={null}
+          aria-autocomplete="none"
+          aria-describedby="databaseDropdown-option"
+          aria-disabled={undefined}
+          aria-expanded="false"
+          aria-label={undefined}
+          aria-live="assertive"
+          aria-owns={null}
+          className="ms-Dropdown root_46f1b9db"
+          data-is-focusable={true}
+          id="databaseDropdown"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          role="combobox"
+          tabIndex={0}
+        >
+          <span
+            aria-atomic={true}
+            aria-readonly="true"
+            className="ms-Dropdown-title title_46f1b9db ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_46f1b9db"
+            id="databaseDropdown-option"
+            role="listbox"
+          >
+            <span>
+              Select database...
+            </span>
+          </span>
+          <span
+            className="ms-Dropdown-caretDownWrapper caretDownWrapper_46f1b9db"
+          >
+            <i
+              aria-hidden={true}
+              className="root-38 ms-Dropdown-caretDown caretDown_46f1b9db"
+              data-icon-name="ChevronDown"
+              role="presentation"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <br />
+    </div>
+    <div
+      className="buttonRow"
+    >
+      <button
+        aria-describedby={null}
+        aria-label={undefined}
+        aria-labelledby={null}
+        aria-pressed={undefined}
+        className="ms-Button ms-Button--primary is-disabled root-41"
+        data-is-focusable={false}
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer flexContainer-42"
+        >
+          <div
+            className="ms-Button-textContainer textContainer-43"
+          >
+            <div
+              className="ms-Button-label label-45"
+              id="id__0"
+            >
+              Sign in
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div />
+  </div>
+</div>
+`;
+
+exports[`TenantSelector displays when logged in correctly 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    className="ms-MessageBar root_50bb08d3 ms-MessageBar root_50bb08d3 ms-MessageBar-multiline multiLine_50bb08d3"
+    role="status"
+  >
+    <div
+      className="content_50bb08d3 ms-MessageBar-content"
+    >
+      <div
+        className="ms-MessageBar-icon icon_50bb08d3"
+      >
+        <i
+          aria-hidden={true}
+          className="root-38"
+          data-icon-name="Info"
+          role="presentation"
+        />
+      </div>
+      <div
+        className="ms-MessageBar-text text_50bb08d3 noDismissButton_50bb08d3"
+        id="MessageBar3"
+      >
+        <span
+          aria-live="polite"
+          className="ms-MessageBar-innerText innerText_50bb08d3"
+          role="status"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

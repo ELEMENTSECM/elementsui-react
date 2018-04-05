@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from 'elements-ui/Inputs/Button';
+import Button from 'elementsui-react/Inputs/Button';
 
 /** Disabled button */
 export default function ButtonDisabled() {

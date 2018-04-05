@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Spinner from 'elements-ui/Indicators/Spinner';
+import Spinner from 'elementsui-react/Indicators/Spinner';
 
 /** Spinner label */
 

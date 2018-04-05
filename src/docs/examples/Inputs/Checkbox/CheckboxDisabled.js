@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Checkbox from 'elements-ui/Inputs/Checkbox';
+import Checkbox from 'elementsui-react/Inputs/Checkbox';
 
 /** Disabled Checkbox */
 export default function CheckboxDisabled() {
