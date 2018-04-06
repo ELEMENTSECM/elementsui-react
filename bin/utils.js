@@ -3,8 +3,7 @@ const chalk = require('chalk');
 const path = require('path');
 
 function writeFile(filepath, content) {
-	const header = '/* Auto-generated code. Do not modify manually */\r';
-	fs.writeFile(filepath, header + content, function(err) {
+	fs.writeFile(filepath, content, function(err) {
 		err ? console.log(chalk.red(err)) : console.log(chalk.green('Component data saved.'));
 	});
 }
@@ -26,8 +25,16 @@ function readFile(filePath) {
 	return fs.readFileSync(filePath, 'utf-8');
 }
 
+function fileExists(filePath, fileName) {
+	_.some(getFiles(filePath), x => x === fileName);
+}
+
 function join(...paths) {
 	return path.join(...paths).replace(/\\/g, '/');
+}
+
+function capitalize(str) {
+	return `${str[0].toUpperCase()}${str.slice(1)}`;
 }
 
 module.exports = {
@@ -35,5 +42,7 @@ module.exports = {
 	getDirectories,
 	getFiles,
 	readFile,
+	fileExists,
+	capitalize,
 	join
 };

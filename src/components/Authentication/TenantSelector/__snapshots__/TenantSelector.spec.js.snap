@@ -23,7 +23,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         aria-label={undefined}
         aria-live="assertive"
         aria-owns={null}
-        className="ms-Dropdown root_46f1b9db"
+        className="ms-Dropdown root_273ad2e3"
         data-is-focusable={true}
         id="databaseDropdown"
         onBlur={[Function]}
@@ -36,7 +36,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         <span
           aria-atomic={true}
           aria-readonly="true"
-          className="ms-Dropdown-title title_46f1b9db ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_46f1b9db"
+          className="ms-Dropdown-title title_273ad2e3 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_273ad2e3"
           id="databaseDropdown-option"
           role="listbox"
         >
@@ -45,11 +45,11 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
           </span>
         </span>
         <span
-          className="ms-Dropdown-caretDownWrapper caretDownWrapper_46f1b9db"
+          className="ms-Dropdown-caretDownWrapper caretDownWrapper_273ad2e3"
         >
           <i
             aria-hidden={true}
-            className="root-38 ms-Dropdown-caretDown caretDown_46f1b9db"
+            className="root-38 ms-Dropdown-caretDown caretDown_273ad2e3"
             data-icon-name="ChevronDown"
             role="presentation"
           />
@@ -92,14 +92,14 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
 <div>
   <div
     aria-live="polite"
-    className="ms-MessageBar root_50bb08d3 ms-MessageBar root_50bb08d3 ms-MessageBar-multiline multiLine_50bb08d3"
+    className="ms-MessageBar root_91b7bf6c ms-MessageBar root_91b7bf6c ms-MessageBar-multiline multiLine_91b7bf6c"
     role="status"
   >
     <div
-      className="content_50bb08d3 ms-MessageBar-content"
+      className="content_91b7bf6c ms-MessageBar-content"
     >
       <div
-        className="ms-MessageBar-icon icon_50bb08d3"
+        className="ms-MessageBar-icon icon_91b7bf6c"
       >
         <i
           aria-hidden={true}
@@ -109,12 +109,12 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
         />
       </div>
       <div
-        className="ms-MessageBar-text text_50bb08d3 noDismissButton_50bb08d3"
+        className="ms-MessageBar-text text_91b7bf6c noDismissButton_91b7bf6c"
         id="MessageBar3"
       >
         <span
           aria-live="polite"
-          className="ms-MessageBar-innerText innerText_50bb08d3"
+          className="ms-MessageBar-innerText innerText_91b7bf6c"
           role="status"
         />
       </div>

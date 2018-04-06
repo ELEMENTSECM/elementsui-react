@@ -1,0 +1,8 @@
+{
+	"components": "src/components/",
+	"containers": "src/components/",
+	"models": "",
+	"actions": "",
+	"reducers": "",
+	"state": ""
+}

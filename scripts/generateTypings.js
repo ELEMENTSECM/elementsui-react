@@ -1,7 +1,7 @@
 const path = require('path');
 const generator = require('react-to-typescript-definitions');
 const chokidar = require('chokidar');
-const utils = require('./utils');
+const utils = require('../bin/utils');
 const exec = require('child_process').exec;
 const chalk = require('chalk');
 

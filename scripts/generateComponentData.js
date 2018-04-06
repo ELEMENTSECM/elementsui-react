@@ -2,7 +2,7 @@ const path = require('path');
 const chalk = require('chalk');
 const parse = require('react-docgen').parse;
 const chokidar = require('chokidar');
-const utils = require('./utils');
+const utils = require('../bin/utils');
 let errors = [];
 
 const paths = {

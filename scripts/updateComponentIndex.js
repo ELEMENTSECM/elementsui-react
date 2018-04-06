@@ -1,5 +1,5 @@
 const path = require('path');
-const utils = require('./utils');
+const utils = require('../bin/utils');
 
 const components = path.join(__dirname, '../src', 'components');
 const indexPath = path.join(components, 'index.js');
