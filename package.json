@@ -58,7 +58,12 @@
 		"printWidth": 110
 	},
 	"jest": {
-		"collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx,mjs}",
+			"!src/**/index.js",
+			"!src/**/index.d.ts",
+			"!src/**/*.spec.js"
+		],
 		"setupFiles": ["<rootDir>/config/polyfills.js"],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
