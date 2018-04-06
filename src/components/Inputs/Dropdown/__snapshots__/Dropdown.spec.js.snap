@@ -21,7 +21,7 @@ exports[`Dropdown displays correctly 1`] = `
     aria-label={undefined}
     aria-live="assertive"
     aria-owns={null}
-    className="ms-Dropdown root_05a21f2d"
+    className="ms-Dropdown root_273ad2e3"
     data-is-focusable={true}
     id="testDropdown"
     onBlur={[Function]}
@@ -34,20 +34,20 @@ exports[`Dropdown displays correctly 1`] = `
     <span
       aria-atomic={true}
       aria-readonly="true"
-      className="ms-Dropdown-title title_05a21f2d ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_05a21f2d"
+      className="ms-Dropdown-title title_273ad2e3 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_273ad2e3"
       id="testDropdown-option"
-      role="textbox"
+      role="listbox"
     >
       <span>
         Select test...
       </span>
     </span>
     <span
-      className="ms-Dropdown-caretDownWrapper caretDownWrapper_05a21f2d"
+      className="ms-Dropdown-caretDownWrapper caretDownWrapper_273ad2e3"
     >
       <i
         aria-hidden={true}
-        className="root-37 ms-Dropdown-caretDown caretDown_05a21f2d"
+        className="root-37 ms-Dropdown-caretDown caretDown_273ad2e3"
         data-icon-name="ChevronDown"
         role="presentation"
       />
