@@ -1,7 +1,7 @@
 var path = require('path');
 var fse = require('fs-extra');
 
-const files = ['README.md', 'LICENSE'];
+const files = ['README.md', 'LICENSE', 'bin'];
 
 Promise.all(files.map(file => copyFile(file))).then(() => createPackageFile());
 
@@ -42,7 +42,8 @@ function createPackageFile() {
 				homepage,
 				peerDependencies,
 				dependencies,
-				typings
+				typings,
+				bin
 			} = packageData;
 
 			const minimalPackage = {
@@ -58,7 +59,8 @@ function createPackageFile() {
 				homepage,
 				peerDependencies,
 				dependencies,
-				typings
+				typings,
+				bin
 			};
 
 			return new Promise(resolve => {
