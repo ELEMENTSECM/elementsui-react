@@ -3,94 +3,86 @@
 exports[`TenantSelector displays tenants and labels correctly 1`] = `
 <div>
   <div>
-    <div>
-      <div
-        className="ms-Dropdown-container"
+    <div
+      className="ms-Dropdown-container"
+    >
+      <label
+        className="ms-Label ms-Dropdown-label root-37"
+        htmlFor="databaseDropdown"
+        id="databaseDropdown-label"
+        required={undefined}
       >
-        <label
-          className="ms-Label ms-Dropdown-label root-37"
-          htmlFor="databaseDropdown"
-          id="databaseDropdown-label"
-          required={undefined}
+        Select database:
+      </label>
+      <div
+        aria-activedescendant={null}
+        aria-autocomplete="none"
+        aria-describedby="databaseDropdown-option"
+        aria-disabled={undefined}
+        aria-expanded="false"
+        aria-label={undefined}
+        aria-live="assertive"
+        aria-owns={null}
+        className="ms-Dropdown root_46f1b9db"
+        data-is-focusable={true}
+        id="databaseDropdown"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        role="combobox"
+        tabIndex={0}
+      >
+        <span
+          aria-atomic={true}
+          aria-readonly="true"
+          className="ms-Dropdown-title title_46f1b9db ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_46f1b9db"
+          id="databaseDropdown-option"
+          role="listbox"
         >
-          Select database:
-        </label>
-        <div
-          aria-activedescendant={null}
-          aria-autocomplete="none"
-          aria-describedby="databaseDropdown-option"
-          aria-disabled={undefined}
-          aria-expanded="false"
-          aria-label={undefined}
-          aria-live="assertive"
-          aria-owns={null}
-          className="ms-Dropdown root_46f1b9db"
-          data-is-focusable={true}
-          id="databaseDropdown"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          role="combobox"
-          tabIndex={0}
+          <span>
+            Select database...
+          </span>
+        </span>
+        <span
+          className="ms-Dropdown-caretDownWrapper caretDownWrapper_46f1b9db"
         >
-          <span
-            aria-atomic={true}
-            aria-readonly="true"
-            className="ms-Dropdown-title title_46f1b9db ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_46f1b9db"
-            id="databaseDropdown-option"
-            role="listbox"
-          >
-            <span>
-              Select database...
-            </span>
-          </span>
-          <span
-            className="ms-Dropdown-caretDownWrapper caretDownWrapper_46f1b9db"
-          >
-            <i
-              aria-hidden={true}
-              className="root-38 ms-Dropdown-caretDown caretDown_46f1b9db"
-              data-icon-name="ChevronDown"
-              role="presentation"
-            />
-          </span>
-        </div>
+          <i
+            aria-hidden={true}
+            className="root-38 ms-Dropdown-caretDown caretDown_46f1b9db"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          />
+        </span>
       </div>
     </div>
-    <div>
-      <br />
-    </div>
-    <div
-      className="buttonRow"
+    <br />
+    <button
+      aria-describedby={null}
+      aria-label={undefined}
+      aria-labelledby={null}
+      aria-pressed={undefined}
+      className="ms-Button ms-Button--primary is-disabled root-41"
+      data-is-focusable={false}
+      disabled={true}
+      onClick={[Function]}
+      type="button"
     >
-      <button
-        aria-describedby={null}
-        aria-label={undefined}
-        aria-labelledby={null}
-        aria-pressed={undefined}
-        className="ms-Button ms-Button--primary is-disabled root-41"
-        data-is-focusable={false}
-        disabled={true}
-        onClick={[Function]}
-        type="button"
+      <div
+        className="ms-Button-flexContainer flexContainer-42"
       >
         <div
-          className="ms-Button-flexContainer flexContainer-42"
+          className="ms-Button-textContainer textContainer-43"
         >
           <div
-            className="ms-Button-textContainer textContainer-43"
+            className="ms-Button-label label-45"
+            id="id__0"
           >
-            <div
-              className="ms-Button-label label-45"
-              id="id__0"
-            >
-              Sign in
-            </div>
+            Sign in
           </div>
         </div>
-      </button>
-    </div>
+      </div>
+    </button>
     <div />
   </div>
 </div>
