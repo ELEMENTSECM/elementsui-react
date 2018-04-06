@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Toggle from 'elements-ui/Inputs/Toggle';
+import Toggle from 'elementsui-react/Inputs/Toggle';
 
 /** Default Toggle */
 export default function ToggleDefault() {
-	return <Toggle htmlId="defaultToggle" label="Default Toggle"  />;
+	return <Toggle htmlId="defaultToggle" label="Default Toggle" />;
 }

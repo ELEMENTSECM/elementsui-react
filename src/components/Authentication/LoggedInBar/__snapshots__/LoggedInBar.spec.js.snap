@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoggedInBar displays correctly 1`] = `
+<div
+  aria-live="polite"
+  className="ms-MessageBar root_50bb08d3 ms-MessageBar root_50bb08d3 ms-MessageBar-multiline multiLine_50bb08d3"
+  role="status"
+>
+  <div
+    className="content_50bb08d3 ms-MessageBar-content"
+  >
+    <div
+      className="ms-MessageBar-icon icon_50bb08d3"
+    >
+      <i
+        aria-hidden={true}
+        className="root-36"
+        data-icon-name="Info"
+        role="presentation"
+      />
+    </div>
+    <div
+      className="ms-MessageBar-text text_50bb08d3 noDismissButton_50bb08d3"
+      id="MessageBar0"
+    >
+      <span
+        aria-live="polite"
+        className="ms-MessageBar-innerText innerText_50bb08d3"
+        role="status"
+      />
+    </div>
+  </div>
+</div>
+`;

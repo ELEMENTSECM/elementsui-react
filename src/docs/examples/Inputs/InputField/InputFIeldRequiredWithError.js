@@ -1,5 +1,5 @@
 import * as React from 'react';
-import InputField from 'elements-ui/Inputs/InputField';
+import InputField from 'elementsui-react/Inputs/InputField';
 
 /** Required input field with error */
 export default function InputFieldRequiredWithError() {

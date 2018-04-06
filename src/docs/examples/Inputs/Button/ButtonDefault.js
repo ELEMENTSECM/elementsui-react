@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from 'elements-ui/Inputs/Button';
+import Button from 'elementsui-react/Inputs/Button';
 
 /** Default button */
 export default function ButtonDefault() {
