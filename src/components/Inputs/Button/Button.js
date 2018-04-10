@@ -5,7 +5,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 /** Button example */
 function Button({ label, disabled = false, onClick }) {
 	return (
-		<DefaultButton disabled={disabled} primary={true} onClick={onClick} ariaDescription={"Aria description"}>
+		<DefaultButton disabled={disabled} primary={true} onClick={onClick}>
 			{label}
 		</DefaultButton>
 	);
@@ -17,9 +17,7 @@ Button.propTypes = {
 	/** Button is disabled */
 	disabled: PropTypes.bool,
 	/** Mouse click event handler */
-	onCLick: PropTypes.func,
-	/** Aria description for SR */
-	ariaDescription: PropTypes.string
+	onCLick: PropTypes.func
 };
 
 export default Button;
