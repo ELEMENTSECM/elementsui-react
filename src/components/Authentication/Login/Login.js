@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import TenantSelector from '../_TenantSelector';
 import v1 from 'uuid/v1';
 import moment from 'moment';
-import { hashToMap } from '../../../../bin/utils';
 import Promise from 'promise';
 
 /** You may find Login component's usage example in elements-starter-template */
@@ -128,7 +127,7 @@ export default class Login extends Component {
 		return new Promise((resolve, reject) => {
 			window['authcallback'] = hash => {
 				try {
-					const authProperties = hashToMap(hash);
+					const authProperties = this.hashToMap(hash);
 					const error = authProperties['error'];
 					if (error) {
 						console.error(error);
@@ -202,6 +201,32 @@ export default class Login extends Component {
 			'&redirect_uri=' +
 			encodeURIComponent(this.props.appConfig.idpRedirectUri)
 		);
+	}
+
+	static hashToMap(hash) {
+		hash = hash.substring(hash.indexOf('#') + 1);
+		return this.parseQueryString(hash);
+	}
+
+	static parseQueryString(queryString = null) {
+		if (queryString == null) {
+			queryString = window.location.search.substring(1);
+		}
+
+		const params = new Map();
+
+		const queries = queryString.split('&');
+
+		queries.forEach(indexQuery => {
+			const indexPair = indexQuery.split('=');
+
+			const queryKey = decodeURIComponent(indexPair[0]);
+			const queryValue = decodeURIComponent(indexPair.length > 1 ? indexPair[1] : '');
+
+			params[queryKey] = queryValue;
+		});
+
+		return params;
 	}
 }
 
