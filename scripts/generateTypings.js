@@ -11,9 +11,11 @@ const enableWatchMode = process.argv.slice(2) === '--watch';
 if (enableWatchMode) {
 	chokidar.watch([components]).on('change', function(event, path) {
 		generateTypings(components);
+		prettier();
 	});
 } else {
 	generateTypings(components);
+	prettier();
 }
 
 function generateTypings(folder) {
@@ -30,13 +32,19 @@ function generateTypings(folder) {
 						console.log(chalk.red(`exec error: ${error}`));
 					}
 
-					const res = stdout
+					const res = `import * as React from 'react';
+
+${stdout
 						.replace(/.*declare module '\w+'\s*{\s*import \* as React from 'react';\s*/, '')
 						.replace(/.*export default \w+;/, '')
 						.replace('const', 'export const')
-						.slice(0, -6);
+						.slice(0, -6)}`;
 					utils.writeFile(path.join(folder, x, 'index.d.ts'), res);
 				});
 			}
 		});
+}
+
+function prettier() {
+	exec('prettier --write "**/*.d.ts"');
 }
