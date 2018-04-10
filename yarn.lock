@@ -614,7 +614,7 @@ babel-helpers@^6.24.1:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-jest@=20.0.3:
+babel-jest@20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-20.0.3.tgz#e4a03b13dc10389e140fc645d09ffc4ced301671"
   dependencies:
@@ -4519,7 +4519,7 @@ jest-worker@^22.4.3:
   dependencies:
     merge-stream "^1.0.1"
 
-jest@=22.4.3:
+jest@22.4.3:
   version "22.4.3"
   resolved "https://registry.yarnpkg.com/jest/-/jest-22.4.3.tgz#2261f4b117dc46d9a4a1a673d2150958dee92f16"
   dependencies:
