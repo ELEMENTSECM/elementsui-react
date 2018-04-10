@@ -28,25 +28,28 @@ function generate(components) {
 }
 
 function generateTypings(folder, typings, typeDefPath) {
-	return utils.getDirectories(folder).map(x => {
-		const children = generateTypings(path.join(folder, x), typings, typeDefPath);
+	return utils
+		.getDirectories(folder)
+		.filter(x => !x.startsWith('_'))
+		.map(x => {
+			const children = generateTypings(path.join(folder, x), typings, typeDefPath);
 
-		if (!children || children.length === 0) {
-			const filePath = path.join(folder, x, x + '.js');
-			const source = utils.readFile(filePath);
-			exec(`react2dts --file ${filePath} --module-name ${x}`, (error, stdout, stderr) => {
-				if (error !== null) {
-					console.log(chalk.red(`exec error: ${error}`));
-				}
+			if (!children || children.length === 0) {
+				const filePath = path.join(folder, x, x + '.js');
+				const source = utils.readFile(filePath);
+				exec(`react2dts --file ${filePath} --module-name ${x}`, (error, stdout, stderr) => {
+					if (error !== null) {
+						console.log(chalk.red(`exec error: ${error}`));
+					}
 
-				const res = stdout
-					.replace(/.*declare module '\w+'\s*{\s*import \* as React from 'react';\s*/, '')
-					.replace(/.*export default \w+;/, '')
-					.replace('const', 'export const')
-					.slice(0, -6);
-				typings.push(res);
-				utils.writeFile(typeDefPath, template.replace('{{t}}', typings.join('\r')));
-			});
-		}
-	});
+					const res = stdout
+						.replace(/.*declare module '\w+'\s*{\s*import \* as React from 'react';\s*/, '')
+						.replace(/.*export default \w+;/, '')
+						.replace('const', 'export const')
+						.slice(0, -6);
+					typings.push(res);
+					utils.writeFile(typeDefPath, template.replace('{{t}}', typings.join('\r')));
+				});
+			}
+		});
 }

@@ -25,10 +25,6 @@ function readFile(filePath) {
 	return fs.readFileSync(filePath, 'utf-8');
 }
 
-function fileExists(filePath, fileName) {
-	_.some(getFiles(filePath), x => x === fileName);
-}
-
 function join(...paths) {
 	return path.join(...paths).replace(/\\/g, '/');
 }
@@ -42,7 +38,6 @@ module.exports = {
 	getDirectories,
 	getFiles,
 	readFile,
-	fileExists,
 	capitalize,
 	join
 };

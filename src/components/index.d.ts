@@ -1,7 +1,35 @@
 declare module 'elementsui-react' {
 	import * as React from 'react';
 
-	export interface ButtonProps {
+	export interface SpinnerProps {
+        /**
+         * Spinner label
+         */
+        label?: string;
+    }
+
+    export const Spinner: React.SFC<SpinnerProps>;
+
+
+export interface CheckboxProps {
+        /**
+         * Checkbox label
+         */
+        label?: string;
+        /**
+         * Checkbox is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Checkbox description
+         */
+        ariaDescribedBy?: string;
+    }
+
+    export const Checkbox: React.SFC<CheckboxProps>;
+
+
+export interface ButtonProps {
         /**
          * Button label
          */
@@ -55,138 +83,6 @@ declare module 'elementsui-react' {
     export const Dropdown: React.SFC<DropdownProps>;
 
 
-export interface CheckboxProps {
-        /**
-         * Checkbox label
-         */
-        label?: string;
-        /**
-         * Checkbox is disabled
-         */
-        disabled?: boolean;
-        /**
-         * Checkbox description
-         */
-        ariaDescribedBy?: string;
-    }
-
-    export const Checkbox: React.SFC<CheckboxProps>;
-
-
-export interface SpinnerProps {
-        /**
-         * Spinner label
-         */
-        label?: string;
-    }
-
-    export const Spinner: React.SFC<SpinnerProps>;
-
-
-export interface LoggedInBarLabels {
-        logout?: string;
-        loggedInAs?: string;
-    }
-
-    export interface LoggedInBarProps {
-        /**
-         * Logged in user's name
-         */
-        name?: string;
-        /**
-         * Log ou mouse click event handler
-         */
-        handleLogoutClick?: (...args: any[])=>any;
-        /**
-         * Labels
-         */
-        labels?: LoggedInBarLabels;
-    }
-
-    export const LoggedInBar: React.SFC<LoggedInBarProps>;
-
-
-export interface TenantSelectorTenants {
-        _id?: string;
-        _childId?: string;
-        _scope?: string;
-        ncoreclient?: {
-            BaseUrl?: string;
-        };
-        elements?: {
-            Authentication_BaseUrl?: string;
-            Authentication_DefaultProvider?: string;
-        };
-    }
-
-    export interface TenantSelectorLabels {
-        login?: string;
-        logout?: string;
-        selectTenant?: string;
-        loggedInAs?: string;
-    }
-
-    export interface TenantSelectorProps {
-        /**
-         * List of tenant configs
-         */
-        tenants?: TenantSelectorTenants[];
-        /**
-         * Logged in user's name
-         */
-        name?: string;
-        /**
-         * Is logged in
-         */
-        isLoggedIn?: boolean;
-        /**
-         * Selected tenant changed event handler
-         */
-        onChange?: (...args: any[])=>any;
-        /**
-         * Log in mouse click event handler
-         */
-        handleLoginClick?: (...args: any[])=>any;
-        /**
-         * Log ou mouse click event handler
-         */
-        handleLogoutClick?: (...args: any[])=>any;
-        /**
-         * Is spinner visible
-         */
-        isSpinnerVisible?: boolean;
-        /**
-         * Labels
-         */
-        labels?: TenantSelectorLabels;
-    }
-
-    export default class TenantSelector extends React.Component<TenantSelectorProps, any> {
-        render(): JSX.Element;
-
-    }
-export interface ToggleProps {
-        /**
-         * Toggle label
-         */
-        label?: string;
-        /**
-         * Toggle is disabled
-         */
-        disabled?: boolean;
-        /**
-         * Toggle description
-         */
-        ariaDescribedBy?: string;
-        /**
-         * Toggle checked
-         */
-        defaultChecked?: boolean;
-    }
-
-    export const Toggle: React.SFC<ToggleProps>;
-
-
 export interface InputFieldProps {
         /**
          * Input field placeholder text
@@ -209,5 +105,75 @@ declare module 'elementsui-react' {
     export const InputField: React.SFC<InputFieldProps>;
 
 
+export interface ToggleProps {
+        /**
+         * Toggle label
+         */
+        label?: string;
+        /**
+         * Toggle is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Toggle description
+         */
+        ariaDescribedBy?: string;
+        /**
+         * Toggle checked
+         */
+        defaultChecked?: boolean;
+    }
+
+    export const Toggle: React.SFC<ToggleProps>;
+
+
+export interface LoginAppConfig {
+        configServerUrl: string;
+        configServerAuth: string;
+        configServerReq: string;
+        idpClient: string;
+        baseUri: string;
+        idpRedirectUri: string;
+        extSystemName: string;
+    }
+
+    export interface LoginLabels {
+        login?: string;
+        logout?: string;
+        selectTenant?: string;
+        loggedInAs?: string;
+    }
+
+    export interface LoginProps {
+        /**
+         * ConfigServer settings
+         */
+        appConfig: LoginAppConfig;
+        /**
+         * Current ID token
+         */
+        currentIdToken?: string;
+        /**
+         * Current access token
+         */
+        currentAccessToken?: string;
+        /**
+         * Logged in person's name
+         */
+        name?: string;
+        /**
+         * Redux actions
+         */
+        actions?: Object;
+        /**
+         * Labels
+         */
+        labels?: LoginLabels;
+    }
+
+    export default class Login extends React.Component<LoginProps, any> {
+        render(): JSX.Element;
+
+    }
 
 }
