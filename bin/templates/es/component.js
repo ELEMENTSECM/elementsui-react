@@ -1,6 +1,6 @@
 const statefulComponentTemplate = (componentName, { container }) =>
 	`export class ${componentName}${container ? 'Container' : ''} extends Component {
-	constructor(props: any) {
+	constructor(props) {
 		super(props)
 
 		this.state = {}
