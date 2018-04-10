@@ -87,6 +87,7 @@ export default class Login extends Component {
 
 	handleLogoutClick = () => {
 		this.props.actions.logout();
+		JWT.removeCurrentAccessToken();
 		if (this.props.currentIdToken) {
 			window.location.href = this.createLogoutLink(this.props.currentIdToken);
 		}
