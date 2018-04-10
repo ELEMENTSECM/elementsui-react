@@ -9,11 +9,14 @@ getExportStrings(components);
 utils.writeFile(indexPath, exportStrings.join('\r'));
 
 function getExportStrings(filePath, relativePath = '.') {
-	return utils.getDirectories(filePath).map(x => {
-		const children = getExportStrings(path.join(filePath, x), path.join(relativePath, x));
+	return utils
+		.getDirectories(filePath)
+		.filter(x => !x.startsWith('_'))
+		.map(x => {
+			const children = getExportStrings(path.join(filePath, x), path.join(relativePath, x));
 
-		if (!children || children.length === 0) {
-			exportStrings.push(`export { default as ${x} } from './${utils.join(relativePath, x)}';`);
-		}
-	});
+			if (!children || children.length === 0) {
+				exportStrings.push(`export { default as ${x} } from './${utils.join(relativePath, x)}';`);
+			}
+		});
 }
