@@ -3,18 +3,9 @@ import PropTypes from 'prop-types';
 import Button from '../../Inputs/Button';
 import Dropdown from '../../Inputs/Dropdown';
 import Spinner from '../../Indicators/Spinner';
-import LoggedInBar from '../LoggedInBar';
+import LoggedInBar from '../_LoggedInBar';
 /** TenantSelector example */
 class TenantSelector extends React.Component {
-	static defaultProps = {
-		labels: {
-			login: 'Log in',
-			logout: 'Log out',
-			selectTenant: 'Select tenant',
-			loggedInAs: 'You are logged in as'
-		}
-	};
-
 	constructor(props) {
 		super(props);
 

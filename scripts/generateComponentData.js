@@ -33,38 +33,41 @@ function generate(paths) {
 }
 
 function generateComponentData(filepath, relativePath = '') {
-	return utils.getDirectories(filepath).map(x => {
-		const currentPath = utils.join(relativePath, x);
-		const children = generateComponentData(path.join(filepath, x), currentPath);
+	return utils
+		.getDirectories(filepath)
+		.filter(x => !x.startsWith('_'))
+		.map(x => {
+			const currentPath = utils.join(relativePath, x);
+			const children = generateComponentData(path.join(filepath, x), currentPath);
 
-		const nodePath = path.join(filepath, x);
-		let node = {
-			name: x,
-			children,
-			relativePath: currentPath
-		};
+			const nodePath = path.join(filepath, x);
+			let node = {
+				name: x,
+				children,
+				relativePath: currentPath
+			};
 
-		if (!node.children || node.children.length === 0) {
-			try {
-				const content = utils.readFile(path.join(nodePath, node.name + '.js'));
-				const info = parse(content);
-				node.component = {
-					name: node.name,
-					description: info.description,
-					props: info.props,
-					code: content,
-					examples: getExampleData(nodePath),
-					relativePath: currentPath
-				};
-			} catch (error) {
-				errors.push(
-					`An error occurred while attempting to generate metadata for ${node.name}. ${error}`
-				);
+			if (!node.children || node.children.length === 0) {
+				try {
+					const content = utils.readFile(path.join(nodePath, node.name + '.js'));
+					const info = parse(content);
+					node.component = {
+						name: node.name,
+						description: info.description,
+						props: info.props,
+						code: content,
+						examples: getExampleData(nodePath),
+						relativePath: currentPath
+					};
+				} catch (error) {
+					errors.push(
+						`An error occurred while attempting to generate metadata for ${node.name}. ${error}`
+					);
+				}
 			}
-		}
 
-		return node;
-	});
+			return node;
+		});
 }
 
 function getExampleData(componentPath) {

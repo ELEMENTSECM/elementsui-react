@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login displays correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Login
+    actions={
+      Object {
+        "loginAsync": [Function],
+        "logout": [Function],
+      }
+    }
+    appConfig={
+      Object {
+        "baseUri": "baseUri",
+        "configServerAuth": "configServerAuth",
+        "configServerReq": "configServerReq",
+        "configServerUrl": "configServerUrl",
+        "extSystemName": "extSystemName",
+        "idpClient": "idpClient",
+        "idpRedirectUri": "idpRedirectUri",
+      }
+    }
+    labels={
+      Object {
+        "loggedInAs": "You are logged in as",
+        "login": "Log in",
+        "logout": "Log out",
+        "selectTenant": "Select tenant",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "handleLoginClick": [Function],
+      "handleLogoutClick": [Function],
+      "isLoggedIn": false,
+      "isSpinnerVisible": true,
+      "labels": Object {
+        "loggedInAs": "You are logged in as",
+        "login": "Log in",
+        "logout": "Log out",
+        "selectTenant": "Select tenant",
+      },
+      "name": undefined,
+      "onChange": [Function],
+      "tenants": null,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "handleLoginClick": [Function],
+        "handleLogoutClick": [Function],
+        "isLoggedIn": false,
+        "isSpinnerVisible": true,
+        "labels": Object {
+          "loggedInAs": "You are logged in as",
+          "login": "Log in",
+          "logout": "Log out",
+          "selectTenant": "Select tenant",
+        },
+        "name": undefined,
+        "onChange": [Function],
+        "tenants": null,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
