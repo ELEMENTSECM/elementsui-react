@@ -1,7 +1,7 @@
 const statefulComponentTemplate = (componentName, { container }) =>
 	`export class ${componentName}${
 		container ? 'Container' : ''
-	} extends Component<${componentName}.Props, ${componentName}.State> {
+	} extends React.Component<${componentName}.Props, ${componentName}.State> {
 	constructor(props: any) {
 		super(props)
 
@@ -10,7 +10,7 @@ const statefulComponentTemplate = (componentName, { container }) =>
 	render() {
 		return <div className="${componentName.toLowerCase()}" />
 	}
-}`
+}`;
 
 const componentPropsTemplate = (componentName, { stateful, container }) =>
 	`export namespace ${componentName} {
@@ -29,12 +29,12 @@ const componentPropsTemplate = (componentName, { stateful, container }) =>
 			: ''
 	}
 }
-`
+`;
 
 const statelessComponentTemplate = (componentName, { container }) =>
 	`const ${componentName}: React.SFC<${componentName}.Props> = props => {
 	return <div className="${componentName.toLowerCase()}" />
-}`
+}`;
 
 const exportTemplate = (componentName, { container }) =>
 	container
@@ -52,10 +52,10 @@ export const ${componentName} = connect(
 )<${componentName}.Props>(${componentName}Container)`
 		: `
 
-export default ${componentName}`
+export default ${componentName}`;
 
 const componentTemplate = (componentName, { stateful, container }) =>
-	`import React${stateful ? ', { Component }' : ''} from 'react'${
+	`import * as React from 'react'${
 		container
 			? `
 import { bindActionCreators, Dispatch } from 'redux'
@@ -72,22 +72,22 @@ ${
 		stateful
 			? statefulComponentTemplate(componentName, { container })
 			: statelessComponentTemplate(componentName, { container })
-	}${exportTemplate(componentName, { container })}`
+	}${exportTemplate(componentName, { container })}`;
 
 const componentTestTemplate = (componentName, { container }) =>
-	`import React from 'react'
+	`import * as React from 'react'
 import { shallow } from 'enzyme'
 import ${container ? `{ ${componentName}Container }` : componentName} from './index'
 
 test('renders as expected', () => {
 	const component = shallow(<${container ? `${componentName}Container` : componentName} />)
 	expect(component).toMatchSnapshot()
-})`
+})`;
 
 const pageTemplate = pageName => `import * as React from 'react'
 
 ${componentPropsTemplate(pageName, { stateful: false, container: false })}
-const ${pageName}Page: React.SFC<${pageName}.Props> = props => {
+const ${pageName}: React.SFC<${pageName}.Props> = props => {
 	return (
 		<div>
 			<h1>${pageName}</h1>
@@ -96,10 +96,10 @@ const ${pageName}Page: React.SFC<${pageName}.Props> = props => {
 			</div>
 		</div>
 	)
-}${exportTemplate(pageName, { container: false })}`
+}${exportTemplate(pageName, { container: false })}`;
 
 module.exports = {
 	componentTemplate,
 	componentTestTemplate,
 	pageTemplate
-}
+};
