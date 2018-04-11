@@ -4,5 +4,8 @@
 	"models": "",
 	"actions": "",
 	"reducers": "",
-	"state": ""
+	"state": "",
+	"controllers": "",
+	"routes": "",
+	"separateIndexFiles": true
 }

@@ -15,6 +15,20 @@ String.prototype.splice = function splice(start, delCount, newSubStr) {
 	return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
 };
 
+function writeFiles(name, dir, file, test, ext) {
+	mkdirp.sync(dir);
+	ext = ext || extension;
+	const filePath = `${dir}/${config.separateIndexFiles ? name : 'index'}.${ext}`;
+	const testPath = `${dir}/${config.separateIndexFiles ? name : 'index'}.spec.${extension}`;
+	utils.writeFile(filePath, file);
+	utils.writeFile(testPath, test);
+	if (config.separateIndexFiles) {
+		const exportString = `export { default } from './${name}';`;
+		const indexPath = `${dir}/index.${ext}`;
+		utils.writeFile(indexPath, exportString);
+	}
+}
+
 function writeAction(name) {
 	try {
 		const at = require(tpl + '/action');
@@ -22,9 +36,7 @@ function writeAction(name) {
 		const action = at.actionTemplate(capitalizedName);
 		const actionTest = at.actionTestTemplate(capitalizedName);
 		const dir = path.join(cwd, config.actions, capitalizedName);
-		mkdirp.sync(dir);
-		fs.writeFileSync(`${dir}/index.${extension}`, action);
-		fs.writeFileSync(`${dir}/index.spec.${extension}`, actionTest);
+		writeFiles(capitalizedName, dir, action, actionTest);
 		console.log(chalk.green(`${capitalizedName} action has been created at ${dir}/`));
 	} catch (error) {
 		errors.push({ name, error });
@@ -37,7 +49,7 @@ function writeModel(name) {
 		const capitalizedName = utils.capitalize(name);
 		const model = mt.modelTemplate(capitalizedName);
 		const dir = path.join(cwd, config.models);
-		fs.writeFileSync(`${dir + capitalizedName}Model.${extension}`, model);
+		utils.writeFile(`${dir + capitalizedName}Model.${extension}`, model);
 		console.log(chalk.green(`${capitalizedName}Model model has been created at ${dir}`));
 	} catch (error) {
 		errors.push({ name, error });
@@ -51,9 +63,7 @@ function writeReducer(name) {
 		const reducer = rt.reducerTemplate(capitalizedName);
 		const reducerTest = rt.reducerTestTemplate(capitalizedName);
 		const dir = path.join(cwd, config.reducers, capitalizedName);
-		mkdirp.sync(dir);
-		fs.writeFileSync(`${dir}/index.${extension}`, reducer);
-		fs.writeFileSync(`${dir}/index.spec.${extension}`, reducerTest);
+		writeFiles(capitalizedName, dir, reducer, reducerTest);
 		console.log(chalk.green(`${capitalizedName} reducer has been created at ${dir}/`));
 	} catch (error) {
 		errors.push({ name, error });
@@ -73,21 +83,54 @@ function writeComponent({ name, lang }, { stateful = false, container = false, p
 
 		const componentTemplate = page ? ct.pageTemplate : ct.componentTemplate;
 
-		const componentOutput = componentTemplate(capitalizedName, {
+		const component = componentTemplate(capitalizedName, {
 			stateful,
 			container
 		});
-		const componentTestOutput = ct.componentTestTemplate(capitalizedName, {
+		const componentTest = ct.componentTestTemplate(capitalizedName, {
 			stateful,
 			container
 		});
 
-		mkdirp.sync(dir);
-		fs.writeFileSync(`${dir}/index.${extension}`, componentOutput);
-		fs.writeFileSync(`${dir}/index.spec.${extension}`, componentTestOutput);
+		writeFiles(capitalizedName, dir, component, componentTest);
 		console.log(chalk.green(`${capitalizedName} component has been created at ${dir}`));
 	} catch (error) {
 		errors.push({ name, error });
+	}
+}
+
+function writeController({ name }, { action, verb }) {
+	const ctr = require(tpl + '/controller');
+	const controller = ctr.controllerTemplate(action);
+	const controllerTest = ctr.controllerTestTemplate(name, action, verb);
+	const router = ctr.routerTemplate(name, action, verb);
+	const dir = path.join(cwd, config.controllers, name);
+	const routerPath = path.join(cwd, config.routes, `${name}.js`);
+	writeFiles(name, dir, controller, controllerTest, 'js');
+	console.log(chalk.green(`${name} controller has been created at ${dir}`));
+	utils.writeFile(routerPath, router);
+	console.log(chalk.green(`${name} router has been created at ${routerPath}`));
+
+	const indexRouterPath = path.join(cwd, config.routes, `index.js`);
+	let indexRouter = utils.readFile(indexRouterPath);
+	if (indexRouter) {
+		const index = indexRouter.indexOf('const router = express.Router()');
+		indexRouter = indexRouter.splice(
+			index + 31,
+			0,
+			`
+router.use('/${name.toLowerCase()}', ${name}Rtr)`
+		);
+
+		indexRouter = indexRouter.splice(
+			index - 1,
+			0,
+			`import ${name}Rtr from './${name}'
+`
+		);
+		utils.writeFile(indexRouterPath, indexRouter);
+		console.log(chalk.blue(`${name} router added in ${indexRouterPath}`));
+		console.log(chalk.blue(`New endpoint: ${verb} /fetch/${name}/${action}`));
 	}
 }
 
@@ -195,6 +238,17 @@ function scaffold(item, options) {
 			writeStore(item);
 			break;
 		}
+		case 'action': {
+			writeAction(item.name);
+			break;
+		}
+		case 'reducer': {
+			writeReducer(item.name);
+			break;
+		}
+		case 'controller':
+			writeController(item, options);
+			break;
 		default:
 			console.error(chalk.red(`Unknown command: ${item.type}`));
 			process.exit(1);

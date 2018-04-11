@@ -50,7 +50,7 @@ class TenantSelector extends React.Component {
 							label={this.props.labels.selectTenant + ':'}
 							selectedKey={this.state.selectedDatabase}
 							placeHolder={this.props.labels.selectTenant + '...'}
-							options={options}
+							options={options || []}
 							onChange={option => this.handleSelectChange(option)}
 						/>
 						<br />
