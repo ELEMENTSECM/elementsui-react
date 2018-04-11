@@ -1,7 +1,35 @@
 declare module 'elementsui-react' {
 	import * as React from 'react';
 
-	export interface LoggedInBarLabels {
+	export interface CheckboxProps {
+        /**
+         * Checkbox label
+         */
+        label?: string;
+        /**
+         * Checkbox is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Checkbox description
+         */
+        ariaDescribedBy?: string;
+    }
+
+    export const Checkbox: React.SFC<CheckboxProps>;
+
+
+export interface SpinnerProps {
+        /**
+         * Spinner label
+         */
+        label?: string;
+    }
+
+    export const Spinner: React.SFC<SpinnerProps>;
+
+
+export interface LoggedInBarLabels {
         logout?: string;
         loggedInAs?: string;
     }
@@ -22,16 +50,6 @@ declare module 'elementsui-react' {
     }
 
     export const LoggedInBar: React.SFC<LoggedInBarProps>;
-
-
-export interface SpinnerProps {
-        /**
-         * Spinner label
-         */
-        label?: string;
-    }
-
-    export const Spinner: React.SFC<SpinnerProps>;
 
 
 export interface DropdownOptions {
@@ -68,82 +86,6 @@ declare module 'elementsui-react' {
     }
 
     export const Dropdown: React.SFC<DropdownProps>;
-
-
-export interface CheckboxProps {
-        /**
-         * Checkbox label
-         */
-        label?: string;
-        /**
-         * Checkbox is disabled
-         */
-        disabled?: boolean;
-        /**
-         * Checkbox description
-         */
-        ariaDescribedBy?: string;
-    }
-
-    export const Checkbox: React.SFC<CheckboxProps>;
-
-
-export interface InputFieldProps {
-        /**
-         * Input field placeholder text
-         */
-        placeholder?: string;
-        /**
-         * Input field is marked with red asterisk as required if set to true
-         */
-        required?: boolean;
-        /**
-         * Input field is disabled is set to true
-         */
-        disabled?: boolean;
-        /**
-         * Error message shown under the input field
-         */
-        errorMessage?: string;
-    }
-
-    export const InputField: React.SFC<InputFieldProps>;
-
-
-export interface LabelProps {
-        /**
-         * Label required
-         */
-        required?: boolean;
-        /**
-         * Label disabled
-         */
-        disabled?: boolean;
-        /**
-         * Label  label
-         */
-        label: string;
-    }
-
-    export const Label: React.SFC<LabelProps>;
-
-
-export interface ButtonProps {
-        /**
-         * Button label
-         */
-        label?: string;
-        /**
-         * Button is disabled
-         */
-        disabled?: boolean;
-        /**
-         * Mouse click event handler
-         */
-        onCLick?: (...args: any[])=>any;
-    }
-
-    export const Button: React.SFC<ButtonProps>;
 
 
 export interface TenantSelectorTenants {
@@ -205,6 +147,64 @@ declare module 'elementsui-react' {
         render(): JSX.Element;
 
     }
+export interface InputFieldProps {
+        /**
+         * Input field placeholder text
+         */
+        placeholder?: string;
+        /**
+         * Input field is marked with red asterisk as required if set to true
+         */
+        required?: boolean;
+        /**
+         * Input field is disabled is set to true
+         */
+        disabled?: boolean;
+        /**
+         * Error message shown under the input field
+         */
+        errorMessage?: string;
+    }
+
+    export const InputField: React.SFC<InputFieldProps>;
+
+
+export interface ButtonProps {
+        /**
+         * Button label
+         */
+        label?: string;
+        /**
+         * Button is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Mouse click event handler
+         */
+        onCLick?: (...args: any[])=>any;
+    }
+
+    export const Button: React.SFC<ButtonProps>;
+
+
+export interface LabelProps {
+        /**
+         * Label required
+         */
+        required?: boolean;
+        /**
+         * Label disabled
+         */
+        disabled?: boolean;
+        /**
+         * Label  label
+         */
+        label: string;
+    }
+
+    export const Label: React.SFC<LabelProps>;
+
+
 export interface ToggleProps {
         /**
          * Toggle label
