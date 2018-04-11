@@ -24,48 +24,14 @@ declare module 'elementsui-react' {
     export const LoggedInBar: React.SFC<LoggedInBarProps>;
 
 
-export interface InputFieldProps {
+export interface SpinnerProps {
         /**
-         * Input field placeholder text
-         */
-        placeholder?: string;
-        /**
-         * Input field is marked with red asterisk as required if set to true
-         */
-        required?: boolean;
-        /**
-         * Input field is disabled is set to true
-         */
-        disabled?: boolean;
-        /**
-         * Error message shown under the input field
-         */
-        errorMessage?: string;
-    }
-
-    export const InputField: React.SFC<InputFieldProps>;
-
-
-export interface ButtonProps {
-        /**
-         * Button label
+         * Spinner label
          */
         label?: string;
-        /**
-         * Button is disabled
-         */
-        disabled?: boolean;
-        /**
-         * Mouse click event handler
-         */
-        onCLick?: (...args: any[])=>any;
-        /**
-         * Aria description for SR
-         */
-        ariaDescription?: string;
     }
 
-    export const Button: React.SFC<ButtonProps>;
+    export const Spinner: React.SFC<SpinnerProps>;
 
 
 export interface DropdownOptions {
@@ -122,14 +88,26 @@ declare module 'elementsui-react' {
     export const Checkbox: React.SFC<CheckboxProps>;
 
 
-export interface SpinnerProps {
+export interface InputFieldProps {
         /**
-         * Spinner label
+         * Input field placeholder text
          */
-        label?: string;
+        placeholder?: string;
+        /**
+         * Input field is marked with red asterisk as required if set to true
+         */
+        required?: boolean;
+        /**
+         * Input field is disabled is set to true
+         */
+        disabled?: boolean;
+        /**
+         * Error message shown under the input field
+         */
+        errorMessage?: string;
     }
 
-    export const Spinner: React.SFC<SpinnerProps>;
+    export const InputField: React.SFC<InputFieldProps>;
 
 
 export interface LabelProps {
@@ -142,34 +120,30 @@ declare module 'elementsui-react' {
          */
         disabled?: boolean;
         /**
-         * Label
+         * Label  label
          */
-        label?: any;
+        label: string;
     }
 
     export const Label: React.SFC<LabelProps>;
 
 
-export interface ToggleProps {
+export interface ButtonProps {
         /**
-         * Toggle label
+         * Button label
          */
         label?: string;
         /**
-         * Toggle is disabled
+         * Button is disabled
          */
         disabled?: boolean;
         /**
-         * Toggle description
+         * Mouse click event handler
          */
-        ariaDescribedBy?: string;
-        /**
-         * Toggle checked
-         */
-        defaultChecked?: boolean;
+        onCLick?: (...args: any[])=>any;
     }
 
-    export const Toggle: React.SFC<ToggleProps>;
+    export const Button: React.SFC<ButtonProps>;
 
 
 export interface TenantSelectorTenants {
@@ -231,5 +205,27 @@ declare module 'elementsui-react' {
         render(): JSX.Element;
 
     }
+export interface ToggleProps {
+        /**
+         * Toggle label
+         */
+        label?: string;
+        /**
+         * Toggle is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Toggle description
+         */
+        ariaDescribedBy?: string;
+        /**
+         * Toggle checked
+         */
+        defaultChecked?: boolean;
+    }
+
+    export const Toggle: React.SFC<ToggleProps>;
+
+
 
 }

@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Label displays correctly 1`] = `
+exports[`Label displays \`Foo\` as label 1`] = `
 <label
   className="ms-Label root-32"
   required={false}
 >
-  I am a label
+  Foo
 </label>
 `;
