@@ -4,7 +4,9 @@ const path = require('path');
 
 function writeFile(filepath, content) {
 	fs.writeFile(filepath, content, function(err) {
-		err ? console.log(chalk.red(err)) : console.log(chalk.green('Component data saved.'));
+		if (err) {
+			console.log(chalk.red(err));
+		}
 	});
 }
 

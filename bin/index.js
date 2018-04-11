@@ -37,6 +37,15 @@ function initPrompt() {
 			case 'store':
 				optionsPrompt = prompt(prompts.store);
 				break;
+			case 'action':
+				optionsPrompt = prompt(prompts.action);
+				break;
+			case 'reducer':
+				optionsPrompt = prompt(prompts.reducer);
+				break;
+			case 'controller':
+				optionsPrompt = prompt(prompts.controller);
+				break;
 			default:
 				console.log(chalk.red('Unsupported command'));
 				return;
