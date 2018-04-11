@@ -14,7 +14,7 @@ Link.propTypes = {
 	label: PropTypes.string,
 	/**Link href */
     href: PropTypes.string,
-    /**Link as button disabled */
+    /**Link disabled */
     disabled: PropTypes.bool,
 };
 export default Link;
