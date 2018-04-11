@@ -14,6 +14,12 @@ const config = [
 	},
 	{
 		type: 'input',
+		name: 'pages',
+		message: 'Relative path to pages folder:',
+		default: 'frontend/src/pages/'
+	},
+	{
+		type: 'input',
 		name: 'models',
 		message: 'Relative path to models folder:',
 		default: 'frontend/src/models/'

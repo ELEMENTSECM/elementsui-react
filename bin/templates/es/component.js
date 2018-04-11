@@ -1,5 +1,5 @@
 const statefulComponentTemplate = (componentName, { container }) =>
-	`export class ${componentName}${container ? 'Container' : ''} extends Component {
+	`export class ${componentName}${container ? 'Container' : ''} extends React.Component {
 	constructor(props) {
 		super(props)
 
@@ -24,8 +24,8 @@ const statelessComponentTemplate = (componentName, { container }) =>
 const exportTemplate = (componentName, { container }) => `export default ${componentName}`;
 
 const componentTemplate = (componentName, { stateful, container }) =>
-	`import React${stateful ? ', { Component }' : ''} from 'react'
-import PropTypes from 'prop-types'
+	`import * as React from 'react';
+import PropTypes from 'prop-types';
 
 ${
 		stateful
@@ -38,9 +38,9 @@ ${componentPropsTemplate(componentName, { stateful, container })}
 ${exportTemplate(componentName, { container })}`;
 
 const componentTestTemplate = (componentName, { container }) =>
-	`import React from 'react'
-import { shallow } from 'enzyme'
-import ${container ? `{ ${componentName}Container }` : componentName} from './index'
+	`import * as React from 'react';
+import { shallow } from 'enzyme';
+import ${container ? `{ ${componentName}Container }` : componentName} from './index';
 
 describe('${componentName}', () => {
 	test('displays correctly', () => {
@@ -49,10 +49,10 @@ describe('${componentName}', () => {
 	});
 });`;
 
-const pageTemplate = pageName => `import * as React from 'react'
+const pageTemplate = pageName => `import * as React from 'react';
 
 ${componentPropsTemplate(pageName, { stateful: false, container: false })}
-function ${pageName}Page(props) {
+function ${pageName}(props) {
 	return (
 		<div>
 			<h1>${pageName}</h1>
