@@ -1,7 +1,35 @@
 declare module 'elementsui-react' {
 	import * as React from 'react';
 
-	export interface CheckboxProps {
+	export interface SpinnerProps {
+        /**
+         * Spinner label
+         */
+        label?: string;
+    }
+
+    export const Spinner: React.SFC<SpinnerProps>;
+
+
+export interface ButtonProps {
+        /**
+         * Button label
+         */
+        label?: string;
+        /**
+         * Button is disabled
+         */
+        disabled?: boolean;
+        /**
+         * Mouse click event handler
+         */
+        onCLick?: (...args: any[])=>any;
+    }
+
+    export const Button: React.SFC<ButtonProps>;
+
+
+export interface CheckboxProps {
         /**
          * Checkbox label
          */
@@ -19,14 +47,26 @@ declare module 'elementsui-react' {
     export const Checkbox: React.SFC<CheckboxProps>;
 
 
-export interface SpinnerProps {
+export interface InputFieldProps {
         /**
-         * Spinner label
+         * Input field placeholder text
          */
-        label?: string;
+        placeholder?: string;
+        /**
+         * Input field is marked with red asterisk as required if set to true
+         */
+        required?: boolean;
+        /**
+         * Input field is disabled is set to true
+         */
+        disabled?: boolean;
+        /**
+         * Error message shown under the input field
+         */
+        errorMessage?: string;
     }
 
-    export const Spinner: React.SFC<SpinnerProps>;
+    export const InputField: React.SFC<InputFieldProps>;
 
 
 export interface LoggedInBarLabels {
@@ -50,42 +90,6 @@ declare module 'elementsui-react' {
     }
 
     export const LoggedInBar: React.SFC<LoggedInBarProps>;
-
-
-export interface DropdownOptions {
-        key: any;
-        text: string;
-        isSelected?: boolean;
-    }
-
-    export interface DropdownProps {
-        /**
-         * DOM element id
-         */
-        id?: string;
-        /**
-         * Dropdown label
-         */
-        label?: string;
-        /**
-         * The key of the selected element
-         */
-        selectedKey?: any;
-        /**
-         * Default placeholder
-         */
-        placeHolder?: string;
-        /**
-         * Dropdown options
-         */
-        options: DropdownOptions[];
-        /**
-         * onChange event handler function
-         */
-        onChange?: (...args: any[])=>any;
-    }
-
-    export const Dropdown: React.SFC<DropdownProps>;
 
 
 export interface TenantSelectorTenants {
@@ -147,62 +151,58 @@ declare module 'elementsui-react' {
         render(): JSX.Element;
 
     }
-export interface InputFieldProps {
+export interface LinkProps {
         /**
-         * Input field placeholder text
-         */
-        placeholder?: string;
-        /**
-         * Input field is marked with red asterisk as required if set to true
-         */
-        required?: boolean;
-        /**
-         * Input field is disabled is set to true
-         */
-        disabled?: boolean;
-        /**
-         * Error message shown under the input field
-         */
-        errorMessage?: string;
-    }
-
-    export const InputField: React.SFC<InputFieldProps>;
-
-
-export interface ButtonProps {
-        /**
-         * Button label
+         * Link label
          */
         label?: string;
         /**
-         * Button is disabled
+         * Link href
+         */
+        href?: string;
+        /**
+         * Link as button disabled
          */
         disabled?: boolean;
-        /**
-         * Mouse click event handler
-         */
-        onCLick?: (...args: any[])=>any;
     }
 
-    export const Button: React.SFC<ButtonProps>;
+    export const Link: React.SFC<LinkProps>;
 
 
-export interface LabelProps {
-        /**
-         * Label required
-         */
-        required?: boolean;
-        /**
-         * Label disabled
-         */
-        disabled?: boolean;
-        /**
-         * Label  label
-         */
-        label: string;
+export interface DropdownOptions {
+        key: any;
+        text: string;
+        isSelected?: boolean;
     }
 
-    export const Label: React.SFC<LabelProps>;
+    export interface DropdownProps {
+        /**
+         * DOM element id
+         */
+        id?: string;
+        /**
+         * Dropdown label
+         */
+        label?: string;
+        /**
+         * The key of the selected element
+         */
+        selectedKey?: any;
+        /**
+         * Default placeholder
+         */
+        placeHolder?: string;
+        /**
+         * Dropdown options
+         */
+        options: DropdownOptions[];
+        /**
+         * onChange event handler function
+         */
+        onChange?: (...args: any[])=>any;
+    }
+
+    export const Dropdown: React.SFC<DropdownProps>;
 
 
 export interface ToggleProps {
@@ -225,6 +225,24 @@ declare module 'elementsui-react' {
     }
 
     export const Toggle: React.SFC<ToggleProps>;
+
+
+export interface LabelProps {
+        /**
+         * Label required
+         */
+        required?: boolean;
+        /**
+         * Label disabled
+         */
+        disabled?: boolean;
+        /**
+         * Label  label
+         */
+        label: string;
+    }
+
+    export const Label: React.SFC<LabelProps>;
 
 
 
