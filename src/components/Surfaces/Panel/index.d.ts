@@ -12,7 +12,7 @@ export interface PanelProps {
         /**
          * Panel on dismissed
          */
-        onDismiss?: (...args: any[])=>any;
+        dismiss?: boolean;
         /**
          * Panel header text
          */

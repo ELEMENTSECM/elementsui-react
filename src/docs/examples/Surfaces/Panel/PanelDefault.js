@@ -7,10 +7,10 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button'
 export default class PanelDefault extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { isOpen: false };
+		this.state = { isOpen: false, dismissed: true };
 	}
 
-	_onRenderFooterContent = () => {
+	onRenderFooterContent = () => {
 		return (
 			<div>
 				<PrimaryButton onClick={this.closePanel} style={{ marginRight: '8px' }}>
@@ -22,13 +22,17 @@ export default class PanelDefault extends React.Component {
 	};
 
 	closePanel = () => {
-		const currentState = this.state.isOpen;
-		this.setState(() => ({ isOpen: !currentState }));
+		this.setState(() => ({
+			isOpen: false,
+			dismissed: true
+		}));
 	};
 
 	openPanel = () => {
-		const currentState = this.state.isOpen;
-		this.setState(() => ({ isOpen: !currentState }));
+		this.setState(() => ({
+			isOpen: true,
+			dismissed: false
+		}));
 	};
 
 	render() {
@@ -38,7 +42,8 @@ export default class PanelDefault extends React.Component {
 					htmlId="defaultPanel"
 					headerText="Default panel"
 					isOpen={this.state.isOpen}
-					onRenderFooterContent={this._onRenderFooterContent}
+					onDismissed={this.closePanel}
+					onRenderFooterContent={this.onRenderFooterContent}
 					element={
 						<ChoiceGroup
 							options={[
