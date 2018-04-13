@@ -1,35 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel as UIFabPanelType } from 'office-ui-fabric-react/lib/Panel';
+import { Panel as UIFabPanel } from 'office-ui-fabric-react/lib/Panel';
 
 /**Panel example */
-function Panel({ headerText, element, onRenderFooterContent, isOpen, onDismissed }) {
+function Panel({
+	headerText,
+	element,
+	onRenderFooterContent,
+	isOpen,
+	onDismissed,
+	hasCloseButton,
+	closebuttonAriaLabel
+}) {
 	return (
-		<UIFabPanelType
-			isOpen={isOpen}
-			type={UIFabPanelType.smallFixedFar}
-			onDismissed={onDismissed}
+		<UIFabPanel
 			headerText={headerText}
-			closebuttonAriaLabel="Close"
+			isOpen={isOpen}
+			onDismissed={onDismissed}
+			hasCloseButton={hasCloseButton}
+			closebuttonAriaLabel={closebuttonAriaLabel}
 			onRenderFooterContent={onRenderFooterContent}>
 			{element}
-		</UIFabPanelType>
+		</UIFabPanel>
 	);
 }
 
 Panel.propTypes = {
 	/**Panel open */
 	isOpen: PropTypes.bool,
-	/**Panel type */
-	type: PropTypes.string,
 	/**Panel on dismissed */
-	onDismissed: PropTypes.bool,
+	onDismissed: PropTypes.func,
 	/**Panel header text */
 	headerText: PropTypes.string,
 	/**Panel closebutton aria label */
 	closebuttonAriaLabel: PropTypes.string,
 	/**Panel footer content */
-	onRenderFooterContent: PropTypes.func
+	onRenderFooterContent: PropTypes.func,
+	/**Panel hasCloseButton */
+	hasCloseButton: PropTypes.bool
 };
 
 export default Panel;

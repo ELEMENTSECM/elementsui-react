@@ -43,6 +43,8 @@ export default class PanelDefault extends React.Component {
 					headerText="Default panel"
 					isOpen={this.state.isOpen}
 					onDismissed={this.closePanel}
+					hasCloseButton={true}
+					closebuttonAriaLabel="Close panel"
 					onRenderFooterContent={this.onRenderFooterContent}
 					element={
 						<ChoiceGroup
