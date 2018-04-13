@@ -7,3 +7,4 @@ export { default as InputField } from './Inputs/InputField';
 export { default as Link } from './Inputs/Link';
 export { default as Label } from './Inputs/Label';
 export { default as Toggle } from './Inputs/Toggle';
+export { default as Tooltip } from './Surfaces/Tooltip';
