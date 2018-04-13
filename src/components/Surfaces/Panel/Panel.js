@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { Panel as UIFabPanelType } from 'office-ui-fabric-react/lib/Panel';
 
 /**Panel example */
-function Panel({ headerText, element, onRenderFooterContent }) {
-	let showPanel = true;
+function Panel({ headerText, element, onRenderFooterContent, isOpen }) {
 	return (
 		<UIFabPanelType
-			isOpen={showPanel}
+			isOpen={isOpen}
 			type={UIFabPanelType.smallFixedFar}
 			onDismiss={() => {}}
 			headerText={headerText}

@@ -25,10 +25,6 @@ export interface PanelProps {
          * Panel footer content
          */
         onRenderFooterContent?: (...args: any[])=>any;
-        /**
-         * showPanel
-         */
-        showPanel?: boolean;
     }
 
     export const Panel: React.SFC<PanelProps>;
