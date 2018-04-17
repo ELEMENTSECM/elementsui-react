@@ -13,6 +13,10 @@ export interface ButtonProps {
          * Mouse click event handler
          */
         onCLick?: (...args: any[])=>any;
+        /**
+         * Primary button
+         */
+        isPrimary?: boolean;
     }
 
     export const Button: React.SFC<ButtonProps>;
