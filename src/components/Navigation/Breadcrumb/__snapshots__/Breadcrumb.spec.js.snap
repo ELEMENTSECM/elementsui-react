@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
+<div
+  className="ms-ResizeGroup root-36"
+>
+  <div
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
+  >
+    <div
+      aria-label="Default Breadcrumb"
+      className="ms-Breadcrumb root_3b53676b"
+      role="navigation"
+    >
+      <div
+        aria-describedby={undefined}
+        aria-labelledby={undefined}
+        className="ms-FocusZone"
+        data-focuszone-id="FocusZone0"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <ol
+          className="ms-Breadcrumb-list list_3b53676b"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
