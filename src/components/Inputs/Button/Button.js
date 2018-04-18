@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 /** Button example */
-function Button({ label, disabled = false, onClick }) {
+function Button({ label, disabled = false, onClick, isPrimary }) {
 	return (
-		<DefaultButton disabled={disabled} primary={true} onClick={onClick}>
+		<DefaultButton disabled={disabled} primary={isPrimary} onClick={onClick}>
 			{label}
 		</DefaultButton>
 	);
@@ -17,7 +17,9 @@ Button.propTypes = {
 	/** Button is disabled */
 	disabled: PropTypes.bool,
 	/** Mouse click event handler */
-	onCLick: PropTypes.func
+	onCLick: PropTypes.func,
+	/** Primary button */
+	isPrimary: PropTypes.bool
 };
 
 export default Button;
