@@ -72,6 +72,7 @@ export default class Login extends Component {
 		const json = await response.json();
 
 		const list = [];
+		// eslint-disable-next-line
 		Object.keys(json).map(tenant => {
 			const tenantObj = json[tenant];
 			if (tenantObj._id != null) {
