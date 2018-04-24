@@ -22,10 +22,12 @@ class Navigation extends React.Component {
 	}
 
 	getComponents = (name, node) => {
-		let nodeArray = _.unionBy(node[0].children, node[1].children, 'name');
+		let nodeArray = _.flatMap(node, node => {
+			return node.children;
+		});
 
-		return _.map(nodeArray, function(comp) {
-			if (_.startsWith(_.toLower(comp.name), _.toLower(name))) {
+		return _.map(nodeArray, comp => {
+			if (_.includes(_.toLower(comp.name), _.toLower(name))) {
 				return comp;
 			}
 		});
