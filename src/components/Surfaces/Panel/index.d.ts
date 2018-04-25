@@ -6,13 +6,9 @@ export interface PanelProps {
          */
         isOpen?: boolean;
         /**
-         * Panel type
-         */
-        type?: string;
-        /**
          * Panel on dismissed
          */
-        dismiss?: boolean;
+        onDismissed?: (...args: any[])=>any;
         /**
          * Panel header text
          */
@@ -25,6 +21,10 @@ export interface PanelProps {
          * Panel footer content
          */
         onRenderFooterContent?: (...args: any[])=>any;
+        /**
+         * Panel hasCloseButton
+         */
+        hasCloseButton?: boolean;
     }
 
     export const Panel: React.SFC<PanelProps>;
