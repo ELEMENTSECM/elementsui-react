@@ -5,7 +5,9 @@ import Breadcrumb from './Breadcrumb';
 describe('Breadcrumb', () => {
 	test('displays `Default Breadcrumb` as ariaLabel', () => {
 		const tree = renderer
-			.create(<Breadcrumb htmlId="defaultBreadcrumb" ariaLabel="Default Breadcrumb" />)
+			.create(
+				<Breadcrumb htmlId="defaultBreadcrumb" ariaLabel="Default Breadcrumb" items={['1', '2']} />
+			)
 			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

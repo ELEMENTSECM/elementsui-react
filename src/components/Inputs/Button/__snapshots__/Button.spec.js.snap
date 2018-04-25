@@ -6,20 +6,20 @@ exports[`Button displays \`Foo\` as label 1`] = `
   aria-label={undefined}
   aria-labelledby={null}
   aria-pressed={undefined}
-  className="ms-Button ms-Button--default root-36"
+  className="ms-Button my-button ms-Button--default root-38"
   data-is-focusable={true}
   disabled={undefined}
   onClick={undefined}
   type="button"
 >
   <div
-    className="ms-Button-flexContainer flexContainer-37"
+    className="ms-Button-flexContainer flexContainer-39"
   >
     <div
-      className="ms-Button-textContainer textContainer-38"
+      className="ms-Button-textContainer textContainer-40"
     >
       <div
-        className="ms-Button-label label-40"
+        className="ms-Button-label label-42"
         id="id__0"
       >
         Foo

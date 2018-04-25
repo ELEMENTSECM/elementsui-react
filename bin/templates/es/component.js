@@ -1,41 +1,70 @@
-const statefulComponentTemplate = (componentName, { container }) =>
+const statefulComponentTemplate = (componentName, { container, styled }) =>
 	`export class ${componentName}${container ? 'Container' : ''} extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.state = {}
+		this.state = {}${
+			styled
+				? `
+		const { theme, className } = this.props;
+		this.classNames = classNamesFunction()(getStyles, {
+			theme,
+			className
+		});`
+				: ''
+		}
 	}
+
 	render() {
-		return <div className="${componentName.toLowerCase()}" />
+		return <div className=${styled ? '{classNames.root}' : '"' + componentName.toLowerCase() + '"'} />;
 	}
 }`;
 
-const componentPropsTemplate = (componentName, { stateful, container }) =>
+const componentPropsTemplate = (componentName, { stateful, container, styled }) =>
 	`${componentName}.propTypes = {
+	${
+		styled
+			? `/** Class name */
+	className: PropTypes.string,`
+			: ''
+	}
 	/** ${componentName} label */
 	label: PropTypes.string,
 };`;
 
-const statelessComponentTemplate = (componentName, { container }) =>
-	`function ${componentName}({ label }) {
-	return <div className="${componentName.toLowerCase()}">{label}</div>;
-}`;
+const statelessComponentTemplate = (componentName, { container, styled }) =>
+	`${styled ? 'export ' : ''}function ${componentName}({ label${
+		styled ? ', className, getStyles, theme' : ''
+	} }) {
+	const classNames = classNamesFunction()(getStyles, {
+		theme: theme,
+		className
+	});
+	return <div className=${styled ? '{classNames.root}' : '"' + componentName.toLowerCase() + '"'}>{label}</div>;
+};`;
 
-const exportTemplate = (componentName, { container }) => `export default ${componentName}`;
+const exportTemplate = (componentName, { container, styled }) =>
+	`export default ${
+		styled
+			? `styled(customizable(\'${componentName}\', [\'theme\'])(${componentName}), getStyles);`
+			: componentName
+	};`;
 
-const componentTemplate = (componentName, { stateful, container }) =>
+const componentTemplate = (componentName, { stateful, container, styled }) =>
 	`import * as React from 'react';
 import PropTypes from 'prop-types';
+import { getStyles } from './${componentName}.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 ${
 		stateful
-			? statefulComponentTemplate(componentName, { container })
-			: statelessComponentTemplate(componentName, { container })
+			? statefulComponentTemplate(componentName, { container, styled })
+			: statelessComponentTemplate(componentName, { container, styled })
 	}
 
-${componentPropsTemplate(componentName, { stateful, container })}
+${componentPropsTemplate(componentName, { stateful, container, styled })}
 
-${exportTemplate(componentName, { container })}`;
+${exportTemplate(componentName, { container, styled })}`;
 
 const componentTestTemplate = (componentName, { container }) =>
 	`import * as React from 'react';
@@ -63,8 +92,26 @@ function ${pageName}(props) {
 	)
 }${exportTemplate(pageName, { container: false })}`;
 
+const componentStyleTemplate = componentName => `export const getStyles = props => {
+	const { className, theme } = props;
+	const { palette, semanticColors } = theme;
+
+	return {
+		root: [
+			'ms-${componentName}',
+			{
+				// background: props.theme.palette.themePrimary
+				// place your styles here
+			},
+			className
+		]
+	};
+};
+`;
+
 module.exports = {
 	componentTemplate,
 	componentTestTemplate,
+	componentStyleTemplate,
 	pageTemplate
 };

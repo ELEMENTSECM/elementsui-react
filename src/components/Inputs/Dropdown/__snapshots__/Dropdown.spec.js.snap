@@ -5,7 +5,7 @@ exports[`Dropdown displays correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <label
-    className="ms-Label ms-Dropdown-label root-36"
+    className="ms-Label ms-Dropdown-label root-37"
     htmlFor="testDropdown"
     id="testDropdown-label"
     required={undefined}
@@ -13,28 +13,28 @@ exports[`Dropdown displays correctly 1`] = `
     test dropdown
   </label>
   <div
-    aria-activedescendant={null}
+    aria-activedescendant={undefined}
     aria-autocomplete="none"
     aria-describedby="testDropdown-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
     aria-live="assertive"
-    aria-owns={null}
-    className="ms-Dropdown root_273ad2e3"
+    aria-owns={undefined}
+    className="ms-Dropdown root_060756d4"
     data-is-focusable={true}
     id="testDropdown"
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="combobox"
+    role="listbox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
       aria-readonly="true"
-      className="ms-Dropdown-title title_273ad2e3 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_273ad2e3"
+      className="ms-Dropdown-title title_060756d4 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_060756d4"
       id="testDropdown-option"
       role="listbox"
     >
@@ -43,11 +43,11 @@ exports[`Dropdown displays correctly 1`] = `
       </span>
     </span>
     <span
-      className="ms-Dropdown-caretDownWrapper caretDownWrapper_273ad2e3"
+      className="ms-Dropdown-caretDownWrapper caretDownWrapper_060756d4"
     >
       <i
         aria-hidden={true}
-        className="root-37 ms-Dropdown-caretDown caretDown_273ad2e3"
+        className="root-38 ms-Dropdown-caretDown caretDown_060756d4"
         data-icon-name="ChevronDown"
         role="presentation"
       />

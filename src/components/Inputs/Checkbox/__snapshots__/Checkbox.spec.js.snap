@@ -9,7 +9,7 @@ exports[`Checkbox displays \`Foo\` as label 1`] = `
   aria-labelledby={undefined}
   aria-posinset={undefined}
   aria-setsize={undefined}
-  className="ms-Checkbox is-enabled css-32"
+  className="ms-Checkbox is-enabled css-33"
   disabled={undefined}
   id="checkbox-0"
   name={undefined}
@@ -20,15 +20,15 @@ exports[`Checkbox displays \`Foo\` as label 1`] = `
   type="button"
 >
   <label
-    className="ms-Checkbox-label css-33"
+    className="ms-Checkbox-label css-34"
     htmlFor="checkbox-0"
   >
     <div
-      className="ms-Checkbox-checkbox css-34"
+      className="ms-Checkbox-checkbox css-35"
     >
       <i
         aria-hidden={true}
-        className="root-37 css-35"
+        className="root-38 css-36"
         data-icon-name="CheckMark"
         role="presentation"
       />

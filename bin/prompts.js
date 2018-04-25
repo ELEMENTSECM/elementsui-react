@@ -88,6 +88,12 @@ const component = [
 		name: 'stateful',
 		message: 'Stateful?',
 		default: false
+	},
+	{
+		type: 'confirm',
+		name: 'styled',
+		message: 'Styled?',
+		default: false
 	}
 ];
 
