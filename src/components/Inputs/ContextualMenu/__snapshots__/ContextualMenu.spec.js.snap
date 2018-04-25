@@ -1,22 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContextualMenu displays \`Foo\` as text 1`] = `
-<button
-  aria-describedby={null}
-  aria-label={undefined}
-  aria-labelledby={null}
-  aria-pressed={undefined}
-  className="ms-Button ms-Button--default root-36"
-  data-is-focusable={true}
-  disabled={undefined}
-  type="button"
->
-  <div
-    className="ms-Button-flexContainer flexContainer-37"
-  />
-</button>
-`;
-
 exports[`ContextualMenuProps displays menu correctly 1`] = `
 <button
   aria-describedby={null}
