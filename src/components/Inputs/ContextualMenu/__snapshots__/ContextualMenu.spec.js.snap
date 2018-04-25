@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContextualMenu displays \`Foo\` as text 1`] = `
+<button
+  aria-describedby={null}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-pressed={undefined}
+  className="ms-Button ms-Button--default root-36"
+  data-is-focusable={true}
+  disabled={undefined}
+  type="button"
+>
+  <div
+    className="ms-Button-flexContainer flexContainer-37"
+  />
+</button>
+`;
+
+exports[`ContextualMenuProps displays menu correctly 1`] = `
+<button
+  aria-describedby={null}
+  aria-expanded={false}
+  aria-haspopup={true}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-owns={null}
+  aria-pressed={undefined}
+  className="ms-Button ms-Button--default root-36"
+  data-is-focusable={true}
+  disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  type="button"
+>
+  <div
+    className="ms-Button-flexContainer flexContainer-37"
+  >
+    <i
+      aria-hidden={true}
+      className="root-44 ms-Button-menuIcon menuIcon-41"
+      data-icon-name="ChevronDown"
+      role="presentation"
+    />
+  </div>
+</button>
+`;
