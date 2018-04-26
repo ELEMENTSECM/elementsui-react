@@ -6,17 +6,13 @@ const statefulComponentTemplate = (componentName, { container, styled }) =>
 		this.state = {}${
 			styled
 				? `
-		const { theme, className } = this.props;
-		this.classNames = classNamesFunction()(getStyles, {
-			theme,
-			className
-		});`
+		this.classNames = classNamesFunction()(getStyles, this.props);`
 				: ''
 		}
 	}
 
 	render() {
-		return <div className=${styled ? '{classNames.root}' : '"' + componentName.toLowerCase() + '"'} />;
+		return <div className=${styled ? '{this.classNames.root}' : '"' + componentName.toLowerCase() + '"'} />;
 	}
 }`;
 
@@ -33,13 +29,9 @@ const componentPropsTemplate = (componentName, { stateful, container, styled }) 
 };`;
 
 const statelessComponentTemplate = (componentName, { container, styled }) =>
-	`${styled ? 'export ' : ''}function ${componentName}({ label${
-		styled ? ', className, getStyles, theme' : ''
-	} }) {
-	const classNames = classNamesFunction()(getStyles, {
-		theme: theme,
-		className
-	});
+	`${styled ? 'export ' : ''}function ${componentName}(props) {
+	const { getStyles, label } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return <div className=${styled ? '{classNames.root}' : '"' + componentName.toLowerCase() + '"'}>{label}</div>;
 };`;
 
