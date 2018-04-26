@@ -5,7 +5,7 @@ exports[`Dropdown displays correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <label
-    className="ms-Label ms-Dropdown-label root-37"
+    className="ms-Label ms-Dropdown-label root-38"
     htmlFor="testDropdown"
     id="testDropdown-label"
     required={undefined}
@@ -21,7 +21,7 @@ exports[`Dropdown displays correctly 1`] = `
     aria-label={undefined}
     aria-live="assertive"
     aria-owns={undefined}
-    className="ms-Dropdown root_060756d4"
+    className="ms-Dropdown root_060756d4 ms-Dropdown root-37"
     data-is-focusable={true}
     id="testDropdown"
     onBlur={[Function]}
@@ -47,7 +47,7 @@ exports[`Dropdown displays correctly 1`] = `
     >
       <i
         aria-hidden={true}
-        className="root-38 ms-Dropdown-caretDown caretDown_060756d4"
+        className="root-39 ms-Dropdown-caretDown caretDown_060756d4"
         data-icon-name="ChevronDown"
         role="presentation"
       />

@@ -1,12 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TeachingBubble as UIFabTeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { getStyles } from './TeachingBubble.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** TeachingBubble example */
-function TeachingBubble({ headline, targetElement, dismissed, isTeachingBubbleVisible, element }) {
+export function TeachingBubble({
+	headline,
+	targetElement,
+	dismissed,
+	isTeachingBubbleVisible,
+	element,
+	className,
+	theme
+}) {
+	const classNames = classNamesFunction()(getStyles, {
+		theme,
+		className
+	});
 	return (
 		<div>
 			<UIFabTeachingBubble
+				className={classNames.root}
 				headline={headline}
 				targetElement={targetElement}
 				dismissed={dismissed}
@@ -28,4 +43,4 @@ TeachingBubble.propTypes = {
 	isTeachingBubbleVisible: PropTypes.bool
 };
 
-export default TeachingBubble;
+export default styled(customizable('TeachingBubble', ['theme'])(TeachingBubble), getStyles);

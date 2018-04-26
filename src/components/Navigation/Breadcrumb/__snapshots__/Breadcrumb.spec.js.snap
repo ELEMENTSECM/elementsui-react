@@ -2,7 +2,7 @@
 
 exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
 <div
-  className="ms-ResizeGroup root-37"
+  className="ms-ResizeGroup root-38"
 >
   <div
     style={
@@ -14,7 +14,7 @@ exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
   >
     <div
       aria-label="Default Breadcrumb"
-      className="ms-Breadcrumb root_9b5cccea"
+      className="ms-Breadcrumb ms-Breadcrumb root-37 root_9b5cccea"
       role="navigation"
     >
       <div
@@ -47,7 +47,7 @@ exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
             </span>
             <i
               aria-hidden={true}
-              className="root-38 ms-Breadcrumb-chevron chevron_9b5cccea"
+              className="root-39 ms-Breadcrumb-chevron chevron_9b5cccea"
               data-icon-name="ChevronRight"
               role="presentation"
             />

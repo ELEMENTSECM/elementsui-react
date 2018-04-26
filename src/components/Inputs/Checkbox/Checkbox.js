@@ -1,12 +1,22 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox as UIFabCheckbox } from 'office-ui-fabric-react/lib/Checkbox';
-
+import { getStyles } from './Checkbox.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Checkbox example */
-function Checkbox({ label, disabled }) {
+export function Checkbox({ label, disabled, getStyles, className, theme }) {
+	const classNames = classNamesFunction()(getStyles, {
+		theme,
+		className
+	});
 	return (
-		<UIFabCheckbox label={label} disabled={disabled} ariaDescribedBy={'descriptionID'} />
+		<UIFabCheckbox
+			className={classNames.root}
+			label={label}
+			disabled={disabled}
+			ariaDescribedBy={'descriptionID'}
+		/>
 	);
 }
 
@@ -19,4 +29,4 @@ Checkbox.propTypes = {
 	ariaDescribedBy: PropTypes.string
 };
 
-export default Checkbox;
+export default styled(customizable('Checkbox', ['theme'])(Checkbox), getStyles);

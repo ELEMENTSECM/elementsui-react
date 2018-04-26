@@ -7,7 +7,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
       className="ms-Dropdown-container"
     >
       <label
-        className="ms-Label ms-Dropdown-label root-38"
+        className="ms-Label ms-Dropdown-label root-39"
         htmlFor="databaseDropdown"
         id="databaseDropdown-label"
         required={undefined}
@@ -23,7 +23,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         aria-label={undefined}
         aria-live="assertive"
         aria-owns={undefined}
-        className="ms-Dropdown root_060756d4"
+        className="ms-Dropdown root_060756d4 ms-Dropdown root-38"
         data-is-focusable={true}
         id="databaseDropdown"
         onBlur={[Function]}
@@ -49,7 +49,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         >
           <i
             aria-hidden={true}
-            className="root-39 ms-Dropdown-caretDown caretDown_060756d4"
+            className="root-40 ms-Dropdown-caretDown caretDown_060756d4"
             data-icon-name="ChevronDown"
             role="presentation"
           />
@@ -103,7 +103,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
       >
         <i
           aria-hidden={true}
-          className="root-39"
+          className="root-40"
           data-icon-name="Info"
           role="presentation"
         />

@@ -2,10 +2,6 @@ import * as React from 'react';
 
 export interface ButtonProps {
 	/**
-	 * Class name
-	 */
-	className: string;
-	/**
 	 * Button label
 	 */
 	label?: string;

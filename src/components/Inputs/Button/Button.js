@@ -5,7 +5,7 @@ import { getStyles } from './Button.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Button example */
-export function Button({ label, disabled, onClick, isPrimary, className, getStyles, theme }) {
+export function Button({ label, disabled, onClick, isPrimary, className, theme }) {
 	const classNames = classNamesFunction()(getStyles, {
 		theme,
 		className

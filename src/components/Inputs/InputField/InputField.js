@@ -1,10 +1,17 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { getStyles } from './InputField.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
-function InputField({ placeholder, required, disabled, errorMessage }) {
+export function InputField({ placeholder, required, disabled, errorMessage, className, theme }) {
+	const classNames = classNamesFunction()(getStyles, {
+		theme,
+		className
+	});
 	return (
 		<TextField
+			className={classNames.root}
 			required={required}
 			disabled={disabled}
 			errorMessage={errorMessage}
@@ -29,4 +36,4 @@ InputField.defaultProps = {
 	required: false
 };
 
-export default InputField;
+export default styled(customizable('InputField', ['theme'])(InputField), getStyles);
