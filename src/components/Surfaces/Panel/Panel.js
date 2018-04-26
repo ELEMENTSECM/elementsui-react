@@ -1,19 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel as UIFabPanel } from 'office-ui-fabric-react/lib/Panel';
+import { getStyles } from './Panel.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /**Panel example */
-function Panel({
+export function Panel({
 	headerText,
 	element,
 	onRenderFooterContent,
 	isOpen,
 	onDismissed,
 	hasCloseButton,
-	closebuttonAriaLabel
+	closebuttonAriaLabel,
+	className,
+	theme
 }) {
+	const classNames = classNamesFunction()(getStyles, {
+		theme,
+		className
+	});
 	return (
 		<UIFabPanel
+			className={classNames.root}
 			headerText={headerText}
 			isOpen={isOpen}
 			onDismissed={onDismissed}
@@ -40,4 +49,4 @@ Panel.propTypes = {
 	hasCloseButton: PropTypes.bool
 };
 
-export default Panel;
+export default styled(customizable('Panel', ['theme'])(Panel), getStyles);

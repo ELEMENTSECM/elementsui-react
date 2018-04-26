@@ -2,7 +2,7 @@
 
 exports[`Label displays \`Foo\` as label 1`] = `
 <label
-  className="ms-Label root-32"
+  className="ms-Label root-34"
   required={false}
 >
   Foo

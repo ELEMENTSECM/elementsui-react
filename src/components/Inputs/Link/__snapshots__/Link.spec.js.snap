@@ -3,7 +3,7 @@
 exports[`Link displays \`evry.com\` as href 1`] = `
 <a
   aria-disabled={undefined}
-  className="ms-Link root-32"
+  className="ms-Link root-34"
   href="evry.com"
   onClick={[Function]}
   target={undefined}

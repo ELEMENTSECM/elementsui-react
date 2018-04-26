@@ -70,7 +70,10 @@ function writeReducer(name) {
 	}
 }
 
-function writeComponent({ name, lang }, { stateful = false, container = false, page = false } = {}) {
+function writeComponent(
+	{ name, lang },
+	{ stateful = false, container = false, page = false, styled = false } = {}
+) {
 	try {
 		const ct = require(tpl + '/component');
 		const capitalizedName = utils.capitalize(name);
@@ -85,7 +88,8 @@ function writeComponent({ name, lang }, { stateful = false, container = false, p
 
 		const component = componentTemplate(capitalizedName, {
 			stateful,
-			container
+			container,
+			styled
 		});
 		const componentTest = ct.componentTestTemplate(capitalizedName, {
 			stateful,
@@ -93,6 +97,13 @@ function writeComponent({ name, lang }, { stateful = false, container = false, p
 		});
 
 		writeFiles(capitalizedName, dir, component, componentTest);
+		if (styled) {
+			const componentStyle = ct.componentStyleTemplate(capitalizedName);
+			utils.writeFile(
+				`${dir}/${config.separateIndexFiles ? capitalizedName : 'index'}.styles.${extension}`,
+				componentStyle
+			);
+		}
 		console.log(chalk.green(`${capitalizedName} component has been created at ${dir}`));
 	} catch (error) {
 		errors.push({ name, error });
@@ -204,7 +215,7 @@ function writeStore({ name }) {
 }
 
 function scaffold(item, options) {
-	//TODO: add templates for store
+	//TODO: add missing templates
 	if (item.lang === 'ES6') {
 		if (item.type === 'store') {
 			console.log(chalk.red('ES6 stores are not currently supported.'));
@@ -213,6 +224,13 @@ function scaffold(item, options) {
 
 		if (item.type === 'container') {
 			console.log(chalk.red('ES6 containers are not currently supported.'));
+			return;
+		}
+	}
+
+	if (item.lang === 'Typescript') {
+		if (options.styled) {
+			console.log(chalk.red('Typescript styled components are not currently supported.'));
 			return;
 		}
 	}

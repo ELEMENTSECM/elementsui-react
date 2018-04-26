@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.1.14",
+	"version": "0.1.15",
 	"main": "./lib/index.js",
 	"private": false,
 	"engines": {
@@ -12,15 +12,22 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "http://evryas.github.io/elementsui-react/",
-	"files": ["lib"],
-	"keywords": ["components", "react", "react-component", "elements"],
+	"files": [
+		"lib"
+	],
+	"keywords": [
+		"components",
+		"react",
+		"react-component",
+		"elements"
+	],
 	"dependencies": {
 		"commander": "^2.15.1",
 		"inquirer": "^5.2.0",
 		"lodash": "^4.17.5",
 		"mkdirp": "^0.5.1",
 		"moment": "^2.22.0",
-		"office-ui-fabric-react": "^5.58.0",
+		"office-ui-fabric-react": "^5.89.0",
 		"promise": "8.0.1",
 		"react": "^16.3.0",
 		"react-dom": "^16.2.0",
@@ -48,8 +55,7 @@
 		"build:copy-files": "npm-run-all --parallel build:copy-package-files build:typings build:index",
 		"predeploy:docs": "npm run build:docs",
 		"deploy:docs": "gh-pages -d build",
-		"build:commonjs":
-			"cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
+		"build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
 		"prepublish": "npm run build:lib",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
 	},
@@ -70,7 +76,9 @@
 			"!src/**/*.spec.js",
 			"!src/docs/examples/**/*.js"
 		],
-		"setupFiles": ["<rootDir>/config/polyfills.js"],
+		"setupFiles": [
+			"<rootDir>/config/polyfills.js"
+		],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
 			"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -82,11 +90,21 @@
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 			"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 		},
-		"transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
+		"transformIgnorePatterns": [
+			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+		],
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web"
 		},
-		"moduleFileExtensions": ["web.js", "mjs", "js", "json", "web.jsx", "jsx", "node"],
+		"moduleFileExtensions": [
+			"web.js",
+			"mjs",
+			"js",
+			"json",
+			"web.jsx",
+			"jsx",
+			"node"
+		],
 		"setupTestFrameworkScriptFile": "<rootDir>/scripts/testSetup.js"
 	},
 	"babel": {
@@ -139,7 +157,6 @@
 		"jest": "22.4.3",
 		"npm-run-all": "^4.1.2",
 		"object-assign": "4.1.1",
-		"office-ui-fabric-react": "^5.58.0",
 		"postcss-flexbugs-fixes": "3.2.0",
 		"postcss-loader": "2.0.8",
 		"promise": "8.0.1",

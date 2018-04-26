@@ -2,7 +2,7 @@
 
 exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
 <div
-  className="ms-ResizeGroup root-36"
+  className="ms-ResizeGroup root-38"
 >
   <div
     style={
@@ -14,7 +14,7 @@ exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
   >
     <div
       aria-label="Default Breadcrumb"
-      className="ms-Breadcrumb root_3b53676b"
+      className="ms-Breadcrumb ms-Breadcrumb root-37 root_9b5cccea"
       role="navigation"
     >
       <div
@@ -28,8 +28,47 @@ exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
         role="presentation"
       >
         <ol
-          className="ms-Breadcrumb-list list_3b53676b"
-        />
+          className="ms-Breadcrumb-list list_9b5cccea"
+        >
+          <li
+            className="ms-Breadcrumb-listItem listItem_9b5cccea"
+          >
+            <span
+              className="ms-Breadcrumb-item item_9b5cccea"
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost host_5ba5c952"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              />
+            </span>
+            <i
+              aria-hidden={true}
+              className="root-39 ms-Breadcrumb-chevron chevron_9b5cccea"
+              data-icon-name="ChevronRight"
+              role="presentation"
+            />
+          </li>
+          <li
+            className="ms-Breadcrumb-listItem listItem_9b5cccea"
+          >
+            <span
+              className="ms-Breadcrumb-item item_9b5cccea"
+            >
+              <div
+                aria-describedby={undefined}
+                className="ms-TooltipHost host_5ba5c952"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              />
+            </span>
+          </li>
+        </ol>
       </div>
     </div>
   </div>

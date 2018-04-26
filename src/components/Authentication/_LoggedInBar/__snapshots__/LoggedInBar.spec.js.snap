@@ -3,29 +3,29 @@
 exports[`LoggedInBar displays correctly 1`] = `
 <div
   aria-live="polite"
-  className="ms-MessageBar root_91b7bf6c ms-MessageBar root_91b7bf6c ms-MessageBar-multiline multiLine_91b7bf6c"
+  className="ms-MessageBar root_847e7a13 ms-MessageBar root_847e7a13 ms-MessageBar-multiline multiLine_847e7a13"
   role="status"
 >
   <div
-    className="content_91b7bf6c ms-MessageBar-content"
+    className="content_847e7a13 ms-MessageBar-content"
   >
     <div
-      className="ms-MessageBar-icon icon_91b7bf6c"
+      className="ms-MessageBar-icon icon_847e7a13"
     >
       <i
         aria-hidden={true}
-        className="root-36"
+        className="root-37"
         data-icon-name="Info"
         role="presentation"
       />
     </div>
     <div
-      className="ms-MessageBar-text text_91b7bf6c noDismissButton_91b7bf6c"
+      className="ms-MessageBar-text text_847e7a13 noDismissButton_847e7a13"
       id="MessageBar0"
     >
       <span
         aria-live="polite"
-        className="ms-MessageBar-innerText innerText_91b7bf6c"
+        className="ms-MessageBar-innerText innerText_847e7a13"
         role="status"
       />
     </div>

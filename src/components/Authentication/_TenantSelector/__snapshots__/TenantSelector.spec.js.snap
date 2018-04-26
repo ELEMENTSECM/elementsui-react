@@ -7,7 +7,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
       className="ms-Dropdown-container"
     >
       <label
-        className="ms-Label ms-Dropdown-label root-37"
+        className="ms-Label ms-Dropdown-label root-39"
         htmlFor="databaseDropdown"
         id="databaseDropdown-label"
         required={undefined}
@@ -15,28 +15,28 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         Select database:
       </label>
       <div
-        aria-activedescendant={null}
+        aria-activedescendant={undefined}
         aria-autocomplete="none"
         aria-describedby="databaseDropdown-option"
         aria-disabled={undefined}
         aria-expanded="false"
         aria-label={undefined}
         aria-live="assertive"
-        aria-owns={null}
-        className="ms-Dropdown root_273ad2e3"
+        aria-owns={undefined}
+        className="ms-Dropdown root_060756d4 ms-Dropdown root-38"
         data-is-focusable={true}
         id="databaseDropdown"
         onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        role="combobox"
+        role="listbox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
           aria-readonly="true"
-          className="ms-Dropdown-title title_273ad2e3 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_273ad2e3"
+          className="ms-Dropdown-title title_060756d4 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_060756d4"
           id="databaseDropdown-option"
           role="listbox"
         >
@@ -45,11 +45,11 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
           </span>
         </span>
         <span
-          className="ms-Dropdown-caretDownWrapper caretDownWrapper_273ad2e3"
+          className="ms-Dropdown-caretDownWrapper caretDownWrapper_060756d4"
         >
           <i
             aria-hidden={true}
-            className="root-38 ms-Dropdown-caretDown caretDown_273ad2e3"
+            className="root-40 ms-Dropdown-caretDown caretDown_060756d4"
             data-icon-name="ChevronDown"
             role="presentation"
           />
@@ -62,20 +62,20 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
       aria-label={undefined}
       aria-labelledby={null}
       aria-pressed={undefined}
-      className="ms-Button ms-Button--default is-disabled root-41"
+      className="ms-Button ms-Button--default is-disabled root-43"
       data-is-focusable={false}
       disabled={true}
       onClick={[Function]}
       type="button"
     >
       <div
-        className="ms-Button-flexContainer flexContainer-42"
+        className="ms-Button-flexContainer flexContainer-44"
       >
         <div
-          className="ms-Button-textContainer textContainer-43"
+          className="ms-Button-textContainer textContainer-45"
         >
           <div
-            className="ms-Button-label label-45"
+            className="ms-Button-label label-47"
             id="id__0"
           >
             Sign in
@@ -92,29 +92,29 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
 <div>
   <div
     aria-live="polite"
-    className="ms-MessageBar root_91b7bf6c ms-MessageBar root_91b7bf6c ms-MessageBar-multiline multiLine_91b7bf6c"
+    className="ms-MessageBar root_847e7a13 ms-MessageBar root_847e7a13 ms-MessageBar-multiline multiLine_847e7a13"
     role="status"
   >
     <div
-      className="content_91b7bf6c ms-MessageBar-content"
+      className="content_847e7a13 ms-MessageBar-content"
     >
       <div
-        className="ms-MessageBar-icon icon_91b7bf6c"
+        className="ms-MessageBar-icon icon_847e7a13"
       >
         <i
           aria-hidden={true}
-          className="root-38"
+          className="root-40"
           data-icon-name="Info"
           role="presentation"
         />
       </div>
       <div
-        className="ms-MessageBar-text text_91b7bf6c noDismissButton_91b7bf6c"
+        className="ms-MessageBar-text text_847e7a13 noDismissButton_847e7a13"
         id="MessageBar3"
       >
         <span
           aria-live="polite"
-          className="ms-MessageBar-innerText innerText_91b7bf6c"
+          className="ms-MessageBar-innerText innerText_847e7a13"
           role="status"
         />
       </div>

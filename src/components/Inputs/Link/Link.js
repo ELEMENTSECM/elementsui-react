@@ -1,11 +1,17 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link as UIFabLink } from 'office-ui-fabric-react/lib/Link';
+import { getStyles } from './Link.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /**Link example */
-function Link({ label, href, disabled }) {
+export function Link({ label, href, disabled, className, theme }) {
+	const classNames = classNamesFunction()(getStyles, {
+		theme,
+		className
+	});
 	return (
-		<UIFabLink href={href} disabled={disabled}>
+		<UIFabLink className={classNames.root} href={href} disabled={disabled}>
 			{label}
 		</UIFabLink>
 	);
@@ -19,4 +25,5 @@ Link.propTypes = {
 	/**Link disabled */
 	disabled: PropTypes.bool
 };
-export default Link;
+
+export default styled(customizable('Link', ['theme'])(Link), getStyles);

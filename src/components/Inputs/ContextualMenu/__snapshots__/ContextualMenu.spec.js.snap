@@ -9,7 +9,7 @@ exports[`ContextualMenuProps displays menu correctly 1`] = `
   aria-labelledby={null}
   aria-owns={null}
   aria-pressed={undefined}
-  className="ms-Button ms-Button--default root-36"
+  className="ms-Button ms-Button--default root-37"
   data-is-focusable={true}
   disabled={undefined}
   onClick={[Function]}
@@ -17,11 +17,11 @@ exports[`ContextualMenuProps displays menu correctly 1`] = `
   type="button"
 >
   <div
-    className="ms-Button-flexContainer flexContainer-37"
+    className="ms-Button-flexContainer flexContainer-38"
   >
     <i
       aria-hidden={true}
-      className="root-44 ms-Button-menuIcon menuIcon-41"
+      className="root-45 ms-Button-menuIcon menuIcon-42"
       data-icon-name="ChevronDown"
       role="presentation"
     />

@@ -1,11 +1,17 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { getStyles } from './Button.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Button example */
-function Button({ label, disabled = false, onClick, isPrimary }) {
+export function Button({ label, disabled, onClick, isPrimary, className, theme }) {
+	const classNames = classNamesFunction()(getStyles, {
+		theme,
+		className
+	});
 	return (
-		<DefaultButton disabled={disabled} primary={isPrimary} onClick={onClick}>
+		<DefaultButton className={classNames.root} disabled={disabled} primary={isPrimary} onClick={onClick}>
 			{label}
 		</DefaultButton>
 	);
@@ -22,4 +28,4 @@ Button.propTypes = {
 	isPrimary: PropTypes.bool
 };
 
-export default Button;
+export default styled(customizable('Button', ['theme'])(Button), getStyles);
