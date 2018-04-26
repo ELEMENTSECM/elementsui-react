@@ -7,13 +7,13 @@ A library of React components for the Elements family.
 
 ## Install
 
-```
+```bash
 yarn add elementsui-react
 ```
 
 ...or install globally to use CLI functionality:
 
-```
+```bash
 yarn global add elementsui-react
 ```
 
@@ -29,6 +29,40 @@ If the tool is used for the first time in the current project you will be asked 
 4.  Choose language (ES6 and Typescript are supported).
 5.  Type name (lowercase).
 6.  A new item(s) will be created in a separate folder according to the location set up in the elementsui.config.json file.
+
+## Custom styling
+
+To apply custom styling to any component you should implement 'getStyles' function
+
+```javascript
+const getStyles = props => {
+	const { className, theme, isPrimary } = props;
+	const { palette, semanticColors } = theme;
+
+	return {
+		root: [
+			{
+				background: semanticColors.warningHighlight,
+				color: palette.themeDark,
+				fontStyle: isPrimary ? 'bold' : 'italic'
+			},
+			className
+		]
+	};
+};
+```
+
+...and pass it as component's property:
+
+```jsx
+<Button
+	htmlId="defaultBtn"
+	label="Default button"
+	isPrimary={true}
+	className="button-primary"
+	getStyles={getStyles}
+/>
+```
 
 # Docs
 

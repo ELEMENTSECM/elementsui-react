@@ -5,11 +5,9 @@ import { getStyles } from './Dropdown.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Dropdown example */
-export function Dropdown({ id, label, selectedKey, placeHolder, options, onChange, className, theme }) {
-	const classNames = classNamesFunction()(getStyles, {
-		theme,
-		className
-	});
+export function Dropdown(props) {
+	const { id, label, selectedKey, placeHolder, options, onChange, className, theme, getStyles } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<UIFabDropdown
 			id={id}

@@ -5,11 +5,9 @@ import { getStyles } from './Label.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Label example */
-export function Label({ label, required, disabled, className, theme }) {
-	const classNames = classNamesFunction()(getStyles, {
-		theme,
-		className
-	});
+export function Label(props) {
+	const { label, required, disabled, className, theme, getStyles } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<UIFabLabel className={classNames.root} required={required} disabled={disabled}>
 			{label}

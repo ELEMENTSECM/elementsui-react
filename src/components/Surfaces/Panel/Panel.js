@@ -5,21 +5,21 @@ import { getStyles } from './Panel.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /**Panel example */
-export function Panel({
-	headerText,
-	element,
-	onRenderFooterContent,
-	isOpen,
-	onDismissed,
-	hasCloseButton,
-	closebuttonAriaLabel,
-	className,
-	theme
-}) {
-	const classNames = classNamesFunction()(getStyles, {
+export function Panel(props) {
+	const {
+		headerText,
+		element,
+		onRenderFooterContent,
+		isOpen,
+		onDismissed,
+		hasCloseButton,
+		closebuttonAriaLabel,
+		className,
 		theme,
-		className
-	});
+		getStyles
+	} = props;
+	const classNames = classNamesFunction()(getStyles, props);
+
 	return (
 		<UIFabPanel
 			className={classNames.root}

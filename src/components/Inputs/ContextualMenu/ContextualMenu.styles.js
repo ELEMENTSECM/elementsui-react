@@ -4,7 +4,7 @@ export const getStyles = props => {
 
 	return {
 		root: [
-			'ms-Button',
+			'ms-ContextualMenu',
 			{
 				// place your styles here
 			},

@@ -5,11 +5,9 @@ import { getStyles } from './Tooltip.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /**Tooltip example */
-export function Tooltip({ content, element, className, theme }) {
-	const classNames = classNamesFunction()(getStyles, {
-		theme,
-		className
-	});
+export function Tooltip(props) {
+	const { content, element, className, theme, getStyles } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<div>
 			<UIFabTooltipHost className={classNames.root} content={content}>
