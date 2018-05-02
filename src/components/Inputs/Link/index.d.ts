@@ -13,6 +13,10 @@ export interface LinkProps {
 	 * Link disabled
 	 */
 	disabled?: boolean;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Link: React.SFC<LinkProps>;

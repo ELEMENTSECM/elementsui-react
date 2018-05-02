@@ -24,7 +24,9 @@ Checkbox.propTypes = {
 	/** Checkbox is disabled */
 	disabled: PropTypes.bool,
 	/** Checkbox description */
-	ariaDescribedBy: PropTypes.string
+	ariaDescribedBy: PropTypes.string,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Checkbox', ['theme'])(Checkbox), getStyles);

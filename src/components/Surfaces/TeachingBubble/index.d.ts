@@ -17,6 +17,10 @@ export interface TeachingBubbleProps {
 	 * isTeachingBubbleVisible
 	 */
 	isTeachingBubbleVisible?: boolean;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const TeachingBubble: React.SFC<TeachingBubbleProps>;

@@ -23,7 +23,9 @@ ContextualMenu.propTypes = {
 	/**  ContextualMenu menuitems */
 	menuProps: PropTypes.shape({
 		items: PropTypes.array
-	}).isRequired
+	}).isRequired,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('ContextualMenu', ['theme'])(ContextualMenu), getStyles);

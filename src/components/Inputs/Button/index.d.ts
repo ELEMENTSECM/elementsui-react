@@ -17,6 +17,10 @@ export interface ButtonProps {
 	 * Primary button
 	 */
 	isPrimary?: boolean;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Button: React.SFC<ButtonProps>;

@@ -26,7 +26,9 @@ InputField.propTypes = {
 	/** Input field is disabled is set to true */
 	disabled: PropTypes.bool,
 	/** Error message shown under the input field */
-	errorMessage: PropTypes.string
+	errorMessage: PropTypes.string,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 InputField.defaultProps = {

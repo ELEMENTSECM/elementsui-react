@@ -17,6 +17,10 @@ export interface ToggleProps {
 	 * Toggle checked
 	 */
 	defaultChecked?: boolean;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Toggle: React.SFC<ToggleProps>;

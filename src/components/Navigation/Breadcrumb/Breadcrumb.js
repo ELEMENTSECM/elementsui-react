@@ -23,7 +23,9 @@ Breadcrumb.propTypes = {
 	/** Breadcrumb max visible crumbs when availible space */
 	maxDisplayedItems: PropTypes.number,
 	/** The actual crumb elements */
-	items: PropTypes.array
+	items: PropTypes.array,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Breadcrumb', ['theme'])(Breadcrumb), getStyles);

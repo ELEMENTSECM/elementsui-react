@@ -13,6 +13,10 @@ export interface BreadcrumbProps {
 	 * The actual crumb elements
 	 */
 	items?: any[];
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Breadcrumb: React.SFC<BreadcrumbProps>;

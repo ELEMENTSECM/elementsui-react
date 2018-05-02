@@ -21,7 +21,9 @@ Link.propTypes = {
 	/**Link href */
 	href: PropTypes.string,
 	/**Link disabled */
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Link', ['theme'])(Link), getStyles);

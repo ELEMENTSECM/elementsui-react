@@ -13,7 +13,9 @@ export function Spinner(props) {
 
 Spinner.propTypes = {
 	/** Spinner label */
-	label: PropTypes.string
+	label: PropTypes.string,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Spinner', ['theme'])(Spinner), getStyles);

@@ -27,7 +27,9 @@ Toggle.propTypes = {
 	/** Toggle description */
 	ariaDescribedBy: PropTypes.string,
 	/** Toggle checked */
-	defaultChecked: PropTypes.bool
+	defaultChecked: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Toggle', ['theme'])(Toggle), getStyles);

@@ -21,7 +21,9 @@ Label.propTypes = {
 	/** Label disabled */
 	disabled: PropTypes.bool,
 	/** Label  label*/
-	label: PropTypes.string.isRequired
+	label: PropTypes.string.isRequired,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Label', ['theme'])(Label), getStyles);

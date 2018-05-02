@@ -17,6 +17,10 @@ export interface InputFieldProps {
 	 * Error message shown under the input field
 	 */
 	errorMessage?: string;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const InputField: React.SFC<InputFieldProps>;

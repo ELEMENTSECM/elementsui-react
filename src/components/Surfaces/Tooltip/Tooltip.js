@@ -19,7 +19,9 @@ export function Tooltip(props) {
 
 Tooltip.propTypes = {
 	/**Tooltip content */
-	content: PropTypes.string
+	content: PropTypes.string,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Tooltip', ['theme'])(Tooltip), getStyles);

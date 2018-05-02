@@ -42,7 +42,9 @@ Dropdown.propTypes = {
 		})
 	).isRequired,
 	/** onChange event handler function */
-	onChange: PropTypes.func
+	onChange: PropTypes.func,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Dropdown', ['theme'])(Dropdown), getStyles);

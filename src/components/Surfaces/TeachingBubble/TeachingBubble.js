@@ -39,7 +39,9 @@ TeachingBubble.propTypes = {
 	/**Teachingbubble Dissmissed */
 	dismissed: PropTypes.bool,
 	/**isTeachingBubbleVisible */
-	isTeachingBubbleVisible: PropTypes.bool
+	isTeachingBubbleVisible: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('TeachingBubble', ['theme'])(TeachingBubble), getStyles);

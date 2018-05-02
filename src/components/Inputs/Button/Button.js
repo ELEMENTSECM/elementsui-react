@@ -23,7 +23,9 @@ Button.propTypes = {
 	/** Mouse click event handler */
 	onCLick: PropTypes.func,
 	/** Primary button */
-	isPrimary: PropTypes.bool
+	isPrimary: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Button', ['theme'])(Button), getStyles);

@@ -46,7 +46,9 @@ Panel.propTypes = {
 	/**Panel footer content */
 	onRenderFooterContent: PropTypes.func,
 	/**Panel hasCloseButton */
-	hasCloseButton: PropTypes.bool
+	hasCloseButton: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Panel', ['theme'])(Panel), getStyles);

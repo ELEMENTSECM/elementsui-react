@@ -13,6 +13,10 @@ export interface LabelProps {
 	 * Label  label
 	 */
 	label: string;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Label: React.SFC<LabelProps>;

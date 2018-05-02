@@ -21,6 +21,10 @@ export interface ContextualMenuProps {
 	 * ContextualMenu menuitems
 	 */
 	menuProps: ContextualMenuMenuProps;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const ContextualMenu: React.SFC<ContextualMenuProps>;
