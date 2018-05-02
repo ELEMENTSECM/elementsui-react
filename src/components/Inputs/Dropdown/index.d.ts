@@ -31,6 +31,10 @@ export interface DropdownProps {
 	 * onChange event handler function
 	 */
 	onChange?: (...args: any[]) => any;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Dropdown: React.SFC<DropdownProps>;

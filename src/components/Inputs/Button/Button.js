@@ -5,11 +5,9 @@ import { getStyles } from './Button.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Button example */
-export function Button({ label, disabled, onClick, isPrimary, className, theme }) {
-	const classNames = classNamesFunction()(getStyles, {
-		theme,
-		className
-	});
+export function Button(props) {
+	const { label, disabled, onClick, isPrimary, className, theme, getStyles } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<DefaultButton className={classNames.root} disabled={disabled} primary={isPrimary} onClick={onClick}>
 			{label}
@@ -25,7 +23,9 @@ Button.propTypes = {
 	/** Mouse click event handler */
 	onCLick: PropTypes.func,
 	/** Primary button */
-	isPrimary: PropTypes.bool
+	isPrimary: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Button', ['theme'])(Button), getStyles);

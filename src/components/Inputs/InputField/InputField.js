@@ -4,11 +4,9 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { getStyles } from './InputField.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
-export function InputField({ placeholder, required, disabled, errorMessage, className, theme }) {
-	const classNames = classNamesFunction()(getStyles, {
-		theme,
-		className
-	});
+export function InputField(props) {
+	const { placeholder, required, disabled, errorMessage, className, theme, getStyles } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<TextField
 			className={classNames.root}
@@ -28,7 +26,9 @@ InputField.propTypes = {
 	/** Input field is disabled is set to true */
 	disabled: PropTypes.bool,
 	/** Error message shown under the input field */
-	errorMessage: PropTypes.string
+	errorMessage: PropTypes.string,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 InputField.defaultProps = {

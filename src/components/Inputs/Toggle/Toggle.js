@@ -5,11 +5,9 @@ import { getStyles } from './Toggle.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Toggle example */
-export function Toggle({ label, className, theme, disabled = false }) {
-	const classNames = classNamesFunction()(getStyles, {
-		theme,
-		className
-	});
+export function Toggle(props) {
+	const { label, className, theme, getStyles, disabled = false } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<UIFabToggle
 			className={classNames.root}
@@ -29,7 +27,9 @@ Toggle.propTypes = {
 	/** Toggle description */
 	ariaDescribedBy: PropTypes.string,
 	/** Toggle checked */
-	defaultChecked: PropTypes.bool
+	defaultChecked: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('Toggle', ['theme'])(Toggle), getStyles);

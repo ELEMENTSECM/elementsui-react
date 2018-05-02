@@ -1,9 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { getStyles } from './ContextualMenu.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Contextual Menu Button */
-function ContextualMenu({ isPrimary, ariaLabel, buttonText, menuProps }) {
+export function ContextualMenu(props) {
+	const { isPrimary, ariaLabel, buttonText, menuProps, getStyles, className, theme } = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<DefaultButton primary={isPrimary} ariaLabel={ariaLabel} text={buttonText} menuProps={menuProps} />
 	);
@@ -19,7 +23,9 @@ ContextualMenu.propTypes = {
 	/**  ContextualMenu menuitems */
 	menuProps: PropTypes.shape({
 		items: PropTypes.array
-	}).isRequired
+	}).isRequired,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
-export default ContextualMenu;
+export default styled(customizable('ContextualMenu', ['theme'])(ContextualMenu), getStyles);

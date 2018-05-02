@@ -25,6 +25,10 @@ export interface PanelProps {
 	 * Panel hasCloseButton
 	 */
 	hasCloseButton?: boolean;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Panel: React.SFC<PanelProps>;

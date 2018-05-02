@@ -5,19 +5,18 @@ import { getStyles } from './TeachingBubble.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** TeachingBubble example */
-export function TeachingBubble({
-	headline,
-	targetElement,
-	dismissed,
-	isTeachingBubbleVisible,
-	element,
-	className,
-	theme
-}) {
-	const classNames = classNamesFunction()(getStyles, {
+export function TeachingBubble(props) {
+	const {
+		headline,
+		targetElement,
+		dismissed,
+		isTeachingBubbleVisible,
+		element,
+		className,
 		theme,
-		className
-	});
+		getStyles
+	} = props;
+	const classNames = classNamesFunction()(getStyles, props);
 	return (
 		<div>
 			<UIFabTeachingBubble
@@ -40,7 +39,9 @@ TeachingBubble.propTypes = {
 	/**Teachingbubble Dissmissed */
 	dismissed: PropTypes.bool,
 	/**isTeachingBubbleVisible */
-	isTeachingBubbleVisible: PropTypes.bool
+	isTeachingBubbleVisible: PropTypes.bool,
+	/** User-defined styling */
+	getStyles: PropTypes.func
 };
 
 export default styled(customizable('TeachingBubble', ['theme'])(TeachingBubble), getStyles);

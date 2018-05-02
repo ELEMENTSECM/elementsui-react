@@ -13,6 +13,10 @@ export interface CheckboxProps {
 	 * Checkbox description
 	 */
 	ariaDescribedBy?: string;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
 export const Checkbox: React.SFC<CheckboxProps>;
