@@ -25,22 +25,6 @@ const items = [
 
 /** Basepicker default */
 export default function BasePickerDefault() {
-	const getStyles = props => {
-		const { className, theme, isPrimary } = props;
-		const { palette, semanticColors } = theme;
-
-		return {
-			root: [
-				{
-					background: semanticColors.warningHighlight,
-					color: palette.themeDark,
-					fontStyle: isPrimary ? 'bold' : 'italic'
-				},
-				className
-			]
-		};
-	};
-
 	const _whenFiltering = (filterText, itemList) => {
 		return filterText
 			? items
@@ -74,7 +58,7 @@ export default function BasePickerDefault() {
 			inputProps={{
 				onBlur: ev => console.log('onBlur called'),
 				onFocus: ev => console.log('onFocus called'),
-				'aria-label': 'Tag Picker'
+				'aria-label': 'Item Picker'
 			}}
 		/>
 	);
