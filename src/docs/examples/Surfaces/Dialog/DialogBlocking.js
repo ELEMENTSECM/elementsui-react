@@ -3,20 +3,20 @@ import Dialog from 'elementsui-react/Surfaces/Dialog';
 import { DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import Button from 'elementsui-react/Inputs/Button';
 
-/** Default Dialog */
+/** Blocking Dialog with large header  */
 export default class DialogDefault extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			hideDialog: true,
-			label: 'Show default dialog',
+			label: 'Show blocking dialog',
 			dialogContentProps: {
-				type: DialogType.normal,
+				type: DialogType.largeHeader,
 				title: 'Dialog header',
-				subText: 'Dialog content text with some description of what the dialog reveals.'
+				subText: 'You have to use the Cancel/OK buttons inside the dialog to be able to close it!'
 			},
 			modalProps: {
-				isBlocking: false,
+				isBlocking: true,
 				isDarkOverlay: true,
 				containerClassName: 'ms-dialogMainOverride'
 			}
@@ -26,13 +26,14 @@ export default class DialogDefault extends React.Component {
 	toggleDialog = () => {
 		this.setState(() => ({
 			hideDialog: !this.state.hideDialog,
-			label: !this.state.hideDialog ? 'Show default dialog' : 'Default dialog visible :)'
+			label: !this.state.hideDialog ? 'Show blocking dialog' : 'Blocking dialog visible :)'
 		}));
 	};
+
 	render() {
 		return (
 			<div>
-				<Button label={this.state.label} onClick={this.toggleDialog} />
+				<Button label={this.state.label} onClick={this.toggleDialog} isPrimary={true} />
 				<Dialog
 					hidden={this.state.hideDialog}
 					onDismiss={this.toggleDialog}
@@ -42,14 +43,14 @@ export default class DialogDefault extends React.Component {
 						<span>
 							<DialogFooter>
 								<Button
-									htmlId="cancelBtn"
+									htmlId="cancelBtnBlocking"
 									label="Cancel"
 									isPrimary={false}
 									className="button-default"
 									onClick={this.toggleDialog}
 								/>
 								<Button
-									htmlId="okBtn"
+									htmlId="okBtnBlocking"
 									label="OK"
 									isPrimary={true}
 									className="button-primary"
