@@ -19,4 +19,6 @@ export interface BreadcrumbProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Breadcrumb: React.SFC<BreadcrumbProps>;
+declare const Breadcrumb: React.SFC<BreadcrumbProps>;
+
+export default Breadcrumb;

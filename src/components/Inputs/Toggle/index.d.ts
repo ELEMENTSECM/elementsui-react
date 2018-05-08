@@ -23,4 +23,6 @@ export interface ToggleProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Toggle: React.SFC<ToggleProps>;
+declare const Toggle: React.SFC<ToggleProps>;
+
+export default Toggle;

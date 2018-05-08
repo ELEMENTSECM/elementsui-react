@@ -27,4 +27,6 @@ export interface ContextualMenuProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const ContextualMenu: React.SFC<ContextualMenuProps>;
+declare const ContextualMenu: React.SFC<ContextualMenuProps>;
+
+export default ContextualMenu;

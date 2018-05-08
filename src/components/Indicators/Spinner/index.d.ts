@@ -11,4 +11,6 @@ export interface SpinnerProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Spinner: React.SFC<SpinnerProps>;
+declare const Spinner: React.SFC<SpinnerProps>;
+
+export default Spinner;

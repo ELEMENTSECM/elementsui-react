@@ -19,4 +19,6 @@ export interface LabelProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Label: React.SFC<LabelProps>;
+declare const Label: React.SFC<LabelProps>;
+
+export default Label;

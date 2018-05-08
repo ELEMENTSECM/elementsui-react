@@ -19,4 +19,6 @@ export interface CheckboxProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Checkbox: React.SFC<CheckboxProps>;
+declare const Checkbox: React.SFC<CheckboxProps>;
+
+export default Checkbox;

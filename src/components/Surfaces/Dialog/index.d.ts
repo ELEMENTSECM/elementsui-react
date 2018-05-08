@@ -35,4 +35,6 @@ export interface DialogProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Dialog: React.SFC<DialogProps>;
+declare const Dialog: React.SFC<DialogProps>;
+
+export default Dialog;

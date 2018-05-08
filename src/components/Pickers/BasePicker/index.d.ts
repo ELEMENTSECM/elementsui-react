@@ -27,4 +27,6 @@ export interface BasePickerProps {
 	inputProps?: Object;
 }
 
-export const BasePicker: React.SFC<BasePickerProps>;
+declare const BasePicker: React.SFC<BasePickerProps>;
+
+export default BasePicker;

@@ -11,4 +11,6 @@ export interface TooltipProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Tooltip: React.SFC<TooltipProps>;
+declare const Tooltip: React.SFC<TooltipProps>;
+
+export default Tooltip;

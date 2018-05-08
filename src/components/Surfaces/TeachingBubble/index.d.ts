@@ -23,4 +23,6 @@ export interface TeachingBubbleProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const TeachingBubble: React.SFC<TeachingBubbleProps>;
+declare const TeachingBubble: React.SFC<TeachingBubbleProps>;
+
+export default TeachingBubble;

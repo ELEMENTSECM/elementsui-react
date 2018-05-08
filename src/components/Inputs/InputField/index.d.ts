@@ -23,4 +23,6 @@ export interface InputFieldProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const InputField: React.SFC<InputFieldProps>;
+declare const InputField: React.SFC<InputFieldProps>;
+
+export default InputField;
