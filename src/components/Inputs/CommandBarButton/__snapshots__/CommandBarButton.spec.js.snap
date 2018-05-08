@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommandBarButton displays \`Foo\` as text 1`] = `
+<button
+  aria-describedby={null}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-pressed={undefined}
+  className="ms-Button ms-Button--commandBar root-38"
+  data-is-focusable={true}
+  disabled={undefined}
+  onClick={undefined}
+  type="button"
+>
+  <div
+    className="ms-Button-flexContainer flexContainer-39"
+  >
+    <i
+      aria-hidden={true}
+      className="root-46 ms-Button-icon icon-41"
+      data-icon-name={undefined}
+      role="presentation"
+    />
+    <div
+      className="ms-Button-textContainer textContainer-40"
+    >
+      <div
+        className="ms-Button-label label-42"
+        id="id__0"
+      >
+        Foo
+      </div>
+    </div>
+  </div>
+</button>
+`;

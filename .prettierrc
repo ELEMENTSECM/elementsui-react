@@ -1,6 +1,0 @@
-{
-  "parser": "typescript",
-  "useTabs": true,
-  "tabWidth": 2,
-  "printWidth": 110
-}
