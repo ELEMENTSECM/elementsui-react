@@ -17,6 +17,12 @@ export interface CommandBarButtonProps {
 	 * Icon name
 	 */
 	iconName?: string;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
 }
 
-export const CommandBarButton: React.SFC<CommandBarButtonProps>;
+declare const CommandBarButton: React.SFC<CommandBarButtonProps>;
+
+export default CommandBarButton;
