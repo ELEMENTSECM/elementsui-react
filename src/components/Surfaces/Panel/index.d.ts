@@ -31,4 +31,6 @@ export interface PanelProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Panel: React.SFC<PanelProps>;
+declare const Panel: React.SFC<PanelProps>;
+
+export default Panel;

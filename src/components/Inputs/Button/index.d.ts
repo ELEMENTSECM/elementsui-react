@@ -23,4 +23,6 @@ export interface ButtonProps {
 	getStyles?: (...args: any[]) => any;
 }
 
-export const Button: React.SFC<ButtonProps>;
+declare const Button: React.SFC<ButtonProps>;
+
+export default Button;
