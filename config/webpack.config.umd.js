@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const nodeExternals = require('webpack-node-externals');
 
 const publicPath = paths.servedPath;
 const shouldUseRelativeAssetPaths = publicPath === './';
@@ -25,6 +26,7 @@ module.exports = {
 		filename: 'elementsui-react.umd.js',
 		libraryTarget: "umd"
 	},
+	externals: [nodeExternals()],
 	resolve: {
 		modules: ['node_modules', paths.appNodeModules].concat(
 			process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
