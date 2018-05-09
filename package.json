@@ -2,7 +2,7 @@
 	"name": "elementsui-react",
 	"version": "0.1.17",
 	"main": "./lib/index.js",
-	"private": false,
+	"private": true,
 	"engines": {
 		"node": ">=4.0.0"
 	},
