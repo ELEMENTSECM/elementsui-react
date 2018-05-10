@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.1.18",
+	"version": "0.1.19",
 	"main": "./lib/index.js",
 	"private": true,
 	"engines": {
@@ -12,8 +12,15 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "http://evryas.github.io/elementsui-react/",
-	"files": ["lib"],
-	"keywords": ["components", "react", "react-component", "elements"],
+	"files": [
+		"lib"
+	],
+	"keywords": [
+		"components",
+		"react",
+		"react-component",
+		"elements"
+	],
 	"dependencies": {
 		"commander": "^2.15.1",
 		"inquirer": "^5.2.0",
@@ -41,20 +48,16 @@
 		"test": "node scripts/test.js --env=jsdom",
 		"build:css": "cpx \"./src/components/**/*.css\" ./lib",
 		"prebuild:lib": "rimraf lib",
-		"build:lib":
-			"npm-run-all --parallel build:commonjs build:css build:umd gen:types gen:index build:copy-files",
+		"build:lib": "npm-run-all --parallel build:commonjs build:css build:umd gen:types gen:index build:copy-files",
 		"build:copy-package-files": "node scripts/copyBuildFiles.js",
 		"build:typings": "cpx \"./src/components/**/*.d.ts\" ./lib",
 		"build:index": "cpx \"./src/components/index.js\" ./lib",
 		"build:copy-umd": "cpx \"./umd\" ./lib",
-		"build:copy-files":
-			"npm-run-all --parallel build:copy-package-files build:copy-umd build:typings build:index",
+		"build:copy-files": "npm-run-all --parallel build:copy-package-files build:copy-umd build:typings build:index",
 		"predeploy:docs": "npm run build:docs",
 		"deploy:docs": "gh-pages -d build",
-		"build:commonjs":
-			"cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
-		"build:umd":
-			"cross-env NODE_ENV=production babel --plugins transform-es2015-modules-umd ./src/components --out-dir ./build/umd --ignore spec.js && cross-env NODE_ENV=production webpack --config config/webpack.config.umd.js && rimraf ./build/umd",
+		"build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
+		"build:umd": "cross-env NODE_ENV=production babel --plugins transform-es2015-modules-umd ./src/components --out-dir ./build/umd --ignore spec.js && cross-env NODE_ENV=production webpack --config config/webpack.config.umd.js && rimraf ./build/umd",
 		"prepublish": "npm run build:lib",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
 	},
@@ -66,7 +69,9 @@
 			"!src/**/*.spec.js",
 			"!src/docs/examples/**/*.js"
 		],
-		"setupFiles": ["<rootDir>/config/polyfills.js"],
+		"setupFiles": [
+			"<rootDir>/config/polyfills.js"
+		],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
 			"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -78,11 +83,21 @@
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 			"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 		},
-		"transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
+		"transformIgnorePatterns": [
+			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+		],
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web"
 		},
-		"moduleFileExtensions": ["web.js", "mjs", "js", "json", "web.jsx", "jsx", "node"],
+		"moduleFileExtensions": [
+			"web.js",
+			"mjs",
+			"js",
+			"json",
+			"web.jsx",
+			"jsx",
+			"node"
+		],
 		"setupTestFrameworkScriptFile": "<rootDir>/scripts/testSetup.js"
 	},
 	"babel": {
