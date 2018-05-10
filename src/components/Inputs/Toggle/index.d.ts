@@ -1,27 +1,28 @@
 import * as React from 'react';
 
 export interface ToggleProps {
-        /**
-         * Toggle label
-         */
-        label?: string;
-        /**
-         * Toggle is disabled
-         */
-        disabled?: boolean;
-        /**
-         * Toggle description
-         */
-        ariaDescribedBy?: string;
-        /**
-         * Toggle checked
-         */
-        defaultChecked?: boolean;
-        /**
-         * User-defined styling
-         */
-        getStyles?: (...args: any[])=>any;
-    }
+	/**
+	 * Toggle label
+	 */
+	label?: string;
+	/**
+	 * Toggle is disabled
+	 */
+	disabled?: boolean;
+	/**
+	 * Toggle description
+	 */
+	ariaDescribedBy?: string;
+	/**
+	 * Toggle checked
+	 */
+	defaultChecked?: boolean;
+	/**
+	 * User-defined styling
+	 */
+	getStyles?: (...args: any[]) => any;
+}
 
-    declare const Toggle: React.SFC<ToggleProps>;
-export default Toggle;
+declare const Toggle: React.SFC<ToggleProps>;
+
+export default Toggle;
