@@ -54,5 +54,5 @@ module.exports = {
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
   lib: resolveApp('lib'),
-  umd: resolveApp('lib/umd')
+  umd: resolveApp('umd')
 };
