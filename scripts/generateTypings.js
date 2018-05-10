@@ -14,11 +14,9 @@ let moduleExports = [];
 if (enableWatchMode) {
 	chokidar.watch([components]).on('change', function(event, path) {
 		generateTypings(components);
-		prettier();
 	});
 } else {
 	generateTypings(components);
-	prettier();
 }
 
 function generateTypings(folder) {
@@ -45,7 +43,7 @@ ${stdout
 					if (res.indexOf('declare const') !== -1) {
 						res += `export default ${x};`;
 					}
-					const relPath = folder.substring(folder.indexOf('components/') + 11, folder.length);
+					const relPath = folder.substring(folder.indexOf('components') + 11, folder.length);
 
 					utils.writeFile(path.join(folder, x, 'index.d.ts'), res);
 					moduleExports.push(`export { default as ${x} } from '${relPath}/${x}';
@@ -54,8 +52,4 @@ ${stdout
 				});
 			}
 		});
-}
-
-function prettier() {
-	exec('prettier --write "**/*.d.ts"');
 }
