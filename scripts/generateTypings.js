@@ -46,7 +46,7 @@ ${stdout
 					const relPath = folder.substring(folder.indexOf('components') + 11, folder.length);
 
 					utils.writeFile(path.join(folder, x, 'index.d.ts'), res);
-					moduleExports.push(`export { default as ${x} } from '${relPath}/${x}';
+					moduleExports.push(`export { default as ${x} } from './${relPath}/${x}';
 `);
 					utils.writeFile(path.join(components, 'index.d.ts'), moduleExports.join(''));
 				});
