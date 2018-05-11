@@ -10,7 +10,7 @@ describe('generateTypings', () => {
 		expect(error).toBe(null);
 		const result = composeType(stdout, component, folder);
 		const indexRef = utils.readFile(path.join(root, 'index.d.ts'));
-		expect(indexRef.replace(/\s/g, '').indexOf(result.exportString.replace(/\s/g, '')) !== -1).toBe(true);
+		expect(indexRef.indexOf(result.exportString) !== -1).toBe(true);
 		expect(result.types.replace(/\s/g, '')).toBe(typeRef.replace(/\s/g, ''));
 	}
 
