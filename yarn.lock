@@ -1108,9 +1108,9 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.23.0, babel-types@^6.24
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
-babylon@7.0.0-beta.40:
-  version "7.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.40.tgz#91fc8cd56d5eb98b28e6fde41045f2957779940a"
+babylon@7.0.0-beta.46:
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.46.tgz#b6ddaba81bbb130313932757ff9c195d527088b6"
 
 babylon@^6.17.0, babylon@^6.18.0:
   version "6.18.0"
@@ -2362,9 +2362,9 @@ dotenv@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
-dts-dom@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/dts-dom/-/dts-dom-2.1.0.tgz#b191e427e60919e33c67d2ea03fcb206510a9922"
+dts-dom@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/dts-dom/-/dts-dom-3.1.0.tgz#7f53cf58305180bfd9475d294ea028136162626c"
 
 duplexer2@~0.1.4:
   version "0.1.4"
@@ -4987,19 +4987,19 @@ meow@^3.3.0, meow@^3.7.0:
     redent "^1.0.0"
     trim-newlines "^1.0.0"
 
-meow@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/meow/-/meow-4.0.0.tgz#fd5855dd008db5b92c552082db1c307cba20b29d"
+meow@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
   dependencies:
     camelcase-keys "^4.0.0"
     decamelize-keys "^1.0.0"
     loud-rejection "^1.0.0"
-    minimist "^1.1.3"
     minimist-options "^3.0.1"
     normalize-package-data "^2.3.4"
     read-pkg-up "^3.0.0"
     redent "^2.0.0"
     trim-newlines "^2.0.0"
+    yargs-parser "^10.0.0"
 
 merge-descriptors@1.0.1:
   version "1.0.1"
@@ -6445,17 +6445,17 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.2.0:
     prop-types "^15.6.0"
     react-is "^16.3.1"
 
-react-to-typescript-definitions@^0.28.1:
-  version "0.28.2"
-  resolved "https://registry.yarnpkg.com/react-to-typescript-definitions/-/react-to-typescript-definitions-0.28.2.tgz#3aa8d9898547386804c2d97e4427444e96cadb57"
+react-to-typescript-definitions@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-to-typescript-definitions/-/react-to-typescript-definitions-1.0.0.tgz#4d16075fe15df366342adae4bbf0c1ad7e330fb4"
   dependencies:
     astq "^2.0.3"
     babel-generator "^6.26.0"
-    babylon "7.0.0-beta.40"
+    babylon "7.0.0-beta.46"
     chalk "^2.3.0"
-    dts-dom "^2.1.0"
+    dts-dom "^3.0.0"
     get-stdin "^6.0.0"
-    meow "^4.0.0"
+    meow "^5.0.0"
     pascal-case "2.0.1"
     strip-ansi "4.0.0"
 
@@ -8045,10 +8045,6 @@ webpack-manifest-plugin@1.3.2:
     fs-extra "^0.30.0"
     lodash ">=3.5 <5"
 
-webpack-node-externals@^1.7.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-1.7.2.tgz#6e1ee79ac67c070402ba700ef033a9b8d52ac4e3"
-
 webpack-sources@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-1.1.0.tgz#a101ebae59d6507354d71d8013950a3a8b7a5a54"
@@ -8217,6 +8213,12 @@ y18n@^3.2.1:
 yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
+
+yargs-parser@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-10.0.0.tgz#c737c93de2567657750cb1f2c00be639fd19c994"
+  dependencies:
+    camelcase "^4.1.0"
 
 yargs-parser@^4.2.0:
   version "4.2.1"
