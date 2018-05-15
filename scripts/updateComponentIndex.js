@@ -5,7 +5,7 @@ const components = path.join(__dirname, '../src', 'components');
 const indexPath = path.join(components, 'index.js');
 const exportStrings = [];
 getExportStrings(components);
-
+exportStrings.push(`export { initializeIcons } from 'office-ui-fabric-react/lib/Icons';`);
 utils.writeFile(indexPath, exportStrings.join('\r'));
 
 function getExportStrings(filePath, relativePath = '.') {

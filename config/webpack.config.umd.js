@@ -1,11 +1,8 @@
 'use strict';
 
 const path = require('path');
-const webpack = require('webpack');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
-
 const publicPath = paths.servedPath;
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const publicUrl = publicPath.slice(0, -1);
@@ -16,13 +13,22 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 }
 
 module.exports = {
+	mode: 'production',
 	bail: true,
 	devtool: shouldUseSourceMap ? 'source-map' : false,
 	entry: [paths.umdBuild],
 	output: {
+		library: "elementsui-react",
 		path: paths.umd,
 		filename: 'elementsui-react.umd.js',
-		libraryTarget: "umd"
+		libraryTarget: "umd",
+		umdNamedDefine: true
+
+	},
+	externals: {
+		react: 'react',
+		'react-dom': 'react-dom',
+		'prop-types': 'prop-types'
 	},
 	resolve: {
 		modules: ['node_modules', paths.appNodeModules].concat(
@@ -41,34 +47,19 @@ module.exports = {
 				test: /\.(js|jsx|mjs)$/,
 				enforce: 'pre',
 				use: [
-					{
-						options: {
-							formatter: eslintFormatter,
-							eslintPath: require.resolve('eslint')
-						},
-						loader: require.resolve('eslint-loader')
-					}
+
 				],
 				include: paths.appSrc
 			}
 		]
 	},
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false,
-				comparisons: false
-			},
-			mangle: {
-				safari10: true
-			},
-			output: {
-				comments: false,
-				ascii_only: true
-			},
-			sourceMap: shouldUseSourceMap
-		}),
-		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+		// new UglifyJsPlugin({
+		// 	cache: true,
+		// 	parallel: true,
+		// 	sourceMap: shouldUseSourceMap
+		//   }),
+		// new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 	],
 	node: {
 		dgram: 'empty',

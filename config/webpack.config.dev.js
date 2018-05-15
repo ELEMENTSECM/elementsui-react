@@ -5,10 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+// const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -26,6 +23,7 @@ const env = getClientEnvironment(publicUrl);
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 module.exports = {
+	mode: 'development',
 	// You may want 'eval' instead if you prefer to see the compiled output in DevTools.
 	// See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
 	devtool: 'cheap-module-source-map',
@@ -111,13 +109,7 @@ module.exports = {
 				test: /\.(js|jsx|mjs)$/,
 				enforce: 'pre',
 				use: [
-					{
-						options: {
-							formatter: eslintFormatter,
-							eslintPath: require.resolve('eslint')
-						},
-						loader: require.resolve('eslint-loader')
-					}
+
 				],
 				include: paths.appSrc
 			},
@@ -130,11 +122,19 @@ module.exports = {
 					// smaller than specified limit in bytes as data URLs to avoid requests.
 					// A missing `test` is equivalent to a match.
 					{
-						test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+						test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
 						loader: require.resolve('url-loader'),
 						options: {
 							limit: 10000,
 							name: 'static/media/[name].[hash:8].[ext]'
+						}
+					},
+					{
+						test: [/favicon.ico/],
+						loader: require.resolve('url-loader'),
+						options: {
+							limit: 10000,
+							name: 'favicon.ico'
 						}
 					},
 					// Process JS with Babel.
@@ -213,12 +213,13 @@ module.exports = {
 		// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
 		// <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 		// In development, this will be an empty string.
-		new InterpolateHtmlPlugin(env.raw),
+		//new InterpolateHtmlPlugin(env.raw),
 		// Generates an `index.html` file with the <script> injected.
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: paths.appHtml
 		}),
+
 		// Add module names to factory functions so they appear in browser profiler.
 		new webpack.NamedModulesPlugin(),
 		// Makes some environment variables available to the JS code, for example:
@@ -230,11 +231,6 @@ module.exports = {
 		// a plugin that prints an error when you attempt to do this.
 		// See https://github.com/facebookincubator/create-react-app/issues/240
 		new CaseSensitivePathsPlugin(),
-		// If you require a missing module and then `npm install` it, you still have
-		// to restart the development server for Webpack to discover it. This plugin
-		// makes the discovery automatic so you don't have to restart.
-		// See https://github.com/facebookincubator/create-react-app/issues/186
-		new WatchMissingNodeModulesPlugin(paths.appNodeModules),
 		// Moment.js is an extremely popular library that bundles large locale files
 		// by default due to how Webpack interprets its code. This is a practical
 		// solution that requires the user to opt into importing specific locales.
