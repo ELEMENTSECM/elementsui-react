@@ -5,7 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+// const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -122,11 +122,19 @@ module.exports = {
 					// smaller than specified limit in bytes as data URLs to avoid requests.
 					// A missing `test` is equivalent to a match.
 					{
-						test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/, /\.ico$/],
+						test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
 						loader: require.resolve('url-loader'),
 						options: {
 							limit: 10000,
 							name: 'static/media/[name].[hash:8].[ext]'
+						}
+					},
+					{
+						test: [/favicon.ico/],
+						loader: require.resolve('url-loader'),
+						options: {
+							limit: 10000,
+							name: 'favicon.ico'
 						}
 					},
 					// Process JS with Babel.
@@ -205,13 +213,13 @@ module.exports = {
 		// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
 		// <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 		// In development, this will be an empty string.
-		new InterpolateHtmlPlugin(env.raw),
+		//new InterpolateHtmlPlugin(env.raw),
 		// Generates an `index.html` file with the <script> injected.
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: paths.appHtml
 		}),
-		
+
 		// Add module names to factory functions so they appear in browser profiler.
 		new webpack.NamedModulesPlugin(),
 		// Makes some environment variables available to the JS code, for example:
