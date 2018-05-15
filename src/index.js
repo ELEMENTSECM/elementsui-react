@@ -6,6 +6,7 @@ import './index.css';
 import '../node_modules/highlight.js/styles/github-gist.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import '../public/favicon.ico';
 initializeIcons(undefined, { disableWarnings: true });
 
 ReactDOM.render(

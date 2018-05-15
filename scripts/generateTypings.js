@@ -14,9 +14,11 @@ let moduleExports = [];
 if (enableWatchMode) {
 	chokidar.watch([components]).on('change', function(event, path) {
 		generateTypings(components);
+		addInitializeIcons();
 	});
 } else {
 	generateTypings(components);
+	addInitializeIcons();
 }
 
 function generateTypings(folder) {
@@ -52,4 +54,9 @@ ${stdout
 				});
 			}
 		});
+}
+
+function addInitializeIcons() {
+	moduleExports.push(`export { initializeIcons } from "office-ui-fabric-react/lib/Icons";`);
+	utils.writeFile(path.join(components, 'index.d.ts'), moduleExports.join(''));
 }
