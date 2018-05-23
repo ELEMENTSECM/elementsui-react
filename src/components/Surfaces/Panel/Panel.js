@@ -8,7 +8,6 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 export function Panel(props) {
 	const {
 		headerText,
-		element,
 		onRenderFooterContent,
 		isOpen,
 		onDismissed,
@@ -29,7 +28,7 @@ export function Panel(props) {
 			hasCloseButton={hasCloseButton}
 			closebuttonAriaLabel={closebuttonAriaLabel}
 			onRenderFooterContent={onRenderFooterContent}>
-			{element}
+			{props.children}
 		</UIFabPanel>
 	);
 }

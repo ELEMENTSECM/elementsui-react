@@ -11,7 +11,6 @@ export function TeachingBubble(props) {
 		targetElement,
 		dismissed,
 		isTeachingBubbleVisible,
-		element,
 		className,
 		theme,
 		getStyles
@@ -25,7 +24,7 @@ export function TeachingBubble(props) {
 				targetElement={targetElement}
 				dismissed={dismissed}
 				isTeachingBubbleVisible={isTeachingBubbleVisible}>
-				{element}
+				{props.children}
 			</UIFabTeachingBubble>
 		</div>
 	);
