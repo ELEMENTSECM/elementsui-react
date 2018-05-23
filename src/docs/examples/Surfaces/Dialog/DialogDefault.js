@@ -3,7 +3,7 @@ import Dialog from 'elementsui-react/Surfaces/Dialog';
 import { DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import Button from 'elementsui-react/Inputs/Button';
 
-/** Default Dialog */
+/** Default Dialog with content */
 export default class DialogDefault extends React.Component {
 	constructor(props) {
 		super(props);
@@ -33,6 +33,7 @@ export default class DialogDefault extends React.Component {
 		return (
 			<div>
 				<Button label={this.state.label} onClick={this.toggleDialog} />
+
 				<Dialog
 					hidden={this.state.hideDialog}
 					onDismiss={this.toggleDialog}
@@ -57,8 +58,9 @@ export default class DialogDefault extends React.Component {
 								/>
 							</DialogFooter>
 						</span>
-					}
-				/>
+					}>
+					<div>Render custom content here</div>
+				</Dialog>
 			</div>
 		);
 	}

@@ -25,6 +25,7 @@ export function Dialog(props) {
 			onDismiss={onDismiss}
 			dialogContentProps={dialogContentProps}
 			modalProps={modalProps}>
+			{props.children}
 			{additionalContent}
 		</UIFabDialog>
 	);
