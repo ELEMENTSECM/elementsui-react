@@ -38,28 +38,26 @@ export default class DialogDefault extends React.Component {
 					hidden={this.state.hideDialog}
 					onDismiss={this.toggleDialog}
 					dialogContentProps={this.state.dialogContentProps}
-					modalProps={this.state.modalProps}
-					additionalContent={
-						<span>
-							<DialogFooter>
-								<Button
-									htmlId="cancelBtnBlocking"
-									label="Cancel"
-									isPrimary={false}
-									className="button-default"
-									onClick={this.toggleDialog}
-								/>
-								<Button
-									htmlId="okBtnBlocking"
-									label="OK"
-									isPrimary={true}
-									className="button-primary"
-									onClick={this.toggleDialog}
-								/>
-							</DialogFooter>
-						</span>
-					}
-				/>
+					modalProps={this.state.modalProps}>
+					<span>
+						<DialogFooter>
+							<Button
+								htmlId="cancelBtnBlocking"
+								label="Cancel"
+								isPrimary={false}
+								className="button-default"
+								onClick={this.toggleDialog}
+							/>
+							<Button
+								htmlId="okBtnBlocking"
+								label="OK"
+								isPrimary={true}
+								className="button-primary"
+								onClick={this.toggleDialog}
+							/>
+						</DialogFooter>
+					</span>
+				</Dialog>
 			</div>
 		);
 	}
