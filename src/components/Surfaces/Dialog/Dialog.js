@@ -6,16 +6,7 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Button example */
 export function Dialog(props) {
-	const {
-		hidden,
-		onDismiss,
-		dialogContentProps,
-		modalProps,
-		additionalContent,
-		className,
-		theme,
-		getStyles
-	} = props;
+	const { hidden, onDismiss, dialogContentProps, modalProps, className, theme, getStyles } = props;
 	const classNames = classNamesFunction()(getStyles, props);
 
 	return (
@@ -26,7 +17,6 @@ export function Dialog(props) {
 			dialogContentProps={dialogContentProps}
 			modalProps={modalProps}>
 			{props.children}
-			{additionalContent}
 		</UIFabDialog>
 	);
 }
