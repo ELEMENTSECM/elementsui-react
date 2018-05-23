@@ -45,36 +45,34 @@ export default class PanelDefault extends React.Component {
 					onDismissed={this.closePanel}
 					hasCloseButton={true}
 					closebuttonAriaLabel="Close panel"
-					onRenderFooterContent={this.onRenderFooterContent}
-					element={
-						<ChoiceGroup
-							options={[
-								{
-									key: 'A',
-									text: 'Option A'
-								},
-								{
-									key: 'B',
-									text: 'Option B',
-									checked: true
-								},
-								{
-									key: 'C',
-									text: 'Option C',
-									disabled: true
-								},
-								{
-									key: 'D',
-									text: 'Option D',
-									checked: true,
-									disabled: true
-								}
-							]}
-							label="Pick one"
-							required={true}
-						/>
-					}
-				/>
+					onRenderFooterContent={this.onRenderFooterContent}>
+					<ChoiceGroup
+						options={[
+							{
+								key: 'A',
+								text: 'Option A'
+							},
+							{
+								key: 'B',
+								text: 'Option B',
+								checked: true
+							},
+							{
+								key: 'C',
+								text: 'Option C',
+								disabled: true
+							},
+							{
+								key: 'D',
+								text: 'Option D',
+								checked: true,
+								disabled: true
+							}
+						]}
+						label="Pick one"
+						required={true}
+					/>
+				</Panel>
 				<Button onClick={this.openPanel} label="Open Panel" />
 			</div>
 		);

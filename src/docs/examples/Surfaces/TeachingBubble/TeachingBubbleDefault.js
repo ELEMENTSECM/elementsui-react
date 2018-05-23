@@ -33,19 +33,17 @@ export default class TeachingBubbleDefault extends React.Component {
 						htmlid="defaultTeachingBubble"
 						headline="TeachingBubble"
 						targetElement={this._menuButtonTarget}
-						dismissed={this.state.dismissed}
-						element={
+						dismissed={this.state.dismissed}>
+						<span>
+							<span>I am a teachingbubble!</span>
+							<br />
+							<br />
 							<span>
-								<span>I am a teachingbubble!</span>
-								<br />
-								<br />
-								<span>
-									<Button label="Ok" isPrimary={true} onClick={this.toggleTeachingBubble} />
-									<Button label="Cancel" onClick={this.toggleTeachingBubble} />
-								</span>
+								<Button label="Ok" isPrimary={true} onClick={this.toggleTeachingBubble} />
+								<Button label="Cancel" onClick={this.toggleTeachingBubble} />
 							</span>
-						}
-					/>
+						</span>
+					</TeachingBubble>
 				) : null}
 			</div>
 		);
