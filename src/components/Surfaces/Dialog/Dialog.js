@@ -4,7 +4,7 @@ import { Dialog as UIFabDialog } from 'office-ui-fabric-react/lib/Dialog';
 import { getStyles } from './Dialog.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
-/** Button example */
+/** Dialog example */
 export function Dialog(props) {
 	const { hidden, onDismiss, dialogContentProps, modalProps, className, theme, getStyles } = props;
 	const classNames = classNamesFunction()(getStyles, props);
