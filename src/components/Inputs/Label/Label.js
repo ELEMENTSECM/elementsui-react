@@ -6,24 +6,26 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Label example */
 export function Label(props) {
-	const { htmlId, label, required, disabled, styles } = props;
+	const { id, label, required, disabled, styles, children } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
-		<UIFabLabel id={htmlId} className={classNames.root} required={required} disabled={disabled}>
-			{label}
+		<UIFabLabel id={id} className={classNames.root} required={required} disabled={disabled}>
+			{label || children}
 		</UIFabLabel>
 	);
 }
 
 Label.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
+	/** Label text (children are ignored if label is defined)  */
+	label: PropTypes.string,
+	/** Label children */
+	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 	/**Label required */
 	required: PropTypes.bool,
 	/** Label disabled */
 	disabled: PropTypes.bool,
-	/** Label  label*/
-	label: PropTypes.string.isRequired,
 	/** User-defined styling */
 	styles: PropTypes.func
 };

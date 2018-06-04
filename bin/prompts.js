@@ -1,3 +1,6 @@
+const path = require('path');
+const utils = require('./utils');
+
 const config = [
 	{
 		type: 'input',
@@ -82,6 +85,40 @@ const init = [
 	}
 ];
 
+const nls = [
+	{
+		type: 'input',
+		name: 'componentPath',
+		message: 'Component folder path relative to components folder',
+		default: getLastUsed()
+	},
+	{
+		type: 'input',
+		name: 'id',
+		message: 'Id'
+	},
+	{
+		type: 'input',
+		name: 'en',
+		message: 'EN value'
+	},
+	{
+		type: 'input',
+		name: 'nb',
+		message: 'NB value'
+	},
+	{
+		type: 'input',
+		name: 'nn',
+		message: 'NN value'
+	},
+	{
+		type: 'input',
+		name: 'sv',
+		message: 'SV value'
+	}
+];
+
 const component = [
 	{
 		type: 'confirm',
@@ -122,6 +159,15 @@ const controller = [
 	}
 ];
 
+function getLastUsed() {
+	const filePath = path.join(__dirname, 'lastUsed.txt');
+	try {
+		return utils.readFile(filePath);
+	} catch (e) {
+		return null;
+	}
+}
+
 module.exports = {
 	config,
 	init,
@@ -131,5 +177,6 @@ module.exports = {
 	store,
 	action,
 	reducer,
-	controller
+	controller,
+	nls
 };

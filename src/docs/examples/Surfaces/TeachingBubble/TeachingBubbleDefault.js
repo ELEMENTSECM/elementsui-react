@@ -22,7 +22,7 @@ export default class TeachingBubbleDefault extends React.Component {
 			<div>
 				<span ref={menuButton => (this._menuButtonTarget = menuButton)}>
 					<Button
-						htmlId="defaultButton"
+						id="defaultButton"
 						label={this.state.label}
 						onClick={this.toggleTeachingBubble}
 						isPrimary={true}

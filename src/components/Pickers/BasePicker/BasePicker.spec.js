@@ -11,7 +11,7 @@ describe('BasePickerProps', () => {
 		const tree = renderer
 			.create(
 				<BasePicker
-					htmlId="basePicker"
+					id="basePicker"
 					onResolveSuggestions={items}
 					focus={false}
 					focusInput={true}

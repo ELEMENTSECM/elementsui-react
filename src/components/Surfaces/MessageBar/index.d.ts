@@ -20,6 +20,18 @@ export interface MessageBarProps {
 	 */
 	onDismiss?: any;
 	/**
+	 * Dismiss button aria label
+	 */
+	dismissButtonAriaLabel?: string;
+	/**
+	 * Truncated message
+	 */
+	truncated?: boolean;
+	/**
+	 * Overflow button aria label
+	 */
+	overflowButtonAriaLabel?: string;
+	/**
 	 * User-defined styling
 	 */
 	styles?: (...args: any[]) => any;

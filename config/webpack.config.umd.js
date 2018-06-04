@@ -1,71 +1,25 @@
 'use strict';
 
-const path = require('path');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const publicPath = paths.servedPath;
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const publicUrl = publicPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
-
+const merge = require("webpack-merge");
+const BaseConfig = require("./webpack.config.umd.base");
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 	throw new Error('Production builds must have NODE_ENV=production.');
 }
 
-module.exports = {
-	mode: 'production',
-	bail: true,
-	devtool: shouldUseSourceMap ? 'source-map' : false,
-	entry: [paths.umdBuild],
+module.exports = merge(BaseConfig, {
+	optimization: {
+		minimize: false
+	},
 	output: {
 		library: "elementsui-react",
 		path: paths.umd,
 		filename: 'elementsui-react.umd.js',
 		libraryTarget: "umd",
 		umdNamedDefine: true
-
 	},
-	externals: {
-		react: 'react',
-		'react-dom': 'react-dom',
-		'prop-types': 'prop-types'
-	},
-	resolve: {
-		modules: ['node_modules', paths.appNodeModules].concat(
-			process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
-		),
-		extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
-		alias: {
-			'react-native': 'react-native-web',
-			'elementsui-react': path.resolve(__dirname, '../src/components')
-		}
-	},
-	module: {
-		strictExportPresence: true,
-		rules: [
-			{
-				test: /\.(js|jsx|mjs)$/,
-				enforce: 'pre',
-				use: [
-
-				],
-				include: paths.appSrc
-			}
-		]
-	},
-	plugins: [
-		// new UglifyJsPlugin({
-		// 	cache: true,
-		// 	parallel: true,
-		// 	sourceMap: shouldUseSourceMap
-		//   }),
-		// new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-	],
-	node: {
-		dgram: 'empty',
-		fs: 'empty',
-		net: 'empty',
-		tls: 'empty',
-		child_process: 'empty'
-	}
-};
+});

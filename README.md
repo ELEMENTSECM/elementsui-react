@@ -60,7 +60,7 @@ const styles = props => {
 
 ```jsx
 <Button
-	htmlId="defaultBtn"
+	id="defaultBtn"
 	label="Default button"
 	isPrimary={true}
 	className="button-primary"

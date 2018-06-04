@@ -24,7 +24,7 @@ export default function ModulePickerDefault() {
 		}
 	];
 	return (
-		<Box height={415} width={600}>
+		<Box className="modal-content">
 			<ModulePicker modules={modules} />
 		</Box>
 	);

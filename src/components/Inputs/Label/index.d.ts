@@ -1,10 +1,16 @@
 import * as React from 'react';
 
+export type LabelChildren = React.ReactNode[] | React.ReactNode;
+
 export interface LabelProps {
 	/**
-	 * HTML id tag of the root element
+	 * Label text (children are ignored if label is defined)
 	 */
-	htmlId?: string;
+	label?: string;
+	/**
+	 * Label children
+	 */
+	children?: LabelChildren;
 	/**
 	 * Label required
 	 */
@@ -13,10 +19,6 @@ export interface LabelProps {
 	 * Label disabled
 	 */
 	disabled?: boolean;
-	/**
-	 * Label  label
-	 */
-	label: string;
 	/**
 	 * User-defined styling
 	 */

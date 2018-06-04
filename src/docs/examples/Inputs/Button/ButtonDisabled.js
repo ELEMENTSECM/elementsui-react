@@ -3,5 +3,9 @@ import Button from 'elementsui-react/Inputs/Button';
 
 /** Disabled button */
 export default function ButtonDisabled() {
-	return <Button htmlId="disabledBtn" label="Disabled button" disabled className="button-disabled" />;
+	return (
+		<Button id="disabledBtn" disabled className="button-disabled">
+			Disabled button
+		</Button>
+	);
 }

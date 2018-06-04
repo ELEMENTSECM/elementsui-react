@@ -51,7 +51,7 @@ const items = [
 export default function ContextualMenuPrimary() {
 	return (
 		<ContextualMenu
-			htmlId="contextualMenu"
+			id="contextualMenu"
 			isPrimary={true}
 			buttonText="Menu"
 			ariaLabel="Context Menu"

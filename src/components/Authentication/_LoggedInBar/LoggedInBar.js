@@ -1,39 +1,59 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-
+import Persona from '../../Content/Persona';
+import { styles } from './LoggedInBar.styles';
+import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
+import ElementsLogo from '../../Content/ElementsLogo';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { FormattedMessage } from 'react-intl';
 /** LoggedInBar example */
-function LoggedInBar({ name, handleLogoutClick, labels }) {
+export function LoggedInBar(props) {
+	const { currentUserName, tenant, styles, goBack, logout } = props;
+	const classNames = classNamesFunction()(styles, props);
+	const textStyle = { color: '#fff', fontSize: 10 };
 	return (
-		<MessageBar messageBarType={MessageBarType.info}>
-			{`${labels.loggedInAs} '${name}'. `}
-			<Link href="" onClick={handleLogoutClick}>
-				{labels.logout}
-			</Link>
-		</MessageBar>
+		<div className={classNames.root}>
+			<Icon iconName="ChevronLeftSmall" className={classNames.backButton} onClick={goBack} />
+			<ElementsLogo className={classNames.logo} color="#fff" width={145} />
+			<Persona
+				text={currentUserName}
+				secondaryText={tenant}
+				className={classNames.persona}
+				styles={() => ({
+					persona: { selectors: { ':hover': { color: '#fff' } } },
+					primaryText: textStyle,
+					secondaryText: textStyle
+				})}
+			/>
+			<ActionButton
+				className={classNames.logoutLink}
+				iconProps={{
+					iconName: 'PowerButton',
+					styles: () => ({
+						icon: {
+							color: '#fff'
+						}
+					})
+				}}
+				onClick={logout}>
+				<FormattedMessage id="logout" />
+			</ActionButton>
+		</div>
 	);
 }
 
 LoggedInBar.propTypes = {
 	/** Logged in user's name */
-	name: PropTypes.string,
-	/** Log ou mouse click event handler */
-	handleLogoutClick: PropTypes.func,
-	/** Labels */
-	labels: PropTypes.shape({
-		/** Log out button label */
-		logout: PropTypes.string,
-		/** Logged in label */
-		loggedInAs: PropTypes.string
-	})
+	currentUserName: PropTypes.string,
+	/** Current tenant */
+	tenant: PropTypes.string,
+	/** Logout function */
+	logout: PropTypes.func,
+	/** Return to tenant selection function */
+	goBack: PropTypes.func,
+	/** User-defined styling */
+	styles: PropTypes.func
 };
 
-LoggedInBar.defaultProps = {
-	labels: {
-		logout: 'Log out',
-		loggedInAs: 'You are logged in as'
-	}
-};
-
-export default LoggedInBar;
+export default styled(customizable('LoggedInBar', ['theme'])(LoggedInBar), styles);

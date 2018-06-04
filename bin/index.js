@@ -10,6 +10,7 @@ const path = require('path');
 const _ = require('lodash');
 const utils = require('./utils');
 const CONFIG_NAME = 'elementsui.config.json';
+const nls = require('./nls');
 
 function configExists() {
 	console.log(process.cwd());
@@ -19,6 +20,10 @@ function configExists() {
 function writeConfig(config) {
 	utils.writeFile(path.join(process.cwd(), CONFIG_NAME), JSON.stringify(config));
 	console.log(chalk.green(`${CONFIG_NAME} has been created.`));
+}
+
+function initNlsPrompt() {
+	prompt(prompts.nls).then(nls.addTranslations);
 }
 
 function initPrompt() {
@@ -71,5 +76,18 @@ program
 			initPrompt();
 		}
 	});
-
+program
+	.command('translate')
+	.alias('t')
+	.description('Add i18n record to <ComponentName>.nls.json')
+	.action(() => {
+		if (!configExists()) {
+			prompt(prompts.config).then(config => {
+				writeConfig(config);
+				initNlsPrompt();
+			});
+		} else {
+			initNlsPrompt();
+		}
+	});
 program.parse(process.argv);

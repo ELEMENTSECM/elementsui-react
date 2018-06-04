@@ -3,5 +3,5 @@ import Checkbox from 'elementsui-react/Inputs/Checkbox';
 
 /** Default Checkbox */
 export default function CheckboxDefault() {
-	return <Checkbox htmlId="defaultCheckbox" label="Default Checkbox" />;
+	return <Checkbox id="defaultCheckbox" label="Default Checkbox" />;
 }

@@ -1,50 +1,35 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import TenantSelector from './TenantSelector';
+import { IntlProvider } from 'react-intl';
+import json from '../Login/Login.nls.json';
 
 describe('TenantSelector', () => {
-	const tenants = [
-		{
-			_id: 'DATABASE 1',
-			_childId: 'CHILD_ID_1',
-			_scope: 'SCOPE_1',
-			elements: {
-				Authentication_BaseUrl: 'https://authurl.com',
-				Authentication_DefaultProvider: 'MiniWindowsIdp'
-			},
-			ncoreclient: {
-				BaseUrl: 'https://ncorebaseUrl.com'
-			}
-		},
-		{
-			_id: 'DATABASE 2',
-			_childId: 'CHILD_ID_2',
-			_scope: 'SCOPE_1',
-			elements: {
-				Authentication_BaseUrl: 'https://authurl.com',
-				Authentication_DefaultProvider: 'MiniWindowsIdp'
-			},
-			ncoreclient: {
-				BaseUrl: 'https://ncorebaseUrl.com'
-			}
-		}
-	];
-
-	const labels = {
-		login: 'Sign in',
-		logout: 'Sign out',
-		selectTenant: 'Select database',
-		loggedInAs: 'You are logged in as'
-	};
+	const tenants = [{ Id: 'ID_1', Description: 'ID_1_DESC' }];
 
 	test('displays tenants and labels correctly', () => {
-		const tree = renderer.create(<TenantSelector tenants={tenants} labels={labels} />).toJSON();
+		const tree = renderer
+			.create(
+				<IntlProvider locale="en" messages={json.en}>
+					<TenantSelector tenants={tenants} selectedTenant="ID_1" currentUserName="John Doe" />
+				</IntlProvider>
+			)
+			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	test('displays when logged in correctly', () => {
 		const tree = renderer
-			.create(<TenantSelector tenants={tenants} labels={labels} isLoggedIn={true} />)
+			.create(
+				<IntlProvider locale="en" messages={json.en}>
+					<TenantSelector
+						tenants={tenants}
+						isLoggedIn={true}
+						selectedTenant="ID_1"
+						currentUserName="John Doe"
+					/>
+				</IntlProvider>
+			)
 			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

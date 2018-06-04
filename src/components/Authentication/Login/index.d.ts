@@ -1,49 +1,58 @@
 import * as React from 'react';
 
-export interface LoginAppConfig {
-	configServerUrl: string;
-	configServerAuth: string;
-	configServerReq: string;
-	idpClient: string;
-	baseUri: string;
-	idpRedirectUri: string;
-	extSystemName: string;
+export interface LoginModules {
+	Id?: string;
+	LicenseName?: string;
+	Name?: string;
+	TenantRequired?: boolean;
+	VisibleInSelector?: boolean;
 }
 
-export interface LoginLabels {
-	login?: string;
-	logout?: string;
-	selectTenant?: string;
-	loggedInAs?: string;
+export interface LoginTenants {
+	Id?: string;
+	Description?: string;
+}
+
+export interface LoginPaths {
+	applicationPath: string;
+	baseUrl: string;
 }
 
 export interface LoginProps {
 	/**
-	 * ConfigServer settings
+	 * Locale (en, nb, etc.)
 	 */
-	appConfig: LoginAppConfig;
+	locale?: string;
 	/**
-	 * Current ID token
+	 * List of available modules
 	 */
-	currentIdToken?: string;
+	modules?: LoginModules[];
 	/**
-	 * Current access token
+	 * List of available tenants
 	 */
-	currentAccessToken?: string;
+	tenants?: LoginTenants[];
 	/**
-	 * Logged in person's name
+	 * Elements module Id
 	 */
-	name?: string;
+	moduleId?: string;
+	/**
+	 * If tenant needs to be reset
+	 */
+	resetTenant?: boolean;
+	/**
+	 * Application base paths
+	 */
+	paths: LoginPaths;
 	/**
 	 * Redux actions
 	 */
 	actions?: Object;
 	/**
-	 * Labels
+	 * User-defined styling
 	 */
-	labels?: LoginLabels;
+	styles?: (...args: any[]) => any;
 }
 
-export default class Login extends React.Component<LoginProps, any> {
-	render(): JSX.Element;
-}
+declare const Login: React.SFC<LoginProps>;
+
+export default Login;

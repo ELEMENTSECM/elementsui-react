@@ -1,14 +1,20 @@
 import * as React from 'react';
 
+export type ButtonChildren = React.ReactNode[] | React.ReactNode;
+
 export interface ButtonProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
-	 * Button label
+	 * Button label (children are ignored if label is defined)
 	 */
 	label?: string;
+	/**
+	 * Button children
+	 */
+	children?: ButtonChildren;
 	/**
 	 * Button is disabled
 	 */

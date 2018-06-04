@@ -46,7 +46,7 @@ export default function BasePickerDefault() {
 
 	return (
 		<BasePicker
-			htmlId="basePicker"
+			id="basePicker"
 			focus={true}
 			focusInput={true}
 			onResolveSuggestions={_whenFiltering}

@@ -15,19 +15,53 @@ class ModulePickerComponent extends React.Component {
 		};
 	}
 
-	selectModule(e) {
-		this.setState({ selectedModuleId: e.target.value });
+	selectModule = (e, cb) => {
+		const moduleId = e.target.value;
+		this.setState({ selectedModuleId: moduleId }, () => cb && cb(moduleId));
+	};
+
+	enterModule = e => {
+		const isClickEvent = e.type === 'click' && e.clientX !== 0 && e.clientY !== 0;
+		const isSubmitEvent = e.type === 'submit';
+		if (isSubmitEvent) {
+			e.preventDefault();
+			this.redirectToModule();
+		} else {
+			this.selectModule(e, moduleId => {
+				if (isClickEvent || isSubmitEvent) {
+					const { tenantId, applicationPath } = this.props;
+					window.location.href = `${applicationPath}/${moduleId}/${tenantId}`;
+				}
+			});
+		}
+	};
+
+	redirectToModule = () => {
+		const { tenantId, applicationPath } = this.props;
+		window.location.href = `${applicationPath}/${this.state.selectedModuleId}/${tenantId}`;
+	};
+
+	componentDidMount() {
+		this.form && this.form.focus();
 	}
 
 	render() {
 		const { modules } = this.props;
 		return (
-			<div htmlId={this.props.htmlId} className={this.classNames.root}>
+			<form
+				id={this.props.id}
+				className={this.classNames.root}
+				onSubmit={e => this.enterModule(e)}
+				ref={form => (this.form = form)}>
 				<ul className={this.classNames.list}>
-					{modules.map(x => {
+					{modules.map((x, index) => {
 						const isSelected = x.Id === this.state.selectedModuleId;
 						return (
-							<li key={x.Id} className={this.classNames.listItem}>
+							<li
+								key={x.Id}
+								tabIndex={index}
+								className={this.classNames.listItem}
+								onClick={e => this.enterModule(e)}>
 								<input
 									type="radio"
 									name="selector"
@@ -35,7 +69,6 @@ class ModulePickerComponent extends React.Component {
 									value={x.Id}
 									checked={isSelected}
 									className={this.classNames.radio}
-									onChange={this.selectModule.bind(this)}
 								/>
 								<label htmlFor={x.Id} className={this.classNames.moduleItem}>
 									<span
@@ -61,7 +94,8 @@ class ModulePickerComponent extends React.Component {
 						);
 					})}
 				</ul>
-			</div>
+				<input type="submit" className={this.classNames.submit} />
+			</form>
 		);
 	}
 }
@@ -69,7 +103,11 @@ export const ModulePicker = ModulePickerComponent;
 
 ModulePicker.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
+	/** Application path */
+	applicationPath: PropTypes.string,
+	/** Selected tenant */
+	tenantId: PropTypes.string,
 	/** Array of modules */
 	modules: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -83,7 +121,11 @@ ModulePicker.propTypes = {
 
 ModulePickerComponent.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
+	/** Application path */
+	applicationPath: PropTypes.string,
+	/** Selected tenant */
+	tenantId: PropTypes.string,
 	/** Array of modules */
 	modules: PropTypes.arrayOf(
 		PropTypes.shape({

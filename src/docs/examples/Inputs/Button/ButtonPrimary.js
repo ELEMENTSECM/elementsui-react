@@ -3,5 +3,9 @@ import Button from 'elementsui-react/Inputs/Button';
 
 /** Primary button */
 export default function ButtonPrimary() {
-	return <Button htmlId="primaryBtn" label="Default button" isPrimary={true} className="button-primary" />;
+	return (
+		<Button id="primaryBtn" isPrimary={true} className="button-primary">
+			Primary button
+		</Button>
+	);
 }

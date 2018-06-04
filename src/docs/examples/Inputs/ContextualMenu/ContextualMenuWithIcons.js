@@ -160,7 +160,7 @@ const itemsWithIconsAndSubItems = [
 export default function ContextualMenuWithIcons() {
 	return (
 		<ContextualMenu
-			htmlId="contextualMenuWithIcons"
+			id="contextualMenuWithIcons"
 			isPrimary={false}
 			buttonText="Menu with icons"
 			ariaLabel="Context menu with icons"

@@ -1,7 +1,6 @@
 const cwd = process.cwd();
 
 const mkdirp = require('mkdirp');
-const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const utils = require('./utils');

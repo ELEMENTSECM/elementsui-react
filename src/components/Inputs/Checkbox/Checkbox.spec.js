@@ -5,7 +5,7 @@ import Checkbox from './Checkbox';
 describe('Checkbox', () => {
 	test('displays `Foo` as label', () => {
 		const tree = renderer
-			.create(<Checkbox htmlId="defaultCheckbox" label="" />)
+			.create(<Checkbox id="defaultCheckbox" label="" />)
 			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

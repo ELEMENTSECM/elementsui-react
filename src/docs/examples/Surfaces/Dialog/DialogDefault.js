@@ -42,14 +42,14 @@ export default class DialogDefault extends React.Component {
 					<div>Render custom content here</div>
 					<DialogFooter>
 						<Button
-							htmlId="cancelBtn"
+							id="cancelBtn"
 							label="Cancel"
 							isPrimary={false}
 							className="button-default"
 							onClick={this.toggleDialog}
 						/>
 						<Button
-							htmlId="okBtn"
+							id="okBtn"
 							label="OK"
 							isPrimary={true}
 							className="button-primary"

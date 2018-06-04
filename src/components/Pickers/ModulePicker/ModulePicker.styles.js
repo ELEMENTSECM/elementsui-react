@@ -99,6 +99,11 @@ export const styles = props => {
 				padding: '5px 0 4px',
 				display: 'block'
 			}
+		],
+		submit: [
+			{
+				display: 'none'
+			}
 		]
 	};
 };

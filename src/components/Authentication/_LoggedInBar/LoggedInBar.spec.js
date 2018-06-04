@@ -4,11 +4,7 @@ import LoggedInBar from './LoggedInBar';
 
 describe('LoggedInBar', () => {
 	test('displays correctly', () => {
-		const tree = renderer
-			.create(
-				<LoggedInBar name="John Doe" labels={{ logout: 'Sign out', loggedInAs: 'Logged in as' }} />
-			)
-			.toJSON();
+		const tree = renderer.create(<LoggedInBar currentUserName="John Doe" tenant="test" />).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 });

@@ -42,14 +42,14 @@ export default class DialogDefault extends React.Component {
 					<span>
 						<DialogFooter>
 							<Button
-								htmlId="cancelBtnBlocking"
+								id="cancelBtnBlocking"
 								label="Cancel"
 								isPrimary={false}
 								className="button-default"
 								onClick={this.toggleDialog}
 							/>
 							<Button
-								htmlId="okBtnBlocking"
+								id="okBtnBlocking"
 								label="OK"
 								isPrimary={true}
 								className="button-primary"

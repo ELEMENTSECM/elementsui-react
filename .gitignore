@@ -27,3 +27,4 @@ launch.json
 .idea
 config/componentData.js
 /umd
+/bin/lastUsed.txt

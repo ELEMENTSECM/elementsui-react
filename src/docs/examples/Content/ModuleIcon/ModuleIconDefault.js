@@ -3,11 +3,12 @@ import ModuleIcon from 'elementsui-react/Content/ModuleIcon';
 
 /** Elements module icons */
 export default function ModuleIconDefault() {
-	const modules = ['rm', 'mm', 'sa', 'eb'];
 	return (
 		<div>
-			{modules.map(moduleId => (
-				<ModuleIcon key={moduleId} color="#2d8498" size={100} moduleId={moduleId} />
+			{['rm', 'mm', 'sa', 'eb'].map(moduleId => (
+				<div key={moduleId} style={{ height: 100 }}>
+					<ModuleIcon color="#2d8498" size={60} moduleId={moduleId} />
+				</div>
 			))}
 		</div>
 	);
