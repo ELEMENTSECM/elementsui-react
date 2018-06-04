@@ -32,6 +32,14 @@ Persona.propTypes = {
 	tertiaryText: PropTypes.string,
 	/** Optional text */
 	optionalText: PropTypes.string,
+	/** Primary text color */
+	primaryTextColor: PropTypes.string,
+	/** Secondary text color */
+	secondaryTextColor: PropTypes.string,
+	/** Tertiary text color */
+	tertiaryTextColor: PropTypes.string,
+	/** Optional text color */
+	optionalTextColor: PropTypes.string,
 	/** User-defined styling */
 	getStyles: PropTypes.func
 };

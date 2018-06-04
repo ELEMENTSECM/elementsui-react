@@ -1,6 +1,5 @@
 export const getStyles = props => {
-	const { className, theme } = props;
-	const { palette, semanticColors } = theme;
+	const { className, primaryTextColor, secondaryTextColor, tertiaryTextColor, optionalTextColor } = props;
 
 	return {
 		root: [
@@ -10,6 +9,32 @@ export const getStyles = props => {
 				// place your styles here
 			},
 			className
+		],
+		primaryText: [
+			{
+				color: primaryTextColor,
+				fontWeight: 'bold',
+				selectors: {
+					':hover': {
+						color: primaryTextColor
+					}
+				}
+			}
+		],
+		secondaryText: [
+			{
+				color: secondaryTextColor
+			}
+		],
+		tertiaryText: [
+			{
+				color: tertiaryTextColor
+			}
+		],
+		optionalText: [
+			{
+				color: optionalTextColor
+			}
 		]
 	};
 };
