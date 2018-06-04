@@ -22,6 +22,22 @@ export interface PersonaProps {
 	 */
 	optionalText?: string;
 	/**
+	 * Primary text color
+	 */
+	primaryTextColor?: string;
+	/**
+	 * Secondary text color
+	 */
+	secondaryTextColor?: string;
+	/**
+	 * Tertiary text color
+	 */
+	tertiaryTextColor?: string;
+	/**
+	 * Optional text color
+	 */
+	optionalTextColor?: string;
+	/**
 	 * User-defined styling
 	 */
 	getStyles?: (...args: any[]) => any;

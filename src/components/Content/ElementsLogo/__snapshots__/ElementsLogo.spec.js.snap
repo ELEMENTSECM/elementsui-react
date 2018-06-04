@@ -1,15 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Persona displays correctly 1`] = `
+exports[`ElementsLogo displays correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <StyledCustomizedPersona
-    primaryText="John Doe"
-    primaryTextColor="blue"
-    secondaryText="Developer"
-    secondaryTextColor="red"
-  />,
+  Symbol(enzyme.__unrendered__): <StyledCustomizedElementsLogo />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -23,10 +18,6 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "getStyles": [Function],
-      "primaryText": "John Doe",
-      "primaryTextColor": "blue",
-      "secondaryText": "Developer",
-      "secondaryTextColor": "red",
     },
     "ref": null,
     "rendered": null,
@@ -39,10 +30,6 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "getStyles": [Function],
-        "primaryText": "John Doe",
-        "primaryTextColor": "blue",
-        "secondaryText": "Developer",
-        "secondaryTextColor": "red",
       },
       "ref": null,
       "rendered": null,
