@@ -4,11 +4,11 @@ import { getStyles } from './ModuleIcon.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function ModuleIcon(props) {
-	const { getStyles, moduleId, color } = props;
+	const { getStyles, moduleId, color, size } = props;
 	const classNames = classNamesFunction()(getStyles, props);
 	const icons = {
 		rm: (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.88 164.89" fill={color}>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.88 164.89" fill={color} width={size}>
 				<title>Record management module</title>
 				<g id="Layer_2" data-name="Layer 2">
 					<g id="Layer_1-2" data-name="Layer 1">
@@ -19,7 +19,7 @@ export function ModuleIcon(props) {
 			</svg>
 		),
 		sa: (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252.09 198.97" fill={color}>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252.09 198.97" fill={color} height={size}>
 				<title>System administration module</title>
 				<g id="Layer_2" data-name="Layer 2">
 					<g id="Layer_1-2" data-name="Layer 1">
@@ -30,7 +30,7 @@ export function ModuleIcon(props) {
 			</svg>
 		),
 		mm: (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 262.46 164.76" fill={color}>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 262.46 164.76" fill={color} height={size}>
 				<title>Meeting module</title>
 				<g id="Layer_2" data-name="Layer 2">
 					<g id="Layer_1-2" data-name="Layer 1">
@@ -42,7 +42,7 @@ export function ModuleIcon(props) {
 			</svg>
 		),
 		eb: (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.14 165.04" fill={color}>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.14 165.04" fill={color} width={size}>
 				<title>eBuildingCase module</title>
 				<g id="Layer_2" data-name="Layer 2">
 					<g id="Layer_1-2" data-name="Layer 1">

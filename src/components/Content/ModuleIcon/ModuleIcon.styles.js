@@ -1,14 +1,7 @@
 export const getStyles = props => {
-	const { size, className } = props;
+	const { className } = props;
 
 	return {
-		root: [
-			'ModuleIcon',
-			{
-				width: size,
-				height: size
-			},
-			className
-		]
+		root: ['ModuleIcon', {}, className]
 	};
 };
