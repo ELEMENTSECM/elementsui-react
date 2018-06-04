@@ -1,11 +1,10 @@
 export const getStyles = props => {
-	const { size, className } = props;
+	const { className, size } = props;
 
 	return {
 		root: [
 			'ModuleIcon',
 			{
-				width: size,
 				height: size
 			},
 			className
