@@ -3,7 +3,7 @@ import Persona from 'elementsui-react/Content/Persona';
 
 /** Styled persona: the styles defined in getStyles prop will be merged with the existing ones */
 export default function PersonaStyled() {
-	const getStyles = props => {
+	const getStyles = () => {
 		return {
 			root: {
 				background: '#2d8498'
