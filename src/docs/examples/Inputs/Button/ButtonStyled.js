@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Button from 'elementsui-react/Inputs/Button';
 
-/** Styled button: the styles defined in getStyles prop will be merged with the existing ones */
+/** Styled button: the styles defined in styles prop will be merged with the existing ones */
 export default function ButtonStyled() {
-	const getStyles = props => {
+	const styles = props => {
 		const { className, theme, isPrimary } = props;
 		const { palette, semanticColors } = theme;
 
@@ -25,7 +25,7 @@ export default function ButtonStyled() {
 			label="Default button"
 			isPrimary={true}
 			className="button-primary"
-			getStyles={getStyles}
+			styles={styles}
 		/>
 	);
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel as UIFabPanel } from 'office-ui-fabric-react/lib/Panel';
-import { getStyles } from './Panel.styles';
+import { styles } from './Panel.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /**Panel example */
@@ -15,9 +15,9 @@ export function Panel(props) {
 		closebuttonAriaLabel,
 		className,
 		theme,
-		getStyles
+		styles
 	} = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const classNames = classNamesFunction()(styles, props);
 
 	return (
 		<UIFabPanel
@@ -47,7 +47,7 @@ Panel.propTypes = {
 	/**Panel hasCloseButton */
 	hasCloseButton: PropTypes.bool,
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
-export default styled(customizable('Panel', ['theme'])(Panel), getStyles);
+export default styled(customizable('Panel', ['theme'])(Panel), styles);

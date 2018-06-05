@@ -22,7 +22,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "getStyles": [Function],
+      "styles": [Function],
       "primaryText": "John Doe",
       "primaryTextColor": "blue",
       "secondaryText": "Developer",
@@ -38,7 +38,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "getStyles": [Function],
+        "styles": [Function],
         "primaryText": "John Doe",
         "primaryTextColor": "blue",
         "secondaryText": "Developer",

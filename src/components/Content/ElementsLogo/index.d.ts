@@ -12,7 +12,7 @@ export interface ElementsLogoProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const ElementsLogo: React.SFC<ElementsLogoProps>;

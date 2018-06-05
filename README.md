@@ -36,10 +36,10 @@ If the tool is used for the first time in the current project you will be asked 
 
 ## Custom styling
 
-To apply custom styling to any component you should implement 'getStyles' function
+To apply custom styling to any component you should implement 'styles' function
 
 ```javascript
-const getStyles = props => {
+const styles = props => {
 	const { className, theme, isPrimary } = props;
 	const { palette, semanticColors } = theme;
 
@@ -64,7 +64,7 @@ const getStyles = props => {
 	label="Default button"
 	isPrimary={true}
 	className="button-primary"
-	getStyles={getStyles}
+	styles={styles}
 />
 ```
 

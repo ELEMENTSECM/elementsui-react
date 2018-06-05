@@ -1,14 +1,14 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { getStyles } from './ModulePicker.styles';
+import { styles } from './ModulePicker.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 import ModuleIcon from '../../Content/ModuleIcon';
 
 class ModulePickerComponent extends React.Component {
 	constructor(props) {
 		super(props);
-		const { getStyles } = props;
-		this.classNames = classNamesFunction()(getStyles, props);
+		const { styles } = props;
+		this.classNames = classNamesFunction()(styles, props);
 
 		this.state = {
 			selectedModuleId: null
@@ -91,4 +91,4 @@ ModulePickerComponent.propTypes = {
 	)
 };
 
-export default styled(customizable('ModulePicker', ['theme'])(ModulePicker), getStyles);
+export default styled(customizable('ModulePicker', ['theme'])(ModulePicker), styles);

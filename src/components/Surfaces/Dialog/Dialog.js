@@ -1,21 +1,20 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog as UIFabDialog } from 'office-ui-fabric-react/lib/Dialog';
-import { getStyles } from './Dialog.styles';
+import { styles } from './Dialog.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Dialog example */
 export function Dialog(props) {
-	const { hidden, onDismiss, dialogContentProps, modalProps, className, theme, getStyles } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { hidden, onDismiss, dialogContentProps, modalProps, styles } = props;
+	const classNames = classNamesFunction()(styles, props);
 
 	return (
 		<UIFabDialog
-			className={classNames.root}
 			hidden={hidden}
 			onDismiss={onDismiss}
 			dialogContentProps={dialogContentProps}
-			modalProps={modalProps}>
+			modalProps={Object.assign({ className: classNames.root }, ...modalProps)}>
 			{props.children}
 		</UIFabDialog>
 	);
@@ -39,7 +38,7 @@ Dialog.propTypes = {
 		containerClassName: PropTypes.string
 	}),
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
-export default styled(customizable('Dialog', ['theme'])(Dialog), getStyles);
+export default styled(customizable('Dialog', ['theme'])(Dialog), styles);

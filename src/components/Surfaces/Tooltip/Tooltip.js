@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TooltipHost as UIFabTooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { getStyles } from './Tooltip.styles';
+import { styles } from './Tooltip.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /**Tooltip example */
 export function Tooltip(props) {
-	const { content, className, theme, getStyles } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { content, className, theme, styles } = props;
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<div>
 			<UIFabTooltipHost className={classNames.root} content={content}>
@@ -21,7 +21,7 @@ Tooltip.propTypes = {
 	/**Tooltip content */
 	content: PropTypes.string,
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
-export default styled(customizable('Tooltip', ['theme'])(Tooltip), getStyles);
+export default styled(customizable('Tooltip', ['theme'])(Tooltip), styles);

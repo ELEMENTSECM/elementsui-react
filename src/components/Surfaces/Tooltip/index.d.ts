@@ -8,7 +8,7 @@ export interface TooltipProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const Tooltip: React.SFC<TooltipProps>;

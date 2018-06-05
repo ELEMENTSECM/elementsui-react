@@ -22,7 +22,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "color": "red",
-      "getStyles": [Function],
+      "styles": [Function],
       "moduleId": "rm",
       "size": 200,
     },
@@ -37,7 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "color": "red",
-        "getStyles": [Function],
+        "styles": [Function],
         "moduleId": "rm",
         "size": 200,
       },

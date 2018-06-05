@@ -166,9 +166,9 @@ export default function ContextualMenuWithIcons() {
 			ariaLabel="Context menu with icons"
 			menuProps={{
 				items: itemsWithIconsAndSubItems,
-				shouldFocusOnMount: true,
-				icon: 'Mail'
+				shouldFocusOnMount: true
 			}}
+			menuIconProps={{ iconName: 'Mail' }}
 		/>
 	);
 }

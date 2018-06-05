@@ -4,6 +4,12 @@ export interface ContextualMenuMenuProps {
 	items?: any[];
 }
 
+export interface ContextualMenuMenuIconProps {
+	iconName?: string;
+	ariaLabel?: string;
+	iconType?: 0 | 1;
+}
+
 export interface ContextualMenuProps {
 	/**
 	 * ContextualMenu primary
@@ -22,9 +28,13 @@ export interface ContextualMenuProps {
 	 */
 	menuProps: ContextualMenuMenuProps;
 	/**
+	 * Contextual menu icon properties
+	 */
+	menuIconProps?: ContextualMenuMenuIconProps;
+	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const ContextualMenu: React.SFC<ContextualMenuProps>;

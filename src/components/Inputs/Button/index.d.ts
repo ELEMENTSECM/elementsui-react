@@ -20,7 +20,7 @@ export interface ButtonProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const Button: React.SFC<ButtonProps>;

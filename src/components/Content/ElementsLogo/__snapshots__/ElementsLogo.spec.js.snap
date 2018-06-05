@@ -17,7 +17,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "getStyles": [Function],
+      "styles": [Function],
     },
     "ref": null,
     "rendered": null,
@@ -29,7 +29,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "getStyles": [Function],
+        "styles": [Function],
       },
       "ref": null,
       "rendered": null,

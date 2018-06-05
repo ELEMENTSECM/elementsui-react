@@ -16,7 +16,7 @@ export interface LinkProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const Link: React.SFC<LinkProps>;
