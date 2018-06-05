@@ -8,7 +8,7 @@ export interface SpinnerProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const Spinner: React.SFC<SpinnerProps>;

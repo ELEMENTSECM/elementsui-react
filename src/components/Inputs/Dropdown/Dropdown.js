@@ -1,13 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown as UIFabDropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { getStyles } from './Dropdown.styles';
+import { styles } from './Dropdown.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** Dropdown example */
 export function Dropdown(props) {
-	const { id, label, selectedKey, placeHolder, options, onChange, className, theme, getStyles } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { id, label, selectedKey, placeHolder, options, onChange, className, theme, styles } = props;
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<UIFabDropdown
 			id={id}
@@ -44,7 +44,7 @@ Dropdown.propTypes = {
 	/** onChange event handler function */
 	onChange: PropTypes.func,
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
-export default styled(customizable('Dropdown', ['theme'])(Dropdown), getStyles);
+export default styled(customizable('Dropdown', ['theme'])(Dropdown), styles);

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { getStyles } from './Box.styles';
+import { styles } from './Box.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function Box(props) {
-	const { getStyles, children, height, width, backgroundColor } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { styles, children, height, width, backgroundColor } = props;
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<div className={classNames.root} style={{ height, width, backgroundColor }}>
 			{children}
@@ -24,4 +24,4 @@ Box.propTypes = {
 	backgroundColor: PropTypes.string
 };
 
-export default styled(customizable('Box', ['theme'])(Box), getStyles);
+export default styled(customizable('Box', ['theme'])(Box), styles);

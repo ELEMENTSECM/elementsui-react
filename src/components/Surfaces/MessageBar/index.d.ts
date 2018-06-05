@@ -18,7 +18,7 @@ export interface MessageBarProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const MessageBar: React.SFC<MessageBarProps>;

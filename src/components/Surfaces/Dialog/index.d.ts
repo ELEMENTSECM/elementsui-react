@@ -32,7 +32,7 @@ export interface DialogProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const Dialog: React.SFC<DialogProps>;

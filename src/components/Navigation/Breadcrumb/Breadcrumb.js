@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb as UIFabBreadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { getStyles } from './Breadcrumb.styles';
+import { styles } from './Breadcrumb.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function Breadcrumb(props) {
-	const { items, ariaLabel, maxDisplayedItems, className, theme, getStyles } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { items, ariaLabel, maxDisplayedItems, className, theme, styles } = props;
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<UIFabBreadcrumb
 			className={classNames.root}
@@ -25,7 +25,7 @@ Breadcrumb.propTypes = {
 	/** The actual crumb elements */
 	items: PropTypes.array,
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
-export default styled(customizable('Breadcrumb', ['theme'])(Breadcrumb), getStyles);
+export default styled(customizable('Breadcrumb', ['theme'])(Breadcrumb), styles);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TeachingBubble as UIFabTeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { getStyles } from './TeachingBubble.styles';
+import { styles } from './TeachingBubble.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** TeachingBubble example */
@@ -13,9 +13,9 @@ export function TeachingBubble(props) {
 		isTeachingBubbleVisible,
 		className,
 		theme,
-		getStyles
+		styles
 	} = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<div>
 			<UIFabTeachingBubble
@@ -40,7 +40,7 @@ TeachingBubble.propTypes = {
 	/**isTeachingBubbleVisible */
 	isTeachingBubbleVisible: PropTypes.bool,
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
-export default styled(customizable('TeachingBubble', ['theme'])(TeachingBubble), getStyles);
+export default styled(customizable('TeachingBubble', ['theme'])(TeachingBubble), styles);

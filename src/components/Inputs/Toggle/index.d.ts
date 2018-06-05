@@ -20,7 +20,7 @@ export interface ToggleProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const Toggle: React.SFC<ToggleProps>;

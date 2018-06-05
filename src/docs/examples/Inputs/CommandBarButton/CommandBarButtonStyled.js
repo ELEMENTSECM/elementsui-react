@@ -1,9 +1,9 @@
 import * as React from 'react';
 import CommandBarButton from 'elementsui-react/Inputs/CommandBarButton';
 
-/** Styled CommandBarButton: the styles defined in getStyles prop will be merged with the existing ones */
+/** Styled CommandBarButton: the styles defined in styles prop will be merged with the existing ones */
 export default function ButtonStyled() {
-	const getStyles = props => {
+	const styles = props => {
 		const { className, theme } = props;
 		const { palette, semanticColors } = theme;
 
@@ -19,5 +19,5 @@ export default function ButtonStyled() {
 		};
 	};
 
-	return <CommandBarButton text="Styled button" getStyles={getStyles} iconName="Highlight" />;
+	return <CommandBarButton text="Styled button" styles={styles} iconName="Highlight" />;
 }

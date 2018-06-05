@@ -6,7 +6,7 @@ const statefulComponentTemplate = (componentName, { container, styled }) =>
 		this.state = {}${
 			styled
 				? `
-		this.classNames = classNamesFunction()(getStyles, this.props);`
+		this.classNames = classNamesFunction()(styles, this.props);`
 				: ''
 		}
 	}
@@ -30,22 +30,22 @@ const componentPropsTemplate = (componentName, { stateful, container, styled }) 
 
 const statelessComponentTemplate = (componentName, { container, styled }) =>
 	`${styled ? 'export ' : ''}function ${componentName}(props) {
-	const { getStyles, label } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { styles, label } = props;
+	const classNames = classNamesFunction()(styles, props);
 	return <div className=${styled ? '{classNames.root}' : '"' + componentName.toLowerCase() + '"'}>{label}</div>;
 };`;
 
 const exportTemplate = (componentName, { container, styled }) =>
 	`export default ${
 		styled
-			? `styled(customizable(\'${componentName}\', [\'theme\'])(${componentName}), getStyles);`
+			? `styled(customizable(\'${componentName}\', [\'theme\'])(${componentName}), styles);`
 			: componentName
 	};`;
 
 const componentTemplate = (componentName, { stateful, container, styled }) =>
 	`import * as React from 'react';
 import PropTypes from 'prop-types';
-import { getStyles } from './${componentName}.styles';
+import { styles } from './${componentName}.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 ${
@@ -84,7 +84,7 @@ function ${pageName}(props) {
 	)
 }${exportTemplate(pageName, { container: false })}`;
 
-const componentStyleTemplate = componentName => `export const getStyles = props => {
+const componentStyleTemplate = componentName => `export const styles = props => {
 	const { className, theme } = props;
 	const { palette, semanticColors } = theme;
 

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { getStyles } from './ModuleIcon.styles';
+import { styles } from './ModuleIcon.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function ModuleIcon(props) {
-	const { getStyles, moduleId, color, size } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { styles, moduleId, color, size } = props;
+	const classNames = classNamesFunction()(styles, props);
 	const icons = {
 		rm: (
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.88 164.89" fill={color} width={size}>
@@ -67,4 +67,4 @@ ModuleIcon.propTypes = {
 	size: PropTypes.number
 };
 
-export default styled(customizable('ModuleIcon', ['theme'])(ModuleIcon), getStyles);
+export default styled(customizable('ModuleIcon', ['theme'])(ModuleIcon), styles);

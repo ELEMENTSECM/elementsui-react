@@ -1,12 +1,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { getStyles } from './InputField.styles';
+import { styles } from './InputField.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function InputField(props) {
-	const { placeholder, required, disabled, errorMessage, className, theme, getStyles } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { placeholder, required, disabled, errorMessage, className, theme, styles } = props;
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<TextField
 			className={classNames.root}
@@ -28,7 +28,7 @@ InputField.propTypes = {
 	/** Error message shown under the input field */
 	errorMessage: PropTypes.string,
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
 InputField.defaultProps = {
@@ -36,4 +36,4 @@ InputField.defaultProps = {
 	required: false
 };
 
-export default styled(customizable('InputField', ['theme'])(InputField), getStyles);
+export default styled(customizable('InputField', ['theme'])(InputField), styles);

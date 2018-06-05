@@ -34,7 +34,7 @@ export interface DropdownProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const Dropdown: React.SFC<DropdownProps>;

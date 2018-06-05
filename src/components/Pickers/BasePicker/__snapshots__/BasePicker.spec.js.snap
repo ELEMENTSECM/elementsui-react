@@ -2,27 +2,19 @@
 
 exports[`BasePickerProps displays basepicker correctly 1`] = `
 <div
-  className="ms-BasePicker ms-BasePicker root-38"
+  className="ms-BasePicker ms-BasePicker root-40"
   onKeyDown={[Function]}
 >
   <div
     aria-describedby={undefined}
     aria-labelledby={undefined}
     className="ms-FocusZone"
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <div
-      aria-live="assertive"
-      className="screenReaderOnly_bb53ed0e"
-      id="selected-suggestion-alert"
-      role="alert"
-    >
-       
-    </div>
     <div
       className="ms-SelectionZone"
       onClick={[Function]}
@@ -36,7 +28,7 @@ exports[`BasePickerProps displays basepicker correctly 1`] = `
       role="presentation"
     >
       <div
-        className="ms-BasePicker-text pickerText_bb53ed0e"
+        className="ms-BasePicker-text pickerText_4fe0caaf"
         role="list"
       >
         <input
@@ -47,7 +39,7 @@ exports[`BasePickerProps displays basepicker correctly 1`] = `
           aria-owns={undefined}
           autoCapitalize="off"
           autoComplete="off"
-          className="ms-BasePicker-input pickerInput_bb53ed0e"
+          className="ms-BasePicker-input pickerInput_4fe0caaf"
           data-lpignore={true}
           disabled={undefined}
           onBlur={[Function]}

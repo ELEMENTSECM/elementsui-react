@@ -20,7 +20,7 @@ export interface TeachingBubbleProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const TeachingBubble: React.SFC<TeachingBubbleProps>;

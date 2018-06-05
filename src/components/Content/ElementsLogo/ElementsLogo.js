@@ -1,11 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { getStyles } from './ElementsLogo.styles';
+import { styles } from './ElementsLogo.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function ElementsLogo(props) {
-	const { color, width, getStyles } = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const { color, width, styles } = props;
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<svg
 			className={classNames.root}
@@ -76,7 +76,7 @@ ElementsLogo.propTypes = {
 	/** Logo width */
 	width: PropTypes.number,
 	/** User-defined styling */
-	getStyles: PropTypes.func
+	styles: PropTypes.func
 };
 
-export default styled(customizable('ElementsLogo', ['theme'])(ElementsLogo), getStyles);
+export default styled(customizable('ElementsLogo', ['theme'])(ElementsLogo), styles);

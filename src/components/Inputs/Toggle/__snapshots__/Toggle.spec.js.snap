@@ -2,31 +2,31 @@
 
 exports[`Toggle displays \`Foo\` as label 1`] = `
 <div
-  className="ms-Toggle is-checked is-enabled root-34"
+  className="ms-Toggle is-checked is-enabled root-41"
 >
   <label
-    className="ms-Label ms-Toggle-label label-40"
-    htmlFor="Toggle0"
+    className="ms-Label ms-Toggle-label label-47"
+    htmlFor="Toggle1"
   >
     Foo
   </label>
   <div
-    className="ms-Toggle-innerContainer container-36"
+    className="ms-Toggle-innerContainer container-43"
   >
     <button
       aria-disabled={false}
       aria-label="Foo"
       aria-pressed={true}
-      className="ms-Toggle-background pill-37"
+      className="ms-Toggle-background pill-44"
       data-is-focusable={true}
       disabled={false}
-      id="Toggle0"
+      id="Toggle1"
       onChange={[Function]}
       onClick={[Function]}
       type="button"
     >
       <div
-        className="ms-Toggle-thumb thumb-38"
+        className="ms-Toggle-thumb thumb-45"
       />
     </button>
   </div>

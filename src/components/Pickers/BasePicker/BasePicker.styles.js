@@ -1,4 +1,4 @@
-export const getStyles = props => {
+export const styles = props => {
 	const { className, theme } = props;
 	const { palette, semanticColors } = theme;
 

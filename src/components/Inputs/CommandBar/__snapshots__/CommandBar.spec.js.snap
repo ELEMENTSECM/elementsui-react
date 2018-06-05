@@ -2,57 +2,67 @@
 
 exports[`CommandBar displays \`Foo\` as text 1`] = `
 <div
-  className="ms-CommandBar root_6e89cb9f ms-Button root-37"
+  className="ms-ResizeGroup ms-Button root-44"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
-    className="ms-FocusZone container_6e89cb9f"
-    data-focuszone-id="FocusZone1"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-    role="menubar"
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
-      className="ms-CommandBar-primaryCommands primaryCommands_6e89cb9f"
+      aria-describedby={undefined}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      className="ms-FocusZone ms-CommandBar ms-Button root-41"
+      data-focuszone-id="FocusZone1"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="menubar"
     >
       <div
-        className="ms-CommandBarItem item_6e89cb9f"
+        className="ms-OverflowSet root_8ddbc6c5 ms-CommandBar-primaryCommand primarySet-42"
+        role="presentation"
       >
-        <button
-          aria-disabled={undefined}
-          aria-expanded={undefined}
-          aria-haspopup={false}
-          aria-label={undefined}
-          aria-posinset={1}
-          aria-setsize={1}
-          className="ms-CommandBarItem-link itemLink_6e89cb9f"
-          data-command-key="upload"
-          icon="Upload"
-          id="CommandBar0upload"
-          name="Upload"
-          onClick={[Function]}
-          role="menuitem"
-          title=""
+        <div
+          className="ms-OverflowSet-item item_8ddbc6c5"
         >
-          <i
-            aria-hidden={true}
-            className="root-38 ms-CommandBarItem-icon itemIcon_6e89cb9f ms-CommandBarItem-iconColor itemIconColor_6e89cb9f"
-            data-icon-name="Upload"
-            role="presentation"
-          />
-          <span
-            className="ms-CommandBarItem-commandText itemCommandText_6e89cb9f"
+          <button
+            aria-describedby={undefined}
+            aria-label={undefined}
+            aria-labelledby={undefined}
+            aria-posinset={1}
+            aria-pressed={undefined}
+            aria-setsize={1}
+            className="ms-Button ms-Button--commandBar ms-CommandBarItem-link root-45"
+            data-is-focusable={true}
+            disabled={undefined}
+            icon="Upload"
+            name="Upload"
+            onClick={[Function]}
+            type="button"
           >
-            Upload
-          </span>
-        </button>
+            <div
+              className="ms-Button-flexContainer flexContainer-46"
+            >
+              <div
+                className="ms-Button-textContainer textContainer-47"
+              >
+                <div
+                  className="ms-Button-label label-49"
+                  id="id__2"
+                >
+                  Upload
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
-    <div
-      className="ms-CommandBar-sideCommands sideCommands_6e89cb9f"
-    />
   </div>
 </div>
 `;

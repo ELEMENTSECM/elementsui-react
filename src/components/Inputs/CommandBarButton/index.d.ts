@@ -20,7 +20,7 @@ export interface CommandBarButtonProps {
 	/**
 	 * User-defined styling
 	 */
-	getStyles?: (...args: any[]) => any;
+	styles?: (...args: any[]) => any;
 }
 
 declare const CommandBarButton: React.SFC<CommandBarButtonProps>;

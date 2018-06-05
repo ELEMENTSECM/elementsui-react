@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
-import { getStyles } from './BasePicker.styles';
+import { styles } from './BasePicker.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 /** BasePicker example */
@@ -15,9 +15,9 @@ export function BasePicker(props) {
 		inputProps,
 		className,
 		theme,
-		getStyles
+		styles
 	} = props;
-	const classNames = classNamesFunction()(getStyles, props);
+	const classNames = classNamesFunction()(styles, props);
 	return (
 		<TagPicker
 			className={classNames.root}
@@ -46,4 +46,4 @@ BasePicker.propTypes = {
 	inputProps: PropTypes.object
 };
 
-export default styled(customizable('BasePicker', ['theme'])(BasePicker), getStyles);
+export default styled(customizable('BasePicker', ['theme'])(BasePicker), styles);

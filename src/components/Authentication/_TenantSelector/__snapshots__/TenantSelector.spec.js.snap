@@ -7,7 +7,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
       className="ms-Dropdown-container"
     >
       <label
-        className="ms-Label ms-Dropdown-label root-39"
+        className="ms-Label ms-Dropdown-label root-41"
         htmlFor="databaseDropdown"
         id="databaseDropdown-label"
         required={undefined}
@@ -16,14 +16,13 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
       </label>
       <div
         aria-activedescendant={undefined}
-        aria-autocomplete="none"
         aria-describedby="databaseDropdown-option"
         aria-disabled={undefined}
         aria-expanded="false"
         aria-label={undefined}
         aria-live="assertive"
         aria-owns={undefined}
-        className="ms-Dropdown root_060756d4 ms-Dropdown root-38"
+        className="ms-Dropdown root_aecb6435 ms-Dropdown root-40"
         data-is-focusable={true}
         id="databaseDropdown"
         onBlur={[Function]}
@@ -35,8 +34,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
       >
         <span
           aria-atomic={true}
-          aria-readonly="true"
-          className="ms-Dropdown-title title_060756d4 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_060756d4"
+          className="ms-Dropdown-title title_aecb6435 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_aecb6435"
           id="databaseDropdown-option"
           role="listbox"
         >
@@ -45,11 +43,11 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
           </span>
         </span>
         <span
-          className="ms-Dropdown-caretDownWrapper caretDownWrapper_060756d4"
+          className="ms-Dropdown-caretDownWrapper caretDownWrapper_aecb6435"
         >
           <i
             aria-hidden={true}
-            className="root-40 ms-Dropdown-caretDown caretDown_060756d4"
+            className="ms-Dropdown-caretDown caretDown_aecb6435 root-42"
             data-icon-name="ChevronDown"
             role="presentation"
           />
@@ -58,9 +56,9 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
     </div>
     <br />
     <button
-      aria-describedby={null}
+      aria-describedby={undefined}
       aria-label={undefined}
-      aria-labelledby={null}
+      aria-labelledby={undefined}
       aria-pressed={undefined}
       className="ms-Button ms-Button--default is-disabled root-43"
       data-is-focusable={false}
@@ -76,7 +74,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         >
           <div
             className="ms-Button-label label-47"
-            id="id__0"
+            id="id__1"
           >
             Sign in
           </div>
@@ -92,29 +90,29 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
 <div>
   <div
     aria-live="polite"
-    className="ms-MessageBar root_847e7a13 ms-MessageBar root_847e7a13 ms-MessageBar-multiline multiLine_847e7a13"
+    className="ms-MessageBar root_613660a4 ms-MessageBar root_613660a4 ms-MessageBar-multiline multiLine_613660a4"
     role="status"
   >
     <div
-      className="content_847e7a13 ms-MessageBar-content"
+      className="content_613660a4 ms-MessageBar-content"
     >
       <div
-        className="ms-MessageBar-icon icon_847e7a13"
+        className="ms-MessageBar-icon icon_613660a4"
       >
         <i
           aria-hidden={true}
-          className="root-40"
+          className="root-42"
           data-icon-name="Info"
           role="presentation"
         />
       </div>
       <div
-        className="ms-MessageBar-text text_847e7a13 noDismissButton_847e7a13"
-        id="MessageBar3"
+        className="ms-MessageBar-text text_613660a4 noDismissButton_613660a4"
+        id="MessageBar4"
       >
         <span
           aria-live="polite"
-          className="ms-MessageBar-innerText innerText_847e7a13"
+          className="ms-MessageBar-innerText innerText_613660a4"
           role="status"
         />
       </div>
