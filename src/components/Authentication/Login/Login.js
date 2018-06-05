@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TenantSelector from '../_TenantSelector';
-import v1 from 'uuid/v1';
+import { v1 } from 'uuid';
 import moment from 'moment';
 import Promise from 'promise';
 

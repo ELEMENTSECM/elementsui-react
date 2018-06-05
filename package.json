@@ -64,6 +64,7 @@
 	"jest": {
 		"collectCoverageFrom": [
 			"src/**/*.{js,jsx,mjs}",
+			"!src/**/*.styles.js",
 			"!src/**/index.js",
 			"!src/**/index.d.ts",
 			"!src/**/*.spec.js",
@@ -87,7 +88,8 @@
 			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
 		],
 		"moduleNameMapper": {
-			"^react-native$": "react-native-web"
+			"^react-native$": "react-native-web",
+			"office-ui-fabric-react/lib/": "office-ui-fabric-react/lib-commonjs/"
 		},
 		"moduleFileExtensions": [
 			"web.js",

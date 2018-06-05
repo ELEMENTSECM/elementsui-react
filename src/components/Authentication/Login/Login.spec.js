@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Login from './index';
+import Login from './Login';
 
 describe('Login', () => {
 	test('displays correctly', () => {

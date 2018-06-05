@@ -5,7 +5,7 @@ exports[`Dropdown displays correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <label
-    className="ms-Label ms-Dropdown-label root-38"
+    className="ms-Label ms-Dropdown-label root-41"
     htmlFor="testDropdown"
     id="testDropdown-label"
     required={undefined}
@@ -14,14 +14,13 @@ exports[`Dropdown displays correctly 1`] = `
   </label>
   <div
     aria-activedescendant={undefined}
-    aria-autocomplete="none"
     aria-describedby="testDropdown-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
     aria-live="assertive"
     aria-owns={undefined}
-    className="ms-Dropdown root_060756d4 ms-Dropdown root-37"
+    className="ms-Dropdown root_aecb6435 ms-Dropdown root-40"
     data-is-focusable={true}
     id="testDropdown"
     onBlur={[Function]}
@@ -33,8 +32,7 @@ exports[`Dropdown displays correctly 1`] = `
   >
     <span
       aria-atomic={true}
-      aria-readonly="true"
-      className="ms-Dropdown-title title_060756d4 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_060756d4"
+      className="ms-Dropdown-title title_aecb6435 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_aecb6435"
       id="testDropdown-option"
       role="listbox"
     >
@@ -43,11 +41,11 @@ exports[`Dropdown displays correctly 1`] = `
       </span>
     </span>
     <span
-      className="ms-Dropdown-caretDownWrapper caretDownWrapper_060756d4"
+      className="ms-Dropdown-caretDownWrapper caretDownWrapper_aecb6435"
     >
       <i
         aria-hidden={true}
-        className="root-39 ms-Dropdown-caretDown caretDown_060756d4"
+        className="ms-Dropdown-caretDown caretDown_aecb6435 root-42"
         data-icon-name="ChevronDown"
         role="presentation"
       />
