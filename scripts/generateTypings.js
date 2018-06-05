@@ -50,7 +50,7 @@ ${stdout
 					utils.writeFile(path.join(folder, x, 'index.d.ts'), res);
 					moduleExports.push(`export { default as ${x}, ${x}Props } from './${relPath}/${x}';
 `);
-					utils.writeFile(path.join(components, 'index.d.ts'), moduleExports.join(''));
+					utils.writeFile(path.join(components, 'index.d.ts'), moduleExports.sort().join(''));
 				});
 			}
 		});
