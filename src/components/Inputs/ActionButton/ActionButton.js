@@ -28,7 +28,6 @@ ActionButton.propTypes = {
 	iconProps: PropTypes.shape({
 		iconName: PropTypes.string
 	})
-	/** Mouse click event handler */
 };
 
 export default styled(customizable('ActionButton', ['theme'])(ActionButton), styles);
