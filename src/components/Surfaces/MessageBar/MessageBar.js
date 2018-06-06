@@ -7,10 +7,30 @@ import { MessageBar as FabricMessageBar, MessageBarType } from 'office-ui-fabric
 export function MessageBar(props) {
 	const { styles, messageBarType, isMultiline, onDismiss } = props;
 	const classNames = classNamesFunction()(styles, props);
+
+	const getBarState = messageBarType => {
+		switch (messageBarType) {
+			case 'blocked':
+				return MessageBarType.blocked;
+			case 'error':
+				return MessageBarType.error;
+			case 'info':
+				return MessageBarType.info;
+			case 'severeWarning':
+				return MessageBarType.severeWarning;
+			case 'success':
+				return MessageBarType.success;
+			case 'warning':
+				return MessageBarType.warning;
+			default:
+				return;
+		}
+	};
+
 	return (
 		<FabricMessageBar
 			className={classNames.root}
-			messageBarType={MessageBarType[messageBarType]}
+			messageBarType={getBarState(messageBarType)}
 			isMultiline={isMultiline}
 			onDismiss={onDismiss}>
 			{props.children}
