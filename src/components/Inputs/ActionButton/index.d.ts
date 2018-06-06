@@ -4,9 +4,11 @@ export interface ActionButtonIconProps {
 	iconName?: string;
 }
 
+export type ActionButtonChildren = React.ReactNode[] | React.ReactNode;
+
 export interface ActionButtonProps {
 	/**
-	 * ActionButton label
+	 * ActionButton label (children are ignored if label is defined)
 	 */
 	label?: string;
 	/**
@@ -25,6 +27,10 @@ export interface ActionButtonProps {
 	 * ActionButton icon
 	 */
 	iconProps?: ActionButtonIconProps;
+	/**
+	 * Label as children
+	 */
+	children?: ActionButtonChildren;
 }
 
 declare const ActionButton: React.SFC<ActionButtonProps>;
