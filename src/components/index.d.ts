@@ -1,5 +1,5 @@
-export { default as ActionButton, ActionButtonProps } from './Inputs/ActionButton';
 export { addLocaleData } from 'react-intl';
+export { default as ActionButton, ActionButtonProps } from './Inputs/ActionButton';
 export { default as BasePicker, BasePickerProps } from './Pickers/BasePicker';
 export { default as Box, BoxProps } from './Surfaces/Box';
 export { default as Breadcrumb, BreadcrumbProps } from './Navigation/Breadcrumb';

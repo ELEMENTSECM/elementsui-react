@@ -6,7 +6,7 @@ export interface ModuleIconProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Module Id
 	 */

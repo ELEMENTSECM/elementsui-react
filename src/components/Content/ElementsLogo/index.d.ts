@@ -4,7 +4,7 @@ export interface ElementsLogoProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Logo color
 	 */

@@ -8,7 +8,6 @@ import componentData from '../../config/componentData';
 import DocsOverview from './DocsOverview';
 import NoMatch from './NoMatch';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import AuthCallback from './AuthCallback';
 
 export default class Docs extends React.Component {
 	getTree = components => {
@@ -44,7 +43,6 @@ export default class Docs extends React.Component {
 								/>
 							);
 						})}
-						<Route path="/AuthCallback" component={AuthCallback} />
 						<Route component={NoMatch} />
 					</Switch>
 				</main>

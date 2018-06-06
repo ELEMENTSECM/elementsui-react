@@ -5,6 +5,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
   <div>
     <label
       className="ms-Label label-41"
+      id={undefined}
       required={undefined}
     >
       <span>
@@ -122,6 +123,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
     </svg>
     <div
       className="ms-Persona ms-Persona--size40 persona-52"
+      id={undefined}
       size={12}
       style={undefined}
     >
@@ -201,6 +203,31 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
         />
       </div>
     </div>
+    <button
+      aria-describedby={undefined}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      aria-pressed={undefined}
+      className="ms-Button ms-Button--action ms-Button--command logoutLink-69"
+      data-is-focusable={true}
+      disabled={undefined}
+      onClick={undefined}
+      type="button"
+    >
+      <div
+        className="ms-Button-flexContainer flexContainer-70"
+      >
+        <i
+          aria-hidden={true}
+          className="ms-Button-icon icon-77"
+          data-icon-name="PowerButton"
+          role="presentation"
+        />
+        <span>
+          Log out
+        </span>
+      </div>
+    </button>
   </div>
 </div>
 `;

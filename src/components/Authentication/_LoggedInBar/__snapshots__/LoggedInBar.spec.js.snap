@@ -63,6 +63,7 @@ exports[`LoggedInBar displays correctly 1`] = `
   </svg>
   <div
     className="ms-Persona ms-Persona--size40 persona-49"
+    id={undefined}
     size={12}
     style={undefined}
   >
@@ -142,5 +143,30 @@ exports[`LoggedInBar displays correctly 1`] = `
       />
     </div>
   </div>
+  <button
+    aria-describedby={undefined}
+    aria-label={undefined}
+    aria-labelledby={undefined}
+    aria-pressed={undefined}
+    className="ms-Button ms-Button--action ms-Button--command logoutLink-66"
+    data-is-focusable={true}
+    disabled={undefined}
+    onClick={undefined}
+    type="button"
+  >
+    <div
+      className="ms-Button-flexContainer flexContainer-67"
+    >
+      <i
+        aria-hidden={true}
+        className="ms-Button-icon icon-74"
+        data-icon-name="PowerButton"
+        role="presentation"
+      />
+      <span>
+        Log out
+      </span>
+    </div>
+  </button>
 </div>
 `;

@@ -4,7 +4,7 @@ export interface TeachingBubbleProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Teachingbubble Headline
 	 */

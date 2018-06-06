@@ -4,11 +4,11 @@ import { styles } from './ElementsLogo.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function ElementsLogo(props) {
-	const { htmlId, color, width, styles } = props;
+	const { id, color, width, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<svg
-			htmlId={htmlId}
+			id={id}
 			className={classNames.root}
 			version="1.1"
 			id="Elements_Logo"
@@ -73,7 +73,7 @@ export function ElementsLogo(props) {
 
 ElementsLogo.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** Logo color */
 	color: PropTypes.string,
 	/** Logo width */

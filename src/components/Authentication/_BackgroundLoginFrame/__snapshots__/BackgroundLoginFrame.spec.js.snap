@@ -23,6 +23,7 @@ ShallowWrapper {
         <iframe
           height="0"
           id="background-login"
+          src="http://localhost"
           style={
             Object {
               "display": "none",
@@ -53,6 +54,7 @@ ShallowWrapper {
         "props": Object {
           "height": "0",
           "id": "background-login",
+          "src": "http://localhost",
           "style": Object {
             "display": "none",
           },
@@ -92,6 +94,7 @@ ShallowWrapper {
           <iframe
             height="0"
             id="background-login"
+            src="http://localhost"
             style={
               Object {
                 "display": "none",
@@ -122,6 +125,7 @@ ShallowWrapper {
           "props": Object {
             "height": "0",
             "id": "background-login",
+            "src": "http://localhost",
             "style": Object {
               "display": "none",
             },

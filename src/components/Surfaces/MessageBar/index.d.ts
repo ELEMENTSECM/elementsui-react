@@ -6,7 +6,7 @@ export interface MessageBarProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Message bar type. Valid values are: 'info', 'error', 'blocked', 'severeWarning', 'success', 'warning'
 	 */

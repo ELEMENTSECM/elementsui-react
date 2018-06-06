@@ -4,10 +4,10 @@ import { styles } from './Box.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function Box(props) {
-	const { htmlId, styles, children, height, width, backgroundColor } = props;
+	const { id, styles, children, height, width, backgroundColor } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
-		<div htmlId={htmlId} className={classNames.root} style={{ height, width, backgroundColor }}>
+		<div id={id} className={classNames.root} style={{ height, width, backgroundColor }}>
 			{children}
 		</div>
 	);
@@ -15,7 +15,7 @@ export function Box(props) {
 
 Box.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** Class name */
 	className: PropTypes.string,
 	/** Box height in pixels */

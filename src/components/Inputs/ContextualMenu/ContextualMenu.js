@@ -6,11 +6,11 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Contextual Menu Button */
 export function ContextualMenu(props) {
-	const { htmlId, styles, buttonText, isPrimary } = props;
+	const { id, styles, buttonText, isPrimary } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<DefaultButton
-			id={htmlId}
+			id={id}
 			className={classNames.root}
 			text={buttonText}
 			primary={isPrimary}
@@ -21,7 +21,7 @@ export function ContextualMenu(props) {
 
 ContextualMenu.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** ContextualMenu primary  */
 	isPrimary: PropTypes.bool,
 	/** ContextualMenu button text */

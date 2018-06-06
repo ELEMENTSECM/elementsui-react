@@ -4,7 +4,7 @@ import { styles } from './ModuleIcon.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function ModuleIcon(props) {
-	const { htmlId, styles, moduleId, color, size } = props;
+	const { id, styles, moduleId, color, size } = props;
 	const classNames = classNamesFunction()(styles, props);
 	const icons = {
 		rm: (
@@ -56,7 +56,7 @@ export function ModuleIcon(props) {
 	};
 
 	return (
-		<div htmlId={htmlId} className={classNames.root}>
+		<div id={id} className={classNames.root}>
 			{icons[moduleId]}
 		</div>
 	);
@@ -64,7 +64,7 @@ export function ModuleIcon(props) {
 
 ModuleIcon.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** Module Id */
 	moduleId: PropTypes.oneOf(['rm', 'mm', 'sa', 'eb']),
 	/** Icon color */

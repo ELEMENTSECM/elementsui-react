@@ -4,6 +4,10 @@ export type LabelChildren = React.ReactNode[] | React.ReactNode;
 
 export interface LabelProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	id?: string;
+	/**
 	 * Label text (children are ignored if label is defined)
 	 */
 	label?: string;

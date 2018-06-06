@@ -4,7 +4,7 @@ import MessageBar from './index';
 
 describe('MessageBar', () => {
 	test('displays correctly', () => {
-		const wrapper = shallow(<MessageBar htmlId="testMessageBar" />);
+		const wrapper = shallow(<MessageBar id="testMessageBar" />);
 		expect(wrapper).toMatchSnapshot();
 	});
 });

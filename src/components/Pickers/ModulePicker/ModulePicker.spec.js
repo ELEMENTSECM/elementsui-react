@@ -4,7 +4,7 @@ import ModulePicker from './index';
 
 describe('ModulePicker', () => {
 	test('displays correctly', () => {
-		const wrapper = shallow(<ModulePicker htmlId="testModulePicker" />);
+		const wrapper = shallow(<ModulePicker id="testModulePicker" />);
 		expect(wrapper).toMatchSnapshot();
 	});
 });
