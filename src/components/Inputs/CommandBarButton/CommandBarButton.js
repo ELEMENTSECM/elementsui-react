@@ -25,7 +25,7 @@ CommandBarButton.propTypes = {
 	/** Button is disabled */
 	disabled: PropTypes.bool,
 	/** Mouse click event handler */
-	onCLick: PropTypes.func,
+	onClick: PropTypes.func,
 	/** Icon name */
 	iconName: PropTypes.string,
 	/** User-defined styling */

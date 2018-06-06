@@ -18,10 +18,6 @@ export interface ActionButtonProps {
 	 */
 	onClick?: (...args: any[]) => any;
 	/**
-	 * Primary button
-	 */
-	isPrimary?: boolean;
-	/**
 	 * User-defined styling
 	 */
 	styles?: (...args: any[]) => any;
@@ -31,4 +27,6 @@ export interface ActionButtonProps {
 	iconProps?: ActionButtonIconProps;
 }
 
-const ActionButton: React.SFC<ActionButtonProps>;
+declare const ActionButton: React.SFC<ActionButtonProps>;
+
+export default ActionButton;

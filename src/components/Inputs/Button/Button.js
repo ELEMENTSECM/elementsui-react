@@ -21,7 +21,7 @@ Button.propTypes = {
 	/** Button is disabled */
 	disabled: PropTypes.bool,
 	/** Mouse click event handler */
-	onCLick: PropTypes.func,
+	onClick: PropTypes.func,
 	/** Primary button */
 	isPrimary: PropTypes.bool,
 	/** User-defined styling */

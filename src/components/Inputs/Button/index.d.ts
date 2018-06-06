@@ -12,7 +12,7 @@ export interface ButtonProps {
 	/**
 	 * Mouse click event handler
 	 */
-	onCLick?: (...args: any[]) => any;
+	onClick?: (...args: any[]) => any;
 	/**
 	 * Primary button
 	 */
