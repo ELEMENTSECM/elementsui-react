@@ -4,7 +4,9 @@ import CommandBarButton from './CommandBarButton';
 
 describe('CommandBarButton', () => {
 	test('displays `Foo` as text', () => {
-		const tree = renderer.create(<CommandBarButton text="Foo" icon="Color" />).toJSON();
+		const tree = renderer
+			.create(<CommandBarButton htmlId="testCommandBarButton" text="Foo" icon="Color" />)
+			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 });

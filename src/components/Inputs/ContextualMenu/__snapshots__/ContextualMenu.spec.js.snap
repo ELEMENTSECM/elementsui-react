@@ -12,6 +12,7 @@ exports[`ContextualMenuProps displays menu correctly 1`] = `
   className="ms-Button ms-Button--default ms-ContextualMenu root-41"
   data-is-focusable={true}
   disabled={undefined}
+  id="testContextualMenu"
   onClick={[Function]}
   onKeyDown={[Function]}
   type="button"

@@ -6,16 +6,23 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Button example */
 export function Button(props) {
-	const { label, disabled, onClick, isPrimary, className, theme, styles } = props;
+	const { htmlId, label, disabled, onClick, isPrimary, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
-		<DefaultButton className={classNames.root} disabled={disabled} primary={isPrimary} onClick={onClick}>
+		<DefaultButton
+			id={htmlId}
+			className={classNames.root}
+			disabled={disabled}
+			primary={isPrimary}
+			onClick={onClick}>
 			{label}
 		</DefaultButton>
 	);
 }
 
 Button.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Button label */
 	label: PropTypes.string,
 	/** Button is disabled */

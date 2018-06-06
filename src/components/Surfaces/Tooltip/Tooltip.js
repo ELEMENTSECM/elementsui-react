@@ -6,11 +6,11 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /**Tooltip example */
 export function Tooltip(props) {
-	const { content, className, theme, styles } = props;
+	const { htmlId, content, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<div>
-			<UIFabTooltipHost className={classNames.root} content={content}>
+			<UIFabTooltipHost id={htmlId} className={classNames.root} content={content}>
 				{props.children}
 			</UIFabTooltipHost>
 		</div>
@@ -18,6 +18,8 @@ export function Tooltip(props) {
 }
 
 Tooltip.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/**Tooltip content */
 	content: PropTypes.string,
 	/** User-defined styling */

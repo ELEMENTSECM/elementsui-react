@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface TeachingBubbleProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Teachingbubble Headline
 	 */
 	headline?: string;

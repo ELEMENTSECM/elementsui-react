@@ -12,6 +12,10 @@ export interface ContextualMenuMenuIconProps {
 
 export interface ContextualMenuProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * ContextualMenu primary
 	 */
 	isPrimary?: boolean;

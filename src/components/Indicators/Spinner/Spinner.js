@@ -6,12 +6,14 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Spinner example */
 export function Spinner(props) {
-	const { label, className, theme, styles } = props;
+	const { htmlId, label, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
-	return <UiFabSpinner className={classNames.root} label={label} size={SpinnerSize.large} />;
+	return <UiFabSpinner id={htmlId} className={classNames.root} label={label} size={SpinnerSize.large} />;
 }
 
 Spinner.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Spinner label */
 	label: PropTypes.string,
 	/** User-defined styling */

@@ -14,6 +14,10 @@ export interface DialogModalProps {
 
 export interface DialogProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Dialog visibility state
 	 */
 	hidden?: boolean;

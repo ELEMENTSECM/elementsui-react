@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface InputFieldProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Input field placeholder text
 	 */
 	placeholder?: string;

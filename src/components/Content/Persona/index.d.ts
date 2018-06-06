@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface PersonaProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Image URL
 	 */
 	imageUrl?: string;

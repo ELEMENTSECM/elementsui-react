@@ -6,11 +6,12 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Dialog example */
 export function Dialog(props) {
-	const { hidden, onDismiss, dialogContentProps, modalProps, styles } = props;
+	const { htmlId, hidden, onDismiss, dialogContentProps, modalProps, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 
 	return (
 		<UIFabDialog
+			id={htmlId}
 			hidden={hidden}
 			onDismiss={onDismiss}
 			dialogContentProps={dialogContentProps}
@@ -21,6 +22,8 @@ export function Dialog(props) {
 }
 
 Dialog.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Dialog visibility state */
 	hidden: PropTypes.bool,
 	/** Dialog dissmiss callback */

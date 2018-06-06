@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface ElementsLogoProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Logo color
 	 */
 	color?: string;

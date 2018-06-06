@@ -5,7 +5,7 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 import { MessageBar as FabricMessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 export function MessageBar(props) {
-	const { styles, messageBarType, isMultiline, onDismiss } = props;
+	const { htmlId, styles, messageBarType, isMultiline, onDismiss } = props;
 	const classNames = classNamesFunction()(styles, props);
 
 	const getBarState = messageBarType => {
@@ -29,6 +29,7 @@ export function MessageBar(props) {
 
 	return (
 		<FabricMessageBar
+			id={htmlId}
 			className={classNames.root}
 			messageBarType={getBarState(messageBarType)}
 			isMultiline={isMultiline}
@@ -39,6 +40,8 @@ export function MessageBar(props) {
 }
 
 MessageBar.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Message bar type. Valid values are: 'info', 'error', 'blocked', 'severeWarning', 'success', 'warning' */
 	messageBarType: PropTypes.oneOf(['info', 'error', 'blocked', 'severeWarning', 'success', 'warning']),
 	/** Should the message be multiline? */
