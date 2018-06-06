@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface TooltipProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Tooltip content
 	 */
 	content?: string;

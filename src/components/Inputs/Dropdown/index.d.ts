@@ -8,9 +8,9 @@ export interface DropdownOptions {
 
 export interface DropdownProps {
 	/**
-	 * DOM element id
+	 * HTML id tag of the root element
 	 */
-	id?: string;
+	htmlId?: string;
 	/**
 	 * Dropdown label
 	 */

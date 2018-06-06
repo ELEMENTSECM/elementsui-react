@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputField displays correctly 1`] = `
+<div
+  className="ms-TextField root_df60a678 ms-InputField root-40"
+>
+  <div
+    className="ms-TextField-wrapper wrapper_df60a678"
+  >
+    <div
+      className="ms-TextField-fieldGroup fieldGroup_df60a678"
+    >
+      <input
+        aria-describedby={undefined}
+        aria-invalid={false}
+        aria-label={undefined}
+        className="ms-TextField-field field_df60a678"
+        disabled={false}
+        id="testInputField"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        placeholder="Search..."
+        required={false}
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;

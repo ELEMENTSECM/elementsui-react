@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface BreadcrumbProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Breadcrumb arialabel for navigation landmark
 	 */
 	ariaLabel?: string;

@@ -22,7 +22,7 @@ class ModulePickerComponent extends React.Component {
 	render() {
 		const { modules } = this.props;
 		return (
-			<div className={this.classNames.root}>
+			<div htmlId={this.props.htmlId} className={this.classNames.root}>
 				<ul className={this.classNames.list}>
 					{modules.map(x => {
 						const isSelected = x.Id === this.state.selectedModuleId;
@@ -68,6 +68,8 @@ class ModulePickerComponent extends React.Component {
 export const ModulePicker = ModulePickerComponent;
 
 ModulePicker.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Array of modules */
 	modules: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -80,6 +82,8 @@ ModulePicker.propTypes = {
 };
 
 ModulePickerComponent.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Array of modules */
 	modules: PropTypes.arrayOf(
 		PropTypes.shape({

@@ -3,6 +3,7 @@
 exports[`Label displays \`Foo\` as label 1`] = `
 <label
   className="ms-Label root-41"
+  id="defaultLabel"
   required={false}
 >
   Foo

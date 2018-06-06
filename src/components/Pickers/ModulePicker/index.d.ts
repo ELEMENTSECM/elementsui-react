@@ -7,6 +7,10 @@ export interface ModulePickerModules {
 
 export interface ModulePickerProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Array of modules
 	 */
 	modules?: ModulePickerModules[];

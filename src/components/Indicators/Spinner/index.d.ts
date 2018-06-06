@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface SpinnerProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Spinner label
 	 */
 	label?: string;

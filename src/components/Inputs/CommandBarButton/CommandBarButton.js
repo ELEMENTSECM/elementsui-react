@@ -6,10 +6,11 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** CommandBarButton example */
 export function CommandBarButton(props) {
-	const { text, disabled, onClick, iconName, styles } = props;
+	const { htmlId, text, disabled, onClick, iconName, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<FabricCommandBarButton
+			id={htmlId}
 			className={classNames.root}
 			text={text}
 			disabled={disabled}
@@ -20,6 +21,8 @@ export function CommandBarButton(props) {
 }
 
 CommandBarButton.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Button label */
 	text: PropTypes.string,
 	/** Button is disabled */

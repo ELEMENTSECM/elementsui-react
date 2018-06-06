@@ -6,15 +6,15 @@ exports[`Dropdown displays correctly 1`] = `
 >
   <label
     className="ms-Label ms-Dropdown-label root-41"
-    htmlFor="testDropdown"
-    id="testDropdown-label"
+    htmlFor="Dropdown1"
+    id="Dropdown1-label"
     required={undefined}
   >
     test dropdown
   </label>
   <div
     aria-activedescendant={undefined}
-    aria-describedby="testDropdown-option"
+    aria-describedby="Dropdown1-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
@@ -22,7 +22,7 @@ exports[`Dropdown displays correctly 1`] = `
     aria-owns={undefined}
     className="ms-Dropdown root_aecb6435 ms-Dropdown root-40"
     data-is-focusable={true}
-    id="testDropdown"
+    id={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -33,7 +33,7 @@ exports[`Dropdown displays correctly 1`] = `
     <span
       aria-atomic={true}
       className="ms-Dropdown-title title_aecb6435 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_aecb6435"
-      id="testDropdown-option"
+      id="Dropdown1-option"
       role="listbox"
     >
       <span>

@@ -6,19 +6,12 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** TeachingBubble example */
 export function TeachingBubble(props) {
-	const {
-		headline,
-		targetElement,
-		dismissed,
-		isTeachingBubbleVisible,
-		className,
-		theme,
-		styles
-	} = props;
+	const { htmlId, headline, targetElement, dismissed, isTeachingBubbleVisible, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<div>
 			<UIFabTeachingBubble
+				id={htmlId}
 				className={classNames.root}
 				headline={headline}
 				targetElement={targetElement}
@@ -31,6 +24,8 @@ export function TeachingBubble(props) {
 }
 
 TeachingBubble.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/**Teachingbubble Headline */
 	headline: PropTypes.string,
 	/**Teachingbubble Target */

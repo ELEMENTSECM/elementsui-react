@@ -63,6 +63,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
       className="ms-Button ms-Button--default is-disabled root-43"
       data-is-focusable={false}
       disabled={true}
+      id={undefined}
       onClick={[Function]}
       type="button"
     >

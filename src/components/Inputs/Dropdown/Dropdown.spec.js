@@ -23,7 +23,7 @@ describe('Dropdown', () => {
 		const tree = renderer
 			.create(
 				<Dropdown
-					id="testDropdown"
+					htmlId="testDropdown"
 					label="test dropdown"
 					selectedKey="3"
 					placeHolder="Select test..."

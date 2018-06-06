@@ -6,12 +6,14 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** CommandBar example */
 export function CommandBar(props) {
-	const { items, farItems, styles } = props;
+	const { htmlId, items, farItems, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
-	return <FabricCommandBar className={classNames.root} items={items} farItems={farItems} />;
+	return <FabricCommandBar id={htmlId} className={classNames.root} items={items} farItems={farItems} />;
 }
 
 CommandBar.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Items to render */
 	items: PropTypes.array,
 	/** I to render on the opposite side of those defined in items */

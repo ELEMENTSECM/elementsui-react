@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface CommandBarButtonProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Button label
 	 */
 	text?: string;

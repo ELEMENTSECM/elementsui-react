@@ -14,7 +14,9 @@ describe('CommandBar', () => {
 				}
 			}
 		];
-		const tree = renderer.create(<CommandBar items={leftSideCommandBarButtons} />).toJSON();
+		const tree = renderer
+			.create(<CommandBar htmlId="testCommandBar" items={leftSideCommandBarButtons} />)
+			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 });

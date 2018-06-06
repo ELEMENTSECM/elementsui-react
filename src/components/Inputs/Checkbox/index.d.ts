@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface CheckboxProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Checkbox label
 	 */
 	label?: string;

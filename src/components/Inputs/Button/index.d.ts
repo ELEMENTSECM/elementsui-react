@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface ButtonProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Button label
 	 */
 	label?: string;

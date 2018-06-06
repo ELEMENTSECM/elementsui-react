@@ -5,6 +5,7 @@ exports[`Link displays \`evry.com\` as href 1`] = `
   aria-disabled={undefined}
   className="ms-Link root-41"
   href="evry.com"
+  id="defaultLink"
   onClick={[Function]}
   target={undefined}
 />

@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface PanelProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Panel open
 	 */
 	isOpen?: boolean;

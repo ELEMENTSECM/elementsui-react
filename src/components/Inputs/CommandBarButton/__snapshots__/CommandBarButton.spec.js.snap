@@ -9,6 +9,7 @@ exports[`CommandBarButton displays \`Foo\` as text 1`] = `
   className="ms-Button ms-Button--commandBar root-41"
   data-is-focusable={true}
   disabled={undefined}
+  id="testCommandBarButton"
   onClick={undefined}
   type="button"
 >

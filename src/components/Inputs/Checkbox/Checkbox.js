@@ -6,10 +6,11 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Checkbox example */
 export function Checkbox(props) {
-	const { label, disabled, styles, className, theme } = props;
+	const { htmlId, label, disabled, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<UIFabCheckbox
+			id={htmlId}
 			className={classNames.root}
 			label={label}
 			disabled={disabled}
@@ -19,6 +20,8 @@ export function Checkbox(props) {
 }
 
 Checkbox.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Checkbox label */
 	label: PropTypes.string,
 	/** Checkbox is disabled */

@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface LabelProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Label required
 	 */
 	required?: boolean;

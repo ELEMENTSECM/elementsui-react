@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface BoxProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Class name
 	 */
 	className?: string;

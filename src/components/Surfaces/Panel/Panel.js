@@ -7,20 +7,20 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 /**Panel example */
 export function Panel(props) {
 	const {
+		htmlId,
 		headerText,
 		onRenderFooterContent,
 		isOpen,
 		onDismissed,
 		hasCloseButton,
 		closebuttonAriaLabel,
-		className,
-		theme,
 		styles
 	} = props;
 	const classNames = classNamesFunction()(styles, props);
 
 	return (
 		<UIFabPanel
+			id={htmlId}
 			className={classNames.root}
 			headerText={headerText}
 			isOpen={isOpen}
@@ -34,6 +34,8 @@ export function Panel(props) {
 }
 
 Panel.propTypes = {
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/**Panel open */
 	isOpen: PropTypes.bool,
 	/**Panel on dismissed */

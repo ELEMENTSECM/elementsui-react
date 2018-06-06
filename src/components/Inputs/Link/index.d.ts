@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface LinkProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Link label
 	 */
 	label?: string;

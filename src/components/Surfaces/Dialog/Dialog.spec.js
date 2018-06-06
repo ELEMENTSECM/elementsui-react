@@ -7,6 +7,7 @@ describe('Dialog', () => {
 		const tree = renderer
 			.create(
 				<Dialog
+					htmlId="testDialog"
 					dialogContentProps={{
 						type: 0,
 						title: 'Dialog header',

@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface CommandBarProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	htmlId?: string;
+	/**
 	 * Items to render
 	 */
 	items?: any[];

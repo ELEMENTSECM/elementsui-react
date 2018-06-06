@@ -6,10 +6,11 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /** Dropdown example */
 export function Dropdown(props) {
-	const { id, label, selectedKey, placeHolder, options, onChange, className, theme, styles } = props;
+	const { htmlId, id, label, selectedKey, placeHolder, options, onChange, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<UIFabDropdown
+			htmlId={htmlId}
 			id={id}
 			label={label}
 			selectedKey={selectedKey}
@@ -22,8 +23,8 @@ export function Dropdown(props) {
 }
 
 Dropdown.propTypes = {
-	/** DOM element id */
-	id: PropTypes.string,
+	/** HTML id tag of the root element */
+	htmlId: PropTypes.string,
 	/** Dropdown label */
 	label: PropTypes.string,
 	/** The key of the selected element */
