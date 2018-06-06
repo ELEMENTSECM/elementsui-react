@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CodeExample from './CodeExample';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import ActionButton from 'elementsui-react/Inputs/ActionButton';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -29,9 +30,11 @@ class Example extends React.Component {
 					<ExampleComponent />
 				</Fabric>
 				<p>
-					<button href="" onClick={this.toggleCode}>
-						{showCode ? 'Hide' : 'Show'} Code
-					</button>
+					<ActionButton
+						label={`${showCode ? 'Hide' : 'Show'} Code`}
+						iconProps={{ iconName: 'code' }}
+						onClick={this.toggleCode}
+					/>
 				</p>
 
 				{showCode && <CodeExample>{code}</CodeExample>}

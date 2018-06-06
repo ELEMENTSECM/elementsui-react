@@ -12,7 +12,7 @@ export interface CommandBarButtonProps {
 	/**
 	 * Mouse click event handler
 	 */
-	onCLick?: (...args: any[]) => any;
+	onClick?: (...args: any[]) => any;
 	/**
 	 * Icon name
 	 */
