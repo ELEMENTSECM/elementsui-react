@@ -37,6 +37,7 @@
 		"react-router-dom": "^4.2.2",
 		"react-syntax-highlighter": "^7.0.4",
 		"react-treeview": "^0.4.7",
+		"uuid": "^3.2.1",
 		"xmldom": "^0.1.27"
 	},
 	"scripts": {
