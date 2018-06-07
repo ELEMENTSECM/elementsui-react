@@ -30,13 +30,14 @@ class TenantSelector extends React.Component {
 
 	handleSelectChange = option => {
 		this.callOnChange(option.key);
-		this.setState({
+		this.setState(ps => ({
+			...ps,
 			selectedDatabase: option.key
-		});
+		}));
 	};
 
 	componentWillReceiveProps(newProps) {
-		this.setState({ selectedDatabase: newProps.selectedTenant });
+		this.setState(ps => ({ ...ps, selectedDatabase: newProps.selectedTenant }));
 	}
 
 	render() {
