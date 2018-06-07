@@ -13,6 +13,7 @@ export { default as Dropdown, DropdownProps } from './Inputs/Dropdown';
 export { default as ElementsLogo, ElementsLogoProps } from './Content/ElementsLogo';
 export { default as InputField, InputFieldProps } from './Inputs/InputField';
 export { default as Label, LabelProps } from './Inputs/Label';
+export { default as LanguagePicker, LanguagePickerProps } from './Pickers/LanguagePicker';
 export { default as Link, LinkProps } from './Inputs/Link';
 export { default as Login, LoginProps } from './Authentication/Login';
 export { default as MessageBar, MessageBarProps } from './Surfaces/MessageBar';

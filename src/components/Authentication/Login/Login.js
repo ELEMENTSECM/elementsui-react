@@ -48,7 +48,8 @@ class LoginComponent extends Component {
 			licenses: [],
 			modules: [],
 			licensedModules: true,
-			tokens: null
+			tokens: null,
+			locale: this.props.locale
 		};
 
 		this.classNames = classNamesFunction()(styles, props);
@@ -67,7 +68,7 @@ class LoginComponent extends Component {
 	}
 
 	refresh(tenantId) {
-		this.setState({ authenticationConfig: null });
+		this.setState(ps => ({ ...ps, authenticationConfig: null }));
 		if (!tenantId) {
 			return;
 		}
@@ -79,11 +80,12 @@ class LoginComponent extends Component {
 		return fetch(`${this.props.paths.applicationPath}/${tenantId}/GetStartupConfig`, requestInit)
 			.then(response => response.json())
 			.then(config =>
-				self.setState({
+				self.setState(ps => ({
+					...ps,
 					authenticationConfig: config.authConfig,
 					ncoreConfig: config.ncoreConfig,
 					isSpinnerVisible: false
-				})
+				}))
 			);
 	}
 
@@ -134,7 +136,8 @@ class LoginComponent extends Component {
 				// This is not considered an error condition, but part of normal flow.
 				const isBackgroundError = error === 'login_required' || error === 'interaction_required';
 
-				this.setState({
+				this.setState(ps => ({
+					...ps,
 					stage: Login.stage.tenant,
 					isManualLogin: true,
 					error: isBackgroundError
@@ -143,7 +146,7 @@ class LoginComponent extends Component {
 								type: Login.errorType.background,
 								text: error
 						  }
-				});
+				}));
 			}
 		});
 	}
@@ -156,7 +159,7 @@ class LoginComponent extends Component {
 			'none',
 			authenticationProvider
 		);
-		this.setState({ backgroundLoginSource });
+		this.setState(ps => ({ ...ps, backgroundLoginSource }));
 		const promise = this.loginShared(nonce);
 		const ms = this.state.authenticationConfig.backgroundLoginTimeoutSeconds;
 
@@ -175,7 +178,7 @@ class LoginComponent extends Component {
 	refreshAuthConfig() {
 		this.setState({ error: null });
 		if (this.state.tenantId) {
-			this.setState({ isSpinnerVisible: true });
+			this.setState(ps => ({ ...ps, isSpinnerVisible: true }));
 			this.refresh(this.state.tenantId);
 		}
 	}
@@ -205,13 +208,14 @@ class LoginComponent extends Component {
 				);
 
 				if (modules.filter(m => m && m.Id === self.props.moduleId).length > 0) {
-					self.setState({ moduleId: self.props.moduleId }, () => self.enterModule());
+					self.setState(ps => ({ ...ps, moduleId: self.props.moduleId }), () => self.enterModule());
 					return;
 				}
 
 				const licensedModules = modules.length > 0;
 
-				self.setState({
+				self.setState(ps => ({
+					...ps,
 					licenses,
 					modules,
 					licensedModules,
@@ -221,14 +225,14 @@ class LoginComponent extends Component {
 						  }
 						: null,
 					stage: Login.stage.module
-				});
+				}));
 			})
 			.done();
 	}
 
 	getUserInfo(accessTokenStr) {
 		return this.odataRequest('Context', this.state.tenantId, accessTokenStr, 'CurrentUserInfo')
-			.then(userInfo => this.setState({ userInfo }))
+			.then(userInfo => this.setState(ps => ({ ...ps, userInfo })))
 			.done();
 	}
 
@@ -290,7 +294,11 @@ class LoginComponent extends Component {
 		);
 
 		if (!newwindow) {
-			this.setState({ isSpinnerVisible: false, error: { type: Login.errorType.loginPopupBlocked } });
+			this.setState(ps => ({
+				...ps,
+				isSpinnerVisible: false,
+				error: { type: Login.errorType.loginPopupBlocked }
+			}));
 			return;
 		}
 
@@ -302,55 +310,63 @@ class LoginComponent extends Component {
 		let pollTimer = window.setInterval(() => {
 			if (newwindow.closed) {
 				window.clearInterval(pollTimer);
-				that.setState({ isSpinnerVisible: false });
+				that.setState(ps => ({ ...ps, isSpinnerVisible: false }));
 			}
 		}, 200);
 	}
 
 	back() {
-		this.setState({ stage: Login.stage.tenant, moduleId: this.props.moduleId });
+		this.setState((ps, currentProps) => ({
+			...ps,
+			stage: Login.stage.tenant,
+			moduleId: currentProps.moduleId
+		}));
 	}
 
 	openLoginPopup(authenticationProvider = '') {
-		this.setState({ isSpinnerVisible: true, error: null }, () => {
-			Login.storeProvider = authenticationProvider;
-			const nonce = v1();
-			const databaseName = this.state.tenantId;
-			const promise = this.loginShared(nonce);
-			this.popupwindow(
-				this.createOIDCAuthLink(databaseName, nonce, '', authenticationProvider),
-				'Authentication',
-				1024,
-				768
-			);
-			promise.then(x => this.onLoginSucceed(x, authenticationProvider)).done();
-		});
+		this.setState(
+			ps => ({ ...ps, isSpinnerVisible: true, error: null }),
+			() => {
+				Login.storeProvider = authenticationProvider;
+				const nonce = v1();
+				const databaseName = this.state.tenantId;
+				const promise = this.loginShared(nonce);
+				this.popupwindow(
+					this.createOIDCAuthLink(databaseName, nonce, '', authenticationProvider),
+					'Authentication',
+					1024,
+					768
+				);
+				promise.then(x => this.onLoginSucceed(x, authenticationProvider)).done();
+			}
+		);
 	}
 
 	onLoginSucceed(loginResult, authenticationProvider) {
-		this.setState({
+		this.setState(ps => ({
+			...ps,
 			tokens: {
 				accessToken: loginResult.accessToken,
 				idToken: loginResult.idToken,
 				authenticationProvider: authenticationProvider
 			}
-		});
+		}));
 
 		this.storeTenantId();
 		this.getUserInfo(loginResult.accessToken.tokenStr);
 		this.getModuleLicenses(loginResult.accessToken.tokenStr);
 	}
 
-	clickPopupLoginWithDefaultProvider() {
+	clickPopupLoginWithDefaultProvider = () => {
 		this.props.actions && this.props.actions.login && this.props.actions.login();
 		this.openLoginPopup(this.defaultAuthenticationProvider);
-	}
+	};
 
-	clickPopupLogin() {
+	clickPopupLogin = () => {
 		this.props.actions && this.props.actions.login && this.props.actions.login();
 		this.isManualLogin = true;
 		this.openLoginPopup();
-	}
+	};
 
 	logout = () => {
 		Login.storeProvider = null;
@@ -376,32 +392,48 @@ class LoginComponent extends Component {
 			if (this.props.resetTenant) {
 				localStorage.removeItem('tenantId');
 			} else {
-				this.setState({ tenantId, stage: Login.stage.background, isSpinnerVisible: true }, () => {
-					self.refresh(self.state.tenantId).then(() => {
-						self.tryBackgroundLogin().then(x => {
-							if (!self.state.isManualLogin) {
-								self.getUserInfo(x.accessToken.tokenStr);
-								self.getModuleLicenses(x.accessToken.tokenStr);
-								this.setState({
-									tokens: {
-										accessToken: x.accessToken,
-										idToken: x.idToken
-									},
-									error: null
-								});
-							}
+				this.setState(
+					ps => ({
+						...ps,
+						tenantId,
+						stage: Login.stage.background,
+						isSpinnerVisible: true
+					}),
+					() => {
+						self.refresh(self.state.tenantId).then(() => {
+							self.tryBackgroundLogin().then(x => {
+								if (!self.state.isManualLogin) {
+									self.getUserInfo(x.accessToken.tokenStr);
+									self.getModuleLicenses(x.accessToken.tokenStr);
+									this.setState(ps => ({
+										...ps,
+										tokens: {
+											accessToken: x.accessToken,
+											idToken: x.idToken
+										},
+										error: null
+									}));
+								}
 
-							this.setState({ isSpinnerVisible: false });
+								this.setState(ps => ({
+									...ps,
+									isSpinnerVisible: false
+								}));
+							});
 						});
-					});
-				});
+					}
+				);
 			}
 		}
 	}
 
-	goBack() {
-		this.setState({ stage: Login.stage.tenant, error: null });
-	}
+	goBack = () => {
+		this.setState(ps => ({ ...ps, stage: Login.stage.tenant, error: null }));
+	};
+
+	onLanguageChange = newLangCode => {
+		this.setState(ps => ({ ...ps, locale: newLangCode }));
+	};
 
 	render() {
 		const {
@@ -417,7 +449,7 @@ class LoginComponent extends Component {
 			wrapper
 		} = this.classNames;
 		return (
-			<IntlProvider locale={this.props.locale} messages={json[this.props.locale]}>
+			<IntlProvider locale={this.state.locale} messages={json[this.state.locale]}>
 				<div className={wrapper}>
 					<div className={root}>
 						<div className={content}>
@@ -426,10 +458,12 @@ class LoginComponent extends Component {
 									selectedTenant={this.state.tenantId}
 									tenants={this.props.tenants}
 									currentUserName={this.state.userInfo && this.state.userInfo.Name}
-									onChange={this.handleTenantChange.bind(this)}
+									onChange={t => this.handleTenantChange(t)}
 									isLoggedIn={this.state.stage === Login.stage.module}
-									goBack={this.goBack.bind(this)}
+									goBack={() => this.goBack()}
 									logout={() => this.logout()}
+									defaultLanguage={this.props.locale}
+									onLanguageChange={code => this.onLanguageChange(code)}
 								/>
 							</Box>
 							<Box className={main}>
@@ -441,15 +475,13 @@ class LoginComponent extends Component {
 												<Button
 													className={loginButton}
 													disabled={!this.state.tenantId}
-													onClick={this.clickPopupLoginWithDefaultProvider.bind(
-														this
-													)}>
+													onClick={() => this.clickPopupLoginWithDefaultProvider()}>
 													<FormattedMessage id="login" />
 												</Button>
 												<ActionButton
 													className={loginLabel}
 													disabled={!this.state.tenantId}
-													onClick={this.clickPopupLogin.bind(this)}>
+													onClick={() => this.clickPopupLogin()}>
 													<FormattedMessage id="loginDifferentUser" />
 												</ActionButton>
 											</div>
@@ -478,9 +510,9 @@ class LoginComponent extends Component {
 		);
 	}
 
-	handleTenantChange(value) {
-		this.setState({ tenantId: value }, this.refreshAuthConfig);
-	}
+	handleTenantChange = value => {
+		this.setState(ps => ({ ...ps, tenantId: value }), this.refreshAuthConfig);
+	};
 
 	static hashToMap(hash) {
 		hash = hash.substring(hash.indexOf('#') + 1);
