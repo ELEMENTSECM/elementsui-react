@@ -4,7 +4,7 @@ export interface PersonaProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Image URL
 	 */

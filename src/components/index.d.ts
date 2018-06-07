@@ -1,3 +1,4 @@
+export { addLocaleData } from 'react-intl';
 export { default as ActionButton, ActionButtonProps } from './Inputs/ActionButton';
 export { default as BasePicker, BasePickerProps } from './Pickers/BasePicker';
 export { default as Box, BoxProps } from './Surfaces/Box';
@@ -23,4 +24,8 @@ export { default as Spinner, SpinnerProps } from './Indicators/Spinner';
 export { default as TeachingBubble, TeachingBubbleProps } from './Surfaces/TeachingBubble';
 export { default as Toggle, ToggleProps } from './Inputs/Toggle';
 export { default as Tooltip, TooltipProps } from './Surfaces/Tooltip';
+export { default as en } from 'react-intl/locale-data/en';
+export { default as nb } from 'react-intl/locale-data/nb';
+export { default as nn } from 'react-intl/locale-data/nn';
+export { default as sv } from 'react-intl/locale-data/sv';
 export { initializeIcons } from 'office-ui-fabric-react/lib/Icons';

@@ -5,7 +5,16 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 import { MessageBar as FabricMessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 export function MessageBar(props) {
-	const { htmlId, styles, messageBarType, isMultiline, onDismiss } = props;
+	const {
+		id,
+		styles,
+		messageBarType,
+		isMultiline,
+		onDismiss,
+		dismissButtonAriaLabel,
+		truncated,
+		overflowButtonAriaLabel
+	} = props;
 	const classNames = classNamesFunction()(styles, props);
 
 	const getBarState = messageBarType => {
@@ -29,11 +38,14 @@ export function MessageBar(props) {
 
 	return (
 		<FabricMessageBar
-			id={htmlId}
+			id={id}
 			className={classNames.root}
 			messageBarType={getBarState(messageBarType)}
 			isMultiline={isMultiline}
-			onDismiss={onDismiss}>
+			onDismiss={onDismiss}
+			dismissButtonAriaLabel={dismissButtonAriaLabel}
+			truncated={truncated}
+			overflowButtonAriaLabel={overflowButtonAriaLabel}>
 			{props.children}
 		</FabricMessageBar>
 	);
@@ -41,13 +53,19 @@ export function MessageBar(props) {
 
 MessageBar.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** Message bar type. Valid values are: 'info', 'error', 'blocked', 'severeWarning', 'success', 'warning' */
 	messageBarType: PropTypes.oneOf(['info', 'error', 'blocked', 'severeWarning', 'success', 'warning']),
 	/** Should the message be multiline? */
 	isMultiline: PropTypes.bool,
 	/** What should happen when dismissed */
 	onDismiss: PropTypes.any,
+	/** Dismiss button aria label */
+	dismissButtonAriaLabel: PropTypes.string,
+	/** Truncated message */
+	truncated: PropTypes.bool,
+	/** Overflow button aria label */
+	overflowButtonAriaLabel: PropTypes.string,
 	/** User-defined styling */
 	styles: PropTypes.func
 };

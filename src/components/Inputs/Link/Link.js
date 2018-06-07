@@ -6,10 +6,10 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 
 /**Link example */
 export function Link(props) {
-	const { htmlId, label, href, disabled, styles } = props;
+	const { id, label, href, disabled, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
-		<UIFabLink id={htmlId} className={classNames.root} href={href} disabled={disabled}>
+		<UIFabLink id={id} className={classNames.root} href={href} disabled={disabled}>
 			{label}
 		</UIFabLink>
 	);
@@ -17,7 +17,7 @@ export function Link(props) {
 
 Link.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/**Link label */
 	label: PropTypes.string,
 	/**Link href */

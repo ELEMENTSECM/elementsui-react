@@ -58,5 +58,10 @@ ${stdout
 
 function addInitializeIcons() {
 	moduleExports.push(`export { initializeIcons } from "office-ui-fabric-react/lib/Icons";`);
+	moduleExports.push(`export { addLocaleData } from 'react-intl';`);
+	moduleExports.push(`export { default as en } from 'react-intl/locale-data/en';`);
+	moduleExports.push(`export { default as nb } from 'react-intl/locale-data/nb';`);
+	moduleExports.push(`export { default as nn } from 'react-intl/locale-data/nn';`);
+	moduleExports.push(`export { default as sv } from 'react-intl/locale-data/sv';`);
 	utils.writeFile(path.join(components, 'index.d.ts'), moduleExports.join(''));
 }

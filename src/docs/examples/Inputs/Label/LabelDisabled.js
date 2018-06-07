@@ -3,5 +3,9 @@ import { Label } from 'elementsui-react';
 
 /** Disabled Label */
 export default function LabelDisabled() {
-	return <Label htmlId="labelDisabled" disabled={true} required={false} label="Disabled label" />;
+	return (
+		<Label id="labelDisabled" disabled={true} required={false}>
+			Disabled label
+		</Label>
+	);
 }

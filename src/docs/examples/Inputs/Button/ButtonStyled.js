@@ -20,12 +20,8 @@ export default function ButtonStyled() {
 	};
 
 	return (
-		<Button
-			htmlId="defaultBtn"
-			label="Default button"
-			isPrimary={true}
-			className="button-primary"
-			styles={styles}
-		/>
+		<Button id="defaultBtn" isPrimary={true} className="button-primary" styles={styles}>
+			Styled button
+		</Button>
 	);
 }

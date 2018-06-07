@@ -5,11 +5,11 @@ import Button from 'elementsui-react/Inputs/Button';
 export default function ButtonDefault() {
 	return (
 		<Button
-			htmlId="primaryClickBtn"
-			label="Click me"
+			id="primaryClickBtn"
 			isPrimary={true}
 			onClick={() => alert('Clicked')}
-			className="button-click"
-		/>
+			className="button-click">
+			Click me
+		</Button>
 	);
 }

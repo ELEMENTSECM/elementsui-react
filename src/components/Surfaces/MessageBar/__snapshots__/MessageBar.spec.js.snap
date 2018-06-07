@@ -5,7 +5,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <StyledCustomizedMessageBar
-    htmlId="testMessageBar"
+    id="testMessageBar"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -19,7 +19,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "htmlId": "testMessageBar",
+      "id": "testMessageBar",
       "styles": [Function],
     },
     "ref": null,
@@ -32,7 +32,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "htmlId": "testMessageBar",
+        "id": "testMessageBar",
         "styles": [Function],
       },
       "ref": null,

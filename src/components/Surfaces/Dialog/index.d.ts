@@ -16,7 +16,7 @@ export interface DialogProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Dialog visibility state
 	 */

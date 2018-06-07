@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackgroundLoginFrame displays correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BackgroundLoginFrame
+    source="http://localhost"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <iframe
+          height="0"
+          id="background-login"
+          src="http://localhost"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex="-1"
+          title="Empty"
+          width="0"
+        />,
+        <iframe
+          height="500"
+          id="manual-login"
+          tabIndex="1"
+          title="Empty"
+          width="500"
+        />,
+      ],
+      "style": Object {
+        "display": "none",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "height": "0",
+          "id": "background-login",
+          "src": "http://localhost",
+          "style": Object {
+            "display": "none",
+          },
+          "tabIndex": "-1",
+          "title": "Empty",
+          "width": "0",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "iframe",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "height": "500",
+          "id": "manual-login",
+          "tabIndex": "1",
+          "title": "Empty",
+          "width": "500",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "iframe",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <iframe
+            height="0"
+            id="background-login"
+            src="http://localhost"
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+            tabIndex="-1"
+            title="Empty"
+            width="0"
+          />,
+          <iframe
+            height="500"
+            id="manual-login"
+            tabIndex="1"
+            title="Empty"
+            width="500"
+          />,
+        ],
+        "style": Object {
+          "display": "none",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "height": "0",
+            "id": "background-login",
+            "src": "http://localhost",
+            "style": Object {
+              "display": "none",
+            },
+            "tabIndex": "-1",
+            "title": "Empty",
+            "width": "0",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "iframe",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "height": "500",
+            "id": "manual-login",
+            "tabIndex": "1",
+            "title": "Empty",
+            "width": "500",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "iframe",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

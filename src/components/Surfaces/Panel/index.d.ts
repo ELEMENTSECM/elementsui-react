@@ -4,7 +4,7 @@ export interface PanelProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Panel open
 	 */

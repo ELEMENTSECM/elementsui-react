@@ -6,7 +6,7 @@ export interface MessageBarProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Message bar type. Valid values are: 'info', 'error', 'blocked', 'severeWarning', 'success', 'warning'
 	 */
@@ -19,6 +19,18 @@ export interface MessageBarProps {
 	 * What should happen when dismissed
 	 */
 	onDismiss?: any;
+	/**
+	 * Dismiss button aria label
+	 */
+	dismissButtonAriaLabel?: string;
+	/**
+	 * Truncated message
+	 */
+	truncated?: boolean;
+	/**
+	 * Overflow button aria label
+	 */
+	overflowButtonAriaLabel?: string;
 	/**
 	 * User-defined styling
 	 */

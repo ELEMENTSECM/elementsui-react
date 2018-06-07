@@ -96,7 +96,7 @@ const itemsWithSubItems = [
 export default function ContextualMenuWithSubMenus() {
 	return (
 		<ContextualMenu
-			htmlId="contextualMenuWithSubMenus"
+			id="contextualMenuWithSubMenus"
 			isPrimary={false}
 			buttonText="Menu with sub menus"
 			ariaLabel="Context menu with sub menus"

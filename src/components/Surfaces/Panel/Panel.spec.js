@@ -4,7 +4,7 @@ import Panel from './Panel';
 
 describe('Panel', () => {
 	test('displays  `Foo` as headerText', () => {
-		const tree = renderer.create(<Panel htmlId="testPanel" headerText="Foo" />).toJSON();
+		const tree = renderer.create(<Panel id="defaultBtn" headerText="Foo" />).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 });

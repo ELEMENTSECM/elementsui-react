@@ -4,31 +4,47 @@ exports[`Login displays correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Login
+  Symbol(enzyme.__unrendered__): <StyledCustomizedLogin
     actions={
       Object {
         "loginAsync": [Function],
         "logout": [Function],
       }
     }
-    appConfig={
+    locale="en"
+    modules={
+      Array [
+        Object {
+          "Id": "rm",
+          "Name": "Record Management",
+        },
+        Object {
+          "Id": "mm",
+          "Name": "Meeting Module",
+        },
+        Object {
+          "Id": "sa",
+          "Name": "System administration",
+        },
+        Object {
+          "Id": "eb",
+          "Name": "eBuildingCase",
+        },
+      ]
+    }
+    paths={
       Object {
-        "baseUri": "baseUri",
-        "configServerAuth": "configServerAuth",
-        "configServerReq": "configServerReq",
-        "configServerUrl": "configServerUrl",
-        "extSystemName": "extSystemName",
-        "idpClient": "idpClient",
-        "idpRedirectUri": "idpRedirectUri",
+        "applicationPath": "http://127.0.0.1:5000",
+        "baseUrl": "http://127.0.0.1:5000",
       }
     }
-    labels={
-      Object {
-        "loggedInAs": "You are logged in as",
-        "login": "Log in",
-        "logout": "Log out",
-        "selectTenant": "Select tenant",
-      }
+    tenants={
+      Array [
+        Object {
+          "Description": "ELEMENTS UTVIKLING (SQL)",
+          "Id": "GECKO-EPHORTE-V6_SQL_EPH_V6_U",
+        },
+      ]
     }
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -43,19 +59,40 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "handleLoginClick": [Function],
-      "handleLogoutClick": [Function],
-      "isLoggedIn": false,
-      "isSpinnerVisible": true,
-      "labels": Object {
-        "loggedInAs": "You are logged in as",
-        "login": "Log in",
-        "logout": "Log out",
-        "selectTenant": "Select tenant",
+      "actions": Object {
+        "loginAsync": [Function],
+        "logout": [Function],
       },
-      "name": undefined,
-      "onChange": [Function],
-      "tenants": null,
+      "locale": "en",
+      "modules": Array [
+        Object {
+          "Id": "rm",
+          "Name": "Record Management",
+        },
+        Object {
+          "Id": "mm",
+          "Name": "Meeting Module",
+        },
+        Object {
+          "Id": "sa",
+          "Name": "System administration",
+        },
+        Object {
+          "Id": "eb",
+          "Name": "eBuildingCase",
+        },
+      ],
+      "paths": Object {
+        "applicationPath": "http://127.0.0.1:5000",
+        "baseUrl": "http://127.0.0.1:5000",
+      },
+      "styles": [Function],
+      "tenants": Array [
+        Object {
+          "Description": "ELEMENTS UTVIKLING (SQL)",
+          "Id": "GECKO-EPHORTE-V6_SQL_EPH_V6_U",
+        },
+      ],
     },
     "ref": null,
     "rendered": null,
@@ -67,19 +104,40 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "handleLoginClick": [Function],
-        "handleLogoutClick": [Function],
-        "isLoggedIn": false,
-        "isSpinnerVisible": true,
-        "labels": Object {
-          "loggedInAs": "You are logged in as",
-          "login": "Log in",
-          "logout": "Log out",
-          "selectTenant": "Select tenant",
+        "actions": Object {
+          "loginAsync": [Function],
+          "logout": [Function],
         },
-        "name": undefined,
-        "onChange": [Function],
-        "tenants": null,
+        "locale": "en",
+        "modules": Array [
+          Object {
+            "Id": "rm",
+            "Name": "Record Management",
+          },
+          Object {
+            "Id": "mm",
+            "Name": "Meeting Module",
+          },
+          Object {
+            "Id": "sa",
+            "Name": "System administration",
+          },
+          Object {
+            "Id": "eb",
+            "Name": "eBuildingCase",
+          },
+        ],
+        "paths": Object {
+          "applicationPath": "http://127.0.0.1:5000",
+          "baseUrl": "http://127.0.0.1:5000",
+        },
+        "styles": [Function],
+        "tenants": Array [
+          Object {
+            "Description": "ELEMENTS UTVIKLING (SQL)",
+            "Id": "GECKO-EPHORTE-V6_SQL_EPH_V6_U",
+          },
+        ],
       },
       "ref": null,
       "rendered": null,

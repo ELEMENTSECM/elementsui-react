@@ -6,7 +6,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 export default function TooltipDefault() {
 	const elementText = 'I have a tooltip';
 	return (
-		<Tooltip htmlId="defaultTooltip" content="I'm showing tooltip">
+		<Tooltip id="defaultTooltip" content="I'm showing tooltip">
 			<PrimaryButton>{elementText}</PrimaryButton>
 		</Tooltip>
 	);

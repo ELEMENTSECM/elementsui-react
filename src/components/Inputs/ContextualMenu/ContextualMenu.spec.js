@@ -19,7 +19,7 @@ describe('ContextualMenuProps', () => {
 	test('displays menu correctly', () => {
 		const tree = renderer
 			.create(
-				<ContextualMenu htmlId="testContextualMenu" text="Contextual Menu" menuProps={{ items }} />
+				<ContextualMenu id="testContextualMenu" text="Contextual Menu" menuProps={{ items }} />
 			)
 			.toJSON();
 		expect(tree).toMatchSnapshot();

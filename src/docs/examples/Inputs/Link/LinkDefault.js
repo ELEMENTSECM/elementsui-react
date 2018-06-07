@@ -3,5 +3,5 @@ import { Link } from 'elementsui-react';
 
 /**Default Link */
 export default function LinkDefault() {
-	return <Link htmlId="linkDefault" label="Default link" href="https://evry.com" />;
+	return <Link id="linkDefault" label="Default link" href="https://evry.com" />;
 }

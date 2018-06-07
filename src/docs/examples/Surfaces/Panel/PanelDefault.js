@@ -39,7 +39,7 @@ export default class PanelDefault extends React.Component {
 		return (
 			<div>
 				<Panel
-					htmlId="defaultPanel"
+					id="defaultPanel"
 					headerText="Default panel"
 					isOpen={this.state.isOpen}
 					onDismissed={this.closePanel}

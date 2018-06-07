@@ -5,11 +5,11 @@ import { styles } from './Breadcrumb.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function Breadcrumb(props) {
-	const { htmlId, items, ariaLabel, maxDisplayedItems, styles } = props;
+	const { id, items, ariaLabel, maxDisplayedItems, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<UIFabBreadcrumb
-			id={htmlId}
+			id={id}
 			className={classNames.root}
 			ariaLabel={ariaLabel}
 			maxDisplayedItems={maxDisplayedItems}
@@ -20,7 +20,7 @@ export function Breadcrumb(props) {
 
 Breadcrumb.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** Breadcrumb arialabel for navigation landmark*/
 	ariaLabel: PropTypes.string,
 	/** Breadcrumb max visible crumbs when availible space */

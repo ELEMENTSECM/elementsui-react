@@ -4,7 +4,7 @@ import Box from './index';
 
 describe('Box', () => {
 	test('displays correctly', () => {
-		const wrapper = shallow(<Box htmlId="testBox" />);
+		const wrapper = shallow(<Box id="testBox" />);
 		expect(wrapper).toMatchSnapshot();
 	});
 });

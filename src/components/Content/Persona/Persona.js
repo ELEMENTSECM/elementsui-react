@@ -5,7 +5,7 @@ import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react
 import { Persona as FABPersona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 
 export function Persona(props) {
-	const { htmlId, styles } = props;
+	const { id, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 
 	let initials = (props.text && props.text.match(/\b\w/g)) || [];
@@ -13,7 +13,7 @@ export function Persona(props) {
 
 	return (
 		<FABPersona
-			id={htmlId}
+			id={id}
 			className={classNames.root}
 			size={PersonaSize.size40}
 			imageInitials={initials}
@@ -24,7 +24,7 @@ export function Persona(props) {
 
 Persona.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** Image URL */
 	imageUrl: PropTypes.string,
 	/** Primary text */

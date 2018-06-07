@@ -4,7 +4,7 @@ export interface BreadcrumbProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Breadcrumb arialabel for navigation landmark
 	 */

@@ -9,7 +9,15 @@ export interface ModulePickerProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
+	/**
+	 * Application path
+	 */
+	applicationPath?: string;
+	/**
+	 * Selected tenant
+	 */
+	tenantId?: string;
 	/**
 	 * Array of modules
 	 */

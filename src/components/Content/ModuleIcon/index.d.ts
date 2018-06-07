@@ -1,14 +1,16 @@
 import * as React from 'react';
 
+export type ModuleIconModuleId = 'rm' | 'mm' | 'sa' | 'eb';
+
 export interface ModuleIconProps {
 	/**
 	 * HTML id tag of the root element
 	 */
-	htmlId?: string;
+	id?: string;
 	/**
 	 * Module Id
 	 */
-	moduleId?: string;
+	moduleId?: ModuleIconModuleId;
 	/**
 	 * Icon color
 	 */

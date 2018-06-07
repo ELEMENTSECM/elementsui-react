@@ -4,11 +4,11 @@ import { styles } from './ModuleIcon.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function ModuleIcon(props) {
-	const { htmlId, styles, moduleId, color, size } = props;
+	const { id, styles, moduleId, color, size } = props;
 	const classNames = classNamesFunction()(styles, props);
 	const icons = {
 		rm: (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.88 164.89" fill={color} width={size}>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.88 164.89" fill={color} height={size}>
 				<title>Record management module</title>
 				<g id="Layer_2" data-name="Layer 2">
 					<g id="Layer_1-2" data-name="Layer 1">
@@ -42,7 +42,7 @@ export function ModuleIcon(props) {
 			</svg>
 		),
 		eb: (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.14 165.04" fill={color} width={size}>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.14 165.04" fill={color} height={size}>
 				<title>eBuildingCase module</title>
 				<g id="Layer_2" data-name="Layer 2">
 					<g id="Layer_1-2" data-name="Layer 1">
@@ -56,7 +56,7 @@ export function ModuleIcon(props) {
 	};
 
 	return (
-		<div htmlId={htmlId} className={classNames.root}>
+		<div id={id} className={classNames.root}>
 			{icons[moduleId]}
 		</div>
 	);
@@ -64,9 +64,9 @@ export function ModuleIcon(props) {
 
 ModuleIcon.propTypes = {
 	/** HTML id tag of the root element */
-	htmlId: PropTypes.string,
+	id: PropTypes.string,
 	/** Module Id */
-	moduleId: PropTypes.string,
+	moduleId: PropTypes.oneOf(['rm', 'mm', 'sa', 'eb']),
 	/** Icon color */
 	color: PropTypes.string,
 	/** Icon size */
