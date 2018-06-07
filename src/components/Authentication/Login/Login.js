@@ -188,9 +188,11 @@ class LoginComponent extends Component {
 		});
 		return `${templatedBaseUrl.replace('{database}', database)}/authorize?client_id=${encodeURIComponent(
 			clientId
-		)}&redirect_uri=${encodeURIComponent(authenticationCallback)}&response_type=${encodeURIComponent(
-			'id_token token'
-		)}&scope=${encodeURIComponent('openid email')}&state=${btoa(state).replace(
+		)}&redirect_uri=${encodeURIComponent(
+			'http://localhost:3000/AuthCallback'
+		)}&response_type=${encodeURIComponent('id_token token')}&scope=${encodeURIComponent(
+			'openid email'
+		)}&state=${btoa(state).replace(
 			/=/g,
 			''
 		)}&nonce=${nonce}&prompt=${prompt}&acr_values=idp:${authenticationProvider}`;
