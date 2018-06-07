@@ -16,11 +16,11 @@ export class LoginError extends React.Component {
 	}
 
 	toggleError = () => {
-		this.setState({ visible: false });
+		this.setState(ps => ({ ...ps, visible: false }));
 	};
 
 	componentWillReceiveProps(newProps) {
-		this.setState({ visible: newProps.type });
+		this.setState(ps => ({ ...ps, visible: newProps.type }));
 	}
 
 	render() {
