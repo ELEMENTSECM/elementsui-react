@@ -55,6 +55,45 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         </span>
       </div>
     </div>
+    <div
+      className="ms-Dropdown-container"
+    >
+      <div
+        aria-activedescendant={undefined}
+        aria-describedby="languagePicker-option"
+        aria-disabled={undefined}
+        aria-expanded="false"
+        aria-label={undefined}
+        aria-live="assertive"
+        aria-owns={undefined}
+        className="ms-Dropdown root_aecb6435 ms-Dropdown ms-LanguagePicker root-42"
+        data-is-focusable={true}
+        id="languagePicker"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        role="listbox"
+        tabIndex={0}
+      >
+        <span
+          aria-atomic={true}
+          className="ms-Dropdown-title title_aecb6435 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_aecb6435"
+          id="languagePicker-option"
+          role="listbox"
+        />
+        <span
+          className="ms-Dropdown-caretDownWrapper caretDownWrapper_aecb6435"
+        >
+          <i
+            aria-hidden={true}
+            className="ms-Dropdown-caretDown caretDown_aecb6435 root-43"
+            data-icon-name="ChevronDown"
+            role="presentation"
+          />
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 `;

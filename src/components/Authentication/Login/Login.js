@@ -48,7 +48,8 @@ class LoginComponent extends Component {
 			licenses: [],
 			modules: [],
 			licensedModules: true,
-			tokens: null
+			tokens: null,
+			locale: this.props.locale
 		};
 
 		this.classNames = classNamesFunction()(styles, props);
@@ -356,16 +357,16 @@ class LoginComponent extends Component {
 		this.getModuleLicenses(loginResult.accessToken.tokenStr);
 	}
 
-	clickPopupLoginWithDefaultProvider() {
+	clickPopupLoginWithDefaultProvider = () => {
 		this.props.actions && this.props.actions.login && this.props.actions.login();
 		this.openLoginPopup(this.defaultAuthenticationProvider);
-	}
+	};
 
-	clickPopupLogin() {
+	clickPopupLogin = () => {
 		this.props.actions && this.props.actions.login && this.props.actions.login();
 		this.isManualLogin = true;
 		this.openLoginPopup();
-	}
+	};
 
 	logout = () => {
 		Login.storeProvider = null;
@@ -426,9 +427,13 @@ class LoginComponent extends Component {
 		}
 	}
 
-	goBack() {
+	goBack = () => {
 		this.setState(ps => ({ ...ps, stage: Login.stage.tenant, error: null }));
-	}
+	};
+
+	onLanguageChange = newLangCode => {
+		this.setState(ps => ({ ...ps, locale: newLangCode }));
+	};
 
 	render() {
 		const {
@@ -444,7 +449,7 @@ class LoginComponent extends Component {
 			wrapper
 		} = this.classNames;
 		return (
-			<IntlProvider locale={this.props.locale} messages={json[this.props.locale]}>
+			<IntlProvider locale={this.state.locale} messages={json[this.state.locale]}>
 				<div className={wrapper}>
 					<div className={root}>
 						<div className={content}>
@@ -453,10 +458,12 @@ class LoginComponent extends Component {
 									selectedTenant={this.state.tenantId}
 									tenants={this.props.tenants}
 									currentUserName={this.state.userInfo && this.state.userInfo.Name}
-									onChange={this.handleTenantChange.bind(this)}
+									onChange={t => this.handleTenantChange(t)}
 									isLoggedIn={this.state.stage === Login.stage.module}
-									goBack={this.goBack.bind(this)}
+									goBack={() => this.goBack()}
 									logout={() => this.logout()}
+									defaultLanguage={this.props.locale}
+									onLanguageChange={code => this.onLanguageChange(code)}
 								/>
 							</Box>
 							<Box className={main}>
@@ -468,15 +475,13 @@ class LoginComponent extends Component {
 												<Button
 													className={loginButton}
 													disabled={!this.state.tenantId}
-													onClick={this.clickPopupLoginWithDefaultProvider.bind(
-														this
-													)}>
+													onClick={() => this.clickPopupLoginWithDefaultProvider()}>
 													<FormattedMessage id="login" />
 												</Button>
 												<ActionButton
 													className={loginLabel}
 													disabled={!this.state.tenantId}
-													onClick={this.clickPopupLogin.bind(this)}>
+													onClick={() => this.clickPopupLogin()}>
 													<FormattedMessage id="loginDifferentUser" />
 												</ActionButton>
 											</div>
@@ -505,9 +510,9 @@ class LoginComponent extends Component {
 		);
 	}
 
-	handleTenantChange(value) {
+	handleTenantChange = value => {
 		this.setState(ps => ({ ...ps, tenantId: value }), this.refreshAuthConfig);
-	}
+	};
 
 	static hashToMap(hash) {
 		hash = hash.substring(hash.indexOf('#') + 1);
