@@ -6,6 +6,8 @@ import Label from '../../Inputs/Label';
 import { styles } from './TenantSelector.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { FormattedMessage } from 'react-intl';
+import LanguagePicker from '../../Pickers/LanguagePicker';
+
 /** TenantSelector example */
 class TenantSelector extends React.Component {
 	constructor(props) {
@@ -65,6 +67,13 @@ class TenantSelector extends React.Component {
 							options={options || []}
 							onChange={option => this.handleSelectChange(option)}
 						/>
+						<LanguagePicker
+							id="languagePicker"
+							className={this.classNames.languagePicker}
+							languageCodes={['en', 'nb', 'nn', 'sv']}
+							defaultLanguage={this.props.defaultLanguage}
+							onChange={code => this.props.onLanguageChange(code)}
+						/>
 					</div>
 				) : (
 					<LoggedInBar
@@ -81,6 +90,8 @@ class TenantSelector extends React.Component {
 }
 
 TenantSelector.propTypes = {
+	/** Default locale 2-letter code */
+	defaultLanguage: PropTypes.string,
 	/** Selected tenant */
 	selectedTenant: PropTypes.string,
 	/** List of tenant configs */
@@ -96,6 +107,8 @@ TenantSelector.propTypes = {
 	isLoggedIn: PropTypes.bool,
 	/** Selected tenant changed event handler */
 	onChange: PropTypes.func,
+	/** Selected language changed event handler */
+	onLanguageChange: PropTypes.func,
 	/** Back button click event handler */
 	goBack: PropTypes.func,
 	/** User-defined styling */
