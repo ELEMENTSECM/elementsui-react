@@ -1,113 +1,127 @@
 /*----------------- High scope -----------------*/
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #666666;
-}
-.search-nav{
-    width: 200px;
-    float: left;
-}
-.search-nav .navigation-menu {
-    float: left;
-    width: 200px
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666666;
 }
 
-.search-nav .component-search{
-    margin-bottom: 2px;
+.search-nav {
+	width: 200px;
+	float: left;
 }
+
+.search-nav .navigation-menu {
+	float: left;
+	width: 200px;
+}
+
+.search-nav .component-search {
+	margin-bottom: 2px;
+}
+
 .article-content {
-    margin-left: 215px;
+	margin-left: 215px;
 }
-.article-content .components-header{
-    background: #2d8498;
-    color: white;
-    padding: 1px 7px 5px 7px;
+
+.article-content .components-header {
+	background: #2d8498;
+	color: white;
+	padding: 1px 7px 5px 7px;
 }
-.article-content  .component-properties-header, .article-content  .component-example-header{
-margin-bottom: 3px;
+
+.article-content .component-properties-header,
+.article-content .component-example-header {
+	margin-bottom: 3px;
 }
+
 /*-------------------- Generic --------------------*/
 
 ul {
-    padding: 0;
-    margin: 0 0 5px 0;
+	padding: 0;
+	margin: 0 0 5px 0;
 }
 
 li {
-    list-style: none;
-    margin-bottom: 1px;
+	list-style: none;
+	margin-bottom: 1px;
 }
-li:hover{
-    background: #bee2ea;
+
+li:hover {
+	background: #bee2ea;
 }
-a{
-    color: #666666;
-    text-decoration: none;
-    display: block;
-    padding: 2px 0 3px 12px;
+
+a {
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	padding: 2px 0 3px 12px;
 }
 
 .clear {
-    clear: both;
+	clear: both;
 }
 
 /*-------------------- Context --------------------*/
-.article-content.landing-page{
-    border: solid 1px #d3d3d3;
-    padding: 16px;
-    background-color: #f4f6f9;
-}
-.pageheader .logo{
-        background: url(../public/new-elements-logo-svg.svg) no-repeat;
-        width: 151px;
-        height: 33px;
-        position: absolute;
-        background-size: contain;
-}
-.pageheader  .logo-title{
-    font-size: 0.5em;
-    display: block;
-    margin-left: 62px;
-    padding-top: 26px;
-    color: #2d8498;
-    font-weight: normal;
 
+.article-content.landing-page {
+	border: solid 1px #d3d3d3;
+	padding: 16px;
+	background-color: #f4f6f9;
 }
+
+.pageheader .logo {
+	background: url(../public/new-elements-logo-svg.svg) no-repeat;
+	width: 151px;
+	height: 33px;
+	position: absolute;
+	background-size: contain;
+}
+
+.pageheader .logo-title {
+	font-size: 0.5em;
+	display: block;
+	margin-left: 62px;
+	padding-top: 26px;
+	color: #2d8498;
+	font-weight: normal;
+}
+
 /*--------------------Examples-------------------*/
 
 .example {
-    border: solid 1px #d3d3d3;
-    padding: 16px;
-    margin-bottom: 16px;
-    background-color: #f4f6f9;
+	border: solid 1px #d3d3d3;
+	padding: 16px;
+	margin-bottom: 16px;
+	background-color: #f4f6f9;
 }
 
 /*--------------------Tree view--------------------*/
+
 .tree-view_item {
-    padding: 2px 2px 4px 4px;
-    margin-bottom: 1px;
-    font-size: 1.2em;
-    background: #2d8498;
-    color: white;
-    position: relative;
+	padding: 2px 2px 4px 4px;
+	margin-bottom: 1px;
+	font-size: 1.2em;
+	background: #2d8498;
+	color: white;
+	position: relative;
 }
-.tree-view_item  > span{
-    vertical-align: bottom;
+
+.tree-view_item > span {
+	vertical-align: bottom;
 }
 
 .tree-view_arrow {
-     width: 200px;
-    margin-top: -4px;
-    right: 0;
-    cursor: pointer;
-    display: inline-block;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    position: absolute;
-    text-align: right;
+	width: 200px;
+	margin-top: -4px;
+	right: 0;
+	cursor: pointer;
+	display: inline-block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	position: absolute;
+	text-align: right;
 }
 
 .tree-view_arrow:after {
@@ -116,29 +130,59 @@ a{
 }
 
 .tree-view_arrow:not(.tree-view_arrow-collapsed) {
-    text-align: left;
-    margin-top: -3px;
-    -webkit-transform: rotate(-180deg);
-    -moz-transform: rotate(-180deg);
-    -ms-transform: rotate(-180deg);
-    transform: rotate(-180deg);
+	text-align: left;
+	margin-top: -3px;
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	transform: rotate(-180deg);
 }
 
 /*--------------------Table--------------------*/
 
 .table-props {
-    border-collapse: collapse;
-    background: #f4f6f9;
-    width: 100%;
-    border: solid 1px #d3d3d3;
+	border-collapse: collapse;
+	background: #f4f6f9;
+	width: 100%;
+	border: solid 1px #d3d3d3;
 }
 
 .table-props th,
 .table-props td {
-    text-align: left;
-    padding: 10px;
+	text-align: left;
+	padding: 10px;
 }
 
 .table-props td {
-    border-top: solid 1px #d3d3d3;
+	border-top: solid 1px #d3d3d3;
+}
+
+/*  ---------------------------------------------------
+Notes on possible css class implementation:
+	ec: elements common component scope
+	ec-dropdown: because its a dropdown component
+	languagepicker: variant of the dropdown component!
+	In the Doc variant, additional classes can be added
+	Order: Component scope | Type | Variant
+	---------------------------------------------------*/
+
+/* E.g all dropdowns: .ec.ec-dropdown {}*/
+
+/* E.g dropdown of variant type languagepicker: .ec.ec-dropdown.languagepicker{}*/
+
+/* E.g dropdown of variant type languagepicker on the sign-in page: .ec.ec-dropdown.languagepicker.sign-in-languagepicker {}*/
+
+/* LanguagePickerStyled.js example */
+
+.ec.ec-dropdown.languagepicker.sign-in-languagepicker .ms-Dropdown-title {
+	border-radius: 2px;
+}
+
+.ec.ec-dropdown.languagepicker.sign-in-languagepicker:hover .ms-Dropdown-title {
+	background-color: rgba(29, 62, 70, 0.69);
+	color: white;
+}
+
+.ec.ec-dropdown.languagepicker.sign-in-languagepicker:hover .ms-Dropdown-caretDownWrapper i {
+	color: white;
 }
