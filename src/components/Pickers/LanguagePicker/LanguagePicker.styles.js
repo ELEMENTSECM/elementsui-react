@@ -4,7 +4,7 @@ export const styles = props => {
 
 	return {
 		root: [
-			'ms-LanguagePicker',
+			'ms-LanguagePicker ec ecDropdown languagePicker',
 			{
 				// ---------------------------------------------------
 				// Notes on possible css class implementation:
