@@ -3,7 +3,6 @@
 exports[`Tooltip displays \`Tooltip\` as content 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
     className="ms-TooltipHost host_a3f87333"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}

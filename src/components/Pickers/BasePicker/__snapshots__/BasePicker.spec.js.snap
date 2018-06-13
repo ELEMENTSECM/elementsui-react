@@ -6,8 +6,6 @@ exports[`BasePickerProps displays basepicker correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -32,16 +30,13 @@ exports[`BasePickerProps displays basepicker correctly 1`] = `
         role="list"
       >
         <input
-          aria-activedescendant={undefined}
           aria-controls="selected-suggestion-alert"
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns={undefined}
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input pickerInput_4fe0caaf"
           data-lpignore={true}
-          disabled={undefined}
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}

@@ -1,3 +1,4 @@
 /lib
 /config
 packcage.json
+**/*.js.snap

@@ -2,15 +2,9 @@
 
 exports[`CommandBarButton displays \`Foo\` as text 1`] = `
 <button
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  aria-pressed={undefined}
   className="ms-Button ms-Button--commandBar root-41"
   data-is-focusable={true}
-  disabled={undefined}
   id="testCommandBarButton"
-  onClick={undefined}
   type="button"
 >
   <div
@@ -19,7 +13,6 @@ exports[`CommandBarButton displays \`Foo\` as text 1`] = `
     <i
       aria-hidden={true}
       className="ms-Button-icon icon-49"
-      data-icon-name={undefined}
       role="presentation"
     />
     <div

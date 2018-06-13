@@ -2,15 +2,9 @@
 
 exports[`Button displays \`Foo\` as label 1`] = `
 <button
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  aria-pressed={undefined}
   className="ms-Button ms-Button--default my-button root-41"
   data-is-focusable={true}
-  disabled={undefined}
   id="defaultBtn"
-  onClick={undefined}
   type="button"
 >
   <div

@@ -2,16 +2,11 @@
 
 exports[`ContextualMenuProps displays menu correctly 1`] = `
 <button
-  aria-describedby={undefined}
   aria-expanded={false}
   aria-haspopup={true}
-  aria-label={undefined}
-  aria-labelledby={undefined}
   aria-owns={null}
-  aria-pressed={undefined}
   className="ms-Button ms-Button--default ms-ContextualMenu root-41"
   data-is-focusable={true}
-  disabled={undefined}
   id="testContextualMenu"
   onClick={[Function]}
   onKeyDown={[Function]}

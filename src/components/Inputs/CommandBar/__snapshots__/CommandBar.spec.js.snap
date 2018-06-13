@@ -13,9 +13,6 @@ exports[`CommandBar displays \`Foo\` as text 1`] = `
     }
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone ms-CommandBar ms-Button root-41"
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
@@ -31,15 +28,10 @@ exports[`CommandBar displays \`Foo\` as text 1`] = `
           className="ms-OverflowSet-item item_8ddbc6c5"
         >
           <button
-            aria-describedby={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
             aria-posinset={1}
-            aria-pressed={undefined}
             aria-setsize={1}
             className="ms-Button ms-Button--commandBar ms-CommandBarItem-link root-45"
             data-is-focusable={true}
-            disabled={undefined}
             icon="Upload"
             name="Upload"
             onClick={[Function]}

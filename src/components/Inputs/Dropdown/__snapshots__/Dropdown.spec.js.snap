@@ -8,18 +8,13 @@ exports[`Dropdown displays correctly 1`] = `
     className="ms-Label ms-Dropdown-label root-41"
     htmlFor="testDropdown"
     id="testDropdown-label"
-    required={undefined}
   >
     test dropdown
   </label>
   <div
-    aria-activedescendant={undefined}
     aria-describedby="testDropdown-option"
-    aria-disabled={undefined}
     aria-expanded="false"
-    aria-label={undefined}
     aria-live="assertive"
-    aria-owns={undefined}
     className="ms-Dropdown root_aecb6435 ms-Dropdown root-40"
     data-is-focusable={true}
     id="testDropdown"

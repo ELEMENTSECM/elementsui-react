@@ -18,8 +18,6 @@ exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone1"
         onFocus={[Function]}
@@ -37,7 +35,6 @@ exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
               className="ms-Breadcrumb-item item-48"
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost host_a3f87333"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -59,7 +56,6 @@ exports[`Breadcrumb displays \`Default Breadcrumb\` as ariaLabel 1`] = `
               className="ms-Breadcrumb-item item-48"
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost host_a3f87333"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}

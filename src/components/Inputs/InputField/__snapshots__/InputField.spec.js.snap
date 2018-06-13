@@ -11,9 +11,7 @@ exports[`InputField displays correctly 1`] = `
       className="ms-TextField-fieldGroup fieldGroup_df60a678"
     >
       <input
-        aria-describedby={undefined}
         aria-invalid={false}
-        aria-label={undefined}
         className="ms-TextField-field field_df60a678"
         disabled={false}
         id="testInputField"

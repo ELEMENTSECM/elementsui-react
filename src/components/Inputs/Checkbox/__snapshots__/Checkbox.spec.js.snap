@@ -4,16 +4,8 @@ exports[`Checkbox displays \`Foo\` as label 1`] = `
 <button
   aria-checked={false}
   aria-describedby="descriptionID"
-  aria-disabled={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  aria-posinset={undefined}
-  aria-setsize={undefined}
   className="ms-Checkbox is-enabled root-41"
-  data-ktp-execute-target={undefined}
-  disabled={undefined}
   id="checkbox-1"
-  name={undefined}
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -26,7 +18,6 @@ exports[`Checkbox displays \`Foo\` as label 1`] = `
   >
     <div
       className="ms-Checkbox-checkbox checkbox-43"
-      data-ktp-target={undefined}
     >
       <i
         aria-hidden={true}
