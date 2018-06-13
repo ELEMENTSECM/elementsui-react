@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import LoggedInBar from './LoggedInBar';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { IntlProvider } from 'react-intl';
 import json from '../Login/Login.nls.json';
 
