@@ -66,7 +66,7 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
         aria-label={undefined}
         aria-live="assertive"
         aria-owns={undefined}
-        className="ms-Dropdown root_aecb6435 ms-Dropdown ms-LanguagePicker root-42"
+        className="ms-Dropdown root_aecb6435 ms-Dropdown ms-LanguagePicker ec ec-dropdown languagepicker root-42"
         data-is-focusable={true}
         id="languagePicker"
         onBlur={[Function]}
@@ -180,7 +180,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
             style={undefined}
           >
             <span>
-              JD
+              TU
             </span>
           </div>
           <div
@@ -217,7 +217,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            John Doe
+            Test user
           </div>
         </div>
         <div

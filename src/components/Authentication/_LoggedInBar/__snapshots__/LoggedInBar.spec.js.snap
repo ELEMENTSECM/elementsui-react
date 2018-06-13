@@ -81,7 +81,7 @@ exports[`LoggedInBar displays correctly 1`] = `
           style={undefined}
         >
           <span>
-            JD
+            TU
           </span>
         </div>
         <div
@@ -118,7 +118,7 @@ exports[`LoggedInBar displays correctly 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          John Doe
+          Test user
         </div>
       </div>
       <div

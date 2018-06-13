@@ -26,7 +26,7 @@ describe('TenantSelector', () => {
 						tenants={tenants}
 						isLoggedIn={true}
 						selectedTenant="ID_1"
-						currentUserName="John Doe"
+						currentUserName="Test user"
 					/>
 				</IntlProvider>
 			)

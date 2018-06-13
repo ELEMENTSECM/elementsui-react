@@ -4,8 +4,16 @@ export const styles = props => {
 
 	return {
 		root: [
-			'ms-LanguagePicker',
+			'ms-LanguagePicker ec ec-dropdown languagepicker',
 			{
+				// ---------------------------------------------------
+				// Notes on possible css class implementation:
+				// ec:elements common component scope
+				// ec-dropdown:because its a dropdown component
+				// languagepicker:variant of the dropdown component
+				// Order:Component scope | Type | Variant
+				// In the Doc variant, additional classes can be added
+				// ---------------------------------------------------
 				// background: props.theme.palette.themePrimary
 				// place your styles here
 			},

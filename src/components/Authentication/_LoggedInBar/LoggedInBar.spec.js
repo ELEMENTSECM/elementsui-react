@@ -9,7 +9,7 @@ describe('LoggedInBar', () => {
 		const tree = renderer
 			.create(
 				<IntlProvider locale="en" messages={json.en}>
-					<LoggedInBar currentUserName="John Doe" tenant="test" />
+					<LoggedInBar currentUserName="Test user" tenant="test" />
 				</IntlProvider>
 			)
 			.toJSON();
