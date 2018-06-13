@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import LoggedInBar from './LoggedInBar';
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { IntlProvider } from 'react-intl';
 import json from '../Login/Login.nls.json';
 
@@ -10,7 +9,7 @@ describe('LoggedInBar', () => {
 		const tree = renderer
 			.create(
 				<IntlProvider locale="en" messages={json.en}>
-					<LoggedInBar currentUserName="John Doe" tenant="test" />
+					<LoggedInBar currentUserName="Test user" tenant="test" />
 				</IntlProvider>
 			)
 			.toJSON();
