@@ -18,12 +18,9 @@ export function LanguagePicker(props) {
 	});
 
 	return (
-		<Dropdown
-			className={classNames.root}
-			id={id}
-			options={dropdownOptions}
-			onChange={option => onChange(option.key)}
-		/>
+		<div className={classNames.root}>
+			<Dropdown id={id} options={dropdownOptions} onChange={option => onChange(option.key)} />
+		</div>
 	);
 }
 

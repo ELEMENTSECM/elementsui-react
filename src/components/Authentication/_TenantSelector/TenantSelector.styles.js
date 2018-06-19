@@ -10,6 +10,15 @@ export const styles = props => {
 				fontWeight: 400
 			},
 			className
+		],
+		dropdownWrapper: [
+			{
+				selectors: {
+					':nth-child(last)': {
+						background: 'red !important'
+					}
+				}
+			}
 		]
 	};
 };
