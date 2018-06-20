@@ -21,14 +21,16 @@ describe('TenantSelector', () => {
 	test('displays when logged in correctly', () => {
 		const tree = renderer
 			.create(
-				<IntlProvider locale="en" messages={json.en}>
-					<TenantSelector
-						tenants={tenants}
-						isLoggedIn={true}
-						selectedTenant="ID_1"
-						currentUserName="Test user"
-					/>
-				</IntlProvider>
+				<div>
+					<IntlProvider locale="en" messages={json.en}>
+						<TenantSelector
+							tenants={tenants}
+							isLoggedIn={true}
+							selectedTenant="ID_1"
+							currentUserName="Test user"
+						/>
+					</IntlProvider>
+				</div>
 			)
 			.toJSON();
 		expect(tree).toMatchSnapshot();

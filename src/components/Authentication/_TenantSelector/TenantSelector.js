@@ -56,24 +56,32 @@ class TenantSelector extends React.Component {
 			<div>
 				{!this.props.isLoggedIn ? (
 					<div>
-						<Label className={this.classNames.label}>
-							<FormattedMessage id="database" />
-						</Label>
-						<Dropdown
-							id="databaseDropdown"
-							className={this.classNames.selectTenantDropdown}
-							selectedKey={this.state.selectedDatabase}
-							placeHolder={'...'}
-							options={options || []}
-							onChange={option => this.handleSelectChange(option)}
-						/>
-						<LanguagePicker
-							id="languagePicker"
-							className={this.classNames.languagePicker}
-							languageCodes={['en', 'nb', 'nn', 'sv']}
-							defaultLanguage={this.props.defaultLanguage}
-							onChange={code => this.props.onLanguageChange(code)}
-						/>
+						<div className={this.classNames.dropdown_label_wrapper}>
+							<Label className={this.classNames.label}>
+								<FormattedMessage id="database" />
+							</Label>
+							<Label className={this.classNames.label}>
+								Language
+								{/* <FormattedMessage id="database" />NEED TRANSLATION: Where is the translation generated? */}
+							</Label>
+						</div>
+						<div className={this.classNames.dropdown_wrapper}>
+							<Dropdown
+								id="databaseDropdown"
+								className={this.classNames.selectTenantDropdown}
+								selectedKey={this.state.selectedDatabase}
+								placeHolder={'...'}
+								options={options || []}
+								onChange={option => this.handleSelectChange(option)}
+							/>
+							<LanguagePicker
+								id="languagePicker"
+								className={this.classNames.languagePicker}
+								languageCodes={['en', 'nb', 'nn', 'sv']}
+								defaultLanguage={this.props.defaultLanguage}
+								onChange={code => this.props.onLanguageChange(code)}
+							/>
+						</div>
 					</div>
 				) : (
 					<LoggedInBar
