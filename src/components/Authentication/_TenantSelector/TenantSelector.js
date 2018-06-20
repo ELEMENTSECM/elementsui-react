@@ -56,10 +56,16 @@ class TenantSelector extends React.Component {
 			<div>
 				{!this.props.isLoggedIn ? (
 					<div>
-						<Label className={this.classNames.label}>
-							<FormattedMessage id="database" />
-						</Label>
-						<div className={this.classNames.dropdownWrapper}>
+						<div className={this.classNames.dropdown_label_wrapper}>
+							<Label className={this.classNames.label}>
+								<FormattedMessage id="database" />
+							</Label>
+							<Label className={this.classNames.label}>
+								Language
+								{/* <FormattedMessage id="database" />NEED TRANSLATION: Where is the translation generated? */}
+							</Label>
+						</div>
+						<div className={this.classNames.dropdown_wrapper}>
 							<Dropdown
 								id="databaseDropdown"
 								className={this.classNames.selectTenantDropdown}

@@ -1,6 +1,19 @@
 export const styles = props => {
 	const { className } = props;
-
+	const loginDropdowns = {
+		display: 'flex',
+		selectors: {
+			'> div': {
+				overflow: 'hidden'
+			},
+			'> :first-of-type': {
+				'flex-basis': '70%'
+			},
+			'> :last-of-type': {
+				'flex-basis': '30%'
+			}
+		}
+	};
 	return {
 		label: [
 			{
@@ -11,14 +24,7 @@ export const styles = props => {
 			},
 			className
 		],
-		dropdownWrapper: [
-			{
-				selectors: {
-					':nth-child(last)': {
-						background: 'red !important'
-					}
-				}
-			}
-		]
+		dropdown_wrapper: [loginDropdowns],
+		dropdown_label_wrapper: [loginDropdowns]
 	};
 };
