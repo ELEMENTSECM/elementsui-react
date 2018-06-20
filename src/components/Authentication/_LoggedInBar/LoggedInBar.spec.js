@@ -8,9 +8,11 @@ describe('LoggedInBar', () => {
 	test('displays correctly', () => {
 		const tree = renderer
 			.create(
-				<IntlProvider locale="en" messages={json.en}>
-					<LoggedInBar currentUserName="Test user" tenant="test" />
-				</IntlProvider>
+				<div>
+					<IntlProvider locale="en" messages={json.en}>
+						<LoggedInBar currentUserName="Test user" tenant="test" />
+					</IntlProvider>
+				</div>
 			)
 			.toJSON();
 		expect(tree).toMatchSnapshot();

@@ -3,95 +3,112 @@
 exports[`TenantSelector displays tenants and labels correctly 1`] = `
 <div>
   <div>
-    <label
-      className="ms-Label label-41"
-      id={undefined}
-      required={undefined}
-    >
-      <span>
-        database
-      </span>
-    </label>
     <div
-      className="ms-Dropdown-container"
+      className="dropdown_label_wrapper-42"
     >
-      <div
-        aria-activedescendant={undefined}
-        aria-describedby="databaseDropdown-option"
-        aria-disabled={undefined}
-        aria-expanded="false"
-        aria-label={undefined}
-        aria-live="assertive"
-        aria-owns={undefined}
-        className="ms-Dropdown root_aecb6435 ms-Dropdown root-42"
-        data-is-focusable={true}
-        id="databaseDropdown"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        role="listbox"
-        tabIndex={0}
+      <label
+        className="ms-Label label-43"
+        id={undefined}
+        required={undefined}
       >
-        <span
-          aria-atomic={true}
-          className="ms-Dropdown-title title_aecb6435"
-          id="databaseDropdown-option"
-          role="listbox"
-        >
-          <span>
-            ID_1_DESC
-          </span>
+        <span>
+          database
         </span>
-        <span
-          className="ms-Dropdown-caretDownWrapper caretDownWrapper_aecb6435"
-        >
-          <i
-            aria-hidden={true}
-            className="ms-Dropdown-caretDown caretDown_aecb6435 root-43"
-            data-icon-name="ChevronDown"
-            role="presentation"
-          />
+      </label>
+      <label
+        className="ms-Label label-43"
+        id={undefined}
+        required={undefined}
+      >
+        <span>
+          Language
         </span>
-      </div>
+      </label>
     </div>
     <div
-      className="ms-Dropdown-container"
+      className="dropdown_wrapper-41"
     >
       <div
-        aria-activedescendant={undefined}
-        aria-describedby="languagePicker-option"
-        aria-disabled={undefined}
-        aria-expanded="false"
-        aria-label={undefined}
-        aria-live="assertive"
-        aria-owns={undefined}
-        className="ms-Dropdown root_aecb6435 ms-Dropdown ms-LanguagePicker ec ec-dropdown languagepicker root-42"
-        data-is-focusable={true}
-        id="languagePicker"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        role="listbox"
-        tabIndex={0}
+        className="ms-Dropdown-container"
       >
-        <span
-          aria-atomic={true}
-          className="ms-Dropdown-title title_aecb6435 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_aecb6435"
-          id="languagePicker-option"
+        <div
+          aria-activedescendant={undefined}
+          aria-describedby="databaseDropdown-option"
+          aria-disabled={undefined}
+          aria-expanded="false"
+          aria-label={undefined}
+          aria-live="assertive"
+          aria-owns={undefined}
+          className="ms-Dropdown root_aecb6435 ms-Dropdown root-44"
+          data-is-focusable={true}
+          id="databaseDropdown"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
           role="listbox"
-        />
-        <span
-          className="ms-Dropdown-caretDownWrapper caretDownWrapper_aecb6435"
+          tabIndex={0}
         >
-          <i
-            aria-hidden={true}
-            className="ms-Dropdown-caretDown caretDown_aecb6435 root-43"
-            data-icon-name="ChevronDown"
-            role="presentation"
+          <span
+            aria-atomic={true}
+            className="ms-Dropdown-title title_aecb6435"
+            id="databaseDropdown-option"
+            role="listbox"
+          >
+            <span>
+              ID_1_DESC
+            </span>
+          </span>
+          <span
+            className="ms-Dropdown-caretDownWrapper caretDownWrapper_aecb6435"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Dropdown-caretDown caretDown_aecb6435 root-45"
+              data-icon-name="ChevronDown"
+              role="presentation"
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        className="ms-Dropdown-container"
+      >
+        <div
+          aria-activedescendant={undefined}
+          aria-describedby="languagePicker-option"
+          aria-disabled={undefined}
+          aria-expanded="false"
+          aria-label={undefined}
+          aria-live="assertive"
+          aria-owns={undefined}
+          className="ms-Dropdown root_aecb6435 ms-Dropdown ms-LanguagePicker ec ec-dropdown languagepicker root-44"
+          data-is-focusable={true}
+          id="languagePicker"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          role="listbox"
+          tabIndex={0}
+        >
+          <span
+            aria-atomic={true}
+            className="ms-Dropdown-title title_aecb6435 ms-Dropdown-titleIsPlaceHolder titleIsPlaceHolder_aecb6435"
+            id="languagePicker-option"
+            role="listbox"
           />
-        </span>
+          <span
+            className="ms-Dropdown-caretDownWrapper caretDownWrapper_aecb6435"
+          >
+            <i
+              aria-hidden={true}
+              className="ms-Dropdown-caretDown caretDown_aecb6435 root-45"
+              data-icon-name="ChevronDown"
+              role="presentation"
+            />
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -101,19 +118,19 @@ exports[`TenantSelector displays tenants and labels correctly 1`] = `
 exports[`TenantSelector displays when logged in correctly 1`] = `
 <div>
   <div
-    className="root-42"
+    className="root-44"
   >
     <i
       aria-hidden={true}
-      className="backButton-48"
+      className="backButton-50"
       data-icon-name="ChevronLeftSmall"
       onClick={undefined}
       role="presentation"
     />
     <svg
-      className="ms-ElementsLogo logo-44"
+      className="ms-ElementsLogo logo-46"
       fill="#fff"
-      id="Elements_Logo"
+      id={undefined}
       version="1.1"
       viewBox="0 0 134.5 33.4"
       width={145}
@@ -161,22 +178,22 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
       />
     </svg>
     <div
-      className="ms-Persona ms-Persona--size40 persona-52"
+      className="ms-Persona ms-Persona--size40 persona-54"
       id={undefined}
       size={12}
       style={undefined}
     >
       <div
-        className="ms-Persona-coin ms-Persona--size40 coin-59"
+        className="ms-Persona-coin ms-Persona--size40 coin-61"
         size={12}
       >
         <div
-          className="ms-Persona-imageArea imageArea-61"
+          className="ms-Persona-imageArea imageArea-63"
           style={undefined}
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials initials-64"
+            className="ms-Persona-initials initials-66"
             style={undefined}
           >
             <span>
@@ -184,7 +201,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image image-65"
+            className="ms-Image ms-Persona-image image-67"
             style={
               Object {
                 "height": 40,
@@ -194,7 +211,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-66"
+              className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-68"
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -204,10 +221,10 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-details details-53"
+        className="ms-Persona-details details-55"
       >
         <div
-          className="ms-Persona-primaryText primaryText-54"
+          className="ms-Persona-primaryText primaryText-56"
         >
           <div
             aria-describedby={undefined}
@@ -221,7 +238,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
           </div>
         </div>
         <div
-          className="ms-Persona-secondaryText secondaryText-55"
+          className="ms-Persona-secondaryText secondaryText-57"
         >
           <div
             aria-describedby={undefined}
@@ -235,10 +252,10 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
           </div>
         </div>
         <div
-          className="ms-Persona-tertiaryText tertiaryText-56"
+          className="ms-Persona-tertiaryText tertiaryText-58"
         />
         <div
-          className="ms-Persona-optionalText optionalText-57"
+          className="ms-Persona-optionalText optionalText-59"
         />
       </div>
     </div>
@@ -247,18 +264,18 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}
-      className="ms-Button ms-Button--action ms-Button--command logoutLink-69"
+      className="ms-Button ms-Button--action ms-Button--command logoutLink-71"
       data-is-focusable={true}
       disabled={undefined}
       onClick={undefined}
       type="button"
     >
       <div
-        className="ms-Button-flexContainer flexContainer-70"
+        className="ms-Button-flexContainer flexContainer-72"
       >
         <i
           aria-hidden={true}
-          className="ms-Button-icon icon-77"
+          className="ms-Button-icon icon-79"
           data-icon-name="PowerButton"
           role="presentation"
         />
