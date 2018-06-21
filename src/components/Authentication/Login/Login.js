@@ -438,7 +438,7 @@ class LoginComponent extends Component {
 	};
 
 	storeSelectedLanguage = code => {
-		localStorage.setItem('lang', code);
+		localStorage.setItem('localeOverride', code);
 	};
 
 	render() {
