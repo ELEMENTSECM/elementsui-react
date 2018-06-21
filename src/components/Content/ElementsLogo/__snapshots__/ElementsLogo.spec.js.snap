@@ -4,7 +4,11 @@ exports[`ElementsLogo displays correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <StyledCustomizedElementsLogo />,
+  Symbol(enzyme.__unrendered__): <StyledCustomizedElementsLogo
+    color="green"
+    id="testLogo"
+    width={200}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -17,7 +21,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "color": "green",
+      "id": "testLogo",
       "styles": [Function],
+      "width": 200,
     },
     "ref": null,
     "rendered": null,
@@ -29,7 +36,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "color": "green",
+        "id": "testLogo",
         "styles": [Function],
+        "width": 200,
       },
       "ref": null,
       "rendered": null,
