@@ -25,12 +25,12 @@
 	},
 	"nn": {
 		"login": "Logg inn",
-		"loginDifferentUser": "Logg inn som en annen bruker",
-		"loginPopupBlocked": "Påloggings popup-vindu ble blokkert av nettleseren din!",
-		"noModuleLicense": "Fant ingen lisenser",
-		"noModule": "Ingen moduler tilgjengelige",
-		"moreDetailsBtn": "Flere detaljer",
-		"backgroundLoginFailed": "Bakgrunnspålogging feilet",
+		"loginDifferentUser": "Logg inn som ein annan brukar",
+		"loginPopupBlocked": "Påloggings popup-vindauge vart blokkert av nettlesaren din!",
+		"noModuleLicense": "Fann ingen lisensar",
+		"noModule": "Ingen modular tilgjengelege",
+		"moreDetailsBtn": "Fleire detaljar",
+		"backgroundLoginFailed": "Bakgrunnspålogging feilte",
 		"database": "database",
 		"logout": "Logg ut",
 		"languagePicker": "Språk"
