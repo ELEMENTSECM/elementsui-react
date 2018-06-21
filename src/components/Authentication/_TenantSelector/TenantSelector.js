@@ -10,11 +10,15 @@ import LanguagePicker from '../../Pickers/LanguagePicker';
 
 /** TenantSelector example */
 class TenantSelector extends React.Component {
+	static getDerivedStateFromProps(props, state) {
+		return { ...state, selectedDatabase: props.selectedTenant };
+	}
+
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			selectedDatabase: this.props.selectedTenant
+			selectedDatabase: this.props.selectedTenant || this.props.tenants[0]
 		};
 
 		this.classNames = classNamesFunction()(styles, props);
@@ -37,10 +41,6 @@ class TenantSelector extends React.Component {
 			selectedDatabase: option.key
 		}));
 	};
-
-	componentWillReceiveProps(newProps) {
-		this.setState(ps => ({ ...ps, selectedDatabase: newProps.selectedTenant }));
-	}
 
 	render() {
 		let options;

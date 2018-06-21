@@ -163,7 +163,7 @@ class LoginComponent extends Component {
 		const promise = this.loginShared(nonce);
 		const ms = this.state.authenticationConfig.backgroundLoginTimeoutSeconds;
 
-		const timeout = new Promise((resolve, reject) => {
+		const timeout = new Promise((_, reject) => {
 			let id = setTimeout(() => {
 				clearTimeout(id);
 				reject(
@@ -176,7 +176,7 @@ class LoginComponent extends Component {
 	}
 
 	refreshAuthConfig() {
-		this.setState({ error: null });
+		this.setState(ps => ({ ...ps, error: null }));
 		if (this.state.tenantId) {
 			this.setState(ps => ({ ...ps, isSpinnerVisible: true }));
 			this.refresh(this.state.tenantId);
@@ -388,6 +388,7 @@ class LoginComponent extends Component {
 	initialize() {
 		const self = this;
 		const tenantId = localStorage.getItem('tenantId');
+		this.storeSelectedLanguage(this.props.locale);
 		if (tenantId) {
 			if (this.props.resetTenant) {
 				localStorage.removeItem('tenantId');
@@ -433,6 +434,11 @@ class LoginComponent extends Component {
 
 	onLanguageChange = newLangCode => {
 		this.setState(ps => ({ ...ps, locale: newLangCode }));
+		this.storeSelectedLanguage(newLangCode);
+	};
+
+	storeSelectedLanguage = code => {
+		localStorage.setItem('lang', code);
 	};
 
 	render() {
