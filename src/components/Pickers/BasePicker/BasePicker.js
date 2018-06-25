@@ -13,8 +13,7 @@ export function BasePicker(props) {
 		getTextFromItem,
 		pickerSuggestionsProps,
 		inputProps,
-		className,
-		theme,
+		itemLimit,
 		styles
 	} = props;
 	const classNames = classNamesFunction()(styles, props);
@@ -27,6 +26,7 @@ export function BasePicker(props) {
 			getTextFromItem={getTextFromItem}
 			pickerSuggestionsProps={pickerSuggestionsProps}
 			inputProps={inputProps}
+			itemLimit={itemLimit}
 		/>
 	);
 }
@@ -43,7 +43,11 @@ BasePicker.propTypes = {
 	/** Suggestion dropdown props */
 	pickerSuggestionsProps: PropTypes.object,
 	/** Input props */
-	inputProps: PropTypes.object
+	inputProps: PropTypes.object,
+	/** Restrict the amount of selectable items. */
+	itemLimit: PropTypes.number,
+	/** User-defined styling */
+	styles: PropTypes.func
 };
 
 export default styled(customizable('BasePicker', ['theme'])(BasePicker), styles);

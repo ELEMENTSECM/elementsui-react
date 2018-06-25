@@ -6,6 +6,10 @@ export interface InputFieldProps {
 	 */
 	id?: string;
 	/**
+	 * Label for the input field
+	 */
+	label?: string;
+	/**
 	 * Input field placeholder text
 	 */
 	placeholder?: string;

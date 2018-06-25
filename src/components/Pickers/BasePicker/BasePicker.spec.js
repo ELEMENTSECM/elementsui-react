@@ -10,11 +10,21 @@ describe('BasePickerProps', () => {
 	test('displays basepicker correctly', () => {
 		const tree = renderer
 			.create(
+				<BasePicker id="basePicker" onResolveSuggestions={items} focus={false} focusInput={true} />
+			)
+			.toJSON();
+		expect(tree).toMatchSnapshot();
+	});
+
+	test('displays basepicker with limit set to 1 item correctly', () => {
+		const tree = renderer
+			.create(
 				<BasePicker
 					id="basePicker"
 					onResolveSuggestions={items}
 					focus={false}
 					focusInput={true}
+					itemLimit={1}
 				/>
 			)
 			.toJSON();
