@@ -5,12 +5,13 @@ import { styles } from './InputField.styles';
 import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
 
 export function InputField(props) {
-	const { id, placeholder, required, disabled, errorMessage, styles } = props;
+	const { id, label, placeholder, required, disabled, errorMessage, styles } = props;
 	const classNames = classNamesFunction()(styles, props);
 	return (
 		<TextField
 			id={id}
 			className={classNames.root}
+			label={label}
 			required={required}
 			disabled={disabled}
 			errorMessage={errorMessage}
@@ -22,6 +23,8 @@ export function InputField(props) {
 InputField.propTypes = {
 	/** HTML id tag of the root element */
 	id: PropTypes.string,
+	/** Label for the input field */
+	label: PropTypes.string,
 	/** Input field placeholder text */
 	placeholder: PropTypes.string,
 	/** Input field is marked with red asterisk as required if set to true */

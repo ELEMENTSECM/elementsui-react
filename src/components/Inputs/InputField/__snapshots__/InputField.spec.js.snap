@@ -7,6 +7,12 @@ exports[`InputField displays correctly 1`] = `
   <div
     className="ms-TextField-wrapper wrapper_df60a678"
   >
+    <label
+      className="ms-Label root-41"
+      htmlFor="TextField1"
+    >
+      test field
+    </label>
     <div
       className="ms-TextField-fieldGroup fieldGroup_df60a678"
     >
