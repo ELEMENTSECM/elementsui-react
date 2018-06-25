@@ -58,3 +58,62 @@ exports[`BasePickerProps displays basepicker correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`BasePickerProps displays basepicker with limit set to 1 item correctly 1`] = `
+<div
+  className="ms-BasePicker ms-BasePicker root-40"
+  onKeyDown={[Function]}
+>
+  <div
+    aria-describedby={undefined}
+    aria-labelledby={undefined}
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone2"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text pickerText_4fe0caaf"
+        role="list"
+      >
+        <input
+          aria-activedescendant={undefined}
+          aria-controls="selected-suggestion-alert"
+          aria-expanded={false}
+          aria-haspopup="true"
+          aria-owns={undefined}
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input pickerInput_4fe0caaf"
+          data-lpignore={true}
+          disabled={undefined}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

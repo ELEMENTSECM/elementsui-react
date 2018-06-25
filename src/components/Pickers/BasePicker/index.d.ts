@@ -25,6 +25,14 @@ export interface BasePickerProps {
 	 * Input props
 	 */
 	inputProps?: Object;
+	/**
+	 * Restrict the amount of selectable items.
+	 */
+	itemLimit?: number;
+	/**
+	 * User-defined styling
+	 */
+	styles?: (...args: any[]) => any;
 }
 
 declare const BasePicker: React.SFC<BasePickerProps>;
