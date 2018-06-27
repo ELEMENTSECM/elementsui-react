@@ -1,7 +1,6 @@
 language: node_js
 node_js:
- - "6"
- - "7"
+ - "8"
 notifications:
   slack: elements-ecm:WLCa2W2bak78Hh8j7KzvojzJ
   webhooks: https://outlook.office.com/webhook/73ff131c-f5e8-487b-84b4-f6f9c3984e9e@40cc2915-e283-4a27-9471-6bdd7ca4c6e1/TravisCI/b02f7dcb976a459fab69cb959978f500/75035f80-d81a-4540-a05b-623cc51e120c
