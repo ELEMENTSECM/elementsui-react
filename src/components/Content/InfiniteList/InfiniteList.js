@@ -148,13 +148,13 @@ class InfiniteListComponent extends React.Component {
 		});
 	};
 
-	isElementAtBottom(target, scrollThreshold = 0.8) {
+	isElementAtBottom(target) {
 		const clientHeight =
 			target === document.body || target === document.documentElement
 				? window.screen.availHeight
 				: target.clientHeight;
 
-		return target.scrollTop + clientHeight >= scrollThreshold * target.scrollHeight;
+		return target.scrollHeight - target.scrollTop === clientHeight;
 	}
 
 	onScrollListener = event => {
@@ -171,7 +171,7 @@ class InfiniteListComponent extends React.Component {
 
 		if (this.state.actionTriggered) return;
 
-		let atBottom = this.isElementAtBottom(target, this.props.scrollThreshold);
+		let atBottom = this.isElementAtBottom(target);
 
 		if (atBottom && this.props.hasMore) {
 			this.setState(ps => ({ ...ps, actionTriggered: true, showLoader: true }));
@@ -211,8 +211,8 @@ class InfiniteListComponent extends React.Component {
 		const { root, pulldown, list, pulldownHandle } = this.classNames;
 		return (
 			<IntlProvider locale={this.props.locale} messages={nls[this.props.locale]}>
-				<div style={outerDivStyle} className={root}>
-					<div ref={infScroll => (this._infScroll = infScroll)} style={style}>
+				<div style={outerDivStyle} className={root} ref={infScroll => (this._infScroll = infScroll)}>
+					<div style={style}>
 						{this.props.pullDownToRefresh && (
 							<div className={pulldown} ref={pullDown => (this._pullDown = pullDown)}>
 								<div
@@ -245,6 +245,8 @@ class InfiniteListComponent extends React.Component {
 export const InfiniteList = InfiniteListComponent;
 
 InfiniteList.propTypes = {
+	/** DOM element's id attribute */
+	id: PropTypes.string,
 	/** Locale (en, nb, etc.) */
 	locale: PropTypes.string,
 	/** A function which must be called after reaching the bottom. It must trigger some sort of action which fetches the next data. The data is passed as children to the InfiniteList component and the data should contain previous items too. e.g. Initial data = [1, 2, 3] and then next load of data should be [1, 2, 3, 4, 5, 6]. */
@@ -253,8 +255,6 @@ InfiniteList.propTypes = {
 	hasMore: PropTypes.bool,
 	/** The data items which you need to scroll. */
 	children: PropTypes.node,
-	/** A threshold value after that the InfiniteList will call next. By default it's 0.8. It means the next will be called when the user comes below 80% of the total height. */
-	scrollThreshold: PropTypes.number,
 	/** This message is shown to the user when he has seen all the records which means he's at the bottom and hasMore is false */
 	endMessage: PropTypes.node,
 	/** Optional, give only if you want to have a fixed height scrolling content */

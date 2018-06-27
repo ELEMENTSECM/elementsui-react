@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface InfiniteListProps {
 	/**
+	 * DOM element's id attribute
+	 */
+	id?: string;
+	/**
 	 * Locale (en, nb, etc.)
 	 */
 	locale?: string;
@@ -17,10 +21,6 @@ export interface InfiniteListProps {
 	 * The data items which you need to scroll.
 	 */
 	children?: React.ReactNode;
-	/**
-	 * A threshold value after that the InfiniteList will call next. By default it's 0.8. It means the next will be called when the user comes below 80% of the total height.
-	 */
-	scrollThreshold?: number;
 	/**
 	 * This message is shown to the user when he has seen all the records which means he's at the bottom and hasMore is false
 	 */
