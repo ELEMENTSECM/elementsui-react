@@ -258,7 +258,7 @@ InfiniteList.propTypes = {
 	/** This message is shown to the user when he has seen all the records which means he's at the bottom and hasMore is false */
 	endMessage: PropTypes.node,
 	/** Optional, give only if you want to have a fixed height scrolling content */
-	height: PropTypes.number,
+	height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	/** Optional, reference to a (parent) DOM element that is already providing overflow scrollbars to the InfiniteList component. You should provide the id of the DOM node preferably. */
 	scrollableTarget: PropTypes.node,
 	/** Children is by default assumed to be of type array and it's length is used to determine if loader needs to be shown or not, if your children is not an array, specify this prop to tell if your items are 0 or more. */
