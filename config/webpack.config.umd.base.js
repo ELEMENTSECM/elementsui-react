@@ -16,7 +16,7 @@ module.exports = {
 	mode: 'production',
 	bail: true,
 	devtool: shouldUseSourceMap ? 'source-map' : false,
-	entry: [paths.umdBuild],
+	entry: [require.resolve('./polyfills'), paths.umdBuild],
 	externals: {
 		react: 'react',
 		'react-dom': 'react-dom',
