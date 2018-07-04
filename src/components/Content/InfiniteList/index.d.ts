@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+export type InfiniteListHeight = number | string;
+
 export interface InfiniteListProps {
 	/**
 	 * DOM element's id attribute
@@ -28,7 +30,7 @@ export interface InfiniteListProps {
 	/**
 	 * Optional, give only if you want to have a fixed height scrolling content
 	 */
-	height?: number;
+	height?: InfiniteListHeight;
 	/**
 	 * Optional, reference to a (parent) DOM element that is already providing overflow scrollbars to the InfiniteList component. You should provide the id of the DOM node preferably.
 	 */
