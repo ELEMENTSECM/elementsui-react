@@ -18,6 +18,7 @@ export const styles = props => {
 				background: 'transparent',
 				flexGrow: 1,
 				minWidth: '50%',
+				maxWidth: '25%',
 				overflow: 'hidden',
 				textAlign: 'center',
 				boxSizing: 'border-box',
@@ -48,12 +49,7 @@ export const styles = props => {
 				textAlign: 'center'
 			}
 		],
-		moduleIcon: [
-			{
-				display: 'inline-block',
-				padding: '6px 8px'
-			}
-		],
+		moduleIcon: [{}],
 		thumbnail: [
 			{
 				borderWidth: 1,

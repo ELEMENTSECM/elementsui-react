@@ -128,7 +128,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
       role="presentation"
     />
     <svg
-      className="ms-ElementsLogo logo-46"
+      className="ms-ElementsLogo logo-51"
       fill="#fff"
       id={undefined}
       version="1.1"
@@ -178,22 +178,22 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
       />
     </svg>
     <div
-      className="ms-Persona ms-Persona--size40 persona-54"
+      className="ms-Persona ms-Persona--size40 persona-55"
       id={undefined}
       size={12}
       style={undefined}
     >
       <div
-        className="ms-Persona-coin ms-Persona--size40 coin-61"
+        className="ms-Persona-coin ms-Persona--size40 coin-62"
         size={12}
       >
         <div
-          className="ms-Persona-imageArea imageArea-63"
+          className="ms-Persona-imageArea imageArea-64"
           style={undefined}
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials initials-66"
+            className="ms-Persona-initials initials-67"
             style={undefined}
           >
             <span>
@@ -201,7 +201,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image image-67"
+            className="ms-Image ms-Persona-image image-68"
             style={
               Object {
                 "height": 40,
@@ -211,7 +211,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-68"
+              className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-69"
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -221,10 +221,10 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-details details-55"
+        className="ms-Persona-details details-56"
       >
         <div
-          className="ms-Persona-primaryText primaryText-56"
+          className="ms-Persona-primaryText primaryText-57"
         >
           <div
             aria-describedby={undefined}
@@ -238,7 +238,7 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
           </div>
         </div>
         <div
-          className="ms-Persona-secondaryText secondaryText-57"
+          className="ms-Persona-secondaryText secondaryText-58"
         >
           <div
             aria-describedby={undefined}
@@ -252,10 +252,10 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
           </div>
         </div>
         <div
-          className="ms-Persona-tertiaryText tertiaryText-58"
+          className="ms-Persona-tertiaryText tertiaryText-59"
         />
         <div
-          className="ms-Persona-optionalText optionalText-59"
+          className="ms-Persona-optionalText optionalText-60"
         />
       </div>
     </div>
@@ -264,18 +264,18 @@ exports[`TenantSelector displays when logged in correctly 1`] = `
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}
-      className="ms-Button ms-Button--action ms-Button--command logoutLink-71"
+      className="ms-Button ms-Button--action ms-Button--command logoutLink-72"
       data-is-focusable={true}
       disabled={undefined}
       onClick={undefined}
       type="button"
     >
       <div
-        className="ms-Button-flexContainer flexContainer-72"
+        className="ms-Button-flexContainer flexContainer-73"
       >
         <i
           aria-hidden={true}
-          className="ms-Button-icon icon-79"
+          className="ms-Button-icon icon-80"
           data-icon-name="PowerButton"
           role="presentation"
         />

@@ -13,7 +13,7 @@ exports[`LoggedInBar displays correctly 1`] = `
       role="presentation"
     />
     <svg
-      className="ms-ElementsLogo logo-41"
+      className="ms-ElementsLogo logo-46"
       fill="#fff"
       id={undefined}
       version="1.1"
@@ -63,22 +63,22 @@ exports[`LoggedInBar displays correctly 1`] = `
       />
     </svg>
     <div
-      className="ms-Persona ms-Persona--size40 persona-49"
+      className="ms-Persona ms-Persona--size40 persona-50"
       id={undefined}
       size={12}
       style={undefined}
     >
       <div
-        className="ms-Persona-coin ms-Persona--size40 coin-56"
+        className="ms-Persona-coin ms-Persona--size40 coin-57"
         size={12}
       >
         <div
-          className="ms-Persona-imageArea imageArea-58"
+          className="ms-Persona-imageArea imageArea-59"
           style={undefined}
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials initials-61"
+            className="ms-Persona-initials initials-62"
             style={undefined}
           >
             <span>
@@ -86,7 +86,7 @@ exports[`LoggedInBar displays correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image image-62"
+            className="ms-Image ms-Persona-image image-63"
             style={
               Object {
                 "height": 40,
@@ -96,7 +96,7 @@ exports[`LoggedInBar displays correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-63"
+              className="ms-Image-image ms-Image-image--cover ms-Image-image--portrait is-notLoaded is-fadeIn image-64"
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -106,10 +106,10 @@ exports[`LoggedInBar displays correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-Persona-details details-50"
+        className="ms-Persona-details details-51"
       >
         <div
-          className="ms-Persona-primaryText primaryText-51"
+          className="ms-Persona-primaryText primaryText-52"
         >
           <div
             aria-describedby={undefined}
@@ -123,7 +123,7 @@ exports[`LoggedInBar displays correctly 1`] = `
           </div>
         </div>
         <div
-          className="ms-Persona-secondaryText secondaryText-52"
+          className="ms-Persona-secondaryText secondaryText-53"
         >
           <div
             aria-describedby={undefined}
@@ -137,10 +137,10 @@ exports[`LoggedInBar displays correctly 1`] = `
           </div>
         </div>
         <div
-          className="ms-Persona-tertiaryText tertiaryText-53"
+          className="ms-Persona-tertiaryText tertiaryText-54"
         />
         <div
-          className="ms-Persona-optionalText optionalText-54"
+          className="ms-Persona-optionalText optionalText-55"
         />
       </div>
     </div>
@@ -149,18 +149,18 @@ exports[`LoggedInBar displays correctly 1`] = `
       aria-label={undefined}
       aria-labelledby={undefined}
       aria-pressed={undefined}
-      className="ms-Button ms-Button--action ms-Button--command logoutLink-66"
+      className="ms-Button ms-Button--action ms-Button--command logoutLink-67"
       data-is-focusable={true}
       disabled={undefined}
       onClick={undefined}
       type="button"
     >
       <div
-        className="ms-Button-flexContainer flexContainer-67"
+        className="ms-Button-flexContainer flexContainer-68"
       >
         <i
           aria-hidden={true}
-          className="ms-Button-icon icon-74"
+          className="ms-Button-icon icon-75"
           data-icon-name="PowerButton"
           role="presentation"
         />
