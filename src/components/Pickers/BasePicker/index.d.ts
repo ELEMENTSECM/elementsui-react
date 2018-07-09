@@ -2,6 +2,10 @@ import * as React from 'react';
 
 export interface BasePickerProps {
 	/**
+	 * HTML id tag of the root element
+	 */
+	id?: string;
+	/**
 	 * Sets focus to the focus zone
 	 */
 	focus: boolean;

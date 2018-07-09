@@ -32,6 +32,8 @@ export function BasePicker(props) {
 }
 
 BasePicker.propTypes = {
+	/** HTML id tag of the root element */
+	id: PropTypes.string,
 	/** Sets focus to the focus zone */
 	focus: PropTypes.bool.isRequired,
 	/** Set focus to the input  */
