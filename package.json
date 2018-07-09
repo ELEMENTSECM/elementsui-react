@@ -22,6 +22,7 @@
 		"elements"
 	],
 	"dependencies": {
+		"@types/react-bootstrap": "^0.32.10",
 		"commander": "^2.15.1",
 		"inquirer": "^5.2.0",
 		"lodash": "^4.17.5",
@@ -31,6 +32,7 @@
 		"office-ui-fabric-react": "^6.4.1",
 		"promise": "8.0.1",
 		"react": "^16.3.0",
+		"react-bootstrap": "^0.32.1",
 		"react-dom": "^16.2.0",
 		"react-intl": "^2.4.0",
 		"react-router": "^4.2.0",
