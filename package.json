@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.1.41",
+	"version": "0.1.42",
 	"main": "./lib/index.js",
 	"private": true,
 	"engines": {
@@ -12,8 +12,15 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "http://evryas.github.io/elementsui-react/",
-	"files": ["lib"],
-	"keywords": ["components", "react", "react-component", "elements"],
+	"files": [
+		"lib"
+	],
+	"keywords": [
+		"components",
+		"react",
+		"react-component",
+		"elements"
+	],
 	"dependencies": {
 		"@types/react-bootstrap": "^0.32.10",
 		"commander": "^2.15.1",
@@ -49,19 +56,16 @@
 		"test": "node scripts/test.js --env=jsdom --no-cache",
 		"build:css": "cpx \"./src/components/**/*.css\" ./lib",
 		"prebuild:lib": "rimraf lib",
-		"build:lib":
-			"npm run gen:index && npm-run-all --parallel build:commonjs build:css build:umd gen:types && npm run build:copy-files",
+		"build:lib": "npm run gen:index && npm-run-all --parallel build:commonjs build:css build:umd gen:types && npm run build:copy-files",
 		"build:copy-package-files": "node scripts/copyBuildFiles.js",
 		"build:typings": "cpx \"./src/components/**/*.d.ts\" ./lib",
 		"build:copy-umd": "cpx \"./umd/*\" ./lib",
 		"build:copy-files": "npm-run-all --parallel build:copy-package-files build:copy-umd build:typings",
 		"predeploy:docs": "npm run build:docs",
 		"deploy:docs": "gh-pages -d build",
-		"build:commonjs":
-			"cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
+		"build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
 		"build:umd": "npm run babel:umd && npm run pack:umd && npm run pack:minumd && npm run rm:umd",
-		"babel:umd":
-			"cross-env NODE_ENV=production babel --plugins=transform-es2015-modules-umd,babel-plugin-inline-json-import ./src/components --out-dir ./build/umd --ignore spec.js",
+		"babel:umd": "cross-env NODE_ENV=production babel --plugins=transform-es2015-modules-umd,babel-plugin-inline-json-import ./src/components --out-dir ./build/umd --ignore spec.js",
 		"pack:umd": "cross-env NODE_ENV=production webpack --config config/webpack.config.umd.js",
 		"pack:minumd": "cross-env NODE_ENV=production webpack --config config/webpack.config.umd.min.js",
 		"rm:umd": "rimraf ./build/umd",
@@ -78,7 +82,9 @@
 			"!src/**/*.spec.js",
 			"!src/docs/examples/**/*.js"
 		],
-		"setupFiles": ["<rootDir>/config/polyfills.js"],
+		"setupFiles": [
+			"<rootDir>/config/polyfills.js"
+		],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
 			"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -90,12 +96,22 @@
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 			"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 		},
-		"transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
+		"transformIgnorePatterns": [
+			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+		],
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web",
 			"office-ui-fabric-react/lib/": "office-ui-fabric-react/lib-commonjs/"
 		},
-		"moduleFileExtensions": ["web.js", "mjs", "js", "json", "web.jsx", "jsx", "node"],
+		"moduleFileExtensions": [
+			"web.js",
+			"mjs",
+			"js",
+			"json",
+			"web.jsx",
+			"jsx",
+			"node"
+		],
 		"setupTestFrameworkScriptFile": "<rootDir>/scripts/testSetup.js"
 	},
 	"babel": {
