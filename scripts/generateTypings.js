@@ -40,7 +40,8 @@ function generateTypings(folder) {
 ${stdout
 						.replace(/.*declare module '\w+'\s*{\s*import \* as React from 'react';\s*/, '')
 						.replace(/.*export default \w+;/, '')
-						.replace('export const', 'declare const')
+						.replace('const', 'declare const')
+						.replace('export declare const', 'declare const')
 						.slice(0, -6)}`;
 					if (res.indexOf('declare const') !== -1) {
 						res += `export default ${x};`;

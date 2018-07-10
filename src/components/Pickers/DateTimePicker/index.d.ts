@@ -79,4 +79,6 @@ export interface DateTimePickerProps {
 	required?: boolean;
 }
 
-const DateTimePicker: React.SFC<DateTimePickerProps>;
+declare const DateTimePicker: React.SFC<DateTimePickerProps>;
+
+export default DateTimePicker;
