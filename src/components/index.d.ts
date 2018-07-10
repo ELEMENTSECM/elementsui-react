@@ -56,6 +56,7 @@ export { default as Checkbox, CheckboxProps } from './Inputs/Checkbox';
 export { default as CommandBar, CommandBarProps } from './Inputs/CommandBar';
 export { default as CommandBarButton, CommandBarButtonProps } from './Inputs/CommandBarButton';
 export { default as ContextualMenu, ContextualMenuProps } from './Inputs/ContextualMenu';
+export { default as DateTimePicker, DateTimePickerProps } from './Pickers/DateTimePicker';
 export { default as Dialog, DialogProps } from './Surfaces/Dialog';
 export { default as Dropdown, DropdownProps } from './Inputs/Dropdown';
 export { default as ElementsLogo, ElementsLogoProps } from './Content/ElementsLogo';
