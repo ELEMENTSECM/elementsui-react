@@ -6,8 +6,8 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DateTimePicker
     dateFormat="LLL"
-    dateFrom={2018-01-01T00:00:00.000Z}
-    dateTo={2018-01-11T00:00:00.000Z}
+    dateFrom={2017-12-31T22:00:00.000Z}
+    dateTo={2018-01-10T22:00:00.000Z}
     id="testDatePicker"
     locale="en"
     timeFormat="LT"
@@ -25,7 +25,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <div
-        className="datetimepicker"
+        className={undefined}
         id="testDatePicker"
       >
         <InjectIntl(Component) />
@@ -53,7 +53,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <InjectIntl(Component) />,
-        "className": "datetimepicker",
+        "className": undefined,
         "id": "testDatePicker",
       },
       "ref": null,
@@ -77,7 +77,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <div
-          className="datetimepicker"
+          className={undefined}
           id="testDatePicker"
         >
           <InjectIntl(Component) />
@@ -105,7 +105,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <InjectIntl(Component) />,
-          "className": "datetimepicker",
+          "className": undefined,
           "id": "testDatePicker",
         },
         "ref": null,
