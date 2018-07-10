@@ -67,7 +67,7 @@
 		"rm:umd": "rimraf ./build/umd",
 		"prepublish": "npm run build:lib",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
-		"precommit": "npm-run-all --parallel gen:index gen:types"
+		"precommit": "npm run build:lib"
 	},
 	"jest": {
 		"collectCoverageFrom": [

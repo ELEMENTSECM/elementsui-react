@@ -16,8 +16,8 @@ export default function DateTimePickerDefault() {
 			locale="en"
 			dateFrom={dateFrom}
 			dateTo={dateTo}
-			dateFormat={'LLL'}
-			timeFormat={'LT'}
+			dateFormat="LLL"
+			timeFormat="LT"
 		/>
 	);
 }
