@@ -8,6 +8,7 @@ export const styles = props => {
 			{
 				// background: props.theme.palette.themePrimary
 				// place your styles here
+				maxHeight: '36px'
 			},
 			className
 		]
