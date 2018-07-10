@@ -44,7 +44,9 @@ export {
 	Col as BSCol,
 	Media as BSMedia,
 	InputGroup as BSInputGroup,
-	InputGroupAddon as BSInputGroupAddon
+	InputGroupAddon as BSInputGroupAddon,
+	Checkbox as BSCheckbox,
+	Dropdown as BSDropdown
 } from 'react-bootstrap';
 export { addLocaleData } from 'react-intl';
 export { default as ActionButton, ActionButtonProps } from './Inputs/ActionButton';
