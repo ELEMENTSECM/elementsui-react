@@ -6,8 +6,8 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DateTimePicker
     dateFormat="LLL"
-    dateFrom={2017-12-31T22:00:00.000Z}
-    dateTo={2018-01-10T22:00:00.000Z}
+    dateFrom={2018-01-01T22:00:00.000Z}
+    dateTo={2018-01-11T22:00:00.000Z}
     id="testDatePicker"
     locale="en"
     timeFormat="LT"
