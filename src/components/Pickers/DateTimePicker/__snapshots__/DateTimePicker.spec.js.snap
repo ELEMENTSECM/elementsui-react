@@ -6,11 +6,140 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <DateTimePicker
     dateFormat="LLL"
-    dateFrom={2018-01-01T00:00:00.000Z}
-    dateTo={2018-01-11T00:00:00.000Z}
     id="testDatePicker"
     locale="en"
     timeFormat="LT"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <div
+        className={undefined}
+        id="testDatePicker"
+      >
+        <InjectIntl(Component) />
+      </div>,
+      "locale": "en",
+      "messages": Object {
+        "date": "DD/MM/YYYY",
+        "datetime": "DD/MM/YYYY HH:mm",
+        "fullHour": "DD/MM/YYYY HH:00P",
+        "invalidDate": "Invalid date",
+        "longDateFormat_L": "DD/MM/YYYY",
+        "longDateFormat_LL": "MMMM Do YYYY",
+        "longDateFormat_LLL": "MMMM Do YYYY LT",
+        "longDateFormat_LLLL": "dddd, MMMM Do YYYY LT",
+        "longDateFormat_LT": "h:mm A",
+        "longDateFormat_LTS": "h:mm:ss A",
+        "moment_g": "DD/MM/YYYY HH:mm",
+        "time": "HH:mm:ss",
+      },
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <InjectIntl(Component) />,
+        "className": undefined,
+        "id": "testDatePicker",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": "div",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <div
+          className={undefined}
+          id="testDatePicker"
+        >
+          <InjectIntl(Component) />
+        </div>,
+        "locale": "en",
+        "messages": Object {
+          "date": "DD/MM/YYYY",
+          "datetime": "DD/MM/YYYY HH:mm",
+          "fullHour": "DD/MM/YYYY HH:00P",
+          "invalidDate": "Invalid date",
+          "longDateFormat_L": "DD/MM/YYYY",
+          "longDateFormat_LL": "MMMM Do YYYY",
+          "longDateFormat_LLL": "MMMM Do YYYY LT",
+          "longDateFormat_LLLL": "dddd, MMMM Do YYYY LT",
+          "longDateFormat_LT": "h:mm A",
+          "longDateFormat_LTS": "h:mm:ss A",
+          "moment_g": "DD/MM/YYYY HH:mm",
+          "time": "HH:mm:ss",
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <InjectIntl(Component) />,
+          "className": undefined,
+          "id": "testDatePicker",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`DateTimePicker displays time only in time viewMode 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DateTimePicker
+    id="testDatePicker"
+    locale="en"
+    timeFormat="LT"
+    viewMode="time"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

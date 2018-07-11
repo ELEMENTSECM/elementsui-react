@@ -13,15 +13,31 @@ function DateTimePicker(props) {
 	}
 
 	const DTPicker = injectIntl(({ intl }) => {
-		const dateFormatId = props.dateFormat ? `longDateFormat_${props.dateFormat}` : "date";
-		const timeFormatId = props.timeFormat ? `longDateFormat_${props.timeFormat}` : "time";
+		const { dateFormat, timeFormat, viewMode } = props;
+		let dateFormatId = false,
+			timeFormatId = false;
+
+		if (viewMode !== "time") {
+			if (dateFormat === undefined) {
+				dateFormatId = intl.formatMessage({ id: "date" });
+			} else if (typeof dateFormat === "string") {
+				dateFormatId = intl.formatMessage({ id: `longDateFormat_${dateFormat}` });
+			}
+		}
+
+		if (timeFormat === undefined) {
+			timeFormatId = intl.formatMessage({ id: "time" });
+		} else if (typeof timeFormat === "string") {
+			timeFormatId = intl.formatMessage({ id: `longDateFormat_${timeFormat}` });
+		}
+
 		return (
 			<Datetime
 				{...props}
 				isValidDate={calculalateValidDates}
 				inputProps={{ name: props.name, disabled: props.disabled, required: props.required }}
-				dateFormat={intl.formatMessage({ id: dateFormatId })}
-				timeFormat={intl.formatMessage({ id: timeFormatId })}
+				dateFormat={dateFormatId}
+				timeFormat={timeFormatId}
 			/>
 		);
 	});
@@ -47,9 +63,9 @@ DateTimePicker.propTypes = {
 	/** Represents the month which is viewed on opening the calendar when there is no selected date. This prop is parsed by Moment.js, so it is possible to use a date string or a moment object. */
 	viewDate: PropTypes.oneOfType([ PropTypes.instanceOf(Date), PropTypes.string ]),
 	/** Defines the format for the date. */
-	dateFormat: PropTypes.oneOf([ "L", "LL", "LLL", "LLLL", "LS", "LTS" ]),
+	dateFormat: PropTypes.oneOfType([ PropTypes.oneOf([ "L", "LL", "LLL", "LLLL", "LT", "LTS" ]), PropTypes.bool ]),
 	/** Defines the format for the time. */
-	timeFormat: PropTypes.oneOf([ "LT", "LTS" ]),
+	timeFormat: PropTypes.oneOfType([ PropTypes.oneOf([ "LT", "LTS" ]), PropTypes.bool ]),
 	/** Manually set the locale for the react-datetime instance. Moment.js locale needs to be loaded to be used, see i18n docs. */
 	locale: PropTypes.string.isRequired,
 	/** Callback trigger when the date changes. The callback receives the selected moment object as only parameter, if the date in the input is valid. If the date in the input is not valid, the callback receives the value of the input (a string). */

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import DateTimePicker from 'elementsui-react/Pickers/DateTimePicker';
+import * as React from "react";
+import DateTimePicker from "elementsui-react/Pickers/DateTimePicker";
 
-/** DateTimePicker default */
+/** DateTimePicker */
 export default function DateTimePickerDefault() {
 	function addDays(date, days) {
 		var result = new Date(date);
@@ -11,13 +11,5 @@ export default function DateTimePickerDefault() {
 
 	const dateFrom = Date();
 	const dateTo = addDays(dateFrom, 10);
-	return (
-		<DateTimePicker
-			locale="en"
-			dateFrom={dateFrom}
-			dateTo={dateTo}
-			dateFormat="LLL"
-			timeFormat="LT"
-		/>
-	);
+	return <DateTimePicker locale="en" dateFrom={dateFrom} dateTo={dateTo} dateFormat="LLL" timeFormat="LT" />;
 }
