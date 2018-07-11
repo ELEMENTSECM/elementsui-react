@@ -1,6 +1,6 @@
-import * as React from 'react';
-import InfiniteList from 'elementsui-react/Content/InfiniteList';
-import ListItem from 'elementsui-react/Content/ListItem';
+import * as React from "react";
+import InfiniteList from "elementsui-react/Content/InfiniteList";
+import ListItem from "elementsui-react/Content/ListItem";
 
 /** Infinite list default */
 export default class InfiniteListDefault extends React.Component {
@@ -12,16 +12,16 @@ export default class InfiniteListDefault extends React.Component {
 	}
 
 	generate20Items = () => {
-		return [...Array(20)].map((_, i) => {
+		return [ ...Array(20) ].map((_, i) => {
 			return {
 				title: `Item ${i}`,
 				styles: () => ({
 					icon: [
-						'glyphicon-large',
-						'glyphicon',
-						'glyphicon-bell',
+						"glyphicon-large",
+						"glyphicon",
+						"glyphicon-bell",
 						{
-							color: '#3d9c97'
+							color: "#3d9c97"
 						}
 					]
 				})
@@ -32,7 +32,7 @@ export default class InfiniteListDefault extends React.Component {
 	fetchMore = () => {
 		const items = this.generate20Items();
 		setTimeout(() => {
-			this.setState(previousState => ({
+			this.setState((previousState) => ({
 				items: previousState.items.concat(items)
 			}));
 		}, 1500);
@@ -46,12 +46,11 @@ export default class InfiniteListDefault extends React.Component {
 				next={this.fetchMore}
 				hasMore={true}
 				pullDownToRefresh={true}
-				refreshFunction={() => this.setState(() => ({ items: this.generate20Items() }))}>
+				height={400}
+				refreshFunction={() => this.setState(() => ({ items: this.generate20Items() }))}
+			>
 				{this.state.items.map((x, i) => (
-					<ListItem
-						key={i}
-						styles={x.styles}
-						onClick={() => alert(`Item #${i} ${x.title} selected`)}>
+					<ListItem key={i} styles={x.styles} onClick={() => alert(`Item #${i} ${x.title} selected`)}>
 						{x.title}
 					</ListItem>
 				))}
