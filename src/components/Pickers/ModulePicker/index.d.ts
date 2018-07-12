@@ -2,7 +2,6 @@ import * as React from 'react';
 
 export interface ModulePickerModules {
 	Id: string;
-	Name: string;
 }
 
 export interface ModulePickerProps {
