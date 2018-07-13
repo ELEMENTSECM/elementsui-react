@@ -496,6 +496,7 @@ class LoginComponent extends Component {
 												modules={this.state.modules}
 												tenantId={this.state.tenantId}
 												applicationPath={this.props.paths.applicationPath}
+												locale={this.state.locale}
 											/>
 										)
 									) : (
