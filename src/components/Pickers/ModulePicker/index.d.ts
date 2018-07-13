@@ -21,6 +21,10 @@ export interface ModulePickerProps {
 	 * Array of modules
 	 */
 	modules?: ModulePickerModules[];
+	/**
+	 * Locale on what language the text should be
+	 */
+	locale?: string;
 }
 
 declare const ModulePicker: React.SFC<ModulePickerProps>;
