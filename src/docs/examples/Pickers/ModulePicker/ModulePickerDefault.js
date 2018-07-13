@@ -6,26 +6,22 @@ import Box from 'elementsui-react/Surfaces/Box';
 export default function ModulePickerDefault() {
 	const modules = [
 		{
-			Id: 'rm',
-			Name: 'Record Management'
+			Id: 'rm'
 		},
 		{
-			Id: 'mm',
-			Name: 'Meeting Module'
+			Id: 'mm'
 		},
 
 		{
-			Id: 'sa',
-			Name: 'System administration'
+			Id: 'sa'
 		},
 		{
-			Id: 'eb',
-			Name: 'eBuildingCase'
+			Id: 'eb'
 		}
 	];
 	return (
 		<Box className="modal-content">
-			<ModulePicker modules={modules} />
+			<ModulePicker modules={modules} locale={"en"} />
 		</Box>
 	);
 }

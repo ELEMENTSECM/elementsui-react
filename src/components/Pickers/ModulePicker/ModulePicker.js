@@ -120,7 +120,9 @@ ModulePicker.propTypes = {
 			/** Module Id */
 			Id: PropTypes.string.isRequired
 		})
-	)
+	),
+	/** Locale on what language the text should be */
+	locale: PropTypes.string
 };
 
 ModulePickerComponent.propTypes = {
@@ -136,7 +138,9 @@ ModulePickerComponent.propTypes = {
 			/** Module Id */
 			Id: PropTypes.string.isRequired
 		})
-	)
+	),
+	/** Locale on what language the text should be */
+	locale: PropTypes.string
 };
 
 export default styled(customizable('ModulePicker', ['theme'])(ModulePicker), styles);
