@@ -6489,7 +6489,7 @@ odatajs@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/odatajs/-/odatajs-4.0.0.tgz#be2d784579fb07c1bf7e331cfceecdd53f62bd2f"
 
-office-ui-fabric-react@^6.4.1:
+office-ui-fabric-react@6.4.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-6.4.1.tgz#f2cd73fb23644ded535840ab2b365398b99bacd6"
   dependencies:
