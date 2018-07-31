@@ -11,5 +11,15 @@ export default function DateTimePickerDefault() {
 
 	const dateFrom = Date();
 	const dateTo = addDays(dateFrom, 10);
-	return <DateTimePicker locale="en" dateFrom={dateFrom} dateTo={dateTo} dateFormat="LLL" timeFormat="LT" />;
+	return (
+		<DateTimePicker
+			locale="en"
+			dateFrom={dateFrom}
+			dateTo={dateTo}
+			defaultValue={new Date()}
+			onChange={(value) => alert(value)}
+			dateFormat="LLL"
+			timeFormat="LT"
+		/>
+	);
 }
