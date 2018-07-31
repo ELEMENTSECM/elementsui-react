@@ -4,51 +4,65 @@ import Datetime from "react-datetime";
 import { injectIntl, IntlProvider } from "react-intl";
 import nls from "./DateTimePicker.nls.json";
 
-function DateTimePicker(props) {
-	function calculalateValidDates(current) {
-		const dateFromValid = !props.dateFrom || current.isAfter(Datetime.moment(props.dateFrom).subtract(1, "day"));
-		const dateToValid = !props.dateTo || current.isBefore(Datetime.moment(props.dateTo).add(1, "day"));
-
-		return dateFromValid && dateToValid;
+class DateTimePicker extends React.Component {
+	constructor(props) {
+		super(props);
+		this.input = React.createRef();
 	}
 
-	const DTPicker = injectIntl(({ intl }) => {
-		const { dateFormat, timeFormat, viewMode } = props;
-		let dateFormatId = false,
-			timeFormatId = false;
+	calculalateValidDates = (current) => {
+		const dateFromValid =
+			!this.props.dateFrom || current.isAfter(Datetime.moment(this.props.dateFrom).subtract(1, "day"));
+		const dateToValid = !this.props.dateTo || current.isBefore(Datetime.moment(this.props.dateTo).add(1, "day"));
 
-		if (viewMode !== "time") {
-			if (dateFormat === undefined) {
-				dateFormatId = intl.formatMessage({ id: "date" });
-			} else if (typeof dateFormat === "string") {
-				dateFormatId = intl.formatMessage({ id: `longDateFormat_${dateFormat}` });
+		return dateFromValid && dateToValid;
+	};
+
+	onBlur = () => {
+		this.props.onBlur(this.input.current.state.selectedDate);
+	};
+
+	render() {
+		const { name, disabled, required, dateFormat, timeFormat, viewMode, onBlur, onChange, ...rest } = this.props;
+		const DTPicker = injectIntl(({ intl }) => {
+			let dateFormatId = false,
+				timeFormatId = false;
+
+			if (viewMode !== "time") {
+				if (dateFormat === undefined) {
+					dateFormatId = intl.formatMessage({ id: "date" });
+				} else if (typeof dateFormat === "string") {
+					dateFormatId = intl.formatMessage({ id: `longDateFormat_${dateFormat}` });
+				}
 			}
-		}
 
-		if (timeFormat === undefined) {
-			timeFormatId = intl.formatMessage({ id: "time" });
-		} else if (typeof timeFormat === "string") {
-			timeFormatId = intl.formatMessage({ id: `longDateFormat_${timeFormat}` });
-		}
+			if (timeFormat === undefined) {
+				timeFormatId = intl.formatMessage({ id: "time" });
+			} else if (typeof timeFormat === "string") {
+				timeFormatId = intl.formatMessage({ id: `longDateFormat_${timeFormat}` });
+			}
+
+			return (
+				<Datetime
+					{...rest}
+					ref={this.input}
+					isValidDate={this.calculalateValidDates}
+					inputProps={{ name, disabled, required }}
+					dateFormat={dateFormatId}
+					timeFormat={timeFormatId}
+					onBlur={this.onBlur}
+				/>
+			);
+		});
 
 		return (
-			<Datetime
-				{...props}
-				isValidDate={calculalateValidDates}
-				inputProps={{ name: props.name, disabled: props.disabled, required: props.required }}
-				dateFormat={dateFormatId}
-				timeFormat={timeFormatId}
-			/>
+			<IntlProvider locale={this.props.locale} messages={nls[this.props.locale]}>
+				<div id={this.props.id} className={this.props.className}>
+					<DTPicker />
+				</div>
+			</IntlProvider>
 		);
-	});
-
-	return (
-		<IntlProvider locale={props.locale} messages={nls[props.locale]}>
-			<div id={props.id} className={props.className}>
-				<DTPicker />
-			</div>
-		</IntlProvider>
-	);
+	}
 }
 
 DateTimePicker.propTypes = {
@@ -70,6 +84,8 @@ DateTimePicker.propTypes = {
 	locale: PropTypes.string.isRequired,
 	/** Callback trigger when the date changes. The callback receives the selected moment object as only parameter, if the date in the input is valid. If the date in the input is not valid, the callback receives the value of the input (a string). */
 	onChange: PropTypes.func,
+	/** Callback trigger for when the user clicks outside of the input, simulating a regular onBlur. The callback receives the selected moment object as only parameter, if the date in the input is valid. If the date in the input is not valid, the callback returned. */
+	onBlur: PropTypes.func,
 	/** The default view to display when the picker is shown  */
 	viewMode: PropTypes.oneOf([ "years", "months", "days", "time" ]),
 	/** Extra class name for the outermost markup element. */

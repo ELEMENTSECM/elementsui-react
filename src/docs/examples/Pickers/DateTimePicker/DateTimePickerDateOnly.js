@@ -3,5 +3,13 @@ import DateTimePicker from "elementsui-react/Pickers/DateTimePicker";
 
 /** DatePicker */
 export default function DateTimePickerDefault() {
-	return <DateTimePicker locale="en" dateFormat="L" timeFormat={false} />;
+	return (
+		<DateTimePicker
+			locale="en"
+			dateFormat="L"
+			timeFormat={false}
+			defaultValue={new Date()}
+			onChange={(value) => alert(value)}
+		/>
+	);
 }
