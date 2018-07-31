@@ -54,6 +54,14 @@ export interface DateTimePickerProps {
 	 */
 	onChange?: (...args: any[]) => any;
 	/**
+	 * Callback trigger for when the user opens the datepicker. The callback receives an event of type SyntheticEvent.
+	 */
+	onFocus?: (...args: any[]) => any;
+	/**
+	 * Callback trigger for when the user clicks outside of the input, simulating a regular onBlur. The callback receives the selected moment object as only parameter, if the date in the input is valid. If the date in the input is not valid, the callback returned.
+	 */
+	onBlur?: (...args: any[]) => any;
+	/**
 	 * The default view to display when the picker is shown
 	 */
 	viewMode?: DateTimePickerViewMode;

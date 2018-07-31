@@ -70,6 +70,10 @@ DateTimePicker.propTypes = {
 	locale: PropTypes.string.isRequired,
 	/** Callback trigger when the date changes. The callback receives the selected moment object as only parameter, if the date in the input is valid. If the date in the input is not valid, the callback receives the value of the input (a string). */
 	onChange: PropTypes.func,
+	/** Callback trigger for when the user opens the datepicker. The callback receives an event of type SyntheticEvent. */
+	onFocus: PropTypes.func,
+	/** Callback trigger for when the user clicks outside of the input, simulating a regular onBlur. The callback receives the selected moment object as only parameter, if the date in the input is valid. If the date in the input is not valid, the callback returned. */
+	onBlur: PropTypes.func,
 	/** The default view to display when the picker is shown  */
 	viewMode: PropTypes.oneOf([ "years", "months", "days", "time" ]),
 	/** Extra class name for the outermost markup element. */
