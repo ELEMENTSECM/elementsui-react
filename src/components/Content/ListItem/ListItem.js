@@ -1,7 +1,7 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { styles } from './ListItem.styles';
-import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
+import * as React from "react";
+import PropTypes from "prop-types";
+import { styles } from "./ListItem.styles";
+import { classNamesFunction, customizable, styled } from "office-ui-fabric-react/lib/Utilities";
 
 export function ListItem(props) {
 	const { styles, children, onClick, link } = props;
@@ -26,7 +26,7 @@ export function ListItem(props) {
 
 ListItem.propTypes = {
 	/** Any JSX */
-	children: PropTypes.string,
+	children: PropTypes.any,
 	/** onClick event handler */
 	onClick: PropTypes.func,
 	/** Item link */
@@ -35,4 +35,4 @@ ListItem.propTypes = {
 	styles: PropTypes.func
 };
 
-export default styled(customizable('ListItem', ['theme'])(ListItem), styles);
+export default styled(customizable("ListItem", [ "theme" ])(ListItem), styles);

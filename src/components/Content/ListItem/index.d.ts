@@ -4,7 +4,7 @@ export interface ListItemProps {
 	/**
 	 * Any JSX
 	 */
-	children?: string;
+	children?: any;
 	/**
 	 * onClick event handler
 	 */
