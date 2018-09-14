@@ -14,9 +14,21 @@ export interface ListItemProps {
 	 */
 	link?: string;
 	/**
-	 * User-defined styling
+	 * Icon class name
 	 */
-	styles?: (...args: any[]) => any;
+	icon?: string;
+	/**
+	 * Icon color
+	 */
+	iconColor?: string;
+	/**
+	 * List item class name
+	 */
+	className?: string;
+	/**
+	 * Link className
+	 */
+	linkClassName?: string;
 }
 
 declare const ListItem: React.SFC<ListItemProps>;

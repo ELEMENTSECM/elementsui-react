@@ -7,7 +7,6 @@ import ComponentPage from './ComponentPage';
 import componentData from '../../config/componentData';
 import DocsOverview from './DocsOverview';
 import NoMatch from './NoMatch';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
 export default class Docs extends React.Component {
 	getTree = components => {
@@ -21,7 +20,7 @@ export default class Docs extends React.Component {
 
 	render() {
 		return (
-			<Fabric>
+			<div className="docs">
 				<header>
 					<h1 className={'pageheader'}>
 						<span className="logo" />
@@ -46,7 +45,7 @@ export default class Docs extends React.Component {
 						<Route component={NoMatch} />
 					</Switch>
 				</main>
-			</Fabric>
+			</div>
 		);
 	}
 }

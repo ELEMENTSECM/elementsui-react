@@ -4,7 +4,7 @@ exports[`InfiniteList displays correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <StyledCustomizedInfiniteList
+  Symbol(enzyme.__unrendered__): <InfiniteList
     dataLength={20}
     hasMore={false}
     locale="en"
@@ -89,7 +89,7 @@ ShallowWrapper {
       Item 
       19
     </div>
-  </StyledCustomizedInfiniteList>,
+  </InfiniteList>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -102,436 +102,653 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": Array [
-        <div>
-          Item 
-          0
-        </div>,
-        <div>
-          Item 
-          1
-        </div>,
-        <div>
-          Item 
-          2
-        </div>,
-        <div>
-          Item 
-          3
-        </div>,
-        <div>
-          Item 
-          4
-        </div>,
-        <div>
-          Item 
-          5
-        </div>,
-        <div>
-          Item 
-          6
-        </div>,
-        <div>
-          Item 
-          7
-        </div>,
-        <div>
-          Item 
-          8
-        </div>,
-        <div>
-          Item 
-          9
-        </div>,
-        <div>
-          Item 
-          10
-        </div>,
-        <div>
-          Item 
-          11
-        </div>,
-        <div>
-          Item 
-          12
-        </div>,
-        <div>
-          Item 
-          13
-        </div>,
-        <div>
-          Item 
-          14
-        </div>,
-        <div>
-          Item 
-          15
-        </div>,
-        <div>
-          Item 
-          16
-        </div>,
-        <div>
-          Item 
-          17
-        </div>,
-        <div>
-          Item 
-          18
-        </div>,
-        <div>
-          Item 
-          19
-        </div>,
-      ],
-      "dataLength": 20,
-      "hasMore": false,
+      "children": <div
+        className="InfiniteList undefined"
+        style={
+          Object {
+            "WebkitOverflowScrolling": "touch",
+            "height": "auto",
+            "overflow": "auto",
+          }
+        }
+      >
+        <ul
+          className={undefined}
+        >
+          <div>
+            Item 
+            0
+          </div>
+          <div>
+            Item 
+            1
+          </div>
+          <div>
+            Item 
+            2
+          </div>
+          <div>
+            Item 
+            3
+          </div>
+          <div>
+            Item 
+            4
+          </div>
+          <div>
+            Item 
+            5
+          </div>
+          <div>
+            Item 
+            6
+          </div>
+          <div>
+            Item 
+            7
+          </div>
+          <div>
+            Item 
+            8
+          </div>
+          <div>
+            Item 
+            9
+          </div>
+          <div>
+            Item 
+            10
+          </div>
+          <div>
+            Item 
+            11
+          </div>
+          <div>
+            Item 
+            12
+          </div>
+          <div>
+            Item 
+            13
+          </div>
+          <div>
+            Item 
+            14
+          </div>
+          <div>
+            Item 
+            15
+          </div>
+          <div>
+            Item 
+            16
+          </div>
+          <div>
+            Item 
+            17
+          </div>
+          <div>
+            Item 
+            18
+          </div>
+          <div>
+            Item 
+            19
+          </div>
+        </ul>
+      </div>,
       "locale": "en",
-      "styles": [Function],
+      "messages": Object {
+        "pullDownToRefresh": "Pull down to refresh",
+        "releaseToRefresh": "Release to refresh",
+      },
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": "0",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            0,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          0,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          undefined,
+          <ul
+            className={undefined}
+          >
+            <div>
+              Item 
+              0
+            </div>
+            <div>
+              Item 
+              1
+            </div>
+            <div>
+              Item 
+              2
+            </div>
+            <div>
+              Item 
+              3
+            </div>
+            <div>
+              Item 
+              4
+            </div>
+            <div>
+              Item 
+              5
+            </div>
+            <div>
+              Item 
+              6
+            </div>
+            <div>
+              Item 
+              7
+            </div>
+            <div>
+              Item 
+              8
+            </div>
+            <div>
+              Item 
+              9
+            </div>
+            <div>
+              Item 
+              10
+            </div>
+            <div>
+              Item 
+              11
+            </div>
+            <div>
+              Item 
+              12
+            </div>
+            <div>
+              Item 
+              13
+            </div>
+            <div>
+              Item 
+              14
+            </div>
+            <div>
+              Item 
+              15
+            </div>
+            <div>
+              Item 
+              16
+            </div>
+            <div>
+              Item 
+              17
+            </div>
+            <div>
+              Item 
+              18
+            </div>
+            <div>
+              Item 
+              19
+            </div>
+          </ul>,
+          false,
+          false,
+          undefined,
         ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "1",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            1,
-          ],
+        "className": "InfiniteList undefined",
+        "style": Object {
+          "WebkitOverflowScrolling": "touch",
+          "height": "auto",
+          "overflow": "auto",
         },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          1,
-        ],
-        "type": "div",
       },
-      Object {
-        "instance": null,
-        "key": "2",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            2,
+      "ref": [Function],
+      "rendered": Array [
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div>
+                Item 
+                0
+              </div>,
+              <div>
+                Item 
+                1
+              </div>,
+              <div>
+                Item 
+                2
+              </div>,
+              <div>
+                Item 
+                3
+              </div>,
+              <div>
+                Item 
+                4
+              </div>,
+              <div>
+                Item 
+                5
+              </div>,
+              <div>
+                Item 
+                6
+              </div>,
+              <div>
+                Item 
+                7
+              </div>,
+              <div>
+                Item 
+                8
+              </div>,
+              <div>
+                Item 
+                9
+              </div>,
+              <div>
+                Item 
+                10
+              </div>,
+              <div>
+                Item 
+                11
+              </div>,
+              <div>
+                Item 
+                12
+              </div>,
+              <div>
+                Item 
+                13
+              </div>,
+              <div>
+                Item 
+                14
+              </div>,
+              <div>
+                Item 
+                15
+              </div>,
+              <div>
+                Item 
+                16
+              </div>,
+              <div>
+                Item 
+                17
+              </div>,
+              <div>
+                Item 
+                18
+              </div>,
+              <div>
+                Item 
+                19
+              </div>,
+            ],
+            "className": undefined,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  0,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                0,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  1,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                1,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  2,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                2,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "3",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  3,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                3,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "4",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  4,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                4,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "5",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  5,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                5,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "6",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  6,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                6,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "7",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  7,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                7,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "8",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  8,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                8,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "9",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  9,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                9,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "10",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  10,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                10,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "11",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  11,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                11,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "12",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  12,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                12,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "13",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  13,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                13,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "14",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  14,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                14,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "15",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  15,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                15,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "16",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  16,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                16,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "17",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  17,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                17,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "18",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  18,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                18,
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "19",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Item ",
+                  19,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Item ",
+                19,
+              ],
+              "type": "div",
+            },
           ],
+          "type": "ul",
         },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          2,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "3",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            3,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          3,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "4",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            4,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          4,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "5",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            5,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          5,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "6",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            6,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          6,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "7",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            7,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          7,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "8",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            8,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          8,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "9",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            9,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          9,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "10",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            10,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          10,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "11",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            11,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          11,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "12",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            12,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          12,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "13",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            13,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          13,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "14",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            14,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          14,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "15",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            15,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          15,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "16",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            16,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          16,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "17",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            17,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          17,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "18",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            18,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          18,
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "19",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Item ",
-            19,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          "Item ",
-          19,
-        ],
-        "type": "div",
-      },
-    ],
+        false,
+        false,
+        undefined,
+      ],
+      "type": "div",
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -540,436 +757,653 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": Array [
-          <div>
-            Item 
-            0
-          </div>,
-          <div>
-            Item 
-            1
-          </div>,
-          <div>
-            Item 
-            2
-          </div>,
-          <div>
-            Item 
-            3
-          </div>,
-          <div>
-            Item 
-            4
-          </div>,
-          <div>
-            Item 
-            5
-          </div>,
-          <div>
-            Item 
-            6
-          </div>,
-          <div>
-            Item 
-            7
-          </div>,
-          <div>
-            Item 
-            8
-          </div>,
-          <div>
-            Item 
-            9
-          </div>,
-          <div>
-            Item 
-            10
-          </div>,
-          <div>
-            Item 
-            11
-          </div>,
-          <div>
-            Item 
-            12
-          </div>,
-          <div>
-            Item 
-            13
-          </div>,
-          <div>
-            Item 
-            14
-          </div>,
-          <div>
-            Item 
-            15
-          </div>,
-          <div>
-            Item 
-            16
-          </div>,
-          <div>
-            Item 
-            17
-          </div>,
-          <div>
-            Item 
-            18
-          </div>,
-          <div>
-            Item 
-            19
-          </div>,
-        ],
-        "dataLength": 20,
-        "hasMore": false,
+        "children": <div
+          className="InfiniteList undefined"
+          style={
+            Object {
+              "WebkitOverflowScrolling": "touch",
+              "height": "auto",
+              "overflow": "auto",
+            }
+          }
+        >
+          <ul
+            className={undefined}
+          >
+            <div>
+              Item 
+              0
+            </div>
+            <div>
+              Item 
+              1
+            </div>
+            <div>
+              Item 
+              2
+            </div>
+            <div>
+              Item 
+              3
+            </div>
+            <div>
+              Item 
+              4
+            </div>
+            <div>
+              Item 
+              5
+            </div>
+            <div>
+              Item 
+              6
+            </div>
+            <div>
+              Item 
+              7
+            </div>
+            <div>
+              Item 
+              8
+            </div>
+            <div>
+              Item 
+              9
+            </div>
+            <div>
+              Item 
+              10
+            </div>
+            <div>
+              Item 
+              11
+            </div>
+            <div>
+              Item 
+              12
+            </div>
+            <div>
+              Item 
+              13
+            </div>
+            <div>
+              Item 
+              14
+            </div>
+            <div>
+              Item 
+              15
+            </div>
+            <div>
+              Item 
+              16
+            </div>
+            <div>
+              Item 
+              17
+            </div>
+            <div>
+              Item 
+              18
+            </div>
+            <div>
+              Item 
+              19
+            </div>
+          </ul>
+        </div>,
         "locale": "en",
-        "styles": [Function],
+        "messages": Object {
+          "pullDownToRefresh": "Pull down to refresh",
+          "releaseToRefresh": "Release to refresh",
+        },
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": "0",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              0,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            0,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            undefined,
+            <ul
+              className={undefined}
+            >
+              <div>
+                Item 
+                0
+              </div>
+              <div>
+                Item 
+                1
+              </div>
+              <div>
+                Item 
+                2
+              </div>
+              <div>
+                Item 
+                3
+              </div>
+              <div>
+                Item 
+                4
+              </div>
+              <div>
+                Item 
+                5
+              </div>
+              <div>
+                Item 
+                6
+              </div>
+              <div>
+                Item 
+                7
+              </div>
+              <div>
+                Item 
+                8
+              </div>
+              <div>
+                Item 
+                9
+              </div>
+              <div>
+                Item 
+                10
+              </div>
+              <div>
+                Item 
+                11
+              </div>
+              <div>
+                Item 
+                12
+              </div>
+              <div>
+                Item 
+                13
+              </div>
+              <div>
+                Item 
+                14
+              </div>
+              <div>
+                Item 
+                15
+              </div>
+              <div>
+                Item 
+                16
+              </div>
+              <div>
+                Item 
+                17
+              </div>
+              <div>
+                Item 
+                18
+              </div>
+              <div>
+                Item 
+                19
+              </div>
+            </ul>,
+            false,
+            false,
+            undefined,
           ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "1",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              1,
-            ],
+          "className": "InfiniteList undefined",
+          "style": Object {
+            "WebkitOverflowScrolling": "touch",
+            "height": "auto",
+            "overflow": "auto",
           },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            1,
-          ],
-          "type": "div",
         },
-        Object {
-          "instance": null,
-          "key": "2",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              2,
+        "ref": [Function],
+        "rendered": Array [
+          undefined,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div>
+                  Item 
+                  0
+                </div>,
+                <div>
+                  Item 
+                  1
+                </div>,
+                <div>
+                  Item 
+                  2
+                </div>,
+                <div>
+                  Item 
+                  3
+                </div>,
+                <div>
+                  Item 
+                  4
+                </div>,
+                <div>
+                  Item 
+                  5
+                </div>,
+                <div>
+                  Item 
+                  6
+                </div>,
+                <div>
+                  Item 
+                  7
+                </div>,
+                <div>
+                  Item 
+                  8
+                </div>,
+                <div>
+                  Item 
+                  9
+                </div>,
+                <div>
+                  Item 
+                  10
+                </div>,
+                <div>
+                  Item 
+                  11
+                </div>,
+                <div>
+                  Item 
+                  12
+                </div>,
+                <div>
+                  Item 
+                  13
+                </div>,
+                <div>
+                  Item 
+                  14
+                </div>,
+                <div>
+                  Item 
+                  15
+                </div>,
+                <div>
+                  Item 
+                  16
+                </div>,
+                <div>
+                  Item 
+                  17
+                </div>,
+                <div>
+                  Item 
+                  18
+                </div>,
+                <div>
+                  Item 
+                  19
+                </div>,
+              ],
+              "className": undefined,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "0",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    0,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  0,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "1",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    1,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  1,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "2",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    2,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  2,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "3",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    3,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  3,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "4",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    4,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  4,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "5",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    5,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  5,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "6",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    6,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  6,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "7",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    7,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  7,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "8",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    8,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  8,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "9",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    9,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  9,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "10",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    10,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  10,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "11",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    11,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  11,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "12",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    12,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  12,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "13",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    13,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  13,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "14",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    14,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  14,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "15",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    15,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  15,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "16",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    16,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  16,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "17",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    17,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  17,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "18",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    18,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  18,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": "19",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Item ",
+                    19,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Item ",
+                  19,
+                ],
+                "type": "div",
+              },
             ],
+            "type": "ul",
           },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            2,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "3",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              3,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            3,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "4",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              4,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            4,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "5",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              5,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            5,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "6",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              6,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            6,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "7",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              7,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            7,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "8",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              8,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            8,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "9",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              9,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            9,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "10",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              10,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            10,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "11",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              11,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            11,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "12",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              12,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            12,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "13",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              13,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            13,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "14",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              14,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            14,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "15",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              15,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            15,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "16",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              16,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            16,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "17",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              17,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            17,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "18",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              18,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            18,
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "19",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Item ",
-              19,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Item ",
-            19,
-          ],
-          "type": "div",
-        },
-      ],
+          false,
+          false,
+          undefined,
+        ],
+        "type": "div",
+      },
       "type": [Function],
     },
   ],

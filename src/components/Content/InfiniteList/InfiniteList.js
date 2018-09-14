@@ -1,13 +1,12 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { styles } from "./InfiniteList.styles";
-import { classNamesFunction, customizable, styled } from "office-ui-fabric-react/lib/Utilities";
 import Spinner from "../../Indicators/Spinner";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import nls from "./InfiniteList.nls.json";
 
 /** InfiniteList example */
-class InfiniteListComponent extends React.Component {
+export default class InfiniteList extends React.Component {
 	static getDerivedStateFromProps(props, state) {
 		if (props.dataLength === state.dataLength) return null;
 
@@ -36,7 +35,6 @@ class InfiniteListComponent extends React.Component {
 		this.maxPullDownDistance = 0;
 
 		this.throttledOnScrollListener = this.throttle(this.onScrollListener, 150);
-		this.classNames = classNamesFunction()(styles, props);
 	}
 
 	componentDidMount() {
@@ -202,19 +200,17 @@ class InfiniteListComponent extends React.Component {
 			height: this.props.height || "auto"
 		};
 		const hasChildren = this.props.hasChildren || !!(this.props.children && this.props.children.length);
-
 		const outerDivStyle = this.props.pullDownToRefresh && this.props.height ? { overflow: "auto" } : {};
-		const { root, pulldown, list, pulldownHandle } = this.classNames;
 		return (
 			<IntlProvider locale={this.props.locale} messages={nls[this.props.locale]}>
 				<div
-					style={Object.assign(style, outerDivStyle)}
-					className={root}
+					style={Object.assign(style, outerDivStyle, styles.InfiniteList)}
+					className={`InfiniteList ${this.props.className}`}
 					ref={(infScroll) => (this._infScroll = infScroll)}
 				>
 					{this.props.pullDownToRefresh && (
-						<div className={pulldown} ref={(pullDown) => (this._pullDown = pullDown)}>
-							<div className={pulldownHandle} style={{ top: -1 * this.maxPullDownDistance }}>
+						<div style={styles.pulldown} ref={(pullDown) => (this._pullDown = pullDown)}>
+							<div style={Object.assign({}, styles.pulldownHandle, { top: -1 * this.maxPullDownDistance })} >
 								{!this.state.pullToRefreshThresholdBreached && (
 									<h3>
 										<FormattedMessage id="pullDownToRefresh" />
@@ -228,17 +224,15 @@ class InfiniteListComponent extends React.Component {
 							</div>
 						</div>
 					)}
-					<ul className={list}>{this.props.children}</ul>
-					{!this.state.showLoader && !hasChildren && this.props.hasMore && <Spinner />}
-					{this.state.showLoader && this.props.hasMore && <Spinner />}
+					<ul className={this.props.listClassName}>{this.props.children}</ul>
+					{!this.state.showLoader && !hasChildren && this.props.hasMore && <Spinner size={50} />}
+					{this.state.showLoader && this.props.hasMore && <Spinner size={50} />}
 					{!this.props.hasMore && this.props.endMessage}
 				</div>
 			</IntlProvider>
 		);
 	}
 }
-
-export const InfiniteList = InfiniteListComponent;
 
 InfiniteList.propTypes = {
 	/** DOM element's id attribute */
@@ -273,45 +267,8 @@ InfiniteList.propTypes = {
 	onScroll: PropTypes.func,
 	/** Set the length of the data.This will unlock the subsequent calls to next. */
 	dataLength: PropTypes.number.isRequired,
-	/** User-defined styling */
-	styles: PropTypes.func
+	/** Root div class name */
+	className: PropTypes.string,
+	/** List class name */
+	listClassName: PropTypes.string
 };
-
-InfiniteListComponent.propTypes = {
-	/** Locale (en, nb, etc.) */
-	locale: PropTypes.string.isRequired,
-	/** A function which must be called after reaching the bottom. It must trigger some sort of action which fetches the next data. The data is passed as children to the InfiniteList component and the data should contain previous items too. e.g. Initial data = [1, 2, 3] and then next load of data should be [1, 2, 3, 4, 5, 6]. */
-	next: PropTypes.func,
-	/** It tells the InfiniteList component on whether to call next function on reaching the bottom and shows an endMessage to the user */
-	hasMore: PropTypes.bool,
-	/** The data items which you need to scroll. */
-	children: PropTypes.node,
-	/** A threshold value after that the InfiniteList will call next. By default it's 0.8. It means the next will be called when the user comes below 80% of the total height. */
-	scrollThreshold: PropTypes.number,
-	/** This message is shown to the user when he has seen all the records which means he's at the bottom and hasMore is false */
-	endMessage: PropTypes.node,
-	/** Optional, give only if you want to have a fixed height scrolling content */
-	height: PropTypes.number,
-	/** Optional, reference to a (parent) DOM element that is already providing overflow scrollbars to the InfiniteList component. You should provide the id of the DOM node preferably. */
-	scrollableTarget: PropTypes.node,
-	/** Children is by default assumed to be of type array and it's length is used to determine if loader needs to be shown or not, if your children is not an array, specify this prop to tell if your items are 0 or more. */
-	hasChildren: PropTypes.bool,
-	/** To enable Pull Down to Refresh feature */
-	pullDownToRefresh: PropTypes.bool,
-	/** Any JSX that you want to show the user */
-	pullDownToRefreshContent: PropTypes.node,
-	/** Any JSX that you want to show the user */
-	releaseToRefreshContent: PropTypes.node,
-	/** Minimum distance the user needs to pull down to trigger the refresh */
-	pullDownToRefreshThreshold: PropTypes.number,
-	/** This function will be called, it should return the fresh data that you want to show the user */
-	refreshFunction: PropTypes.func,
-	/** A function that will listen to the scroll event on the scrolling container. Note that the scroll event is throttled, so you may not receive as many events as you would expect. */
-	onScroll: PropTypes.func,
-	/** Set the length of the data.This will unlock the subsequent calls to next. */
-	dataLength: PropTypes.number.isRequired,
-	/** User-defined styling */
-	styles: PropTypes.func
-};
-
-export default styled(customizable("InfiniteList", [ "theme" ])(InfiniteList), styles);

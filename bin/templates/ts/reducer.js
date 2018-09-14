@@ -1,47 +1,61 @@
-const reducerTemplate = name => `import { handleActions } from 'redux-actions'
-import { RootState } from 'store/state'
-import { ${name}Actions } from 'actions/${name}'
-import { ${name}Model } from 'models/${name}Model'
+const utils = require("../../utils");
+const reducerTemplate = name => {
+	const uppercased = name.toUpperCase();
+	const camelCased = utils.camelCase(name);
+	return `import { Reducer } from "redux";
+import { ${name} } from "../../store/models";
+import {
+	${name}Actions,
+	SET_${uppercased},
+	CREATE_${uppercased}_SUCCESS,
+	UPDATE_${uppercased}_SUCCESS
+} from "../../actions/${name}/${name}Actions";
+import { IRootState } from "../../store";
+import { createMetadataSelector } from "../../store/selectors";
 
-const initialState: RootState.${name}State = {}
+const ${name}Reducer: Reducer<{ [id: string]: ${name} }> = (state = {}, action: ${name}Actions) => {
+	switch (action.type) {
+		case SET_${uppercased}:
+		case CREATE_${uppercased}_SUCCESS:
+		case UPDATE_${uppercased}_SUCCESS:
+			return _.merge({}, state, action.payload.entities.${camelCased}s);
+		default:
+			return state;
+	}
+};
+	
+export const ${camelCased}s = (state: IRootState) => state.models.${camelCased}s;
+export const ${camelCased}Meta = createMetadataSelector<${name}, string>(${camelCased}s, [ "Id", "Description" ]);
+export default ${name}Reducer;
+`;
+}
 
-export const ${name}Reducer = handleActions<RootState.${name}State, ${name}Model>(
-	{
-		[${name}Actions.Type.FOO_SUCCESS]: (state, action) => {
-			if (action.payload) {
-				return {
-					foo: action.payload.foo
+const reducerTestTemplate = name => {
+	const uppercased = name.toUpperCase();
+	const camelCased = utils.camelCase(name);
+	return `import ${name}Reducer from "./${name}Reducer";
+import { SET_${uppercased} } from "../../actions/${name}/${name}Actions";
+
+describe("${name}Reducer", () => {
+	test("SET_${uppercased} - store should contain new entity", () => {
+		const action = {
+			type: SET_${uppercased},
+			payload: {
+				entities: {
+					${camelCased}s: {
+						1: {
+							Id: 1
+						}
+					}
 				}
-			} else {
-				return state
 			}
 		}
-	},
-	initialState
-)
-`
 
-const reducerTestTemplate = name => `import { ${name}Reducer } from './index'
-import { ${name}Actions } from 'actions/${name}'
-import { ${name}Model } from 'models/${name}Model'
-
-describe('[Reducers] ${name}Reducer', () => {
-	const initialState = {}
-	const modifiedState = {
-		foo: 'bar'
-	}
-
-	const fooSuccess = {
-		type: ${name}Actions.Type.FOO_SUCCESS,
-		payload: modifiedState
-	}
-
-	it('[${name}Reducer.FOO_SUCCESS] should return state with foo', () => {
-		const stateFooSuccess = ${name}Reducer(initialState, fooSuccess)
-		expect(stateFooSuccess.foo).toBe('bar')
-	})
-})
-`
+		const state = ${name}Reducer(undefined, action);
+		expect(state[1]).toEqual({ Id: 1 });
+	});
+});`;
+}
 
 module.exports = {
 	reducerTemplate,

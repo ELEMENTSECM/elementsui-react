@@ -6,13 +6,21 @@ export interface SpinnerProps {
 	 */
 	id?: string;
 	/**
+	 * Spinner size
+	 */
+	size?: number;
+	/**
+	 * Spinner size units
+	 */
+	sizeUnit?: string;
+	/**
+	 * Spinner state
+	 */
+	loading?: boolean;
+	/**
 	 * Spinner label
 	 */
 	label?: string;
-	/**
-	 * User-defined styling
-	 */
-	styles?: (...args: any[]) => any;
 }
 
 declare const Spinner: React.SFC<SpinnerProps>;

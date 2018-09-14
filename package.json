@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.1.57",
+	"version": "0.1.62",
 	"main": "./lib/index.js",
 	"private": true,
 	"engines": {
@@ -29,15 +29,16 @@
 		"mkdirp": "^0.5.1",
 		"moment": "^2.22.0",
 		"odatajs": "^4.0.0",
-		"office-ui-fabric-react": "6.4.1",
 		"promise": "8.0.1",
 		"react": "^16.3.0",
 		"react-bootstrap": "^0.32.1",
 		"react-datetime": "^2.14.0",
 		"react-dom": "^16.2.0",
+		"react-emotion": "^9.2.8",
 		"react-intl": "^2.4.0",
 		"react-router": "^4.2.0",
 		"react-router-dom": "^4.2.2",
+		"react-spinners": "^0.4.5",
 		"react-syntax-highlighter": "^7.0.4",
 		"react-treeview": "^0.4.7",
 		"uuid": "^3.2.1",
@@ -100,8 +101,7 @@
 			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
 		],
 		"moduleNameMapper": {
-			"^react-native$": "react-native-web",
-			"office-ui-fabric-react/lib/": "office-ui-fabric-react/lib-commonjs/"
+			"^react-native$": "react-native-web"
 		},
 		"moduleFileExtensions": [
 			"web.js",

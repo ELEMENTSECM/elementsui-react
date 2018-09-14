@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CodeExample from './CodeExample';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import ActionButton from 'elementsui-react/Inputs/ActionButton';
+import Button from 'react-bootstrap/lib/Button';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -25,16 +24,11 @@ class Example extends React.Component {
 		return (
 			<div className="example">
 				{description && <h4>{description}</h4>}
-				{/* Wrap example component in <Fabric> to enable proper focusing, styles etc.*/}
-				<Fabric>
-					<ExampleComponent />
-				</Fabric>
+				<ExampleComponent />
 				<p>
-					<ActionButton
-						label={`${showCode ? 'Hide' : 'Show'} Code`}
-						iconProps={{ iconName: 'code' }}
+					<Button
 						onClick={this.toggleCode}
-					/>
+					>{`${showCode ? 'Hide' : 'Show'} Code`}</Button>
 				</p>
 
 				{showCode && <CodeExample>{code}</CodeExample>}

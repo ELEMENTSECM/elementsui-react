@@ -1,19 +1,17 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { styles } from "./ListItem.styles";
-import { classNamesFunction, customizable, styled } from "office-ui-fabric-react/lib/Utilities";
 
-export function ListItem(props) {
-	const { styles, children, onClick, link } = props;
-	const classNames = classNamesFunction()(styles, props);
+export default function ListItem(props) {
+	const { children, onClick, link, icon, iconColor, className, linkClassName } = props;
 	return (
-		<li className={classNames.root}>
-			<a className={classNames.link} href={link} onClick={onClick}>
-				<div className={classNames.row}>
-					<div className={classNames.iconCol}>
-						<i className={classNames.icon} />
+		<li style={styles.ListItem} className={className}>
+			<a style={styles.link} href={link} onClick={onClick} className={linkClassName}>
+				<div className="row">
+					<div className="col-xs-1">
+						<i style={iconColor ? Object.assign({}, styles.icon, {color: iconColor}) : styles.icon} className={icon} />
 					</div>
-					<div className={classNames.textCol}>
+					<div className="col-xs-10">
 						<span>
 							<span>{children}</span>
 						</span>
@@ -31,8 +29,12 @@ ListItem.propTypes = {
 	onClick: PropTypes.func,
 	/** Item link */
 	link: PropTypes.string,
-	/** User-defined styling */
-	styles: PropTypes.func
+	/** Icon class name */
+	icon: PropTypes.string,
+	/** Icon color */
+	iconColor: PropTypes.string,
+	/** List item class name */
+	className: PropTypes.string,
+	/** Link className */
+	linkClassName: PropTypes.string
 };
-
-export default styled(customizable("ListItem", [ "theme" ])(ListItem), styles);

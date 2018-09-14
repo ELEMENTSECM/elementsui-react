@@ -2,7 +2,7 @@
 	"components": "src/components/",
 	"containers": "src/components/",
 	"models": "",
-	"actions": "",
+	"actions": "src/actions",
 	"reducers": "",
 	"state": "",
 	"controllers": "",

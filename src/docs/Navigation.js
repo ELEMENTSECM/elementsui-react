@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 //import ComponentFilter from './ComponentFilter';
 import TreeView from 'react-treeview';
 import { Link } from 'react-router-dom';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import _ from 'lodash';
+import {FormGroup, FormControl} from "react-bootstrap";
+
 class Navigation extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,7 +15,8 @@ class Navigation extends React.Component {
 		};
 	}
 
-	filterComponents(filter) {
+	filterComponents = (e) => {
+		const filter = e.target.value;
 		const filtered = filter ? this.getComponents(filter, this.props.components) : this.props.components;
 		this.setState({
 			components: filtered
@@ -68,11 +70,9 @@ class Navigation extends React.Component {
 	render() {
 		return (
 			<div className="search-nav">
-				<SearchBox
-					className="component-search"
-					placeholder={'Search'}
-					onChange={this.filterComponents.bind(this)}
-				/>
+			<FormGroup>
+				<FormControl type="text" className="component-search" placeholder="Search" onChange={this.filterComponents}/>
+			</FormGroup>
 				<nav className="navigation-menu">{this.getTree(this.state.components)}</nav>
 			</div>
 		);
