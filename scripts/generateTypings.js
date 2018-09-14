@@ -55,7 +55,6 @@ ${stdout
 }
 
 function addInitializeIcons() {
-	moduleExports.push(`export { initializeIcons } from "office-ui-fabric-react/lib/Icons";`);
 	moduleExports.push(`export { addLocaleData } from 'react-intl';`);
 	moduleExports.push(`export { default as en } from 'react-intl/locale-data/en';`);
 	moduleExports.push(`export { default as nb } from 'react-intl/locale-data/nb';`);

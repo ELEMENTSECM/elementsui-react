@@ -9,12 +9,12 @@ const config = [
 			"ElementsUI config does not exist in the project's root folder. Let's perform a quick initial setup. \r\nRelative path to components folder:",
 		default: 'frontend/src/components/'
 	},
-	{
-		type: 'input',
-		name: 'containers',
-		message: 'Relative path to containers folder:',
-		default: 'frontend/src/containers/'
-	},
+	// {
+	// 	type: 'input',
+	// 	name: 'containers',
+	// 	message: 'Relative path to containers folder:',
+	// 	default: 'frontend/src/containers/'
+	// },
 	{
 		type: 'input',
 		name: 'pages',
@@ -23,10 +23,16 @@ const config = [
 	},
 	{
 		type: 'input',
-		name: 'models',
-		message: 'Relative path to models folder:',
-		default: 'frontend/src/models/'
+		name: 'sagas',
+		message: 'Relative path to sagas folder:',
+		default: 'frontend/src/sagas/'
 	},
+	// {
+	// 	type: 'input',
+	// 	name: 'models',
+	// 	message: 'Relative path to models folder:',
+	// 	default: 'frontend/src/models/'
+	// },
 	{
 		type: 'input',
 		name: 'actions',
@@ -39,24 +45,24 @@ const config = [
 		message: 'Relative path to reducers folder:',
 		default: 'frontend/src/reducers/'
 	},
-	{
-		type: 'input',
-		name: 'state',
-		message: 'Relative path to state:',
-		default: 'frontend/src/store/state.tsx'
-	},
-	{
-		type: 'input',
-		name: 'controllers',
-		message: 'Relative path to controllers:',
-		default: 'backend/controllers/'
-	},
-	{
-		type: 'input',
-		name: 'routes',
-		message: 'Relative path to routers:',
-		default: 'backend/routes/'
-	},
+	// {
+	// 	type: 'input',
+	// 	name: 'state',
+	// 	message: 'Relative path to state:',
+	// 	default: 'frontend/src/store/state.tsx'
+	// },
+	// {
+	// 	type: 'input',
+	// 	name: 'controllers',
+	// 	message: 'Relative path to controllers:',
+	// 	default: 'backend/controllers/'
+	// },
+	// {
+	// 	type: 'input',
+	// 	name: 'routes',
+	// 	message: 'Relative path to routers:',
+	// 	default: 'backend/routes/'
+	// },
 	{
 		type: 'confirm',
 		name: 'separateIndexFiles',
@@ -70,14 +76,18 @@ const init = [
 		type: 'list',
 		name: 'type',
 		message: 'What do you want to create?',
-		choices: ['component', 'container', 'page', 'store', 'action', 'reducer', 'controller']
+		choices: ['component',
+			// 'container', 'page', 'store', 
+			'action', 'reducer', 'saga'
+			// 'controller'
+		]
 	},
-	{
-		type: 'list',
-		name: 'lang',
-		message: 'ES or Typescript?',
-		choices: ['ES6', 'Typescript']
-	},
+	// {
+	// 	type: 'list',
+	// 	name: 'lang',
+	// 	message: 'ES or Typescript?',
+	// 	choices: ['ES6', 'Typescript']
+	// },
 	{
 		type: 'input',
 		name: 'name',
@@ -125,12 +135,6 @@ const component = [
 		name: 'stateful',
 		message: 'Stateful?',
 		default: false
-	},
-	{
-		type: 'confirm',
-		name: 'styled',
-		message: 'Styled?',
-		default: false
 	}
 ];
 
@@ -143,6 +147,8 @@ const store = [];
 const action = [];
 
 const reducer = [];
+
+const saga = [];
 
 const controller = [
 	{
@@ -176,6 +182,7 @@ module.exports = {
 	page,
 	store,
 	action,
+	saga,
 	reducer,
 	controller,
 	nls

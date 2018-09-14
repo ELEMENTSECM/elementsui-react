@@ -35,11 +35,16 @@ function capitalize(str) {
 	return `${str[0].toUpperCase()}${str.slice(1)}`;
 }
 
+function camelCase(str) {
+	return `${str[0].toLowerCase()}${str.slice(1)}`;
+}
+
 module.exports = {
 	writeFile,
 	getDirectories,
 	getFiles,
 	readFile,
 	capitalize,
+	camelCase,
 	join
 };

@@ -35,8 +35,26 @@ function writeAction(name) {
 		const action = at.actionTemplate(capitalizedName);
 		const actionTest = at.actionTestTemplate(capitalizedName);
 		const dir = path.join(cwd, config.actions, capitalizedName);
-		writeFiles(capitalizedName, dir, action, actionTest);
+		writeFiles(`${capitalizedName}Actions`, dir, action, actionTest);
 		console.log(chalk.green(`${capitalizedName} action has been created at ${dir}/`));
+	} catch (error) {
+		errors.push({ name, error });
+	}
+}
+
+function writeSaga(name) {
+	try {
+		if (!config.sagas) {
+			console.log(chalk.red("Add 'sagas' path to your elementsui.config.json."));
+			return;
+		}
+		const at = require(tpl + '/saga');
+		const capitalizedName = utils.capitalize(name);
+		const saga = at.sagaTemplate(capitalizedName);
+		const sagaTest = at.sagaTestTemplate(capitalizedName);
+		const dir = path.join(cwd, config.sagas, capitalizedName);
+		writeFiles(`${name}Saga`, dir, saga, sagaTest);
+		console.log(chalk.green(`${capitalizedName} saga has been created at ${dir}/`));
 	} catch (error) {
 		errors.push({ name, error });
 	}
@@ -62,7 +80,7 @@ function writeReducer(name) {
 		const reducer = rt.reducerTemplate(capitalizedName);
 		const reducerTest = rt.reducerTestTemplate(capitalizedName);
 		const dir = path.join(cwd, config.reducers, capitalizedName);
-		writeFiles(capitalizedName, dir, reducer, reducerTest);
+		writeFiles(`${capitalizedName}Reducer`, dir, reducer, reducerTest);
 		console.log(chalk.green(`${capitalizedName} reducer has been created at ${dir}/`));
 	} catch (error) {
 		errors.push({ name, error });
@@ -71,7 +89,7 @@ function writeReducer(name) {
 
 function writeComponent(
 	{ name, lang },
-	{ stateful = false, container = false, page = false, styled = false } = {}
+	{ stateful = false, page = false } = {}
 ) {
 	try {
 		const ct = require(tpl + '/component');
@@ -79,30 +97,20 @@ function writeComponent(
 
 		const dir = path.join(
 			cwd,
-			container ? config.containers : page ? config.pages : config.components,
+			config.components,
 			capitalizedName
 		);
 
 		const componentTemplate = page ? ct.pageTemplate : ct.componentTemplate;
 
 		const component = componentTemplate(capitalizedName, {
-			stateful,
-			container,
-			styled
+			stateful
 		});
 		const componentTest = ct.componentTestTemplate(capitalizedName, {
-			stateful,
-			container
+			stateful
 		});
 
 		writeFiles(capitalizedName, dir, component, componentTest);
-		if (styled) {
-			const componentStyle = ct.componentStyleTemplate(capitalizedName);
-			utils.writeFile(
-				`${dir}/${config.separateIndexFiles ? capitalizedName : 'index'}.styles.${extension}`,
-				componentStyle
-			);
-		}
 		console.log(chalk.green(`${capitalizedName} component has been created at ${dir}`));
 	} catch (error) {
 		errors.push({ name, error });
@@ -220,50 +228,49 @@ function scaffold(item, options) {
 			console.log(chalk.red('ES6 stores are not currently supported.'));
 			return;
 		}
-
-		if (item.type === 'container') {
-			console.log(chalk.red('ES6 containers are not currently supported.'));
-			return;
-		}
-	}
-
-	if (item.lang === 'Typescript') {
-		if (options.styled) {
-			console.log(chalk.red('Typescript styled components are not currently supported.'));
-			return;
-		}
 	}
 
 	config = require(cwd + '/elementsui.config.json');
 	tpl = path.join(tpl, item.lang === 'ES6' ? 'es' : 'ts');
-	extension = item.lang === 'ES6' ? 'js' : 'tsx';
 
 	switch (item.type) {
 		case 'component': {
+			extension = item.lang === 'ES6' ? 'js' : 'tsx';
 			writeComponent(item, options);
 			break;
 		}
 		case 'container': {
+			extension = item.lang === 'ES6' ? 'js' : 'tsx';
 			writeComponent(item, { container: true, stateful: true });
 			break;
 		}
 		case 'page': {
+			extension = item.lang === 'ES6' ? 'js' : 'tsx';
 			writeComponent(item, { page: true });
 			break;
 		}
 		case 'store': {
+			extension = item.lang === 'ES6' ? 'js' : 'ts';
 			writeStore(item);
 			break;
 		}
 		case 'action': {
+			extension = item.lang === 'ES6' ? 'js' : 'ts';
 			writeAction(item.name);
 			break;
 		}
+		case 'saga': {
+			extension = item.lang === 'ES6' ? 'js' : 'ts';
+			writeSaga(item.name);
+			break;
+		}
 		case 'reducer': {
+			extension = item.lang === 'ES6' ? 'js' : 'ts';
 			writeReducer(item.name);
 			break;
 		}
 		case 'controller':
+		extension = item.lang === 'ES6' ? 'js' : 'ts';
 			writeController(item, options);
 			break;
 		default:

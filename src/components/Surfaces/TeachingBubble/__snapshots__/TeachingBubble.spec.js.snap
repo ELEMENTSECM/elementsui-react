@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`TeachingBubble displays \`TeachingBubble\` as headline 1`] = `
-<div>
-  <span
-    className="ms-Layer"
-  />
-</div>
-`;

@@ -5,7 +5,6 @@ const components = path.join(__dirname, "../src", "components");
 const indexPath = path.join(components, "index.js");
 const exportStrings = [];
 getExportStrings(components);
-exportStrings.push(`export { initializeIcons } from 'office-ui-fabric-react/lib/Icons';`);
 exportStrings.push(`export { addLocaleData } from 'react-intl';`);
 exportStrings.push(`export { default as en } from 'react-intl/locale-data/en';`);
 exportStrings.push(`export { default as nb } from 'react-intl/locale-data/nb';`);

@@ -39,6 +39,9 @@ function initPrompt() {
 			case 'page':
 				optionsPrompt = prompt(prompts.page);
 				break;
+			case 'saga':
+				optionsPrompt = prompt(prompts.saga);
+				break;
 			case 'store':
 				optionsPrompt = prompt(prompts.store);
 				break;
@@ -56,6 +59,7 @@ function initPrompt() {
 				return;
 		}
 
+		answer.lang = "Typescript";
 		optionsPrompt.then(options => scaffold(answer, options));
 	});
 }

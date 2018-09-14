@@ -1,15 +1,13 @@
-export const styles = props => {
-	const { className, theme } = props;
-	const { palette, semanticColors } = theme;
+import {css} from 'react-emotion';
 
-	return {
-		root: [
-			'ms-Spinner',
-			{
-				// background: props.theme.palette.themePrimary
-				// place your styles here
-			},
-			className
-		]
-	};
-};
+export const styles = {
+	spinner: css`
+	position: relative;
+	justify-content: center;
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	`,
+	spinnerLabel: css`margin-left: 10px`
+}

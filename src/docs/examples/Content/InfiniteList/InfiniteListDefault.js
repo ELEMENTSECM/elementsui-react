@@ -12,19 +12,11 @@ export default class InfiniteListDefault extends React.Component {
 	}
 
 	generate20Items = () => {
-		return [ ...Array(20) ].map((_, i) => {
+		return [...Array(20)].map((_, i) => {
 			return {
 				title: `Item ${i}`,
-				styles: () => ({
-					icon: [
-						"glyphicon-large",
-						"glyphicon",
-						"glyphicon-bell",
-						{
-							color: "#3d9c97"
-						}
-					]
-				})
+				icon: 'glyphicon glyphicon-large glyphicon-bell',
+				iconColor: '#3d9c97'
 			};
 		});
 	};
@@ -50,7 +42,7 @@ export default class InfiniteListDefault extends React.Component {
 				refreshFunction={() => this.setState(() => ({ items: this.generate20Items() }))}
 			>
 				{this.state.items.map((x, i) => (
-					<ListItem key={i} styles={x.styles} onClick={() => alert(`Item #${i} ${x.title} selected`)}>
+					<ListItem key={i} icon={x.icon} iconColor={x.iconColor} onClick={() => alert(`Item #${i} ${x.title} selected`)}>
 						{x.title}
 					</ListItem>
 				))}

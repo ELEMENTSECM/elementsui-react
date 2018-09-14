@@ -68,11 +68,15 @@ export interface InfiniteListProps {
 	 */
 	dataLength: number;
 	/**
-	 * User-defined styling
+	 * Root div class name
 	 */
-	styles?: (...args: any[]) => any;
+	className?: string;
+	/**
+	 * List class name
+	 */
+	listClassName?: string;
 }
 
-declare const InfiniteList: React.SFC<InfiniteListProps>;
-
-export default InfiniteList;
+export default class InfiniteList extends React.Component<InfiniteListProps, any> {
+	render(): JSX.Element;
+}

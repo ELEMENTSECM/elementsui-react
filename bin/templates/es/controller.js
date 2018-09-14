@@ -21,7 +21,7 @@ const controllerTestTemplate = (
 const testUser = agent()
 
 describe.skip('[${name}] ${action} test', () => {
-	it('[${verb} api] should return ${name} data', async () => {
+	test('[${verb} api] should return ${name} data', async () => {
 		expect.assertions(1)
 		try {
 			const { text } = await testUser.${verb.toLowerCase()}('localhost:3003/fetch/${name}/${action}')

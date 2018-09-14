@@ -19,7 +19,7 @@ class DateTimePicker extends React.Component {
 	};
 
 	onBlur = () => {
-		this.props.onBlur(this.input.current.state.selectedDate);
+		this.props.onBlur && this.props.onBlur(this.input.current.state.selectedDate);
 	};
 
 	render() {

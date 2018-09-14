@@ -1,23 +1,25 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Spinner as UiFabSpinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { styles } from './Spinner.styles';
-import { classNamesFunction, customizable, styled } from 'office-ui-fabric-react/lib/Utilities';
+import ClipLoader from "react-spinners/ClipLoader";
+import {styles} from "./Spinner.styles";
 
 /** Spinner example */
-export function Spinner(props) {
-	const { id, label, styles } = props;
-	const classNames = classNamesFunction()(styles, props);
-	return <UiFabSpinner id={id} className={classNames.root} label={label} size={SpinnerSize.large} />;
+export default function Spinner(props) {
+	return <div className={styles.spinner}>
+		<ClipLoader {...props} color="#2180c0" />
+		{ props.label && <div className={styles.spinnerLabel}>{props.label}</div> }
+	</div>;
 }
 
 Spinner.propTypes = {
 	/** HTML id tag of the root element */
 	id: PropTypes.string,
+	/** Spinner size */
+	size: PropTypes.number,
+	/** Spinner size units */
+	sizeUnit: PropTypes.string,
+	/** Spinner state */
+	loading: PropTypes.bool,
 	/** Spinner label */
-	label: PropTypes.string,
-	/** User-defined styling */
-	styles: PropTypes.func
+	label: PropTypes.string
 };
-
-export default styled(customizable('Spinner', ['theme'])(Spinner), styles);
