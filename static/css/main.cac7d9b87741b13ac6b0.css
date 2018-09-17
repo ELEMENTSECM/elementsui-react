@@ -1,0 +1,406 @@
+/*----------------- High scope -----------------*/
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666666;
+}
+
+.search-nav {
+	width: 200px;
+	float: left;
+}
+
+.search-nav .navigation-menu {
+	float: left;
+	width: 200px;
+}
+
+.search-nav .component-search {
+	margin-bottom: 2px;
+}
+
+.article-content {
+	margin-left: 215px;
+}
+
+.article-content .components-header {
+	background: #2d8498;
+	color: white;
+	padding: 1px 7px 5px 7px;
+}
+
+.article-content .component-properties-header,
+.article-content .component-example-header {
+	margin-bottom: 3px;
+}
+
+/*-------------------- Generic --------------------*/
+
+ul {
+	padding: 0;
+	margin: 0 0 5px 0;
+}
+
+li {
+	list-style: none;
+	margin-bottom: 1px;
+}
+
+li:hover {
+	background: #bee2ea;
+}
+
+a {
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	padding: 2px 0 3px 12px;
+}
+
+.clear {
+	clear: both;
+}
+
+/*-------------------- Context --------------------*/
+
+.article-content.landing-page {
+	border: solid 1px #d3d3d3;
+	padding: 16px;
+	background-color: #f4f6f9;
+}
+
+.pageheader .logo {
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE1LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIxMzQuNTM1cHgiIGhlaWdodD0iMzMuNDNweCIgdmlld0JveD0iMCAwIDEzNC41MzUgMzMuNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEzNC41MzUgMzMuNDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBmaWxsPSIjMDUzOTU0IiBkPSJNMjguNzYxLDI4LjcyNWgtNy41MTJjLTAuNDYyLDAtMC44NC0wLjM3OC0wLjg0LTAuODR2LTcuNTEzYzAtMC40NjIsMC4zNzgtMC44NCwwLjg0LTAuODRoNy41MTIKCWMwLjQ2MiwwLDAuODQsMC4zNzgsMC44NCwwLjg0djcuNTEzQzI5LjYwMiwyOC4zNDcsMjkuMjIzLDI4LjcyNSwyOC43NjEsMjguNzI1Ii8+CjxwYXRoIGZpbGw9IiMwNTM5NTQiIGQ9Ik0zMS4zNjgsMTguMTQ0SDIxLjIyNmMtMC40NjIsMC0wLjg0LTAuMzc4LTAuODQtMC44NFY3LjE2MWMwLTAuNDYyLDAuMzc4LTAuODQsMC44NC0wLjg0aDEwLjE0MwoJYzAuNDYyLDAsMC44NCwwLjM3OCwwLjg0LDAuODR2MTAuMTQzQzMyLjIwOCwxNy43NjUsMzEuODMsMTguMTQ0LDMxLjM2OCwxOC4xNDQiLz4KPHBhdGggZmlsbD0iIzA1Mzk1NCIgZD0iTTE4LjA4NywzMS4zNTZINy45NDRjLTAuNDYyLDAtMC44MzktMC4zNzktMC44MzktMC44NFYyMC4zNzNjMC0wLjQ2MiwwLjM3Ny0wLjg0LDAuODM5LTAuODRoMTAuMTQzCgljMC40NjIsMCwwLjg0LDAuMzc4LDAuODQsMC44NHYxMC4xNDNDMTguOTI3LDMwLjk3NywxOC41NDksMzEuMzU2LDE4LjA4NywzMS4zNTYiLz4KPHBhdGggZmlsbD0iIzA1Mzk1NCIgZD0iTTE4LjkzLDIuNjQ5YzAtMC41MTgtMC40MTktMC45MzgtMC45MzgtMC45MzhIMy40NDZjLTAuNTE4LDAtMC45MzgsMC40Mi0wLjkzOCwwLjkzOHYxNC41NDYKCWMwLDAuNTE4LDAuNDE5LDAuOTM4LDAuOTM4LDAuOTM4aDE0LjU0NmMwLjUxOCwwLDAuOTM4LTAuNDE5LDAuOTM4LTAuOTM4VjIuNjQ5eiBNMTMuMjUyLDUuNzAyaC0zLjUzdjMuMzc2aDMuNTN2MS4zODFoLTMuNTN2My41MwoJaDMuNTN2MS4zODFIOC4xODhWNC42MjdoNS4wNjRWNS43MDJ6Ii8+Cjxwb2x5Z29uIGZpbGw9IiMwNTM5NTQiIHBvaW50cz0iNDEuOTgsNy44MjMgNTEuMTg3LDcuODIzIDUxLjE4Nyw5LjY1NCA0My45Nyw5LjY1NCA0My45NywxNi41IDUxLjE4NywxNi41IDUxLjE4NywxOC4zMzEgCgk0My45NywxOC4zMzEgNDMuOTcsMjUuNjI3IDUxLjE4NywyNS42MjcgNTEuMTg3LDI3LjQ1OCA0MS45OCwyNy40NTggIi8+CjxyZWN0IHg9IjU0LjY4OCIgeT0iNy44MjMiIGZpbGw9IiMwNTM5NTQiIHdpZHRoPSIxLjc3OCIgaGVpZ2h0PSIxOS42MzUiLz4KPHBhdGggZmlsbD0iIzA1Mzk1NCIgZD0iTTYxLjMyMiwyMC43NzFjMCwyLjk5OSwxLjIyMSw1LjM2LDMuNjYyLDUuMzZjMS43NTEsMCwyLjg2Ni0xLjE5NCwzLjIzNy0yLjg2NWgxLjc1MQoJYy0wLjI2NiwxLjQ4Ni0wLjkyOSwyLjYyNi0xLjgwNSwzLjM5NmMtMC44NzUsMC43NDMtMS45NjMsMS4xNDEtMy4xODQsMS4xNDFjLTMuOTgsMC01LjUxOS0zLjgyLTUuNTE5LTcuNTM1CgljMC00LjQ4NCwyLjA2OS03LjU4OSw1LjQ2Ni03LjU4OWMxLjY5OCwwLDMuMDI0LDAuNzcsMy44NzQsMi4wNDNjMS4xNjgsMS43MjQsMS4zNTQsMy45NTMsMS4zMjcsNi4wNDlINjEuMzIyeiBNNjguMzI3LDE5LjIwNwoJYy0wLjA1My0yLjk5OS0xLjMtNS4wMTYtMy40NzYtNS4wMTZjLTIuMDk2LDAtMy40NzYsMi4xNDktMy41MjksNS4wMTZINjguMzI3eiIvPgo8cGF0aCBmaWxsPSIjMDUzOTU0IiBkPSJNNzIuOTE3LDEzLjAyNGgxLjY5OGMwLDAuNzQzLDAsMS41MTMtMC4wNTMsMi4zNjFjMC43NDMtMi4yNTUsMi4zNjEtMi43MDcsMy42NjEtMi43MDcKCWMxLjAwOCwwLDEuODU3LDAuMzE4LDIuNTIxLDAuOTgxYzAuMzk3LDAuNDI1LDAuNjg5LDEuMDYzLDAuNzk2LDEuNzI2YzAuMjY1LTAuNzk2LDAuNjYzLTEuMzc5LDEuMTkzLTEuODMxCgljMC43MTYtMC41MywxLjYxOS0wLjg3NSwyLjY1My0wLjg3NWMxLjY5OSwwLDIuNzg3LDAuODUsMy4zNywxLjg1OGMwLjUzMSwwLjg3NSwwLjY2NCwyLjQ5NCwwLjY2NCwzLjk1M3Y4Ljk2OGgtMS43Nzh2LTguODM2CgljMC0xLjAzNS0wLjA1My0yLjAxNi0wLjI5Mi0yLjY4Yy0wLjMxOC0wLjk4Mi0xLjE5My0xLjUxMy0yLjIwMi0xLjUxM2MtMC44MjMsMC0xLjY0NiwwLjIxMy0yLjMzNSwxLjE2OAoJYy0wLjYxLDAuODc1LTAuNzcsMi4wOTYtMC43NywzLjE1OHY4LjcwM2gtMS43Nzh2LTguNzU2YzAtMS4xNDEtMC4wMjctMS45MzgtMC4yOTItMi43NmMtMC4yOTItMC45NTUtMS4xNjgtMS41MTMtMi4xNzctMS41MTMKCWMtMC45MDIsMC0xLjY3MSwwLjI2Ni0yLjMzNSwxLjExNWMtMC42MzYsMC45MDEtMC43NywyLjEyNC0wLjc3LDMuMjY0djguNjVoLTEuNzc3VjEzLjAyNHoiLz4KPHBhdGggZmlsbD0iIzA1Mzk1NCIgZD0iTTk0LjAzOCwyMC43NzFjMCwyLjk5OSwxLjIyLDUuMzYsMy42NjIsNS4zNmMxLjc1MSwwLDIuODY1LTEuMTk0LDMuMjM3LTIuODY1aDEuNzUxCgljLTAuMjY1LDEuNDg2LTAuOTI4LDIuNjI2LTEuODAzLDMuMzk2Yy0wLjg3NiwwLjc0My0xLjk2NCwxLjE0MS0zLjE4NSwxLjE0MWMtMy45OCwwLTUuNTItMy44Mi01LjUyLTcuNTM1CgljMC00LjQ4NCwyLjA3LTcuNTg5LDUuNDY2LTcuNTg5YzEuNjk4LDAsMy4wMjUsMC43NywzLjg3NSwyLjA0M2MxLjE2NywxLjcyNCwxLjM1MywzLjk1MywxLjMyNyw2LjA0OUg5NC4wMzh6IE0xMDEuMDQyLDE5LjIwNwoJYy0wLjA1My0yLjk5OS0xLjMtNS4wMTYtMy40NzYtNS4wMTZjLTIuMDk2LDAtMy40NzYsMi4xNDktMy41MjksNS4wMTZIMTAxLjA0MnoiLz4KPHBhdGggZmlsbD0iIzA1Mzk1NCIgZD0iTTEwNS41NzksMTMuMDI0aDEuNTkyYzAsMC44MjIsMCwxLjU2NS0wLjA1MywyLjQ2N2MwLjc0My0yLjA0MiwyLjQxNS0yLjgxMiw0LjA4Ni0yLjgxMgoJYzIuNDY4LDAsNC4xNCwxLjQzMyw0LjE0LDQuOTM2djkuODQ0aC0xLjc3N3YtOS4yODdjMC0xLjQ1OS0wLjIxMy0zLjc0Mi0yLjc2MS0zLjc0MmMtMi4wOTYsMC0zLjQ0OSwxLjQ1OS0zLjQ0OSw0LjQ4NHY4LjU0NAoJaC0xLjc3OFYxMy4wMjR6Ii8+Cjxwb2x5Z29uIGZpbGw9IiMwNTM5NTQiIHBvaW50cz0iMTE5LjQ1NiwxNC42OTYgMTE3LjQzOSwxNC42OTYgMTE3LjQzOSwxMy4wMjQgMTE5LjQ1NiwxMy4wMjQgMTE5LjQ1Niw4LjQ2IDEyMS4yMzQsOC40NiAKCTEyMS4yMzQsMTMuMDI0IDEyMy4yMjQsMTMuMDI0IDEyMy4yMjQsMTQuNjk2IDEyMS4yMzQsMTQuNjk2IDEyMS4yMzQsMjcuNDU4IDExOS40NTYsMjcuNDU4ICIvPgo8cGF0aCBmaWxsPSIjMDUzOTU0IiBkPSJNMTMxLjIxLDE2Ljc2NGMwLTEuODMtMC45NTUtMi40OTMtMi4zMzUtMi40OTNjLTEuMjIsMC0yLjA5NiwwLjg3NS0yLjA5NiwyLjE0OQoJYzAsMS42MTgsMS4zNTMsMi4yMDIsMy4xMDQsMi43MzNjMS41OTIsMC40NzcsMy40NSwxLjQ1OCwzLjQ1LDQuMzUyYzAsMi41NDctMS44MzEsNC4yOTgtNC4yOTksNC4yOTgKCWMtMi42MjcsMC00LjM3OC0xLjU2NS00LjUxMS00LjU5aDEuNzUxYzAuMDI3LDEuOTYzLDEuMTY4LDIuOTQ1LDIuNzYsMi45NDVjMS41NjYsMCwyLjQ0MS0xLjA2MiwyLjQ0MS0yLjUyMQoJYzAtMS43NTEtMS4yMjEtMi40NDEtMy4xNTgtMy4wNTFjLTEuODMtMC42MTEtMy4zOTYtMS41MzktMy4zOTYtNC4xMTNjMC0yLjMwOSwxLjY3Mi0zLjc5NCw0LjAzMy0zLjc5NAoJYzIuNDY3LDAsMy45MjcsMS40MDYsNC4wMDcsNC4wODVIMTMxLjIxeiIvPgo8L3N2Zz4K) no-repeat;
+	width: 151px;
+	height: 33px;
+	position: absolute;
+	background-size: contain;
+}
+
+.pageheader .logo-title {
+	font-size: 0.5em;
+	display: block;
+	margin-left: 62px;
+	padding-top: 26px;
+	color: #2d8498;
+	font-weight: normal;
+}
+
+/*--------------------Examples-------------------*/
+
+.example {
+	border: solid 1px #d3d3d3;
+	padding: 16px;
+	margin-bottom: 16px;
+	background-color: #f4f6f9;
+}
+
+/*--------------------Tree view--------------------*/
+
+.tree-view_item {
+	padding: 2px 2px 4px 4px;
+	margin-bottom: 1px;
+	font-size: 1.2em;
+	background: #2d8498;
+	color: white;
+	position: relative;
+}
+
+.tree-view_item > span {
+	vertical-align: bottom;
+}
+
+.tree-view_arrow {
+	width: 200px;
+	margin-top: -4px;
+	right: 0;
+	cursor: pointer;
+	display: inline-block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	position: absolute;
+	text-align: right;
+}
+
+.tree-view_arrow:after {
+	content: '\25BE';
+	font-size: 1.5em;
+}
+
+.tree-view_arrow:not(.tree-view_arrow-collapsed) {
+	text-align: left;
+	margin-top: -3px;
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+}
+
+/*--------------------Table--------------------*/
+
+.table-props {
+	border-collapse: collapse;
+	background: #f4f6f9;
+	width: 100%;
+	border: solid 1px #d3d3d3;
+}
+
+.table-props th,
+.table-props td {
+	text-align: left;
+	padding: 10px;
+}
+
+.table-props td {
+	border-top: solid 1px #d3d3d3;
+}
+
+/*  ---------------------------------------------------
+Notes on possible css class implementation:
+	ec: elements common component scope
+	ec-dropdown: because its a dropdown component
+	languagepicker: variant of the dropdown component!
+	In the Doc variant, additional classes can be added
+	Order: Component scope | Type | Variant
+	---------------------------------------------------*/
+
+/* E.g all dropdowns: .ec.ec-dropdown {}*/
+
+/* E.g dropdown of variant type languagepicker: .ec.ec-dropdown.languagepicker{}*/
+
+/* E.g dropdown of variant type languagepicker on the sign-in page: .ec.ec-dropdown.languagepicker.sign-in-languagepicker {}*/
+
+/* LanguagePickerStyled.js example */
+
+.ec.ec-dropdown.languagepicker.sign-in-languagepicker .ms-Dropdown-title {
+	border-radius: 2px;
+}
+
+.ec.ec-dropdown.languagepicker.sign-in-languagepicker:hover .ms-Dropdown-title {
+	background-color: rgba(29, 62, 70, 0.69);
+	color: white;
+}
+
+.ec.ec-dropdown.languagepicker.sign-in-languagepicker:hover .ms-Dropdown-caretDownWrapper i {
+	color: white;
+}
+
+.rdt {
+	position: relative;
+}
+.rdtPicker {
+	display: none;
+	position: absolute;
+	width: 250px;
+	padding: 4px;
+	margin-top: 1px;
+	z-index: 99999 !important;
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	border: 1px solid #f9f9f9;
+}
+.rdtOpen .rdtPicker {
+	display: block;
+}
+.rdtStatic .rdtPicker {
+	box-shadow: none;
+	position: static;
+}
+
+.rdtPicker .rdtTimeToggle {
+	text-align: center;
+}
+
+.rdtPicker table {
+	width: 100%;
+	margin: 0;
+}
+.rdtPicker td,
+.rdtPicker th {
+	text-align: center;
+	height: 28px;
+}
+.rdtPicker td {
+	cursor: pointer;
+}
+.rdtPicker td.rdtDay:hover,
+.rdtPicker td.rdtHour:hover,
+.rdtPicker td.rdtMinute:hover,
+.rdtPicker td.rdtSecond:hover,
+.rdtPicker .rdtTimeToggle:hover {
+	background: #eeeeee;
+	cursor: pointer;
+}
+.rdtPicker td.rdtOld,
+.rdtPicker td.rdtNew {
+	color: #999999;
+}
+.rdtPicker td.rdtToday {
+	position: relative;
+}
+.rdtPicker td.rdtToday:before {
+	content: '';
+	display: inline-block;
+	border-left: 7px solid transparent;
+	border-bottom: 7px solid #428bca;
+	border-top-color: rgba(0, 0, 0, 0.2);
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+}
+.rdtPicker td.rdtActive,
+.rdtPicker td.rdtActive:hover {
+	background-color: #428bca;
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.rdtPicker td.rdtActive.rdtToday:before {
+	border-bottom-color: #fff;
+}
+.rdtPicker td.rdtDisabled,
+.rdtPicker td.rdtDisabled:hover {
+	background: none;
+	color: #999999;
+	cursor: not-allowed;
+}
+
+.rdtPicker td span.rdtOld {
+	color: #999999;
+}
+.rdtPicker td span.rdtDisabled,
+.rdtPicker td span.rdtDisabled:hover {
+	background: none;
+	color: #999999;
+	cursor: not-allowed;
+}
+.rdtPicker th {
+	border-bottom: 1px solid #f9f9f9;
+}
+.rdtPicker .dow {
+	width: 14.2857%;
+	border-bottom: none;
+	cursor: default;
+}
+.rdtPicker th.rdtSwitch {
+	width: 100px;
+}
+.rdtPicker th.rdtNext,
+.rdtPicker th.rdtPrev {
+	font-size: 21px;
+	vertical-align: top;
+}
+
+.rdtPrev span,
+.rdtNext span {
+	display: block;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+}
+
+.rdtPicker th.rdtDisabled,
+.rdtPicker th.rdtDisabled:hover {
+	background: none;
+	color: #999999;
+	cursor: not-allowed;
+}
+.rdtPicker thead tr:first-child th {
+	cursor: pointer;
+}
+.rdtPicker thead tr:first-child th:hover {
+	background: #eeeeee;
+}
+
+.rdtPicker tfoot {
+	border-top: 1px solid #f9f9f9;
+}
+
+.rdtPicker button {
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+.rdtPicker button:hover {
+	background-color: #eee;
+}
+
+.rdtPicker thead button {
+	width: 100%;
+	height: 100%;
+}
+
+td.rdtMonth,
+td.rdtYear {
+	height: 50px;
+	width: 25%;
+	cursor: pointer;
+}
+td.rdtMonth:hover,
+td.rdtYear:hover {
+	background: #eee;
+}
+
+.rdtCounters {
+	display: inline-block;
+}
+
+.rdtCounters > div {
+	float: left;
+}
+
+.rdtCounter {
+	height: 100px;
+}
+
+.rdtCounter {
+	width: 40px;
+}
+
+.rdtCounterSeparator {
+	line-height: 100px;
+}
+
+.rdtCounter .rdtBtn {
+	height: 40%;
+	line-height: 40px;
+	cursor: pointer;
+	display: block;
+
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+}
+.rdtCounter .rdtBtn:hover {
+	background: #eee;
+}
+.rdtCounter .rdtCount {
+	height: 20%;
+	font-size: 1.2em;
+}
+
+.rdtMilli {
+	vertical-align: middle;
+	padding-left: 8px;
+	width: 48px;
+}
+
+.rdtMilli input {
+	width: 100%;
+	font-size: 1.2em;
+	margin-top: 37px;
+}
+
+.rdtTime td {
+	cursor: default;
+}
+
+
+/*# sourceMappingURL=main.cac7d9b87741b13ac6b0.css.map*/
