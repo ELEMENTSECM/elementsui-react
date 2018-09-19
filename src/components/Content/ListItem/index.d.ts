@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface ListItemProps {
+export interface IListItemProps {
 	/**
 	 * Any JSX
 	 */
@@ -31,6 +31,6 @@ export interface ListItemProps {
 	linkClassName?: string;
 }
 
-declare const ListItem: React.SFC<ListItemProps>;
+declare const ListItem: React.SFC<IListItemProps>;
 
 export default ListItem;

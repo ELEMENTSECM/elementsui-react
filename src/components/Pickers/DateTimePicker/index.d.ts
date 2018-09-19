@@ -16,7 +16,7 @@ export type DateTimePickerDateFrom = Date | string;
 
 export type DateTimePickerDateTo = Date | string;
 
-export interface DateTimePickerProps {
+export interface IDateTimePickerProps {
 	/**
 	 * HTML id tag of the root element
 	 */
@@ -83,6 +83,6 @@ export interface DateTimePickerProps {
 	required?: boolean;
 }
 
-export default class DateTimePicker extends React.Component<DateTimePickerProps, any> {
+export default class DateTimePicker extends React.Component<IDateTimePickerProps, any> {
 	render(): JSX.Element;
 }

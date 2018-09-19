@@ -1,0 +1,26 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+	  "module": "esnext",
+	  "outDir": "lib/es6",
+	  "target": "es6",
+	  "rootDir": "src/components"
+	},
+	"exclude": [
+	  "node_modules",
+	  "build",
+	  "scripts",
+	  "acceptance-tests",
+	  "webpack",
+	  "jest",
+	  "config/**/*",
+	  "bin/**/*",
+	  "**/*.js",
+	  "styleguide/**/*",
+	  "src/setupTests.ts",
+	  "styleguide.config.js",
+	  "src/registerServiceWorker.ts",
+	  "**/*.spec.tsx"
+	]
+  }
+  

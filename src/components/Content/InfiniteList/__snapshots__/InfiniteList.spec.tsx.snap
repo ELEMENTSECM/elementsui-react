@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfiniteList displays correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <InfiniteList
+    dataLength={20}
+    hasMore={false}
+    locale="en"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <div
+        className="css-apz85e undefined"
+        style={
+          Object {
+            "0": "c",
+            "1": "s",
+            "2": "s",
+            "3": "-",
+            "4": "a",
+            "5": "p",
+            "6": "z",
+            "7": "8",
+            "8": "5",
+            "9": "e",
+            "height": "auto",
+          }
+        }
+      >
+        <ul
+          className={undefined}
+        />
+      </div>,
+      "locale": "en",
+      "messages": Object {
+        "pullDownToRefresh": "Pull down to refresh",
+        "releaseToRefresh": "Release to refresh",
+      },
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          undefined,
+          <ul
+            className={undefined}
+          />,
+          false,
+          false,
+          undefined,
+        ],
+        "className": "css-apz85e undefined",
+        "style": Object {
+          "0": "c",
+          "1": "s",
+          "2": "s",
+          "3": "-",
+          "4": "a",
+          "5": "p",
+          "6": "z",
+          "7": "8",
+          "8": "5",
+          "9": "e",
+          "height": "auto",
+        },
+      },
+      "ref": [Function],
+      "rendered": Array [
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ],
+            "className": undefined,
+          },
+          "ref": null,
+          "rendered": Array [],
+          "type": "ul",
+        },
+        false,
+        false,
+        undefined,
+      ],
+      "type": "div",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <div
+          className="css-apz85e undefined"
+          style={
+            Object {
+              "0": "c",
+              "1": "s",
+              "2": "s",
+              "3": "-",
+              "4": "a",
+              "5": "p",
+              "6": "z",
+              "7": "8",
+              "8": "5",
+              "9": "e",
+              "height": "auto",
+            }
+          }
+        >
+          <ul
+            className={undefined}
+          />
+        </div>,
+        "locale": "en",
+        "messages": Object {
+          "pullDownToRefresh": "Pull down to refresh",
+          "releaseToRefresh": "Release to refresh",
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            undefined,
+            <ul
+              className={undefined}
+            />,
+            false,
+            false,
+            undefined,
+          ],
+          "className": "css-apz85e undefined",
+          "style": Object {
+            "0": "c",
+            "1": "s",
+            "2": "s",
+            "3": "-",
+            "4": "a",
+            "5": "p",
+            "6": "z",
+            "7": "8",
+            "8": "5",
+            "9": "e",
+            "height": "auto",
+          },
+        },
+        "ref": [Function],
+        "rendered": Array [
+          undefined,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+              "className": undefined,
+            },
+            "ref": null,
+            "rendered": Array [],
+            "type": "ul",
+          },
+          false,
+          false,
+          undefined,
+        ],
+        "type": "div",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

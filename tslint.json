@@ -1,0 +1,105 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+	  "coverage/lcov-report/*.js",
+	  "bin/**/*.js"
+	]
+  },
+  "rules": {
+	"ban": [ ],
+	"class-name": true,
+	"comment-format": [ true, "check-space" ],
+	"curly": true,
+	"eofline": false,
+	"forin": true,
+	"indent": [ false ],
+	"interface-name": [ false ],
+	"jsdoc-format": false,
+	"label-position": true,
+	"max-line-length": [ false ],
+	"no-arg": true,
+	"no-bitwise": true,
+	"no-console": [
+		true,
+		"debug",
+		"info",
+		"time",
+		"timeEnd",
+		"trace",
+		"log"
+	],
+	"no-consecutive-blank-lines": true,
+	"no-construct": true,
+	"no-debugger": true,
+	"no-duplicate-variable": true,
+	"no-empty": false,
+	"no-eval": true,
+	"no-string-literal": false,
+	"no-trailing-whitespace": true,
+	"no-unused-variable": [
+		true,
+		"check-parameters",
+		{
+			"ignore-pattern": "^_"
+		}
+	],
+	"no-use-before-declare": true,
+	"no-var-keyword": true,
+	"object-literal-sort-keys": false,
+	"one-line": [
+		"check-open-brace",
+		"check-whitespace",
+		"check-catch",
+		"check-else"
+	],
+	"quotemark": [
+		true,
+		"double"
+	],
+	"radix": true,
+	"semicolon": [ false ],
+	"triple-equals": [
+		true,
+		"allow-null-check"
+	],
+	"typedef": [
+		true,
+		"parameter"
+	],
+	"typedef-whitespace": [
+		true,
+		{
+			"callSignature": "nospace",
+			"catchClause": "nospace",
+			"indexSignature": "nospace",
+			"parameter": "nospace",
+			"propertySignature": "nospace",
+			"variableDeclarator": "nospace"
+		}
+	],
+	"use-strict": [
+		false,
+		"check-module",
+		"check-function"
+	],
+	"whitespace": [
+		true,
+		"check-type",
+		"check-branch",
+		"check-decl",
+		"check-separator",
+		"check-operator"
+	],
+	"no-reference": true,
+	"no-var-requires": true,
+	"no-require-imports": true,
+	"member-access": false,
+	"no-angle-bracket-type-assertion": false,
+	"ordered-imports": false,
+	"no-unused-expression": false,
+	"one-variable-per-declaration": false
+}
+}

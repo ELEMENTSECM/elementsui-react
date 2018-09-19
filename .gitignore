@@ -21,10 +21,10 @@ yarn-debug.log*
 yarn-error.log*
 
 /lib
-/docs
 launch.json
 .vscode
 .idea
 config/componentData.js
-/umd
 /bin/lastUsed.txt
+/styleguide
+images.d.ts

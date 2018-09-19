@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface SpinnerProps {
+export interface ISpinnerProps {
 	/**
 	 * HTML id tag of the root element
 	 */
@@ -23,6 +23,6 @@ export interface SpinnerProps {
 	label?: string;
 }
 
-declare const Spinner: React.SFC<SpinnerProps>;
+declare const Spinner: React.SFC<ISpinnerProps>;
 
 export default Spinner;

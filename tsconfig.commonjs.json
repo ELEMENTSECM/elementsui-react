@@ -1,0 +1,25 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"module": "commonjs",
+		"outDir": "lib/commonjs",
+		"target": "es5",
+		"rootDir": "src/components"
+	},
+	"exclude": [
+		"node_modules",
+		"build",
+		"scripts",
+		"acceptance-tests",
+		"webpack",
+		"jest",
+		"config/**/*",
+		"bin/**/*",
+		"**/*.js",
+		"styleguide/**/*",
+		"src/setupTests.ts",
+		"styleguide.config.js",
+		"src/registerServiceWorker.ts",
+		"**/*.spec.tsx"
+	]
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export type InfiniteListHeight = number | string;
 
-export interface InfiniteListProps {
+export interface IInfiniteListProps {
 	/**
 	 * DOM element's id attribute
 	 */
@@ -77,6 +77,6 @@ export interface InfiniteListProps {
 	listClassName?: string;
 }
 
-export default class InfiniteList extends React.Component<InfiniteListProps, any> {
+export default class InfiniteList extends React.Component<IInfiniteListProps, any> {
 	render(): JSX.Element;
 }

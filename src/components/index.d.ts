@@ -1,3 +1,12 @@
+export { default as DateTimePicker, IDateTimePickerProps } from './Pickers/DateTimePicker';
+export { default as InfiniteList, IInfiniteListProps } from './Content/InfiniteList';
+export { default as ListItem, IListItemProps } from './Content/ListItem';
+export { default as Spinner, ISpinnerProps } from './Indicators/Spinner';
+export { addLocaleData } from 'react-intl';
+export { default as en } from 'react-intl/locale-data/en';
+export { default as nb } from 'react-intl/locale-data/nb';
+export { default as nn } from 'react-intl/locale-data/nn';
+export { default as sv } from 'react-intl/locale-data/sv';
 export {
 	Alert as BSAlert,
 	Badge as BSBadge,
@@ -48,12 +57,3 @@ export {
 	Checkbox as BSCheckbox,
 	Dropdown as BSDropdown
 } from 'react-bootstrap';
-export { addLocaleData } from 'react-intl';
-export { default as DateTimePicker, DateTimePickerProps } from './Pickers/DateTimePicker';
-export { default as InfiniteList, InfiniteListProps } from './Content/InfiniteList';
-export { default as ListItem, ListItemProps } from './Content/ListItem';
-export { default as Spinner, SpinnerProps } from './Indicators/Spinner';
-export { default as en } from 'react-intl/locale-data/en';
-export { default as nb } from 'react-intl/locale-data/nb';
-export { default as nn } from 'react-intl/locale-data/nn';
-export { default as sv } from 'react-intl/locale-data/sv';
