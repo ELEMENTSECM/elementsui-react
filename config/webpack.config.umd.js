@@ -14,7 +14,7 @@ if (env.stringified["process.env"].NODE_ENV !== '"production"') {
 module.exports = merge(BaseConfig, {
 	output: {
 		library: "elementsui-react",
-		path: paths.lib,
+		path: paths.dist,
 		filename: "elementsui-react.umd.js",
 		libraryTarget: "umd",
 		umdNamedDefine: true

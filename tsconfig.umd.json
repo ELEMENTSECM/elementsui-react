@@ -2,7 +2,7 @@
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
 	  "module": "umd",
-	  "outDir": "lib/umd",
+	  "outDir": "lib/dist/umd",
 	  "target": "es5",
 	  "rootDir": "src/components",
 	},

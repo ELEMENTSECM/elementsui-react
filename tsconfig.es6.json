@@ -2,7 +2,7 @@
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
 	  "module": "esnext",
-	  "outDir": "lib/es6",
+	  "outDir": "lib/dist/es6",
 	  "target": "es6",
 	  "rootDir": "src/components"
 	},
