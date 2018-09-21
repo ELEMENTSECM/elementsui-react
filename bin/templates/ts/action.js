@@ -84,7 +84,6 @@ describe("[Actions] ${resourceName}Actions", () => {
 		expect(successAction.payload).toBe("test");
 	});
 
-
 	test("[create${resourceName}] should return CREATE_${uppercased} with payload", () => {
 		const action = ${resourceName}Actions.create${resourceName}(entity);
 		const successAction = action.meta.onSuccess("test");

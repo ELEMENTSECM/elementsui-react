@@ -22,7 +22,7 @@ function writeFiles(name, dir, file, test, ext) {
 	utils.writeFile(filePath, file);
 	utils.writeFile(testPath, test);
 	if (config.separateIndexFiles) {
-		const exportString = `export { default } from './${name}';`;
+		const exportString = `export { default } from "./${name}";`;
 		const indexPath = `${dir}/index.${ext}`;
 		utils.writeFile(indexPath, exportString);
 	}
