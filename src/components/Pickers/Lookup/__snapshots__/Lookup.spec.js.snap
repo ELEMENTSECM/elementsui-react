@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lookup with options property should be displayed correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Lookup
+    delay={300}
+    id="testLookup"
+    idSelector={[Function]}
+    isMulti={false}
+    options={
+      Array [
+        Object {
+          "Id": 1,
+          "Title": "Title 1",
+        },
+        Object {
+          "Id": 2,
+          "Title": "Title 2",
+        },
+      ]
+    }
+    pageSize={10}
+    queryProvider={[Function]}
+    renderOption={[Function]}
+    selectRef={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "backspaceRemovesValue": true,
+      "blurInputOnSelect": true,
+      "captureMenuScroll": false,
+      "className": undefined,
+      "closeMenuOnScroll": false,
+      "closeMenuOnSelect": true,
+      "components": Object {},
+      "controlShouldRenderValue": true,
+      "escapeClearsValue": false,
+      "filterOption": [Function],
+      "formatGroupLabel": [Function],
+      "getOptionLabel": [Function],
+      "getOptionValue": [Function],
+      "inputValue": "",
+      "isDisabled": false,
+      "isLoading": false,
+      "isMulti": false,
+      "isOptionDisabled": [Function],
+      "isRtl": false,
+      "isSearchable": true,
+      "loadOptions": [Function],
+      "loadingMessage": [Function],
+      "maxMenuHeight": 300,
+      "menuIsOpen": false,
+      "menuPlacement": "bottom",
+      "menuPosition": "absolute",
+      "menuShouldBlockScroll": false,
+      "menuShouldScrollIntoView": true,
+      "minMenuHeight": 140,
+      "noOptionsMessage": [Function],
+      "onChange": [Function],
+      "onInputChange": [Function],
+      "onMenuClose": [Function],
+      "onMenuOpen": [Function],
+      "onMenuScrollToBottom": [Function],
+      "openMenuOnClick": true,
+      "openMenuOnFocus": false,
+      "options": Array [
+        Object {
+          "Id": 1,
+          "Title": "Title 1",
+        },
+        Object {
+          "Id": 2,
+          "Title": "Title 2",
+        },
+      ],
+      "pageSize": 5,
+      "placeholder": "Select...",
+      "screenReaderStatus": [Function],
+      "styles": Object {},
+      "tabIndex": "0",
+      "tabSelectsValue": true,
+      "value": null,
+    },
+    "ref": [Function],
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "backspaceRemovesValue": true,
+        "blurInputOnSelect": true,
+        "captureMenuScroll": false,
+        "className": undefined,
+        "closeMenuOnScroll": false,
+        "closeMenuOnSelect": true,
+        "components": Object {},
+        "controlShouldRenderValue": true,
+        "escapeClearsValue": false,
+        "filterOption": [Function],
+        "formatGroupLabel": [Function],
+        "getOptionLabel": [Function],
+        "getOptionValue": [Function],
+        "inputValue": "",
+        "isDisabled": false,
+        "isLoading": false,
+        "isMulti": false,
+        "isOptionDisabled": [Function],
+        "isRtl": false,
+        "isSearchable": true,
+        "loadOptions": [Function],
+        "loadingMessage": [Function],
+        "maxMenuHeight": 300,
+        "menuIsOpen": false,
+        "menuPlacement": "bottom",
+        "menuPosition": "absolute",
+        "menuShouldBlockScroll": false,
+        "menuShouldScrollIntoView": true,
+        "minMenuHeight": 140,
+        "noOptionsMessage": [Function],
+        "onChange": [Function],
+        "onInputChange": [Function],
+        "onMenuClose": [Function],
+        "onMenuOpen": [Function],
+        "onMenuScrollToBottom": [Function],
+        "openMenuOnClick": true,
+        "openMenuOnFocus": false,
+        "options": Array [
+          Object {
+            "Id": 1,
+            "Title": "Title 1",
+          },
+          Object {
+            "Id": 2,
+            "Title": "Title 2",
+          },
+        ],
+        "pageSize": 5,
+        "placeholder": "Select...",
+        "screenReaderStatus": [Function],
+        "styles": Object {},
+        "tabIndex": "0",
+        "tabSelectsValue": true,
+        "value": null,
+      },
+      "ref": [Function],
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
