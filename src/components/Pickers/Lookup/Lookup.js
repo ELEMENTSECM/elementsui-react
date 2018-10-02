@@ -14,7 +14,8 @@ class Lookup extends React.Component {
 		delay: 300,
 		idSelector: (x) => x.Id,
 		selectRef: () => {},
-		options: null
+		options: null,
+		isMulti: false
 	};
 	constructor(props) {
 		super(props);
@@ -156,7 +157,7 @@ class Lookup extends React.Component {
 	}
 
 	render() {
-		const { selectRef, placeholder, className } = this.props;
+		const { selectRef, placeholder, className, isMulti } = this.props;
 		const { search, optionsCache, menuIsOpen, value } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
 
@@ -176,6 +177,7 @@ class Lookup extends React.Component {
 				loadOptions={this.loadOptions}
 				placeholder={placeholder}
 				className={className}
+				isMulti={isMulti}
 			/>
 		);
 	}
@@ -233,7 +235,11 @@ Lookup.propTypes = {
 	/**
 	 * Root element's class name
 	 */
-	className: PropTypes.string
+	className: PropTypes.string,
+	/**
+	 * Allow the user to select multiple values
+	 */
+	isMulti: PropTypes.bool
 };
 
 export default Lookup;
