@@ -1,18 +1,32 @@
-import * as React from 'react';
-import Lookup from 'elementsui-react/Pickers/Lookup';
+import * as React from "react";
+import Lookup from "elementsui-react/Pickers/Lookup";
 
-/** DateTimePicker */
-export default function DateTimePickerDefault() {
+/** Lookup */
+export default function LookupDefault() {
 	const options = [
-		{ value: 'chocolate', label: 'Chocolate' },
-		{ value: 'strawberry', label: 'Strawberry' },
-		{ value: 'vanilla', label: 'Vanilla' }
+		{
+			Id: 1,
+			Title: "John"
+		},
+		{
+			Id: 2,
+			Title: "Marry"
+		}
 	];
+	class Query {
+		take = () => this;
+		skip = () => this;
+		fetchRawCollection = () => Promise.resolve({ value: options });
+	}
+
+	const queryProvider = () => new Query();
 
 	return (
 		<Lookup
-			options={options}
-			onChange={selected => alert('value: ' + selected.value + '. label: ' + selected.label)}
+			initialValue={{ value: options[0].Id, label: options[0].Title }}
+			queryProvider={queryProvider}
+			renderOption={(x) => x.Title}
+			onChange={(selected) => alert("value: " + selected.value + ". label: " + selected.label)}
 		/>
 	);
 }

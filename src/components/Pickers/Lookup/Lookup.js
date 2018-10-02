@@ -9,6 +9,14 @@ const initialCache = {
 };
 
 class Lookup extends React.Component {
+	static getDerivedStateFromProps(props, state) {
+		if (props.initialValue && !state.value && !state.initialValue) {
+			return { value: props.initialValue, initialValue: props.initialValue };
+		}
+
+		return null;
+	}
+
 	static defaultProps = {
 		pageSize: 10,
 		delay: 300,
@@ -17,6 +25,7 @@ class Lookup extends React.Component {
 		options: null,
 		isMulti: false
 	};
+
 	constructor(props) {
 		super(props);
 
@@ -34,7 +43,8 @@ class Lookup extends React.Component {
 			search: "",
 			optionsCache: initialOptionsCache,
 			menuIsOpen: false,
-			value: null
+			value: null,
+			initialValue: null
 		};
 	}
 
@@ -157,7 +167,7 @@ class Lookup extends React.Component {
 	}
 
 	render() {
-		const { selectRef, placeholder, className, isMulti } = this.props;
+		const { selectRef, placeholder, className, isMulti, styles, theme } = this.props;
 		const { search, optionsCache, menuIsOpen, value } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
 
@@ -178,12 +188,19 @@ class Lookup extends React.Component {
 				placeholder={placeholder}
 				className={className}
 				isMulti={isMulti}
+				styles={styles}
+				theme={theme}
+				escapeClearsValue={true}
 			/>
 		);
 	}
 }
 
 Lookup.propTypes = {
+	/**
+		* Initial value 
+		*/
+	initialValue: PropTypes.any,
 	/**
 		 * If true, the box will be unselectable, can be changed on the fly
 		 */
@@ -195,7 +212,7 @@ Lookup.propTypes = {
 	/**
 		 * Renders text for each search result line
 		 */
-	renderOption: PropTypes.func.isRequired,
+	renderOption: PropTypes.func,
 	/**
 		 * Used to retrieve a key from entity record, by default uses Entity.key property (that in turn returns Id)
 		 */
@@ -203,7 +220,7 @@ Lookup.propTypes = {
 	/**
 		 * Function that returns odata query for provied search term
 		 */
-	queryProvider: PropTypes.func.isRequired,
+	queryProvider: PropTypes.func,
 	/**
 		 * Used to filter result set before rendering dropdown
 		 */
@@ -239,7 +256,37 @@ Lookup.propTypes = {
 	/**
 	 * Allow the user to select multiple values
 	 */
-	isMulti: PropTypes.bool
+	isMulti: PropTypes.bool,
+	/**
+	 * Custom styles
+	 */
+	styles: PropTypes.shape({
+		clearIndicator: PropTypes.func,
+		container: PropTypes.func,
+		control: PropTypes.func,
+		dropdownIndicator: PropTypes.func,
+		group: PropTypes.func,
+		groupHeading: PropTypes.func,
+		indicatorsContainer: PropTypes.func,
+		indicatorsSeparator: PropTypes.func,
+		input: PropTypes.func,
+		loadingIndicator: PropTypes.func,
+		loadingMessage: PropTypes.func,
+		menu: PropTypes.func,
+		menuList: PropTypes.func,
+		multiValue: PropTypes.func,
+		multiValueLabel: PropTypes.func,
+		multiValueRemove: PropTypes.func,
+		noOptionsMessage: PropTypes.func,
+		option: PropTypes.func,
+		placeholder: PropTypes.func,
+		singleValue: PropTypes.func,
+		valueContainer: PropTypes.func
+	}),
+	/**
+	 * Theme override
+	 */
+	theme: PropTypes.func
 };
 
 export default Lookup;
