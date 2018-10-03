@@ -24,6 +24,8 @@ export interface LookupStyles {
 	valueContainer?: (...args: any[]) => any;
 }
 
+export type LookupMenuPlacement = 'bottom' | 'top' | 'auto';
+
 export interface LookupProps {
 	/**
 	 * Initial value
@@ -93,6 +95,14 @@ export interface LookupProps {
 	 * Theme override
 	 */
 	theme?: (...args: any[]) => any;
+	/**
+	 * Value can be cleared
+	 */
+	isClearable?: boolean;
+	/**
+	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
+	 */
+	menuPlacement?: LookupMenuPlacement;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

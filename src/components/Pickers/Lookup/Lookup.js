@@ -23,7 +23,9 @@ class Lookup extends React.Component {
 		idSelector: (x) => x.Id,
 		selectRef: () => {},
 		options: null,
-		isMulti: false
+		isMulti: false,
+		isClearable: true,
+		menuPlacement: "bottom"
 	};
 
 	constructor(props) {
@@ -167,7 +169,7 @@ class Lookup extends React.Component {
 	}
 
 	render() {
-		const { selectRef, placeholder, className, isMulti, styles, theme } = this.props;
+		const { selectRef, placeholder, className, isMulti, styles, theme, isClearable, menuPlacement } = this.props;
 		const { search, optionsCache, menuIsOpen, value } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
 
@@ -190,7 +192,9 @@ class Lookup extends React.Component {
 				isMulti={isMulti}
 				styles={styles}
 				theme={theme}
-				escapeClearsValue={true}
+				menuPortalTarget={document.body}
+				isClearable={isClearable}
+				menuPlacement={menuPlacement}
 			/>
 		);
 	}
@@ -286,7 +290,15 @@ Lookup.propTypes = {
 	/**
 	 * Theme override
 	 */
-	theme: PropTypes.func
+	theme: PropTypes.func,
+	/**
+	 * Value can be cleared
+	 */
+	isClearable: PropTypes.bool,
+	/**
+	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
+	 */
+	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ])
 };
 
 export default Lookup;
