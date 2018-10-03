@@ -8,7 +8,9 @@ ShallowWrapper {
     delay={300}
     id="testLookup"
     idSelector={[Function]}
+    isClearable={true}
     isMulti={false}
+    menuPlacement="bottom"
     options={
       Array [
         Object {
@@ -46,12 +48,13 @@ ShallowWrapper {
       "closeMenuOnSelect": true,
       "components": Object {},
       "controlShouldRenderValue": true,
-      "escapeClearsValue": true,
+      "escapeClearsValue": false,
       "filterOption": [Function],
       "formatGroupLabel": [Function],
       "getOptionLabel": [Function],
       "getOptionValue": [Function],
       "inputValue": "",
+      "isClearable": true,
       "isDisabled": false,
       "isLoading": false,
       "isMulti": false,
@@ -63,6 +66,7 @@ ShallowWrapper {
       "maxMenuHeight": 300,
       "menuIsOpen": false,
       "menuPlacement": "bottom",
+      "menuPortalTarget": <body />,
       "menuPosition": "absolute",
       "menuShouldBlockScroll": false,
       "menuShouldScrollIntoView": true,
@@ -112,12 +116,13 @@ ShallowWrapper {
         "closeMenuOnSelect": true,
         "components": Object {},
         "controlShouldRenderValue": true,
-        "escapeClearsValue": true,
+        "escapeClearsValue": false,
         "filterOption": [Function],
         "formatGroupLabel": [Function],
         "getOptionLabel": [Function],
         "getOptionValue": [Function],
         "inputValue": "",
+        "isClearable": true,
         "isDisabled": false,
         "isLoading": false,
         "isMulti": false,
@@ -129,6 +134,7 @@ ShallowWrapper {
         "maxMenuHeight": 300,
         "menuIsOpen": false,
         "menuPlacement": "bottom",
+        "menuPortalTarget": <body />,
         "menuPosition": "absolute",
         "menuShouldBlockScroll": false,
         "menuShouldScrollIntoView": true,
