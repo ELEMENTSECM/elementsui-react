@@ -3,27 +3,26 @@ import { shallow } from "enzyme";
 import Lookup from "./index";
 
 describe("Lookup", () => {
-	const queryProvider = (filter) => filter;
-	const renderOption = (lookupValue) => lookupValue.Title;
-	const options = [{
-		Id: 1,
-		Title: "Title 1"
-	}, {
-		Id: 2,
-		Title: "Title 2"
-	}];
-	
+	const queryProvider = filter => filter;
+	const renderOption = lookupValue => lookupValue.Title;
+	const options = [
+		{
+			Id: 1,
+			Title: "Title 1"
+		},
+		{
+			Id: 2,
+			Title: "Title 2"
+		}
+	];
+
 	let wrapper;
 	let component;
 
 	describe("with options property", () => {
 		beforeEach(() => {
 			wrapper = shallow(
-				<Lookup 
-					id="testLookup" 
-					queryProvider={queryProvider} 
-					renderOption={renderOption}
-					options={options}/>
+				<Lookup id="testLookup" queryProvider={queryProvider} renderOption={renderOption} options={options} />
 			);
 			component = wrapper.instance();
 		});
@@ -31,7 +30,7 @@ describe("Lookup", () => {
 		test("should be displayed correctly", () => {
 			expect(wrapper).toMatchSnapshot();
 		});
-	
+
 		test("should update state with options", () => {
 			expect(component.state["optionsCache"][""]["options"]).toEqual(options);
 		});
@@ -42,7 +41,7 @@ describe("Lookup", () => {
 			expect(component.state["menuIsOpen"]).toBeTruthy();
 			expect(mockLoadOptions).not.toBeCalled();
 		});
-	
+
 		test("should update state on 'onMenuClose'", () => {
 			component.state["menuIsOpen"] = true;
 			wrapper.find("Select").simulate("menuClose");
@@ -59,13 +58,13 @@ describe("Lookup", () => {
 			await wrapper.find("Select").simulate("inputChange", filter);
 			expect(component.state["search"]).toEqual(filter);
 			expect(mockLoadOptions).toBeCalled();
-		})
+		});
 
 		test("should avoid calling 'loadOptions' on 'onInputChange'", async () => {
 			const mockLoadOptions = jest.spyOn(component, "loadOptions");
 			await wrapper.find("Select").simulate("inputChange", "");
 			expect(mockLoadOptions).not.toBeCalled();
-		})
+		});
 
 		test("should call 'loadOptions' on 'onMenuScrollToBottom'", async () => {
 			const mockLoadOptions = jest.spyOn(component, "loadOptions");
@@ -78,17 +77,12 @@ describe("Lookup", () => {
 			component.state["optionsCache"][""]["hasMore"] = false;
 			await component.loadOptions();
 			expect(mockLoad).not.toBeCalled();
-	   });
+		});
 	});
 
 	describe("without options property", () => {
 		beforeEach(() => {
-			wrapper = shallow(
-				<Lookup 
-					id="testLookup" 
-					queryProvider={queryProvider} 
-					renderOption={renderOption}/>
-			);
+			wrapper = shallow(<Lookup id="testLookup" queryProvider={queryProvider} renderOption={renderOption} />);
 			component = wrapper.instance();
 		});
 
@@ -110,9 +104,9 @@ describe("Lookup", () => {
 		});
 
 		test("should load options", async () => {
-		 	component.load = jest.fn(() => options)
-		 	await component.loadOptions();
-		 	expect(component.state["optionsCache"][""]["options"]).toEqual(options);
+			component.load = jest.fn(() => options);
+			await component.loadOptions();
+			expect(component.state["optionsCache"][""]["options"]).toEqual(options);
 		});
 	});
 
@@ -120,19 +114,14 @@ describe("Lookup", () => {
 		const mockOnChange = jest.fn();
 		beforeEach(() => {
 			wrapper = shallow(
-				<Lookup 
-					id="testLookup" 
-					queryProvider={queryProvider} 
+				<Lookup
+					id="testLookup"
+					queryProvider={queryProvider}
 					renderOption={renderOption}
-					onChange={mockOnChange}/>
+					onChange={mockOnChange}
+				/>
 			);
 			component = wrapper.instance();
-		});
-
-		test("should update state with a value on 'onChange' and call outer handler", () => {
-			wrapper.find("Select").simulate("change", options);
-			expect(component.state["value"]).toEqual(options);
-			expect(mockOnChange).toBeCalled();
 		});
 	});
 });
