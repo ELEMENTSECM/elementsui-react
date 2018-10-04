@@ -9,23 +9,40 @@ const initialCache = {
 };
 
 class Lookup extends React.Component {
-	static getDerivedStateFromProps(props, state) {
-		if (props.initialValue && !state.value && !state.initialValue) {
-			return { value: props.initialValue, initialValue: props.initialValue };
-		}
-
-		return null;
-	}
-
 	static defaultProps = {
 		pageSize: 10,
 		delay: 300,
-		idSelector: (x) => x.Id,
+		idSelector: x => x.Id,
 		selectRef: () => {},
 		options: null,
 		isMulti: false,
 		isClearable: true,
-		menuPlacement: "bottom"
+		menuPlacement: "bottom",
+		styles: {
+			control: (base, state) => {
+				let border, boxShadow;
+				if (state.isFocused) {
+					border = "1px solid #66afe9;";
+					boxShadow = "inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);";
+				} else {
+					border = "1px solid #ccc;";
+					boxShadow = "inset 0 1px 1px rgba(0,0,0,.075);";
+				}
+				return {
+					...base,
+					"min-height": "34px;",
+					height: "34px;",
+					border: border,
+					"border-radius": "4px;",
+					"box-shadow": boxShadow
+				};
+			},
+			placeholder: () => ({
+				display: "none"
+			}),
+			menuPortal: base => ({ ...base, zIndex: 9999 }),
+			menu: base => ({ ...base, position: "relative" })
+		}
 	};
 
 	constructor(props) {
@@ -44,9 +61,7 @@ class Lookup extends React.Component {
 		this.state = {
 			search: "",
 			optionsCache: initialOptionsCache,
-			menuIsOpen: false,
-			value: null,
-			initialValue: null
+			menuIsOpen: false
 		};
 	}
 
@@ -69,7 +84,7 @@ class Lookup extends React.Component {
 		}
 	};
 
-	onInputChange = async (search) => {
+	onInputChange = async search => {
 		await this.setState({
 			search
 		});
@@ -91,12 +106,6 @@ class Lookup extends React.Component {
 		}
 	};
 
-	onChange = (value) => {
-		const { onChange } = this.props;
-		this.setState({ value });
-		onChange && onChange(value);
-	};
-
 	async loadOptions() {
 		const { search, optionsCache } = this.state;
 
@@ -106,7 +115,7 @@ class Lookup extends React.Component {
 			return;
 		}
 
-		await this.setState((prevState) => ({
+		await this.setState(prevState => ({
 			search,
 			optionsCache: {
 				...prevState.optionsCache,
@@ -123,7 +132,7 @@ class Lookup extends React.Component {
 				options = [];
 			}
 			const hasMore = options.length > 0;
-			await this.setState((prevState) => ({
+			await this.setState(prevState => ({
 				optionsCache: {
 					...prevState.optionsCache,
 					[search]: {
@@ -135,7 +144,7 @@ class Lookup extends React.Component {
 				}
 			}));
 		} catch (e) {
-			await this.setState((prevState) => ({
+			await this.setState(prevState => ({
 				optionsCache: {
 					...prevState.optionsCache,
 					[search]: {
@@ -154,10 +163,10 @@ class Lookup extends React.Component {
 				.take(pageSize)
 				.skip(previousOptions ? previousOptions.length : 0)
 				.fetchRawCollection()
-				.then((results) => (resultsFilter ? results.value.filter(resultsFilter) : results.value))
-				.then((results) =>
+				.then(results => (resultsFilter ? results.value.filter(resultsFilter) : results.value))
+				.then(results =>
 					resolve(
-						results.map((x) => ({
+						results.map(x => ({
 							value: idSelector(x),
 							label: renderOption(x),
 							isFixed: true
@@ -169,8 +178,21 @@ class Lookup extends React.Component {
 	}
 
 	render() {
-		const { selectRef, placeholder, className, isMulti, styles, theme, isClearable, menuPlacement } = this.props;
-		const { search, optionsCache, menuIsOpen, value } = this.state;
+		const {
+			selectRef,
+			placeholder,
+			className,
+			isMulti,
+			styles,
+			theme,
+			isClearable,
+			menuPlacement,
+			onChange,
+			value,
+			noOptionsMessage,
+			loadingMessage
+		} = this.props;
+		const { search, optionsCache, menuIsOpen } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
 
 		return (
@@ -185,7 +207,7 @@ class Lookup extends React.Component {
 				isLoading={currentOptions.isLoading}
 				options={currentOptions.options}
 				ref={selectRef}
-				onChange={this.onChange}
+				onChange={onChange}
 				loadOptions={this.loadOptions}
 				placeholder={placeholder}
 				className={className}
@@ -195,6 +217,8 @@ class Lookup extends React.Component {
 				menuPortalTarget={document.body}
 				isClearable={isClearable}
 				menuPlacement={menuPlacement}
+				noOptionsMessage={noOptionsMessage}
+				loadingMessage={loadingMessage}
 			/>
 		);
 	}
@@ -204,7 +228,7 @@ Lookup.propTypes = {
 	/**
 		* Initial value 
 		*/
-	initialValue: PropTypes.any,
+	value: PropTypes.shape({ value: PropTypes.any, label: PropTypes.string }),
 	/**
 		 * If true, the box will be unselectable, can be changed on the fly
 		 */
@@ -298,7 +322,15 @@ Lookup.propTypes = {
 	/**
 	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
 	 */
-	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ])
+	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ]),
+	/**
+	 * Text to display when there are no options
+	 */
+	noOptionsMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	/**
+	 * Async: Text to display when loading options
+	 */
+	loadingMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ])
 };
 
 export default Lookup;

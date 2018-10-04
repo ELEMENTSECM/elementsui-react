@@ -1,5 +1,10 @@
 import * as React from 'react';
 
+export interface LookupValue {
+	value?: any;
+	label?: string;
+}
+
 export interface LookupStyles {
 	clearIndicator?: (...args: any[]) => any;
 	container?: (...args: any[]) => any;
@@ -26,11 +31,15 @@ export interface LookupStyles {
 
 export type LookupMenuPlacement = 'bottom' | 'top' | 'auto';
 
+export type LookupNoOptionsMessage = ((...args: any[]) => any) | any;
+
+export type LookupLoadingMessage = ((...args: any[]) => any) | any;
+
 export interface LookupProps {
 	/**
 	 * Initial value
 	 */
-	initialValue?: any;
+	value?: LookupValue;
 	/**
 	 * If true, the box will be unselectable, can be changed on the fly
 	 */
@@ -103,6 +112,14 @@ export interface LookupProps {
 	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
 	 */
 	menuPlacement?: LookupMenuPlacement;
+	/**
+	 * Text to display when there are no options
+	 */
+	noOptionsMessage?: LookupNoOptionsMessage;
+	/**
+	 * Async: Text to display when loading options
+	 */
+	loadingMessage?: LookupLoadingMessage;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

@@ -27,6 +27,14 @@ ShallowWrapper {
     queryProvider={[Function]}
     renderOption={[Function]}
     selectRef={[Function]}
+    styles={
+      Object {
+        "control": [Function],
+        "menu": [Function],
+        "menuPortal": [Function],
+        "placeholder": [Function],
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -72,7 +80,7 @@ ShallowWrapper {
       "menuShouldScrollIntoView": true,
       "minMenuHeight": 140,
       "noOptionsMessage": [Function],
-      "onChange": [Function],
+      "onChange": undefined,
       "onInputChange": [Function],
       "onMenuClose": [Function],
       "onMenuOpen": [Function],
@@ -92,11 +100,16 @@ ShallowWrapper {
       "pageSize": 5,
       "placeholder": "Select...",
       "screenReaderStatus": [Function],
-      "styles": Object {},
+      "styles": Object {
+        "control": [Function],
+        "menu": [Function],
+        "menuPortal": [Function],
+        "placeholder": [Function],
+      },
       "tabIndex": "0",
       "tabSelectsValue": true,
       "theme": undefined,
-      "value": null,
+      "value": undefined,
     },
     "ref": [Function],
     "rendered": null,
@@ -140,7 +153,7 @@ ShallowWrapper {
         "menuShouldScrollIntoView": true,
         "minMenuHeight": 140,
         "noOptionsMessage": [Function],
-        "onChange": [Function],
+        "onChange": undefined,
         "onInputChange": [Function],
         "onMenuClose": [Function],
         "onMenuOpen": [Function],
@@ -160,11 +173,16 @@ ShallowWrapper {
         "pageSize": 5,
         "placeholder": "Select...",
         "screenReaderStatus": [Function],
-        "styles": Object {},
+        "styles": Object {
+          "control": [Function],
+          "menu": [Function],
+          "menuPortal": [Function],
+          "placeholder": [Function],
+        },
         "tabIndex": "0",
         "tabSelectsValue": true,
         "theme": undefined,
-        "value": null,
+        "value": undefined,
       },
       "ref": [Function],
       "rendered": null,
