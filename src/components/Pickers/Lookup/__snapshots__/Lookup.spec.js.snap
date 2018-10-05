@@ -14,12 +14,12 @@ ShallowWrapper {
     options={
       Array [
         Object {
-          "Id": 1,
-          "Title": "Title 1",
+          "label": "Title 1",
+          "value": 1,
         },
         Object {
-          "Id": 2,
-          "Title": "Title 2",
+          "label": "Title 2",
+          "value": 2,
         },
       ]
     }
@@ -30,6 +30,7 @@ ShallowWrapper {
     styles={
       Object {
         "control": [Function],
+        "fullObjectValue": false,
         "menu": [Function],
         "menuPortal": [Function],
         "placeholder": [Function],
@@ -80,7 +81,7 @@ ShallowWrapper {
       "menuShouldScrollIntoView": true,
       "minMenuHeight": 140,
       "noOptionsMessage": [Function],
-      "onChange": undefined,
+      "onChange": [Function],
       "onInputChange": [Function],
       "onMenuClose": [Function],
       "onMenuOpen": [Function],
@@ -89,12 +90,12 @@ ShallowWrapper {
       "openMenuOnFocus": false,
       "options": Array [
         Object {
-          "Id": 1,
-          "Title": "Title 1",
+          "label": "Title 1",
+          "value": 1,
         },
         Object {
-          "Id": 2,
-          "Title": "Title 2",
+          "label": "Title 2",
+          "value": 2,
         },
       ],
       "pageSize": 5,
@@ -102,6 +103,7 @@ ShallowWrapper {
       "screenReaderStatus": [Function],
       "styles": Object {
         "control": [Function],
+        "fullObjectValue": false,
         "menu": [Function],
         "menuPortal": [Function],
         "placeholder": [Function],
@@ -153,7 +155,7 @@ ShallowWrapper {
         "menuShouldScrollIntoView": true,
         "minMenuHeight": 140,
         "noOptionsMessage": [Function],
-        "onChange": undefined,
+        "onChange": [Function],
         "onInputChange": [Function],
         "onMenuClose": [Function],
         "onMenuOpen": [Function],
@@ -162,12 +164,12 @@ ShallowWrapper {
         "openMenuOnFocus": false,
         "options": Array [
           Object {
-            "Id": 1,
-            "Title": "Title 1",
+            "label": "Title 1",
+            "value": 1,
           },
           Object {
-            "Id": 2,
-            "Title": "Title 2",
+            "label": "Title 2",
+            "value": 2,
           },
         ],
         "pageSize": 5,
@@ -175,6 +177,7 @@ ShallowWrapper {
         "screenReaderStatus": [Function],
         "styles": Object {
           "control": [Function],
+          "fullObjectValue": false,
           "menu": [Function],
           "menuPortal": [Function],
           "placeholder": [Function],
