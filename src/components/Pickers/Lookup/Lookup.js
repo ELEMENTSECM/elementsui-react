@@ -1,6 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Select from "react-select/lib/Select";
+import find from "lodash/find";
 
 const initialCache = {
 	options: [],
@@ -41,7 +42,8 @@ class Lookup extends React.Component {
 				display: "none"
 			}),
 			menuPortal: base => ({ ...base, zIndex: 9999 }),
-			menu: base => ({ ...base, position: "relative" })
+			menu: base => ({ ...base, position: "relative" }),
+			fullObjectValue: false
 		}
 	};
 
@@ -108,7 +110,6 @@ class Lookup extends React.Component {
 
 	async loadOptions() {
 		const { search, optionsCache } = this.state;
-
 		const currentOptions = optionsCache[search] || initialCache;
 
 		if (currentOptions.isLoading || !currentOptions.hasMore) {
@@ -127,17 +128,20 @@ class Lookup extends React.Component {
 		}));
 
 		try {
-			let options = await this.load(search, currentOptions.options);
-			if (!options) {
-				options = [];
+			let results = await this.load(search, currentOptions.options);
+			if (!results.options) {
+				results.options = [];
 			}
-			const hasMore = options.length > 0;
+			const hasMore = results.options.length > 0;
 			await this.setState(prevState => ({
 				optionsCache: {
 					...prevState.optionsCache,
 					[search]: {
 						...currentOptions,
-						options: currentOptions.options.concat(options),
+						options: currentOptions.options.concat(results.options),
+						values:
+							this.props.fullObjectValue &&
+							(currentOptions.values ? currentOptions.values.concat(results.values) : results.values),
 						hasMore: !!hasMore,
 						isLoading: false
 					}
@@ -165,17 +169,26 @@ class Lookup extends React.Component {
 				.fetchRawCollection()
 				.then(results => (resultsFilter ? results.value.filter(resultsFilter) : results.value))
 				.then(results =>
-					resolve(
-						results.map(x => ({
+					resolve({
+						options: results.map(x => ({
 							value: idSelector(x),
 							label: renderOption(x),
 							isFixed: true
-						}))
-					)
+						})),
+						values: results
+					})
 				)
 				.catch(() => reject(errorMessage));
 		});
 	}
+
+	onChange = (option, meta) => {
+		const { search, optionsCache } = this.state;
+		const { fullObjectValue, onChange, idSelector } = this.props;
+		const currentOptions = optionsCache[search] || initialCache;
+		meta.value = fullObjectValue && find(currentOptions.values, x => idSelector(x) === option.value);
+		onChange && onChange(option, meta);
+	};
 
 	render() {
 		const {
@@ -187,7 +200,6 @@ class Lookup extends React.Component {
 			theme,
 			isClearable,
 			menuPlacement,
-			onChange,
 			value,
 			noOptionsMessage,
 			loadingMessage
@@ -207,7 +219,7 @@ class Lookup extends React.Component {
 				isLoading={currentOptions.isLoading}
 				options={currentOptions.options}
 				ref={selectRef}
-				onChange={onChange}
+				onChange={this.onChange}
 				loadOptions={this.loadOptions}
 				placeholder={placeholder}
 				className={className}
@@ -330,7 +342,11 @@ Lookup.propTypes = {
 	/**
 	 * Async: Text to display when loading options
 	 */
-	loadingMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ])
+	loadingMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	/**
+	 * Include full object value
+	 */
+	fullObjectValue: PropTypes.bool
 };
 
 export default Lookup;

@@ -120,6 +120,10 @@ export interface LookupProps {
 	 * Async: Text to display when loading options
 	 */
 	loadingMessage?: LookupLoadingMessage;
+	/**
+	 * Include full object value
+	 */
+	fullObjectValue?: boolean;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

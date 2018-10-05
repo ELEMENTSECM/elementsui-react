@@ -5,7 +5,7 @@ import Lookup from "./index";
 describe("Lookup", () => {
 	const queryProvider = filter => filter;
 	const renderOption = lookupValue => lookupValue.Title;
-	const options = [
+	const values = [
 		{
 			Id: 1,
 			Title: "Title 1"
@@ -15,6 +15,11 @@ describe("Lookup", () => {
 			Title: "Title 2"
 		}
 	];
+
+	const options = values.map(x => ({
+		value: x.Id,
+		label: x.Title
+	}));
 
 	let wrapper;
 	let component;
@@ -104,13 +109,16 @@ describe("Lookup", () => {
 		});
 
 		test("should load options", async () => {
-			component.load = jest.fn(() => options);
+			component.load = jest.fn(() => ({
+				options,
+				values
+			}));
 			await component.loadOptions();
 			expect(component.state["optionsCache"][""]["options"]).toEqual(options);
 		});
 	});
 
-	describe("with onChange and isMulti properties", () => {
+	describe("with fullObjectValue property", () => {
 		const mockOnChange = jest.fn();
 		beforeEach(() => {
 			wrapper = shallow(
@@ -119,9 +127,20 @@ describe("Lookup", () => {
 					queryProvider={queryProvider}
 					renderOption={renderOption}
 					onChange={mockOnChange}
+					fullObjectValue={true}
 				/>
 			);
 			component = wrapper.instance();
+		});
+
+		test("should return full object value", async () => {
+			component.load = jest.fn(() => ({
+				options,
+				values
+			}));
+			await component.loadOptions();
+			expect(component.state["optionsCache"][""]["options"]).toEqual(options);
+			expect(component.state["optionsCache"][""]["values"]).toEqual(values);
 		});
 	});
 });
