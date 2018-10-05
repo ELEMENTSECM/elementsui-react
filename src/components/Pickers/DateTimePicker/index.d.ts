@@ -81,6 +81,10 @@ export interface DateTimePickerProps {
 	 * Input is required
 	 */
 	required?: boolean;
+	/**
+	 * When true, once the day has been selected, the datepicker will be automatically closed.
+	 */
+	closeOnSelect?: boolean;
 }
 
 export default class DateTimePicker extends React.Component<DateTimePickerProps, any> {

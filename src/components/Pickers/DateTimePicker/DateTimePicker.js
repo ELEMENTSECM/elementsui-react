@@ -10,7 +10,7 @@ class DateTimePicker extends React.Component {
 		this.input = React.createRef();
 	}
 
-	calculalateValidDates = (current) => {
+	calculalateValidDates = current => {
 		const dateFromValid =
 			!this.props.dateFrom || current.isAfter(Datetime.moment(this.props.dateFrom).subtract(1, "day"));
 		const dateToValid = !this.props.dateTo || current.isBefore(Datetime.moment(this.props.dateTo).add(1, "day"));
@@ -23,7 +23,7 @@ class DateTimePicker extends React.Component {
 	};
 
 	render() {
-		const { name, disabled, required, dateFormat, timeFormat, viewMode, onBlur, onChange, ...rest } = this.props;
+		const { name, disabled, required, dateFormat, timeFormat, viewMode, onBlur, ...rest } = this.props;
 		const DTPicker = injectIntl(({ intl }) => {
 			let dateFormatId = false,
 				timeFormatId = false;
@@ -97,7 +97,9 @@ DateTimePicker.propTypes = {
 	/** Input is disabled */
 	disabled: PropTypes.bool,
 	/** Input is required */
-	required: PropTypes.bool
+	required: PropTypes.bool,
+	/** When true, once the day has been selected, the datepicker will be automatically closed. */
+	closeOnSelect: PropTypes.bool
 };
 
 export default DateTimePicker;
