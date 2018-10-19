@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.3.15",
+	"version": "0.3.18",
 	"main": "./lib/index.js",
 	"private": true,
 	"engines": {
@@ -12,15 +12,8 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "http://evryas.github.io/elementsui-react/",
-	"files": [
-		"lib"
-	],
-	"keywords": [
-		"components",
-		"react",
-		"react-component",
-		"elements"
-	],
+	"files": [ "lib" ],
+	"keywords": [ "components", "react", "react-component", "elements" ],
 	"dependencies": {
 		"@types/react-bootstrap": "^0.32.10",
 		"@types/react-select": "^2.0.3",
@@ -35,8 +28,10 @@
 		"react-bootstrap": "^0.32.1",
 		"react-datetime": "^2.14.0",
 		"react-dom": "^16.2.0",
+		"react-draggable": "^3.0.5",
 		"react-emotion": "^9.2.8",
 		"react-intl": "^2.4.0",
+		"react-onclickoutside": "^6.7.1",
 		"react-router": "^4.2.0",
 		"react-router-dom": "^4.2.2",
 		"react-select": "^2.0.0",
@@ -85,9 +80,7 @@
 			"!src/**/*.spec.js",
 			"!src/docs/examples/**/*.js"
 		],
-		"setupFiles": [
-			"<rootDir>/config/polyfills.js"
-		],
+		"setupFiles": [ "<rootDir>/config/polyfills.js" ],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
 			"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -99,21 +92,11 @@
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 			"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 		},
-		"transformIgnorePatterns": [
-			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-		],
+		"transformIgnorePatterns": [ "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$" ],
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web"
 		},
-		"moduleFileExtensions": [
-			"web.js",
-			"mjs",
-			"js",
-			"json",
-			"web.jsx",
-			"jsx",
-			"node"
-		],
+		"moduleFileExtensions": [ "web.js", "mjs", "js", "json", "web.jsx", "jsx", "node" ],
 		"setupTestFrameworkScriptFile": "<rootDir>/scripts/testSetup.js"
 	},
 	"babel": {

@@ -1,9 +1,15 @@
 import * as React from 'react';
 
-export interface LookupValue {
-	value?: any;
-	label?: string;
-}
+export type LookupValue =
+	| {
+			value?: any;
+			label?: string;
+	  }
+	| {
+			value?: any;
+			label?: string;
+	  }[]
+	| Object[];
 
 export interface LookupStyles {
 	clearIndicator?: (...args: any[]) => any;
@@ -124,6 +130,14 @@ export interface LookupProps {
 	 * Include full object value
 	 */
 	fullObjectValue?: boolean;
+	/**
+	 * JSX elements to be rendered as draggable dialog when option is clicked
+	 */
+	popup?: (...args: any[]) => any;
+	/**
+	 * Is popup draggable
+	 */
+	isDraggable?: boolean;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

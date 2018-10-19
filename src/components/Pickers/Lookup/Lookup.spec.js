@@ -91,8 +91,10 @@ describe("Lookup", () => {
 			component = wrapper.instance();
 		});
 
-		test("should initialize optionsCache with empty object", () => {
-			expect(component.state["optionsCache"]).toEqual({});
+		test("should initialize optionsCache with initial cache", () => {
+			expect(component.state["optionsCache"]).toEqual({
+				"": { hasMore: true, isLoading: false, options: [], values: undefined }
+			});
 		});
 
 		test("should update state on 'onMenuOpen' and call 'loadOptions'", async () => {
@@ -100,12 +102,6 @@ describe("Lookup", () => {
 			await wrapper.find("Select").simulate("menuOpen");
 			expect(component.state["menuIsOpen"]).toBeTruthy();
 			expect(mockLoadOptions).toBeCalled();
-		});
-
-		test("shouldn't call 'loadOptions' on 'onMenuScrollToBottom'", async () => {
-			const mockLoadOptions = jest.spyOn(component, "loadOptions");
-			await wrapper.find("Select").simulate("menuScrollToBottom");
-			expect(mockLoadOptions).not.toBeCalled();
 		});
 
 		test("should load options", async () => {
