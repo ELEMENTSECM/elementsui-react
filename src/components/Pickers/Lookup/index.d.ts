@@ -138,6 +138,10 @@ export interface LookupProps {
 	 * Is popup draggable
 	 */
 	isDraggable?: boolean;
+	/**
+	 * Always fetch values when menu opens
+	 */
+	alwaysRefresh?: boolean;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

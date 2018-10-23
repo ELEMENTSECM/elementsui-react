@@ -84,7 +84,7 @@ class Lookup extends React.PureComponent {
 
 		const { optionsCache } = this.state;
 
-		if (!some(optionsCache[""].options)) {
+		if (this.props.alwaysRefresh || !some(optionsCache[""].options)) {
 			await this.loadOptions();
 		}
 	};
@@ -457,7 +457,11 @@ Lookup.propTypes = {
 	/**
 	 * Is popup draggable
 	 */
-	isDraggable: PropTypes.bool
+	isDraggable: PropTypes.bool,
+	/**
+ 	* Always fetch values when menu opens
+ 	*/
+	alwaysRefresh: PropTypes.bool
 };
 
 export default Lookup;
