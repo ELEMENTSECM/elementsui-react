@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Datetime from "react-datetime";
 import { injectIntl, IntlProvider } from "react-intl";
 import nls from "./DateTimePicker.nls.json";
+import { InputGroup } from "react-bootstrap";
 
 class DateTimePicker extends React.Component {
 	constructor(props) {
@@ -20,6 +21,10 @@ class DateTimePicker extends React.Component {
 
 	onBlur = () => {
 		this.props.onBlur && this.props.onBlur(this.input.current.state.selectedDate);
+	};
+
+	onIconClick = () => {
+		this.input.current.openCalendar();
 	};
 
 	render() {
@@ -43,15 +48,20 @@ class DateTimePicker extends React.Component {
 			}
 
 			return (
-				<Datetime
-					{...rest}
-					ref={this.input}
-					isValidDate={this.calculalateValidDates}
-					inputProps={{ name, disabled, required }}
-					dateFormat={dateFormatId}
-					timeFormat={timeFormatId}
-					onBlur={this.onBlur}
-				/>
+				<InputGroup>
+					<Datetime
+						{...rest}
+						ref={this.input}
+						isValidDate={this.calculalateValidDates}
+						inputProps={{ name, disabled, required }}
+						dateFormat={dateFormatId}
+						timeFormat={timeFormatId}
+						onBlur={this.onBlur}
+					/>
+					<InputGroup.Addon onClick={() => this.onIconClick()} style={{ cursor: "pointer" }}>
+						<i className={`glyphicons glyphicons-${viewMode === "time" ? "clock" : "calendar"}`} />
+					</InputGroup.Addon>
+				</InputGroup>
 			);
 		});
 
