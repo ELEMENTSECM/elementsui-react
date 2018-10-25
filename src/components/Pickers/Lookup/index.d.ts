@@ -43,6 +43,14 @@ export type LookupLoadingMessage = ((...args: any[]) => any) | any;
 
 export interface LookupProps {
 	/**
+	 * The id to set on the SelectContainer component
+	 */
+	id?: string;
+	/**
+	 * The id of the search input
+	 */
+	inputId?: string;
+	/**
 	 * Initial value
 	 */
 	value?: LookupValue;

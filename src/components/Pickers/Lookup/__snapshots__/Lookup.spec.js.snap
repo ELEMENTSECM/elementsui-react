@@ -64,6 +64,8 @@ ShallowWrapper {
           formatGroupLabel={[Function]}
           getOptionLabel={[Function]}
           getOptionValue={[Function]}
+          id="testLookup"
+          inputId={undefined}
           inputValue=""
           isClearable={true}
           isDisabled={false}
@@ -142,6 +144,8 @@ ShallowWrapper {
           "formatGroupLabel": [Function],
           "getOptionLabel": [Function],
           "getOptionValue": [Function],
+          "id": "testLookup",
+          "inputId": undefined,
           "inputValue": "",
           "isClearable": true,
           "isDisabled": false,
@@ -222,6 +226,8 @@ ShallowWrapper {
             formatGroupLabel={[Function]}
             getOptionLabel={[Function]}
             getOptionValue={[Function]}
+            id="testLookup"
+            inputId={undefined}
             inputValue=""
             isClearable={true}
             isDisabled={false}
@@ -300,6 +306,8 @@ ShallowWrapper {
             "formatGroupLabel": [Function],
             "getOptionLabel": [Function],
             "getOptionValue": [Function],
+            "id": "testLookup",
+            "inputId": undefined,
             "inputValue": "",
             "isClearable": true,
             "isDisabled": false,

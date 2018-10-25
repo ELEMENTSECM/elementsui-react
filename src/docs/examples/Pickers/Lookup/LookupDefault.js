@@ -23,10 +23,11 @@ export default function LookupDefault() {
 
 	return (
 		<Lookup
+			inputId="TestLookup"
 			initialValue={{ value: options[0].Id, label: options[0].Title }}
 			queryProvider={queryProvider}
-			renderOption={(x) => x.Title}
-			onChange={(selected) => alert("value: " + selected.value + ". label: " + selected.label)}
+			renderOption={x => x.Title}
+			onChange={selected => alert("value: " + selected.value + ". label: " + selected.label)}
 		/>
 	);
 }
