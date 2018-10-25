@@ -287,7 +287,9 @@ class Lookup extends React.PureComponent {
 			noOptionsMessage,
 			loadingMessage,
 			popup: Popup,
-			isDraggable
+			isDraggable,
+			id,
+			inputId
 		} = this.props;
 		const { search, optionsCache, menuIsOpen } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
@@ -295,6 +297,8 @@ class Lookup extends React.PureComponent {
 		return (
 			<React.Fragment>
 				<Select
+					id={id}
+					inputId={inputId}
 					value={this.mapValue()}
 					inputValue={search}
 					menuIsOpen={menuIsOpen}
@@ -336,6 +340,14 @@ class Lookup extends React.PureComponent {
 }
 
 Lookup.propTypes = {
+	/**
+	 * The id to set on the SelectContainer component
+	 */
+	id: PropTypes.string,
+	/**
+	 * The id of the search input
+	 */
+	inputId: PropTypes.string,
 	/**
 		* Initial value 
 		*/
