@@ -46,7 +46,7 @@ class Lookup extends React.PureComponent {
 			}),
 			menuPortal: base => ({ ...base, zIndex: 9999 }),
 			menu: base => ({ ...base, position: "relative" }),
-			fullObjectValue: false
+			indicatorsContainer: (base, state) => ({ ...base, ":before": state.isDisabled && { font: "normal normal normal 14px/1 FontAwesome", content: `"\\f023"` }})
 		}
 	};
 
@@ -289,6 +289,7 @@ class Lookup extends React.PureComponent {
 			popup: Popup,
 			isDraggable,
 			id,
+			disabled,
 			inputId
 		} = this.props;
 		const { search, optionsCache, menuIsOpen } = this.state;
@@ -324,6 +325,7 @@ class Lookup extends React.PureComponent {
 					components={Popup && { MultiValueLabel: this.renderMultiValueLabel }}
 					openMenuOnClick={!isMulti}
 					openMenuOnFocus={!isMulti}
+					isDisabled={disabled}
 				/>
 				{this.state.popupVisible && (
 					<LookupDialog
@@ -349,7 +351,7 @@ Lookup.propTypes = {
 	 */
 	inputId: PropTypes.string,
 	/**
-		* Initial value 
+		* Initial value
 		*/
 	value: PropTypes.oneOfType([
 		PropTypes.shape({ value: PropTypes.any, label: PropTypes.string }),
@@ -462,8 +464,8 @@ Lookup.propTypes = {
 	 * Include full object value
 	 */
 	fullObjectValue: PropTypes.bool,
-	/** 
-	 * JSX elements to be rendered as draggable dialog when option is clicked 
+	/**
+	 * JSX elements to be rendered as draggable dialog when option is clicked
 	*/
 	popup: PropTypes.func,
 	/**

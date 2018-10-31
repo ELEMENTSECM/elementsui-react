@@ -30,7 +30,7 @@ ShallowWrapper {
     styles={
       Object {
         "control": [Function],
-        "fullObjectValue": false,
+        "indicatorsContainer": [Function],
         "menu": [Function],
         "menuPortal": [Function],
         "placeholder": [Function],
@@ -110,7 +110,7 @@ ShallowWrapper {
           styles={
             Object {
               "control": [Function],
-              "fullObjectValue": false,
+              "indicatorsContainer": [Function],
               "menu": [Function],
               "menuPortal": [Function],
               "placeholder": [Function],
@@ -187,7 +187,7 @@ ShallowWrapper {
           "screenReaderStatus": [Function],
           "styles": Object {
             "control": [Function],
-            "fullObjectValue": false,
+            "indicatorsContainer": [Function],
             "menu": [Function],
             "menuPortal": [Function],
             "placeholder": [Function],
@@ -272,7 +272,7 @@ ShallowWrapper {
             styles={
               Object {
                 "control": [Function],
-                "fullObjectValue": false,
+                "indicatorsContainer": [Function],
                 "menu": [Function],
                 "menuPortal": [Function],
                 "placeholder": [Function],
@@ -349,7 +349,7 @@ ShallowWrapper {
             "screenReaderStatus": [Function],
             "styles": Object {
               "control": [Function],
-              "fullObjectValue": false,
+              "indicatorsContainer": [Function],
               "menu": [Function],
               "menuPortal": [Function],
               "placeholder": [Function],
