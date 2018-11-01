@@ -46,7 +46,10 @@ class Lookup extends React.PureComponent {
 			}),
 			menuPortal: base => ({ ...base, zIndex: 9999 }),
 			menu: base => ({ ...base, position: "relative" }),
-			indicatorsContainer: (base, state) => ({ ...base, ":before": state.isDisabled && { font: "normal normal normal 14px/1 FontAwesome", content: `"\\f023"` }})
+			indicatorsContainer: (base, state) => ({
+				...base,
+				":before": state.isDisabled && { font: "normal normal normal 14px/1 FontAwesome", content: `"\\f023"` }
+			})
 		}
 	};
 
@@ -326,6 +329,7 @@ class Lookup extends React.PureComponent {
 					openMenuOnClick={!isMulti}
 					openMenuOnFocus={!isMulti}
 					isDisabled={disabled}
+					tabSelectsValue={false}
 				/>
 				{this.state.popupVisible && (
 					<LookupDialog

@@ -117,7 +117,7 @@ ShallowWrapper {
             }
           }
           tabIndex="0"
-          tabSelectsValue={true}
+          tabSelectsValue={false}
           theme={undefined}
           value={undefined}
         />,
@@ -193,7 +193,7 @@ ShallowWrapper {
             "placeholder": [Function],
           },
           "tabIndex": "0",
-          "tabSelectsValue": true,
+          "tabSelectsValue": false,
           "theme": undefined,
           "value": undefined,
         },
@@ -279,7 +279,7 @@ ShallowWrapper {
               }
             }
             tabIndex="0"
-            tabSelectsValue={true}
+            tabSelectsValue={false}
             theme={undefined}
             value={undefined}
           />,
@@ -355,7 +355,7 @@ ShallowWrapper {
               "placeholder": [Function],
             },
             "tabIndex": "0",
-            "tabSelectsValue": true,
+            "tabSelectsValue": false,
             "theme": undefined,
             "value": undefined,
           },
