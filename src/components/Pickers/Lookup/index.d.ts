@@ -150,6 +150,10 @@ export interface LookupProps {
 	 * Always fetch values when menu opens
 	 */
 	alwaysRefresh?: boolean;
+	/**
+	 * Function that returns one or many records that will be appened to the result list
+	 */
+	customOptions?: (...args: any[]) => any;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import Select from "react-select/lib/Select";
 import find from "lodash/find";
 import some from "lodash/some";
-import uniqBy from "lodash/uniqBy";
+import flatten from "lodash/flatten";
 import LookupDialog from "./LookupDialog";
+import { isArray } from "util";
 
 const initialCache = {
 	options: [],
@@ -48,41 +49,49 @@ class Lookup extends React.PureComponent {
 			menu: base => ({ ...base, position: "relative" }),
 			indicatorsContainer: (base, state) => ({
 				...base,
-				":before": state.isDisabled && { font: "normal normal normal 14px/1 FontAwesome", content: `"\\f023"` }
+				":before": state.isDisabled && {
+					font: "normal normal normal 14px/1 FontAwesome",
+					content: `"\\f023"`
+				}
 			})
 		}
 	};
 
-	constructor(props) {
-		super(props);
-
-		const initialOptionsCache = {
+	get initialOptionsCache() {
+		return {
 			"": {
 				isLoading: false,
-				options: props.options || [],
-				values: props.fullObjectValue && props.value,
+				options: this.props.options || [],
+				values: this.props.fullObjectValue && this.props.value,
 				hasMore: true
 			}
 		};
+	}
+
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			search: "",
-			optionsCache: initialOptionsCache,
+			optionsCache: this.initialOptionsCache,
 			menuIsOpen: false,
-			popupVisible: false
+			popupVisible: false,
+			customOptions: []
 		};
 	}
 
 	onMenuClose = () => {
 		this.setState({
 			search: "",
-			menuIsOpen: false
+			menuIsOpen: false,
+			customOptions: []
 		});
 	};
 
 	onMenuOpen = async () => {
 		await this.setState({
-			menuIsOpen: true
+			menuIsOpen: true,
+			optionsCache: this.props.alwaysRefresh ? this.initialOptionsCache : this.state.optionsCache
 		});
 
 		const { optionsCache } = this.state;
@@ -94,7 +103,8 @@ class Lookup extends React.PureComponent {
 
 	onInputChange = async search => {
 		await this.setState({
-			search
+			search,
+			customOptions: this.props.customOptions ? this.getCustomOptions(search) : []
 		});
 
 		const { optionsCache } = this.state;
@@ -147,7 +157,9 @@ class Lookup extends React.PureComponent {
 						options: currentOptions.options.concat(results.options),
 						values:
 							this.props.fullObjectValue &&
-							(currentOptions.values ? currentOptions.values.concat(results.values) : results.values),
+							(currentOptions.values
+								? currentOptions.values.concat(results.values)
+								: results.values),
 						hasMore: !!hasMore,
 						isLoading: false
 					}
@@ -193,22 +205,40 @@ class Lookup extends React.PureComponent {
 		const currentOptions = optionsCache[search] || initialCache;
 		if (fullObjectValue) {
 			if (!isMulti) {
-				meta.value = option && option.value && find(currentOptions.values, x => idSelector(x) === option.value);
+				meta.value =
+					option &&
+					(option.custom
+						? option.fullObjectValue
+						: option.value && find(currentOptions.values, x => idSelector(x) === option.value));
 			} else {
 				meta.value =
 					some(option) &&
-					currentOptions.values &&
-					uniqBy(
-						currentOptions.values.filter(x => {
-							const id = idSelector(x);
-							return some(option, opt => opt.value === id);
-						}),
-						idSelector
-					);
+					option.reduce((values, o) => {
+						if (o.custom) {
+							return [...values, o.fullObjectValue];
+						} else {
+							if (!currentOptions.values || some(values, x => idSelector(x) == o.value)) {
+								return values;
+							}
+
+							const value = find(currentOptions.values, x => idSelector(x) == o.value);
+							return value ? [...values, value] : values;
+						}
+					}, []);
 			}
 		}
 
-		onChange && onChange(option, meta);
+		onChange && onChange(this.stripOptions(option), meta);
+	};
+
+	stripOptions = option => {
+		if (!option) {
+			return option;
+		} else {
+			return isArray(option)
+				? option.map(({ label, value }) => ({ label, value }))
+				: { label: option.label, value: option.value };
+		}
 	};
 
 	togglePopup = async (rect, popupValue) => {
@@ -233,17 +263,23 @@ class Lookup extends React.PureComponent {
 
 	onMultiValueLabelClick = async (e, labelProps) => {
 		const rect = e && e.target && e.target.parentElement.getBoundingClientRect();
-		if (!this.state.optionsCache[this.state.search] || !some(this.state.optionsCache[this.state.search].options)) {
+		if (
+			!this.state.optionsCache[this.state.search] ||
+			!some(this.state.optionsCache[this.state.search].options)
+		) {
 			await this.loadOptions();
 		}
 
 		const { search, optionsCache } = this.state;
 		const { fullObjectValue, idSelector } = this.props;
 		const currentOptions = optionsCache[search] || initialCache;
+		const option = labelProps.data;
 
 		const value = fullObjectValue
-			? find(currentOptions.values, x => idSelector(x) === labelProps.data.value)
-			: find(currentOptions.options, x => x.value === labelProps.data.value);
+			? option.custom
+				? option.fullObjectValue
+				: find(currentOptions.values, x => idSelector(x) === option.value)
+			: this.stripOptions(option);
 
 		this.togglePopup(rect, value);
 	};
@@ -253,8 +289,7 @@ class Lookup extends React.PureComponent {
 			<button
 				type="button"
 				onClick={e => this.onMultiValueLabelClick(e, labelProps)}
-				style={{ border: "none", background: "rgb(230, 230, 230)" }}
-			>
+				style={{ border: "none", background: "rgb(230, 230, 230)" }}>
 				{labelProps.data.label}
 			</button>
 		);
@@ -267,13 +302,31 @@ class Lookup extends React.PureComponent {
 				? {
 						label: initialValue.label || renderOption(initialValue),
 						value: initialValue.value || idSelector(initialValue)
-					}
+				  }
 				: initialValue.map(x => ({
 						label: x.label || renderOption(x),
 						value: x.value || idSelector(x)
-					}));
+				  }));
 		} else {
 			return initialValue;
+		}
+	};
+
+	getCustomOptions = search => {
+		if (!(search && search.trim())) {
+			return [];
+		} else {
+			const { idSelector, renderOption, customOptions, fullObjectValue } = this.props;
+			const customValues = customOptions(search.trim());
+
+			return customValues
+				? flatten([customValues]).map(x => ({
+						value: idSelector(x),
+						label: renderOption(x),
+						custom: true,
+						fullObjectValue: fullObjectValue && x
+				  }))
+				: [];
 		}
 	};
 
@@ -295,7 +348,7 @@ class Lookup extends React.PureComponent {
 			disabled,
 			inputId
 		} = this.props;
-		const { search, optionsCache, menuIsOpen } = this.state;
+		const { search, optionsCache, menuIsOpen, customOptions } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
 
 		return (
@@ -311,7 +364,7 @@ class Lookup extends React.PureComponent {
 					onInputChange={this.onInputChange}
 					onMenuScrollToBottom={this.onMenuScrollToBottom}
 					isLoading={currentOptions.isLoading}
-					options={currentOptions.options}
+					options={currentOptions.options.concat(customOptions)}
 					ref={selectRef}
 					onChange={this.onChange}
 					loadOptions={this.loadOptions}
@@ -335,8 +388,7 @@ class Lookup extends React.PureComponent {
 					<LookupDialog
 						close={this.togglePopup}
 						position={this.state.popupPosition}
-						isDraggable={isDraggable}
-					>
+						isDraggable={isDraggable}>
 						<Popup value={this.state.popupValue} onSubmit={this.togglePopup} />
 					</LookupDialog>
 				)}
@@ -355,48 +407,48 @@ Lookup.propTypes = {
 	 */
 	inputId: PropTypes.string,
 	/**
-		* Initial value
-		*/
+	 * Initial value
+	 */
 	value: PropTypes.oneOfType([
 		PropTypes.shape({ value: PropTypes.any, label: PropTypes.string }),
 		PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.any, label: PropTypes.string })),
 		PropTypes.arrayOf(PropTypes.object)
 	]),
 	/**
-		 * If true, the box will be unselectable, can be changed on the fly
-		 */
+	 * If true, the box will be unselectable, can be changed on the fly
+	 */
 	disabled: PropTypes.bool,
 	/**
-		 * Callback executed when a value has been selected
-		 */
+	 * Callback executed when a value has been selected
+	 */
 	onChange: PropTypes.func,
 	/**
-		 * Renders text for each search result line
-		 */
+	 * Renders text for each search result line
+	 */
 	renderOption: PropTypes.func,
 	/**
-		 * Used to retrieve a key from entity record, by default uses Entity.key property (that in turn returns Id)
-		 */
+	 * Used to retrieve a key from entity record, by default uses Entity.key property (that in turn returns Id)
+	 */
 	idSelector: PropTypes.func,
 	/**
-		 * Function that returns odata query for provied search term
-		 */
+	 * Function that returns odata query for provied search term
+	 */
 	queryProvider: PropTypes.func,
 	/**
-		 * Used to filter result set before rendering dropdown
-		 */
+	 * Used to filter result set before rendering dropdown
+	 */
 	resultsFilter: PropTypes.func,
 	/**
-		 * Scroll pagination. 20 by default
-		 */
+	 * Scroll pagination. 20 by default
+	 */
 	pageSize: PropTypes.number,
 	/**
-		 * Throttle delay, 300 ms by default
-		 */
+	 * Throttle delay, 300 ms by default
+	 */
 	delay: PropTypes.number,
 	/**
-		 * A custom error message otherwise the general error message will be used
-		 */
+	 * A custom error message otherwise the general error message will be used
+	 */
 	errorMessage: PropTypes.string,
 	/**
 	 * Reference to select element
@@ -455,31 +507,35 @@ Lookup.propTypes = {
 	/**
 	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
 	 */
-	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ]),
+	menuPlacement: PropTypes.oneOf(["bottom", "top", "auto"]),
 	/**
 	 * Text to display when there are no options
 	 */
-	noOptionsMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	noOptionsMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
 	/**
 	 * Async: Text to display when loading options
 	 */
-	loadingMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	loadingMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
 	/**
 	 * Include full object value
 	 */
 	fullObjectValue: PropTypes.bool,
 	/**
 	 * JSX elements to be rendered as draggable dialog when option is clicked
-	*/
+	 */
 	popup: PropTypes.func,
 	/**
 	 * Is popup draggable
 	 */
 	isDraggable: PropTypes.bool,
 	/**
- 	* Always fetch values when menu opens
- 	*/
-	alwaysRefresh: PropTypes.bool
+	 * Always fetch values when menu opens
+	 */
+	alwaysRefresh: PropTypes.bool,
+	/**
+	 * Function that returns one or many records that will be appened to the result list
+	 */
+	customOptions: PropTypes.func
 };
 
 export default Lookup;
