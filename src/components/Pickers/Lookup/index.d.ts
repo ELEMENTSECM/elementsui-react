@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export type LookupValue =
 	| {
@@ -9,7 +9,8 @@ export type LookupValue =
 			value?: any;
 			label?: string;
 	  }[]
-	| Object[];
+	| Object[]
+	| Object;
 
 export interface LookupStyles {
 	clearIndicator?: (...args: any[]) => any;
@@ -35,7 +36,7 @@ export interface LookupStyles {
 	valueContainer?: (...args: any[]) => any;
 }
 
-export type LookupMenuPlacement = 'bottom' | 'top' | 'auto';
+export type LookupMenuPlacement = "bottom" | "top" | "auto";
 
 export type LookupNoOptionsMessage = ((...args: any[]) => any) | any;
 

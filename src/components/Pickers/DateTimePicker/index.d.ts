@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export type DateTimePickerValue = Date | string;
 
@@ -6,11 +6,11 @@ export type DateTimePickerDefaultValue = Date | string;
 
 export type DateTimePickerViewDate = Date | string;
 
-export type DateTimePickerDateFormat = 'L' | 'LL' | 'LLL' | 'LLLL' | 'LT' | 'LTS' | boolean;
+export type DateTimePickerDateFormat = "L" | "LL" | "LLL" | "LLLL" | "LT" | "LTS" | boolean;
 
-export type DateTimePickerTimeFormat = 'LT' | 'LTS' | boolean;
+export type DateTimePickerTimeFormat = "LT" | "LTS" | boolean;
 
-export type DateTimePickerViewMode = 'years' | 'months' | 'days' | 'time';
+export type DateTimePickerViewMode = "years" | "months" | "days" | "time";
 
 export type DateTimePickerDateFrom = Date | string;
 

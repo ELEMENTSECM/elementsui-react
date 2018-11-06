@@ -157,9 +157,7 @@ class Lookup extends React.PureComponent {
 						options: currentOptions.options.concat(results.options),
 						values:
 							this.props.fullObjectValue &&
-							(currentOptions.values
-								? currentOptions.values.concat(results.values)
-								: results.values),
+							(currentOptions.values ? results.values.concat(currentOptions.values) : results.values),
 						hasMore: !!hasMore,
 						isLoading: false
 					}
@@ -182,6 +180,7 @@ class Lookup extends React.PureComponent {
 		const { queryProvider, pageSize, resultsFilter, renderOption, idSelector, errorMessage } = this.props;
 		return new Promise((resolve, reject) => {
 			queryProvider(inputValue)
+				.withQuery({ includeMetadata: false })
 				.take(pageSize)
 				.skip(previousOptions ? previousOptions.length : 0)
 				.fetchCollection()
@@ -215,14 +214,14 @@ class Lookup extends React.PureComponent {
 					some(option) &&
 					option.reduce((values, o) => {
 						if (o.custom) {
-							return [...values, o.fullObjectValue];
+							return [ ...values, o.fullObjectValue ];
 						} else {
 							if (!currentOptions.values || some(values, x => idSelector(x) == o.value)) {
 								return values;
 							}
 
 							const value = find(currentOptions.values, x => idSelector(x) == o.value);
-							return value ? [...values, value] : values;
+							return value ? [ ...values, value ] : values;
 						}
 					}, []);
 			}
@@ -263,10 +262,7 @@ class Lookup extends React.PureComponent {
 
 	onMultiValueLabelClick = async (e, labelProps) => {
 		const rect = e && e.target && e.target.parentElement.getBoundingClientRect();
-		if (
-			!this.state.optionsCache[this.state.search] ||
-			!some(this.state.optionsCache[this.state.search].options)
-		) {
+		if (!this.state.optionsCache[this.state.search] || !some(this.state.optionsCache[this.state.search].options)) {
 			await this.loadOptions();
 		}
 
@@ -276,9 +272,7 @@ class Lookup extends React.PureComponent {
 		const option = labelProps.data;
 
 		const value = fullObjectValue
-			? option.custom
-				? option.fullObjectValue
-				: find(currentOptions.values, x => idSelector(x) === option.value)
+			? option.custom ? option.fullObjectValue : find(currentOptions.values, x => idSelector(x) === option.value)
 			: this.stripOptions(option);
 
 		this.togglePopup(rect, value);
@@ -289,7 +283,8 @@ class Lookup extends React.PureComponent {
 			<button
 				type="button"
 				onClick={e => this.onMultiValueLabelClick(e, labelProps)}
-				style={{ border: "none", background: "rgb(230, 230, 230)" }}>
+				style={{ border: "none", background: "rgb(230, 230, 230)" }}
+			>
 				{labelProps.data.label}
 			</button>
 		);
@@ -297,16 +292,16 @@ class Lookup extends React.PureComponent {
 
 	mapValue = () => {
 		const { isMulti, value: initialValue, fullObjectValue, renderOption, idSelector } = this.props;
-		if (fullObjectValue && initialValue && renderOption) {
+		if (initialValue && renderOption) {
 			return !isMulti
 				? {
 						label: initialValue.label || renderOption(initialValue),
 						value: initialValue.value || idSelector(initialValue)
-				  }
+					}
 				: initialValue.map(x => ({
 						label: x.label || renderOption(x),
 						value: x.value || idSelector(x)
-				  }));
+					}));
 		} else {
 			return initialValue;
 		}
@@ -320,12 +315,12 @@ class Lookup extends React.PureComponent {
 			const customValues = customOptions(search.trim());
 
 			return customValues
-				? flatten([customValues]).map(x => ({
+				? flatten([ customValues ]).map(x => ({
 						value: idSelector(x),
 						label: renderOption(x),
 						custom: true,
 						fullObjectValue: fullObjectValue && x
-				  }))
+					}))
 				: [];
 		}
 	};
@@ -388,7 +383,8 @@ class Lookup extends React.PureComponent {
 					<LookupDialog
 						close={this.togglePopup}
 						position={this.state.popupPosition}
-						isDraggable={isDraggable}>
+						isDraggable={isDraggable}
+					>
 						<Popup value={this.state.popupValue} onSubmit={this.togglePopup} />
 					</LookupDialog>
 				)}
@@ -412,7 +408,8 @@ Lookup.propTypes = {
 	value: PropTypes.oneOfType([
 		PropTypes.shape({ value: PropTypes.any, label: PropTypes.string }),
 		PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.any, label: PropTypes.string })),
-		PropTypes.arrayOf(PropTypes.object)
+		PropTypes.arrayOf(PropTypes.object),
+		PropTypes.object
 	]),
 	/**
 	 * If true, the box will be unselectable, can be changed on the fly
@@ -507,15 +504,15 @@ Lookup.propTypes = {
 	/**
 	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
 	 */
-	menuPlacement: PropTypes.oneOf(["bottom", "top", "auto"]),
+	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ]),
 	/**
 	 * Text to display when there are no options
 	 */
-	noOptionsMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
+	noOptionsMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
 	/**
 	 * Async: Text to display when loading options
 	 */
-	loadingMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
+	loadingMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
 	/**
 	 * Include full object value
 	 */
