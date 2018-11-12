@@ -22,6 +22,8 @@
 		"elements"
 	],
 	"dependencies": {
+		"@ckeditor/ckeditor5-build-classic": "^11.1.1",
+		"@ckeditor/ckeditor5-react": "^1.0.0",
 		"@types/react-bootstrap": "^0.32.10",
 		"@types/react-select": "^2.0.3",
 		"commander": "^2.15.1",
