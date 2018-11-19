@@ -200,7 +200,7 @@ class Lookup extends React.PureComponent {
 
 	onChange = (option, meta) => {
 		const { search, optionsCache } = this.state;
-		const { fullObjectValue, onChange, idSelector, isMulti } = this.props;
+		const { fullObjectValue, onChange, idSelector, isMulti, value: lookupValues } = this.props;
 		const currentOptions = optionsCache[search] || initialCache;
 		if (fullObjectValue) {
 			if (!isMulti) {
@@ -210,20 +210,16 @@ class Lookup extends React.PureComponent {
 						? option.fullObjectValue
 						: option.value && find(currentOptions.values, x => idSelector(x) === option.value));
 			} else {
-				meta.value =
-					some(option) &&
-					option.reduce((values, o) => {
+				meta.value = some(option)
+					? option.reduce((values, o) => {
 						if (o.custom) {
 							return [ ...values, o.fullObjectValue ];
-						} else {
-							if (!currentOptions.values || some(values, x => idSelector(x) == o.value)) {
-								return values;
-							}
-
-							const value = find(currentOptions.values, x => idSelector(x) == o.value);
-							return value ? [ ...values, value ] : values;
-						}
-					}, []);
+						} 
+						
+						const value = find(currentOptions.values || lookupValues, x => idSelector(x) === o.value);
+						return value ? [ ...values, value ] : values;
+					}, [])
+					: [];
 			}
 		}
 
