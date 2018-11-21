@@ -1,34 +1,33 @@
 import * as React from "react";
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import extend from "lodash";
+import extend from "lodash/extend";
+import throttle from "lodash/throttle";
+import loadScript from "load-script";
 
 const defaultConfig = {
 	toolbar: [
-		[
-			"Font",
-			"FontSize",
-			"Bold",
-			"Italic",
-			"Underline",
-			"-",
-			"NumberedList",
-			"BulletedList",
-			"-",
-			"Outdent",
-			"Indent",
-			"-",
-			"JustifyLeft",
-			"JustifyCenter",
-			"JustifyRight",
-			"JustifyBlock",
-			"-",
-			"Link",
-			"base64image",
-			"Maximize",
-			"Preview"
-		]
+		"font",
+		"fontSize",
+		"bold",
+		"italic",
+		"underline",
+		"-",
+		"numberedList",
+		"bulletedList",
+		"-",
+		"outdent",
+		"indent",
+		"-",
+		"justifyLeft",
+		"justifyCenter",
+		"justifyRight",
+		"justifyBlock",
+		"-",
+		"link",
+		"easyImage",
+		"maximize",
+		"preview"
 	],
 	fontSize_sizes: [ "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72" ]
 		.map(size => size + "/" + size + "pt")
@@ -42,12 +41,10 @@ const defaultConfig = {
 		"Times New Roman/Times New Roman, Times, serif",
 		"Verdana/Verdana, Geneva, sans-serif"
 	].join(";"),
-	removePlugins: "elementspath",
 	extraPlugins: "base64image,pastefromword",
 	allowedContent: true,
 	resize_enabled: false,
 	forcePasteAsPlainText: false,
-	contentsCss: "../../Content/style.css",
 	applyInitialStyle: true,
 	bodyClass: "",
 	startupFocus: false,
@@ -56,17 +53,86 @@ const defaultConfig = {
 
 class RichText extends React.PureComponent {
 	static defaultProps = {
-		config: {}
+		config: {},
+		scriptUrl: "https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js",
+		throttle: 500
 	};
 
-	init = editor => {
-		const { config } = this.props;
-		this.editor = editor;
+	static editorInstance;
+
+	static getDerivedStateFromProps(props) {
+		if (RichText.editorInstance && RichText.editorInstance.getData().trim() !== props.value) {
+			RichText.editorInstance.setData(props.value);
+		}
+
+		return null;
+	}
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			isScriptLoaded: props.isScriptLoaded
+		};
+	}
+
+	componentDidMount() {
+		if (!this.state.isScriptLoaded) {
+			loadScript(this.props.scriptUrl, this.onLoad);
+		} else {
+			this.onLoad();
+		}
+	}
+
+	componentWillUnmount() {
+		this.unmounting = true;
+		if (RichText.editorInstance) {
+			RichText.editorInstance.removeAllListeners();
+			RichText.editorInstance.destroy();
+		}
+	}
+
+	onChange = () => {
+		const data = RichText.editorInstance.getData().trim();
+		if (data !== this.props.value) {
+			this.props.events["change"](data);
+		}
+	};
+
+	onLoad = () => {
+		const { config, value, events } = this.props;
+		if (this.unmounting) return;
+
+		this.setState({
+			isScriptLoaded: true
+		});
+
+		if (!window.CKEDITOR) {
+			console.error("CKEditor not found");
+			return;
+		}
+
+		RichText.editorInstance = window.CKEDITOR.appendTo(
+			ReactDOM.findDOMNode(this),
+			extend(defaultConfig, config),
+			value
+		);
+
+		//Register listener for custom events if any
+		for (var event in events) {
+			var eventHandler = events[event];
+			if (event === "change") {
+				RichText.editorInstance.on(event, throttle(this.onChange, this.props.throttle));
+			} else {
+				RichText.editorInstance.on(event, eventHandler);
+			}
+		}
+
 		if (config.applyInitialStyle) {
-			this.editor.on(
+			RichText.editorInstance.on(
 				"selectionChange",
 				event => {
-					const initialStyle = new CKEDITOR.style({
+					const initialStyle = new window.CKEDITOR.style({
 						element: "span",
 						styles: {
 							"font-family": "Calibri, Tahoma, sans-serif",
@@ -74,51 +140,85 @@ class RichText extends React.PureComponent {
 						}
 					});
 
-					if (!editor.getData() && !initialStyle.checkActive(event.data.path)) {
-						editor.applyStyle(initialStyle);
+					if (!RichText.editorInstance.getData() && !initialStyle.checkActive(event.data.path)) {
+						RichText.editorInstance.applyStyle(initialStyle);
 					}
 				},
 				null,
 				null,
 				100
 			);
-			this.editor.on(
-				"toHtml",
-				event => {
-					// Dirty trick to remove comments from internal style blocks
-					const cleanHtml = event.data.dataValue
-						.replace(/<style[^>]*>\s*<!--/, "<style>")
-						.replace(/-->\s*<\/style>/, "</style>");
+		}
 
-					event.data.dataValue = cleanHtml;
-				},
-				null,
-				null,
-				1
-			);
+		RichText.editorInstance.on(
+			"toHtml",
+			event => {
+				// Dirty trick to remove comments from internal style blocks
+				const cleanHtml = event.data.dataValue
+					.replace(/<style[^>]*>\s*<!--/, "<style>")
+					.replace(/-->\s*<\/style>/, "</style>");
 
-			if (config.prependLines) {
-				this.editor.on("instanceReady", () => {
-					prependContentWithLines(editor, settings.prependLines);
-				});
-			}
+				event.data.dataValue = cleanHtml;
+			},
+			null,
+			null,
+			1
+		);
+
+		if (config.prependLines) {
+			RichText.editorInstance.on("instanceReady", () => {
+				prependContentWithLines();
+			});
 		}
 	};
 
-	onChange = () => {
-		const data = this.editor.getData();
-		this.props.onChange && this.props.onChange(data);
-	};
+	prependContentWithLines() {
+		const prependText = new Array(this.props.config.prependLines + 1).join("\n");
+
+		RichText.editorInstance.focus();
+
+		const range = RichText.editorInstance.createRange();
+		range.moveToElementEditablePosition(range.root, false);
+		RichText.editorInstance.insertText(prependText);
+
+		RichText.editorInstance.getSelection().selectRanges([ range ]);
+	}
 
 	render() {
-		const config = extend(defaultConfig, this.props.config);
-		return <CKEditor editor={ClassicEditor} config={config} onInit={this.init} onChange={this.onChange} />;
+		const { id, className, value } = this.props;
+		return <div id={id} className={className} />;
 	}
 }
 
 RichText.propTypes = {
+	/**
+	 * Root div's id
+	 */
+	id: PropTypes.string,
+	/**
+	 * Current value
+	 */
+	value: PropTypes.string,
+	/**
+	 * CKEditor configuration object
+	 */
 	config: PropTypes.object,
-	onChange: PropTypes.func
+	/**
+	 * Event handlers { [eventName: string]: (e) => any }
+	 */
+	events: PropTypes.object,
+	/**
+	 * URL of ckeditor.js file. It is loaded from CDN by default.
+	 */
+	scriptUrl: PropTypes.string,
+	/**
+	 * Root div's class
+	 */
+	className: PropTypes.string,
+	/**
+	 * Throttle delay in milliseconds
+	 */
+	throttle: PropTypes.number
 };
 
 export default RichText;
