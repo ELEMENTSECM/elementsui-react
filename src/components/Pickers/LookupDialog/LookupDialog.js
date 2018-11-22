@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
 import * as React from "react";
 import Draggable from "react-draggable";
-import onClickOutside from "react-onclickoutside";
 
-export class LookupDialog extends React.Component {
+export default class LookupDialog extends React.Component {
 	handleClickOutside = () => {
 		this.props.close();
 	};
@@ -82,5 +81,3 @@ LookupDialog.propTypes = {
 	 */
 	isDraggable: PropTypes.bool
 };
-
-export default onClickOutside(LookupDialog);
