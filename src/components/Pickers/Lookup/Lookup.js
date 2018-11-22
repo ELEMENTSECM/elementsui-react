@@ -4,7 +4,7 @@ import Select from "react-select/lib/Select";
 import find from "lodash/find";
 import some from "lodash/some";
 import flatten from "lodash/flatten";
-import LookupDialog from "./LookupDialog";
+import LookupDialog from "../LookupDialog";
 import { isArray } from "util";
 
 const initialCache = {
