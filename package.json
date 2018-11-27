@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.3.32",
+	"version": "0.4.1",
 	"main": "./lib/index.js",
 	"private": true,
 	"engines": {
