@@ -6,6 +6,7 @@ import some from "lodash/some";
 import flatten from "lodash/flatten";
 import LookupDialog from "../LookupDialog";
 import { isArray } from "util";
+import onClickOutside from "react-onclickoutside";
 
 const initialCache = {
 	options: [],
@@ -341,6 +342,7 @@ class Lookup extends React.PureComponent {
 		} = this.props;
 		const { search, optionsCache, menuIsOpen, customOptions } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
+		const ExtendedLookupDialog = onClickOutside(LookupDialog);
 
 		return (
 			<React.Fragment>
@@ -376,13 +378,13 @@ class Lookup extends React.PureComponent {
 					tabSelectsValue={false}
 				/>
 				{this.state.popupVisible && (
-					<LookupDialog
+					<ExtendedLookupDialog
 						close={this.togglePopup}
 						position={this.state.popupPosition}
 						isDraggable={isDraggable}
 					>
 						<Popup value={this.state.popupValue} onSubmit={this.togglePopup} />
-					</LookupDialog>
+					</ExtendedLookupDialog>
 				)}
 			</React.Fragment>
 		);

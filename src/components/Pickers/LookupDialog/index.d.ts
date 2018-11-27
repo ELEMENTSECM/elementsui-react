@@ -15,6 +15,6 @@ export interface LookupDialogProps {
 	isDraggable?: boolean;
 }
 
-export class LookupDialog extends React.Component<LookupDialogProps, any> {
+export default class LookupDialog extends React.Component<LookupDialogProps, any> {
 	render(): JSX.Element;
 }
