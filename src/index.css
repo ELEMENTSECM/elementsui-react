@@ -95,6 +95,24 @@ a {
 	background-color: #f4f6f9;
 }
 
+.popup-overlay {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: gray;
+	opacity: .2;
+}
+
+.popup-container {
+	position: absolute;
+	height: 100px;
+	width: 200px;
+	background-color: #2d8498;
+	color: white;
+}
+
 /*--------------------Tree view--------------------*/
 
 .tree-view_item {
