@@ -54,6 +54,7 @@ export { default as InfiniteList, InfiniteListProps } from "./Content/InfiniteLi
 export { default as ListItem, ListItemProps } from "./Content/ListItem";
 export { default as Lookup, LookupProps } from "./Pickers/Lookup";
 export { default as LookupDialog, LookupDialogProps } from "./Pickers/LookupDialog";
+export { default as Popup, PopupProps } from "./Content/Popup";
 export { default as RichText, RichTextProps } from "./Inputs/RichText";
 export { default as Spinner, SpinnerProps } from "./Indicators/Spinner";
 export { default as en } from "react-intl/locale-data/en";
