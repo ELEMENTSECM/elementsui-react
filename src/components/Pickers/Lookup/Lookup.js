@@ -3,15 +3,19 @@ import PropTypes from "prop-types";
 import Select from "react-select/lib/Select";
 import find from "lodash/find";
 import some from "lodash/some";
+import isEqual from "lodash/isEqual";
 import flatten from "lodash/flatten";
+import each from "lodash/each";
 import LookupDialog from "../LookupDialog";
 import { isArray } from "util";
 import onClickOutside from "react-onclickoutside";
 
 const initialCache = {
 	options: [],
+	values: [],
 	hasMore: true,
-	isLoading: false
+	isLoading: false,	
+	isTriedLoad: false
 };
 
 class Lookup extends React.PureComponent {
@@ -58,13 +62,74 @@ class Lookup extends React.PureComponent {
 		}
 	};
 
+	static getDerivedStateFromProps(props, state) {
+		const { search, optionsCache, customOptions } = state;
+		const currentOptions = optionsCache[search] || initialCache;
+		let currentControlOptions = state.controlOptions.slice();
+		let currentValues = optionsCache[search] ? optionsCache[search].values : [];
+		const optionItem = props.value ? Lookup.mapValue(props, state) : null;
+		const currentOptionExists = optionItem && props.value && currentOptions && currentOptions.options.length 
+			? find(currentOptions.options, option => isEqual(option, optionItem))
+			: false;			
+		let availableOptions = currentOptions ? currentOptions.options.concat(customOptions) : [];
+		const isNeedChangeCache = !currentOptionExists && optionItem && state.optionsCache[state.search] && !props.isMulti;
+		if (isNeedChangeCache) {
+			availableOptions.push(optionItem);
+			currentValues.push(props.value);
+		}
+		Lookup.updateControlOptionsWithNewAndExistingValues(availableOptions, currentControlOptions, optionItem);
+		return isNeedChangeCache ?
+		{
+			...state,
+			optionsCache: {
+				...state.optionsCache,
+				[search]: {
+					...state.optionsCache[search],
+					options: availableOptions,
+					values: currentValues
+				}
+			},
+			controlOptions: currentControlOptions
+		} : 
+		{
+			...state,
+			controlOptions: !isEqual(currentControlOptions, state.controlOptions) ? currentControlOptions : state.controlOptions
+		};
+	}
+
+	
+	static mapValue(props, state) {
+		const { isMulti, value: initialValue, renderOption, idSelector } = props;
+		if (initialValue && renderOption) {
+			if (!isMulti)
+			{
+				const optionLabel  = initialValue.label || renderOption(initialValue);
+				const optionValue = initialValue.value || idSelector(initialValue);
+				return (state.optionsCache[state.search] && state.optionsCache[state.search].options.length && find(state.optionsCache[state.search].options, option => {
+                    return isEqual(option.value, optionValue) && isEqual(option.label, optionLabel);
+                })) || 
+				{				 
+					label: optionLabel,
+					value: optionValue
+				}
+			}
+			return initialValue.map(x => ({
+						label: x.label || renderOption(x),
+						value: x.value || idSelector(x)
+					}));
+		} else {
+			return initialValue;
+		}
+	}
+
 	get initialOptionsCache() {
 		return {
 			"": {
 				isLoading: false,
 				options: this.props.options || [],
-				values: this.props.fullObjectValue && this.props.value,
-				hasMore: true
+				values: this.props.fullObjectValue && this.props.value || [],
+				hasMore: true,
+				isTriedLoad: false
 			}
 		};
 	}
@@ -77,7 +142,8 @@ class Lookup extends React.PureComponent {
 			optionsCache: this.initialOptionsCache,
 			menuIsOpen: false,
 			popupVisible: false,
-			customOptions: []
+			customOptions: [],
+			controlOptions: []
 		};
 	}
 
@@ -91,18 +157,22 @@ class Lookup extends React.PureComponent {
 
 	onMenuOpen = async () => {
 		await this.setState({
-			menuIsOpen: true,
-			optionsCache: this.props.alwaysRefresh ? this.initialOptionsCache : this.state.optionsCache
+			menuIsOpen: true
 		});
-
+		if (this.props.alwaysRefresh) {
+			await this.setState({
+				optionsCache: this.initialOptionsCache,
+				controlOptions: []
+			});
+		}
 		const { optionsCache } = this.state;
 
-		if (this.props.alwaysRefresh || !some(optionsCache[""].options)) {
+		if (this.props.alwaysRefresh || optionsCache[""].options.length <= 1) {
 			await this.loadOptions();
 		}
 	};
 
-	onInputChange = async search => {
+	onInputChange = async search => { 
 		await this.setState({
 			search,
 			customOptions: this.props.customOptions ? this.getCustomOptions(search) : []
@@ -125,9 +195,24 @@ class Lookup extends React.PureComponent {
 		}
 	};
 
+	static updateControlOptionsWithNewAndExistingValues(newOptions, controlOptions, optionItem) {
+		each(newOptions, (option, indexOuter) => {
+			const optionExists = find(controlOptions, (existingOption) => { return isEqual(option, existingOption) });				
+			if (optionExists) {
+				option = isEqual(optionItem, option) ? optionItem : option;
+				const existingOptionIndex = controlOptions.indexOf(optionExists);
+				controlOptions.splice(existingOptionIndex, 1);
+				controlOptions.splice(indexOuter, 0, option); //add removed element to the correct place;
+			} else {
+				controlOptions.splice(indexOuter, 0, option); //add element to the correct place;
+			}
+		});
+	}
+
 	async loadOptions() {
 		const { search, optionsCache } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
+		const isTriedLoadSearch = optionsCache[search] && optionsCache[search].isTriedLoad || false;
 
 		if (currentOptions.isLoading || !currentOptions.hasMore) {
 			return;
@@ -145,10 +230,12 @@ class Lookup extends React.PureComponent {
 		}));
 
 		try {
-			let results = await this.load(search, currentOptions.options);
+			let results = await this.load(search, currentOptions.options, isTriedLoadSearch);
 			if (!results.options) {
 				results.options = [];
+				results.values = [];
 			}
+
 			const hasMore = results.options.length > 0;
 			await this.setState(prevState => ({
 				optionsCache: {
@@ -156,13 +243,13 @@ class Lookup extends React.PureComponent {
 					[search]: {
 						...currentOptions,
 						options: currentOptions.options.concat(results.options),
-						values:
-							this.props.fullObjectValue &&
-							(currentOptions.values ? results.values.concat(currentOptions.values) : results.values),
+						values: this.props.fullObjectValue ? (currentOptions.values && results.values.concat(currentOptions.values)) : results.values,
 						hasMore: !!hasMore,
-						isLoading: false
+						isLoading: false,
+						isTriedLoad: true
 					}
-				}
+				},
+				controlOptions: []
 			}));
 		} catch (e) {
 			await this.setState(prevState => ({
@@ -177,20 +264,20 @@ class Lookup extends React.PureComponent {
 		}
 	}
 
-	load(inputValue, previousOptions) {
+	load(inputValue, previousOptions, isTriedLoad) {
 		const { queryProvider, pageSize, resultsFilter, renderOption, idSelector, errorMessage } = this.props;
 		return new Promise((resolve, reject) => {
 			queryProvider(inputValue)
 				.withQuery({ includeMetadata: false })
 				.take(pageSize)
-				.skip(previousOptions ? previousOptions.length : 0)
+				.skip(previousOptions && isTriedLoad ? previousOptions.length : 0)
 				.fetchCollection()
 				.then(results => (resultsFilter ? results.value.filter(resultsFilter) : results.value))
 				.then(results =>
 					resolve({
 						options: results.map(x => ({
-							value: idSelector(x),
-							label: renderOption(x)
+							label: renderOption(x),
+							value: idSelector(x)
 						})),
 						values: results
 					})
@@ -287,23 +374,6 @@ class Lookup extends React.PureComponent {
 		);
 	};
 
-	mapValue = () => {
-		const { isMulti, value: initialValue, fullObjectValue, renderOption, idSelector } = this.props;
-		if (initialValue && renderOption) {
-			return !isMulti
-				? {
-						label: initialValue.label || renderOption(initialValue),
-						value: initialValue.value || idSelector(initialValue)
-					}
-				: initialValue.map(x => ({
-						label: x.label || renderOption(x),
-						value: x.value || idSelector(x)
-					}));
-		} else {
-			return initialValue;
-		}
-	};
-
 	getCustomOptions = search => {
 		if (!(search && search.trim())) {
 			return [];
@@ -340,7 +410,7 @@ class Lookup extends React.PureComponent {
 			disabled,
 			inputId
 		} = this.props;
-		const { search, optionsCache, menuIsOpen, customOptions } = this.state;
+		const { search, optionsCache, menuIsOpen, controlOptions } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
 		const ExtendedLookupDialog = onClickOutside(LookupDialog);
 
@@ -349,7 +419,7 @@ class Lookup extends React.PureComponent {
 				<Select
 					id={id}
 					inputId={inputId}
-					value={this.mapValue()}
+					value={Lookup.mapValue(this.props, this.state)}
 					inputValue={search}
 					menuIsOpen={menuIsOpen}
 					onMenuClose={this.onMenuClose}
@@ -357,7 +427,7 @@ class Lookup extends React.PureComponent {
 					onInputChange={this.onInputChange}
 					onMenuScrollToBottom={this.onMenuScrollToBottom}
 					isLoading={currentOptions.isLoading}
-					options={currentOptions.options.concat(customOptions)}
+					options={controlOptions}
 					ref={selectRef}
 					onChange={this.onChange}
 					loadOptions={this.loadOptions}
