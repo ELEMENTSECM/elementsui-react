@@ -1,5 +1,10 @@
 import * as React from "react";
 
+export interface LookupDialogPosition {
+	x?: number;
+	y?: number;
+}
+
 export interface LookupDialogProps {
 	/**
 	 * Callback executed when a dialog is closed
@@ -8,7 +13,7 @@ export interface LookupDialogProps {
 	/**
 	 * Abolute or fixed positioning for a dialog
 	 */
-	position?: string;
+	position?: LookupDialogPosition;
 	/**
 	 * Enabled drag n drop for a diealog
 	 */
