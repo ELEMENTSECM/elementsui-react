@@ -13,7 +13,7 @@ export interface LookupDialogProps {
 	/**
 	 * Abolute or fixed positioning for a dialog
 	 */
-	position?: LookupDialogPosition;
+	position: LookupDialogPosition;
 	/**
 	 * Enabled drag n drop for a diealog
 	 */

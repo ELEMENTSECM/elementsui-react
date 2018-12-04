@@ -78,7 +78,7 @@ LookupDialog.propTypes = {
 	position: PropTypes.shape({
 		x: PropTypes.number,
 		y: PropTypes.number
-	}).required,
+	}).isRequired,
 	/**
 	 * Enabled drag n drop for a diealog
 	 */
