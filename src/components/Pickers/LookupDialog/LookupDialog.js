@@ -75,7 +75,10 @@ LookupDialog.propTypes = {
 	/**
 	 * Abolute or fixed positioning for a dialog
 	 */
-	position: PropTypes.string,
+	position: PropTypes.shape({
+		x: PropTypes.number,
+		y: PropTypes.number
+	}).required,
 	/**
 	 * Enabled drag n drop for a diealog
 	 */
