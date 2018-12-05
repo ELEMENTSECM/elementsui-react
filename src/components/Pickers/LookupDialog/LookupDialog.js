@@ -3,8 +3,8 @@ import * as React from "react";
 import Draggable from "react-draggable";
 
 export default class LookupDialog extends React.Component {
-	handleClickOutside = () => {
-		this.props.close();
+	handleClickOutside = (event) => {
+		this.props.close(event);
 	};
 
 	render() {
