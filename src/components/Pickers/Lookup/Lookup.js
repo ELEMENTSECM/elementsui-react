@@ -14,6 +14,32 @@ const initialCache = {
 	isLoading: false
 };
 
+function memoizeLastSingleValueReturn(returnFunc, compareByFunc) {
+	return function memoized(...args) {
+		const val = returnFunc(...args);
+		if (_.isArray(val)) {
+			delete memoized.val;
+			return val;
+		} else if (compareByFunc(memoized.val) === compareByFunc(val)) {
+			return memoized.val;
+		} else {
+			memoized.val = val;
+			return val;
+		}
+	}
+}
+
+function adjustOptionsAndSelected(selectedOption, options) {
+	if (selectedOption && !_.isArray(selectedOption)) {
+		const valueIndex = _.findIndex(options, o => o.value === selectedOption.value);
+		if (valueIndex > -1) {
+			options[valueIndex] = selectedOption;
+		} else {
+			options.unshift(selectedOption);
+		}
+	}
+}
+
 class Lookup extends React.PureComponent {
 	static defaultProps = {
 		pageSize: 10,
@@ -79,6 +105,9 @@ class Lookup extends React.PureComponent {
 			popupVisible: false,
 			customOptions: []
 		};
+
+		this.onMenuOpen =  _.debounce(this.onMenuOpen, 0);
+		this.mapValue = memoizeLastSingleValueReturn(this.mapValue, o => o && o.value)
 	}
 
 	onMenuClose = () => {
@@ -213,13 +242,13 @@ class Lookup extends React.PureComponent {
 			} else {
 				meta.value = some(option)
 					? option.reduce((values, o) => {
-						if (o.custom) {
-							return [ ...values, o.fullObjectValue ];
-						} 
-						
-						const value = find(currentOptions.values || lookupValues, x => idSelector(x) === o.value);
-						return value ? [ ...values, value ] : values;
-					}, [])
+							if (o.custom) {
+								return [ ...values, o.fullObjectValue ];
+							}
+
+							const value = find(currentOptions.values || lookupValues, x => idSelector(x) === o.value);
+							return value ? [ ...values, value ] : values;
+						}, [])
 					: [];
 			}
 		}
@@ -344,12 +373,17 @@ class Lookup extends React.PureComponent {
 		const currentOptions = optionsCache[search] || initialCache;
 		const ExtendedLookupDialog = onClickOutside(LookupDialog);
 
+		const options = currentOptions.options.concat(customOptions);
+		let valueOption = this.mapValue();
+
+		adjustOptionsAndSelected(valueOption, options);
+
 		return (
 			<React.Fragment>
 				<Select
 					id={id}
 					inputId={inputId}
-					value={this.mapValue()}
+					value={valueOption}
 					inputValue={search}
 					menuIsOpen={menuIsOpen}
 					onMenuClose={this.onMenuClose}
@@ -357,10 +391,9 @@ class Lookup extends React.PureComponent {
 					onInputChange={this.onInputChange}
 					onMenuScrollToBottom={this.onMenuScrollToBottom}
 					isLoading={currentOptions.isLoading}
-					options={currentOptions.options.concat(customOptions)}
+					options={options}
 					ref={selectRef}
 					onChange={this.onChange}
-					loadOptions={this.loadOptions}
 					placeholder={placeholder}
 					className={className}
 					isMulti={isMulti}
