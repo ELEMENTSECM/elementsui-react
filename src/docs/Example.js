@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import CodeExample from './CodeExample';
-import Button from 'react-bootstrap/lib/Button';
+import React from "react";
+import PropTypes from "prop-types";
+import CodeExample from "./CodeExample";
+import Button from "react-bootstrap/lib/Button";
 
 class Example extends React.Component {
 	constructor(props) {
@@ -26,9 +26,9 @@ class Example extends React.Component {
 				{description && <h4>{description}</h4>}
 				<ExampleComponent />
 				<p>
-					<Button
-						onClick={this.toggleCode}
-					>{`${showCode ? 'Hide' : 'Show'} Code`}</Button>
+					<Button onClick={this.toggleCode} style={{ marginTop: 20 }}>{`${showCode
+						? "Hide"
+						: "Show"} Code`}</Button>
 				</p>
 
 				{showCode && <CodeExample>{code}</CodeExample>}
