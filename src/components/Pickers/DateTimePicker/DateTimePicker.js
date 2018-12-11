@@ -63,7 +63,7 @@ class DateTimePicker extends React.Component {
 						timeFormat={timeFormatId}
 						onBlur={this.onBlur}
 					/>
-					<InputGroup.Addon onClick={() => this.onIconClick()} style={{ cursor: cursorType }}>
+					<InputGroup.Addon onClick={this.onIconClick} style={{ cursor: cursorType }}>
 						<i className={`glyphicons glyphicons-${viewMode === "time" ? "clock" : "calendar"}`} />
 					</InputGroup.Addon>
 				</InputGroup>
