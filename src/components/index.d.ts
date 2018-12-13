@@ -50,6 +50,10 @@ export {
 } from "react-bootstrap";
 export { addLocaleData } from "react-intl";
 export { default as DateTimePicker, DateTimePickerProps } from "./Pickers/DateTimePicker";
+export { default as Dropdown, DropdownProps } from "./Controls/Dropdown";
+export { default as DropdownItem, DropdownItemProps } from "./Controls/DropdownItem";
+export { default as DropdownMenu, DropdownMenuProps } from "./Controls/DropdownMenu";
+export { default as DropdownToggle, DropdownToggleProps } from "./Controls/DropdownToggle";
 export { default as InfiniteList, InfiniteListProps } from "./Content/InfiniteList";
 export { default as ListItem, ListItemProps } from "./Content/ListItem";
 export { default as Lookup, LookupProps } from "./Pickers/Lookup";

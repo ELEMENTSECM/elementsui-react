@@ -167,7 +167,7 @@ export default class InfiniteList extends React.Component {
 
 		let atBottom = this.isElementAtBottom(target);
 
-		if (atBottom && this.props.hasMore) {
+		if (atBottom && this.props.hasMore && this.props.dataLength) {
 			this.setState((ps) => ({ ...ps, actionTriggered: true, showLoader: true }));
 			this.props.next();
 		}
