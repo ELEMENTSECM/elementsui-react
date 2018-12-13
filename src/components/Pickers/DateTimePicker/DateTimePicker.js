@@ -24,6 +24,9 @@ class DateTimePicker extends React.Component {
 	};
 
 	onIconClick = () => {
+		if(this.props.disabled) {
+			return;
+		}
 		this.input.current.openCalendar();
 	};
 
@@ -47,6 +50,8 @@ class DateTimePicker extends React.Component {
 				timeFormatId = intl.formatMessage({ id: `longDateFormat_${timeFormat}` });
 			}
 
+			const cursorType = disabled ? "not-allowed" : "pointer";
+
 			return (
 				<InputGroup>
 					<Datetime
@@ -58,7 +63,7 @@ class DateTimePicker extends React.Component {
 						timeFormat={timeFormatId}
 						onBlur={this.onBlur}
 					/>
-					<InputGroup.Addon onClick={() => this.onIconClick()} style={{ cursor: "pointer" }}>
+					<InputGroup.Addon onClick={this.onIconClick} style={{ cursor: cursorType }}>
 						<i className={`glyphicons glyphicons-${viewMode === "time" ? "clock" : "calendar"}`} />
 					</InputGroup.Addon>
 				</InputGroup>
