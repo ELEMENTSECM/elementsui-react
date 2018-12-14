@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Select from "react-select/lib/Select";
 import find from "lodash/find";
 import some from "lodash/some";
+import findIndex from "lodash/findIndex";
+import debounce from "lodash/debounce";
 import flatten from "lodash/flatten";
 import LookupDialog from "../LookupDialog";
 import { isArray } from "util";
@@ -17,7 +19,7 @@ const initialCache = {
 function memoizeLastSingleValueReturn(returnFunc, compareByFunc) {
 	return function memoized(...args) {
 		const val = returnFunc(...args);
-		if (_.isArray(val)) {
+		if (isArray(val)) {
 			delete memoized.val;
 			return val;
 		} else if (compareByFunc(memoized.val) === compareByFunc(val)) {
@@ -29,9 +31,13 @@ function memoizeLastSingleValueReturn(returnFunc, compareByFunc) {
 	}
 }
 
+// replace selected option in Options array 
+// with memorized selected object
+// to make them equal by reference
+// (only for a single value lookup)
 function adjustOptionsAndSelected(selectedOption, options) {
-	if (selectedOption && !_.isArray(selectedOption)) {
-		const valueIndex = _.findIndex(options, o => o.value === selectedOption.value);
+	if (selectedOption && !isArray(selectedOption)) {
+		const valueIndex = findIndex(options, o => o.value === selectedOption.value);
 		if (valueIndex > -1) {
 			options[valueIndex] = selectedOption;
 		} else {
@@ -106,7 +112,7 @@ class Lookup extends React.PureComponent {
 			customOptions: []
 		};
 
-		this.onMenuOpen =  _.debounce(this.onMenuOpen, 0);
+		this.onMenuOpen = debounce(this.onMenuOpen, 0);
 		this.mapValue = memoizeLastSingleValueReturn(this.mapValue, o => o && o.value)
 	}
 
