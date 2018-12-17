@@ -37,6 +37,10 @@ export interface PopupProps {
 	 * Standard ARIA attribute that will be set on popup root element
 	 */
 	"aria-labelledby"?: string;
+	/**
+	 * Should modal become focused on render
+	 */
+	autoFocus?: boolean;
 }
 
 export default class Popup extends React.Component<PopupProps, any> {

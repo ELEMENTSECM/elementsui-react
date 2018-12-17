@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <RichText
     config={Object {}}
+    id="richText"
     scriptUrl="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"
     throttle={500}
   />,
@@ -22,7 +23,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "className": undefined,
-      "id": undefined,
+      "id": "richText",
     },
     "ref": null,
     "rendered": null,
@@ -35,7 +36,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "className": undefined,
-        "id": undefined,
+        "id": "richText",
       },
       "ref": null,
       "rendered": null,

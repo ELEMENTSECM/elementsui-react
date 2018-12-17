@@ -1,17 +1,5 @@
 import * as React from "react";
 
-export type LookupValue =
-	| {
-			value?: any;
-			label?: string;
-	  }
-	| {
-			value?: any;
-			label?: string;
-	  }[]
-	| Object[]
-	| Object;
-
 export interface LookupStyles {
 	clearIndicator?: (...args: any[]) => any;
 	container?: (...args: any[]) => any;
@@ -25,6 +13,7 @@ export interface LookupStyles {
 	loadingIndicator?: (...args: any[]) => any;
 	loadingMessage?: (...args: any[]) => any;
 	menu?: (...args: any[]) => any;
+	menuPortal?: (...args: any[]) => any;
 	menuList?: (...args: any[]) => any;
 	multiValue?: (...args: any[]) => any;
 	multiValueLabel?: (...args: any[]) => any;
@@ -58,7 +47,7 @@ export interface LookupProps {
 	/**
 	 * Initial value
 	 */
-	value?: LookupValue;
+	value?: any;
 	/**
 	 * If true, the box will be unselectable, can be changed on the fly
 	 */
@@ -71,6 +60,10 @@ export interface LookupProps {
 	 * Renders text for each search result line
 	 */
 	renderOption?: (...args: any[]) => any;
+	/**
+	 * Renders text of selected option
+	 */
+	renderSelection?: (...args: any[]) => any;
 	/**
 	 * Used to retrieve a key from entity record, by default uses Entity.key property (that in turn returns Id)
 	 */
@@ -171,6 +164,18 @@ export interface LookupProps {
 	 * Allows search for values without filtering text
 	 */
 	allowSearchWithEmptyFilter?: boolean;
+	/**
+	 * Should multi lookup return values as delimiter-separated string
+	 */
+	multiAsString?: boolean;
+	/**
+	 * Delimiter used if format is enabled. Set to ";" by default
+	 */
+	delimiter?: string;
+	/**
+	 * Conditional css classes for option
+	 */
+	optionBindings?: (...args: any[]) => any;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {
