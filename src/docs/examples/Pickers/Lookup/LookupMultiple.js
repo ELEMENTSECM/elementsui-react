@@ -52,6 +52,16 @@ export default class LookupMultiple extends React.Component {
 				onChange={values => this.setState({ values })}
 				isMulti={true}
 				popup={this.renderOptionPopup}
+				theme={theme => {
+					return {
+						...theme,
+						borderRadius: 0,
+						spacing: {
+							baseUnit: 2,
+							controlHeight: 28
+						}
+					};
+				}}
 			/>
 		);
 	}

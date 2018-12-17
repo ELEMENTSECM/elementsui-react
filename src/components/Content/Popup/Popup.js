@@ -25,7 +25,8 @@ export default class Popup extends React.PureComponent {
 			containerClassName,
 			backdropClassName,
 			targetNode,
-			placement
+			placement,
+			autoFocus
 		} = this.props;
 
 		return (
@@ -35,6 +36,7 @@ export default class Popup extends React.PureComponent {
 				backdropStyle={styles.backdrop}
 				onHide={this.onHide}
 				show={show}
+				autoFocus={autoFocus}
 			>
 				<Popper referenceElement={targetNode} placement={placement}>
 					{({ ref, style }) => (
@@ -44,7 +46,7 @@ export default class Popup extends React.PureComponent {
 								className={containerClassName}
 								style={{
 									...styles.container,
-									...targetNode ? style : styles.centerToScreen
+									...(targetNode ? style : styles.centerToScreen)
 								}}
 							>
 								{children}
@@ -58,15 +60,16 @@ export default class Popup extends React.PureComponent {
 }
 
 Popup.defaultProps = {
-    isDraggable: true,
-    containerClassName: "popup-container",
-    backdropClassName: "popup-overlay",
-    handle: ".popup-container",
-    show: true,
-    targetNode: undefined,
-    placement: undefined,
+	isDraggable: true,
+	containerClassName: "popup-container",
+	backdropClassName: "popup-overlay",
+	handle: ".popup-container",
+	show: true,
+	targetNode: undefined,
+	placement: undefined,
 	onHide: undefined,
-	"aria-labelledby": undefined
+	"aria-labelledby": undefined,
+	autoFocus: true
 };
 
 Popup.propTypes = {
@@ -83,9 +86,11 @@ Popup.propTypes = {
 	/** Target node used for positioning of popup relative to it. Popper.js lib used behind the scene. */
 	targetNode: PropTypes.node,
 	/** One of the placements supported by Popper.js relative to target node. */
-    placement: PropTypes.string,
+	placement: PropTypes.string,
 	/** Handler that is called when backdrop is clicked or ESC key pressed. Typically in this handler you will update state so that popup is removed. */
 	onHide: PropTypes.func,
 	/** Standard ARIA attribute that will be set on popup root element */
-	"aria-labelledby": PropTypes.string
+	"aria-labelledby": PropTypes.string,
+	/** Should modal become focused on render */
+	autoFocus: PropTypes.bool
 };

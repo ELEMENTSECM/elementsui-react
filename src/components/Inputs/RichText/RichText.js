@@ -53,31 +53,26 @@ const defaultConfig = {
 
 class RichText extends React.PureComponent {
 	static defaultProps = {
+		id: "richText",
 		config: {},
 		scriptUrl: "https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js",
 		throttle: 500
 	};
 
-	static editorInstance;
+	static editorInstances = {};
 
-	static getDerivedStateFromProps(props) {
-		if (RichText.editorInstance && RichText.editorInstance.getData().trim() !== props.value) {
-			RichText.editorInstance.setData(props.value);
+	componentDidUpdate() {
+		if (
+			RichText.editorInstances[this.props.id] &&
+			RichText.editorInstances[this.props.id].getData().trim() !== this.props.value
+		) {
+			RichText.editorInstances[this.props.id].setData(this.props.value);
 		}
-
-		return null;
-	}
-
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			isScriptLoaded: props.isScriptLoaded
-		};
 	}
 
 	componentDidMount() {
-		if (!this.state.isScriptLoaded) {
+		this.mounted = true;
+		if (!window.CKEDITOR) {
 			loadScript(this.props.scriptUrl, this.onLoad);
 		} else {
 			this.onLoad();
@@ -85,34 +80,30 @@ class RichText extends React.PureComponent {
 	}
 
 	componentWillUnmount() {
-		this.unmounting = true;
-		if (RichText.editorInstance) {
-			RichText.editorInstance.removeAllListeners();
-			RichText.editorInstance.destroy();
+		this.mounted = false;
+		if (RichText.editorInstances[this.props.id]) {
+			RichText.editorInstances[this.props.id].removeAllListeners();
+			RichText.editorInstances[this.props.id].destroy();
 		}
 	}
 
 	onChange = () => {
-		const data = RichText.editorInstance.getData().trim();
+		const data = RichText.editorInstances[this.props.id].getData().trim();
 		if (data !== this.props.value) {
 			this.props.events["change"](data);
 		}
 	};
 
 	onLoad = () => {
-		const { config, value, events } = this.props;
-		if (this.unmounting) return;
-
-		this.setState({
-			isScriptLoaded: true
-		});
+		const { id, config, value, events } = this.props;
+		if (!this.mounted) return;
 
 		if (!window.CKEDITOR) {
 			console.error("CKEditor not found");
 			return;
 		}
 
-		RichText.editorInstance = window.CKEDITOR.appendTo(
+		RichText.editorInstances[id] = window.CKEDITOR.appendTo(
 			ReactDOM.findDOMNode(this),
 			extend(defaultConfig, config),
 			value
@@ -122,14 +113,14 @@ class RichText extends React.PureComponent {
 		for (var event in events) {
 			var eventHandler = events[event];
 			if (event === "change") {
-				RichText.editorInstance.on(event, throttle(this.onChange, this.props.throttle));
+				RichText.editorInstances[id].on(event, throttle(this.onChange, this.props.throttle));
 			} else {
-				RichText.editorInstance.on(event, eventHandler);
+				RichText.editorInstances[id].on(event, eventHandler);
 			}
 		}
 
 		if (config.applyInitialStyle) {
-			RichText.editorInstance.on(
+			RichText.editorInstances[id].on(
 				"selectionChange",
 				event => {
 					const initialStyle = new window.CKEDITOR.style({
@@ -140,8 +131,8 @@ class RichText extends React.PureComponent {
 						}
 					});
 
-					if (!RichText.editorInstance.getData() && !initialStyle.checkActive(event.data.path)) {
-						RichText.editorInstance.applyStyle(initialStyle);
+					if (!RichText.editorInstances[id].getData() && !initialStyle.checkActive(event.data.path)) {
+						RichText.editorInstances[id].applyStyle(initialStyle);
 					}
 				},
 				null,
@@ -150,7 +141,7 @@ class RichText extends React.PureComponent {
 			);
 		}
 
-		RichText.editorInstance.on(
+		RichText.editorInstances[id].on(
 			"toHtml",
 			event => {
 				// Dirty trick to remove comments from internal style blocks
@@ -166,7 +157,7 @@ class RichText extends React.PureComponent {
 		);
 
 		if (config.prependLines) {
-			RichText.editorInstance.on("instanceReady", () => {
+			RichText.editorInstances[id].on("instanceReady", () => {
 				prependContentWithLines();
 			});
 		}
@@ -175,17 +166,17 @@ class RichText extends React.PureComponent {
 	prependContentWithLines() {
 		const prependText = new Array(this.props.config.prependLines + 1).join("\n");
 
-		RichText.editorInstance.focus();
+		RichText.editorInstances[this.props.id].focus();
 
-		const range = RichText.editorInstance.createRange();
+		const range = RichText.editorInstances[this.props.id].createRange();
 		range.moveToElementEditablePosition(range.root, false);
-		RichText.editorInstance.insertText(prependText);
+		RichText.editorInstances[this.props.id].insertText(prependText);
 
-		RichText.editorInstance.getSelection().selectRanges([ range ]);
+		RichText.editorInstances[this.props.id].getSelection().selectRanges([ range ]);
 	}
 
 	render() {
-		const { id, className, value } = this.props;
+		const { id, className } = this.props;
 		return <div id={id} className={className} />;
 	}
 }

@@ -1,8 +1,8 @@
 import * as React from "react";
 import Lookup from "elementsui-react/Pickers/Lookup";
 
-/** Lookup */
-export default function LookupDefault() {
+/** Lookup option bindings */
+export default function LookupOptionBindings() {
 	const options = [
 		{
 			Id: 1,
@@ -28,6 +28,10 @@ export default function LookupDefault() {
 			queryProvider={queryProvider}
 			renderOption={x => x.Title}
 			onChange={selected => alert("value: " + selected.value + ". label: " + selected.label)}
+			optionBindings={value => ({
+				"text-primary": value === 1,
+				"text-secondary": value === 2
+			})}
 		/>
 	);
 }

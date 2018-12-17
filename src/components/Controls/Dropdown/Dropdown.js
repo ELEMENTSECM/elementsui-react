@@ -49,7 +49,11 @@ class Dropdown extends React.Component {
 		if (e && (e.which === 3 || (e.type === "keyup" && e.which !== keyCodes.tab))) return;
 		const container = this.getContainer();
 
-		if (container !== e.target && (e.type !== "keyup" || e.which === keyCodes.tab)) {
+		if (
+			container.contains(e.target) &&
+			container !== e.target &&
+			(e.type !== "keyup" || e.which === keyCodes.tab)
+		) {
 			return;
 		}
 
@@ -157,6 +161,7 @@ class Dropdown extends React.Component {
 
 		const classes = classNames(
 			className,
+			"react-dropdown",
 			direction !== "down" && `drop${direction}`,
 			nav && active ? "active" : false,
 			setActiveFromChild && subItemIsActive ? "active" : false,

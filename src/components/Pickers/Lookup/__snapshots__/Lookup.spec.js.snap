@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Lookup
     allowSearchWithEmptyFilter={true}
     delay={300}
+    delimiter=";"
     id="testLookup"
     idSelector={[Function]}
     isClearable={true}
@@ -25,6 +26,7 @@ ShallowWrapper {
       ]
     }
     pageSize={10}
+    placeholder=""
     queryProvider={[Function]}
     renderOption={[Function]}
     styles={
@@ -32,7 +34,6 @@ ShallowWrapper {
         "control": [Function],
         "indicatorsContainer": [Function],
         "menu": [Function],
-        "placeholder": [Function],
       }
     }
   />,
@@ -113,14 +114,13 @@ ShallowWrapper {
             ]
           }
           pageSize={5}
-          placeholder="Select..."
+          placeholder=""
           screenReaderStatus={[Function]}
           styles={
             Object {
               "control": [Function],
               "indicatorsContainer": [Function],
               "menu": [Function],
-              "placeholder": [Function],
             }
           }
           tabIndex="0"
@@ -197,13 +197,12 @@ ShallowWrapper {
             },
           ],
           "pageSize": 5,
-          "placeholder": "Select...",
+          "placeholder": "",
           "screenReaderStatus": [Function],
           "styles": Object {
             "control": [Function],
             "indicatorsContainer": [Function],
             "menu": [Function],
-            "placeholder": [Function],
           },
           "tabIndex": "0",
           "tabSelectsValue": false,
@@ -291,14 +290,13 @@ ShallowWrapper {
               ]
             }
             pageSize={5}
-            placeholder="Select..."
+            placeholder=""
             screenReaderStatus={[Function]}
             styles={
               Object {
                 "control": [Function],
                 "indicatorsContainer": [Function],
                 "menu": [Function],
-                "placeholder": [Function],
               }
             }
             tabIndex="0"
@@ -375,13 +373,12 @@ ShallowWrapper {
               },
             ],
             "pageSize": 5,
-            "placeholder": "Select...",
+            "placeholder": "",
             "screenReaderStatus": [Function],
             "styles": Object {
               "control": [Function],
               "indicatorsContainer": [Function],
               "menu": [Function],
-              "placeholder": [Function],
             },
             "tabIndex": "0",
             "tabSelectsValue": false,
