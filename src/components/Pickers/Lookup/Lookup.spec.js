@@ -42,9 +42,11 @@ describe("Lookup", () => {
 
 		test("should update state on 'onMenuOpen'", async () => {
 			const mockLoadOptions = jest.spyOn(component, "loadOptions");
-			await wrapper.find("Select").simulate("menuOpen");
-			expect(component.state["menuIsOpen"]).toBeTruthy();
-			expect(mockLoadOptions).not.toBeCalled();
+			await wrapper.find("Select").simulate("menuOpen");		
+			setTimeout(() => {
+				expect(component.state["menuIsOpen"]).toBeTruthy();
+				expect(mockLoadOptions).not.toBeCalled();
+			  }, 0);
 		});
 
 		test("should update state on 'onMenuClose'", () => {
@@ -100,8 +102,10 @@ describe("Lookup", () => {
 		test("should update state on 'onMenuOpen' and call 'loadOptions'", async () => {
 			const mockLoadOptions = jest.spyOn(component, "loadOptions");
 			await wrapper.find("Select").simulate("menuOpen");
-			expect(component.state["menuIsOpen"]).toBeTruthy();
-			expect(mockLoadOptions).toBeCalled();
+			setTimeout(() => {
+				expect(component.state["menuIsOpen"]).toBeTruthy();
+				expect(mockLoadOptions).toBeCalled();
+			  }, 0);
 		});
 
 		test("should load options", async () => {
