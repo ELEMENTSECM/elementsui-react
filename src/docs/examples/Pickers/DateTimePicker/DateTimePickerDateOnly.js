@@ -1,15 +1,32 @@
 import * as React from "react";
 import DateTimePicker from "elementsui-react/Pickers/DateTimePicker";
 
-/** DatePicker */
-export default function DateTimePickerDefault() {
-	return (
-		<DateTimePicker
-			locale="en"
-			dateFormat="L"
-			timeFormat={false}
-			defaultValue={new Date()}
-			onChange={(value) => alert(value)}
-		/>
-	);
+/** DateTimePicker date only */
+export default class DateTimePickerDefault extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			value: new Date()
+		};
+	}
+
+	onChange = value => {
+		this.setState({ value: value });
+	};
+
+	render() {
+		return (
+			<div>
+				<DateTimePicker
+					locale="nb"
+					defaultValue={this.state.value}
+					onChange={this.onChange}
+					allowSameDay={true}
+					viewMode="date"
+					dateFormat="L"
+					todayButton
+				/>
+			</div>
+		);
+	}
 }

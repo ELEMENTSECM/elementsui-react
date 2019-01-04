@@ -10,11 +10,11 @@ export type DateTimePickerDateFormat = "L" | "LL" | "LLL" | "LLLL" | "LT" | "LTS
 
 export type DateTimePickerTimeFormat = "LT" | "LTS" | boolean;
 
-export type DateTimePickerViewMode = "years" | "months" | "days" | "time";
+export type DateTimePickerViewMode = "date" | "time" | "datetime";
 
-export type DateTimePickerDateFrom = Date | string;
+export type DateTimePickerMinDate = Date | string;
 
-export type DateTimePickerDateTo = Date | string;
+export type DateTimePickerMaxDate = Date | string;
 
 export interface DateTimePickerProps {
 	/**
@@ -48,7 +48,7 @@ export interface DateTimePickerProps {
 	/**
 	 * Manually set the locale for the react-datetime instance. Moment.js locale needs to be loaded to be used, see i18n docs.
 	 */
-	locale: string;
+	locale?: string;
 	/**
 	 * Callback trigger when the date changes. The callback receives the selected moment object as only parameter, if the date in the input is valid. If the date in the input is not valid, the callback receives the value of the input (a string).
 	 */
@@ -68,11 +68,11 @@ export interface DateTimePickerProps {
 	/**
 	 * Allowed dates from defined value
 	 */
-	dateFrom?: DateTimePickerDateFrom;
+	minDate?: DateTimePickerMinDate;
 	/**
 	 * Allowed dates to defined value
 	 */
-	dateTo?: DateTimePickerDateTo;
+	maxDate?: DateTimePickerMaxDate;
 	/**
 	 * Input is disabled
 	 */
@@ -85,6 +85,14 @@ export interface DateTimePickerProps {
 	 * When true, once the day has been selected, the datepicker will be automatically closed.
 	 */
 	closeOnSelect?: boolean;
+	/**
+	 * Allow same day selection
+	 */
+	allowSameDay?: boolean;
+	/**
+	 * Show 'Today' button
+	 */
+	todayButton?: boolean;
 }
 
 export default class DateTimePicker extends React.Component<DateTimePickerProps, any> {
