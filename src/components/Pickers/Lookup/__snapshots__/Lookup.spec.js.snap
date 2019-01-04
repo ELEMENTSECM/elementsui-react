@@ -34,6 +34,7 @@ ShallowWrapper {
         "control": [Function],
         "indicatorsContainer": [Function],
         "menu": [Function],
+        "menuPortal": [Function],
       }
     }
   />,
@@ -121,6 +122,7 @@ ShallowWrapper {
               "control": [Function],
               "indicatorsContainer": [Function],
               "menu": [Function],
+              "menuPortal": [Function],
             }
           }
           tabIndex="0"
@@ -203,6 +205,7 @@ ShallowWrapper {
             "control": [Function],
             "indicatorsContainer": [Function],
             "menu": [Function],
+            "menuPortal": [Function],
           },
           "tabIndex": "0",
           "tabSelectsValue": false,
@@ -297,6 +300,7 @@ ShallowWrapper {
                 "control": [Function],
                 "indicatorsContainer": [Function],
                 "menu": [Function],
+                "menuPortal": [Function],
               }
             }
             tabIndex="0"
@@ -379,6 +383,7 @@ ShallowWrapper {
               "control": [Function],
               "indicatorsContainer": [Function],
               "menu": [Function],
+              "menuPortal": [Function],
             },
             "tabIndex": "0",
             "tabSelectsValue": false,

@@ -80,6 +80,7 @@ class Lookup extends React.PureComponent {
 				};
 			},
 			menu: base => ({ ...base, zIndex: 9999 }),
+			menuPortal: base => ({ ...base, zIndex: 9999 }),
 			indicatorsContainer: (base, state) => ({
 				...base,
 				":before": state.isDisabled && {

@@ -2,24 +2,32 @@ import * as React from "react";
 import DateTimePicker from "elementsui-react/Pickers/DateTimePicker";
 
 /** DateTimePicker */
-export default function DateTimePickerDefault() {
-	function addDays(date, days) {
-		var result = new Date(date);
-		result.setDate(result.getDate() + days);
-		return result;
+export default class DateTimePickerDefault extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			value: new Date()
+		};
 	}
 
-	const dateFrom = Date();
-	const dateTo = addDays(dateFrom, 10);
-	return (
-		<DateTimePicker
-			locale="en"
-			dateFrom={dateFrom}
-			dateTo={dateTo}
-			defaultValue={new Date()}
-			onChange={(value) => alert(value)}
-			dateFormat="LLL"
-			timeFormat="LT"
-		/>
-	);
+	onChange = value => {
+		this.setState({ value: value });
+	};
+
+	render() {
+		return (
+			<div>
+				<DateTimePicker
+					locale="nb"
+					defaultValue={this.state.value}
+					onChange={this.onChange}
+					allowSameDay={true}
+					viewMode="datetime"
+					dateFormat="L"
+					timeFormat="LT"
+					todayButton
+				/>
+			</div>
+		);
+	}
 }
