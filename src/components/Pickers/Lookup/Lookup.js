@@ -1,6 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Select from "react-select/lib/Select";
+import { components } from "react-select";
 import find from "lodash/find";
 import some from "lodash/some";
 import findIndex from "lodash/findIndex";
@@ -9,6 +10,7 @@ import flatten from "lodash/flatten";
 import LookupDialog from "../LookupDialog";
 import { isArray } from "util";
 import onClickOutside from "react-onclickoutside";
+import classNames from "classnames";
 
 const initialCache = {
 	options: [],
@@ -28,10 +30,10 @@ function memoizeLastSingleValueReturn(returnFunc, compareByFunc) {
 			memoized.val = val;
 			return val;
 		}
-	}
+	};
 }
 
-// replace selected option in Options array 
+// replace selected option in Options array
 // with memorized selected object
 // to make them equal by reference
 // (only for a single value lookup)
@@ -51,7 +53,6 @@ class Lookup extends React.PureComponent {
 		pageSize: 10,
 		delay: 300,
 		idSelector: x => x.Id,
-		selectRef: () => {},
 		options: null,
 		isMulti: false,
 		isClearable: true,
@@ -68,11 +69,11 @@ class Lookup extends React.PureComponent {
 				}
 				return {
 					...base,
-					"min-height": 34,
+					minHeight: 34,
 					height: "auto",
 					border: border,
-					"border-radius": 4,
-					"box-shadow": boxShadow
+					borderRadius: 4,
+					boxShadow: boxShadow
 				};
 			},
 			placeholder: () => ({
@@ -89,6 +90,9 @@ class Lookup extends React.PureComponent {
 			})
 		}
 	};
+
+	activeValue = null;
+	selectRef = React.createRef();
 
 	get initialOptionsCache() {
 		return {
@@ -113,7 +117,7 @@ class Lookup extends React.PureComponent {
 		};
 
 		this.onMenuOpen = debounce(this.onMenuOpen, 0);
-		this.mapValue = memoizeLastSingleValueReturn(this.mapValue, o => o && o.value)
+		this.mapValue = memoizeLastSingleValueReturn(this.mapValue, o => o && o.value);
 	}
 
 	onMenuClose = () => {
@@ -127,6 +131,7 @@ class Lookup extends React.PureComponent {
 	onMenuOpen = async () => {
 		await this.setState({
 			menuIsOpen: true,
+			popupVisible: false,
 			optionsCache: this.props.alwaysRefresh ? this.initialOptionsCache : this.state.optionsCache
 		});
 
@@ -246,13 +251,16 @@ class Lookup extends React.PureComponent {
 						? option.fullObjectValue
 						: option.value && find(currentOptions.values, x => idSelector(x) === option.value));
 			} else {
+				const availableValues = currentOptions.values
+					? currentOptions.values.concat(lookupValues)
+					: lookupValues;
 				meta.value = some(option)
 					? option.reduce((values, o) => {
 							if (o.custom) {
 								return [ ...values, o.fullObjectValue ];
 							}
 
-							const value = find(currentOptions.values || lookupValues, x => idSelector(x) === o.value);
+							const value = find(availableValues, x => idSelector(x) === o.value);
 							return value ? [ ...values, value ] : values;
 						}, [])
 					: [];
@@ -280,19 +288,27 @@ class Lookup extends React.PureComponent {
 					value: popupValue
 				});
 		}
-		await this.setState(ps => ({
-			...ps,
-			popupVisible: !ps.popupVisible,
-			popupPosition: rect && {
-				x: rect.left,
-				y: rect.bottom
-			},
-			popupValue,
-			menuIsOpen: false
-		}));
+
+		this.setState(
+			ps => ({
+				...ps,
+				popupVisible: !ps.popupVisible,
+				popupPosition: rect && {
+					x: rect.left,
+					y: rect.bottom
+				},
+				popupValue,
+				menuIsOpen: false
+			}),
+			() => {
+				if (!this.state.popupVisible) {
+					this.selectRef.current.focus();
+				}
+			}
+		);
 	};
 
-	onMultiValueLabelClick = async (e, labelProps) => {
+	onMultiValueLabelClick = labelProps => async e => {
 		const rect = e && e.target && e.target.parentElement.getBoundingClientRect();
 		if (!this.state.optionsCache[this.state.search] || !some(this.state.optionsCache[this.state.search].options)) {
 			await this.loadOptions();
@@ -301,7 +317,10 @@ class Lookup extends React.PureComponent {
 		const { search, optionsCache } = this.state;
 		const { fullObjectValue, idSelector } = this.props;
 		const currentOptions = optionsCache[search] || initialCache;
-		const option = labelProps.data;
+		let option = labelProps ? labelProps.data : this.activeValue;
+		if (!option) {
+			return;
+		}
 
 		const value = fullObjectValue
 			? option.custom ? option.fullObjectValue : find(currentOptions.values, x => idSelector(x) === option.value)
@@ -310,20 +329,8 @@ class Lookup extends React.PureComponent {
 		this.togglePopup(rect, value);
 	};
 
-	renderMultiValueLabel = labelProps => {
-		return (
-			<button
-				type="button"
-				onClick={e => this.onMultiValueLabelClick(e, labelProps)}
-				style={{ border: "none", background: "rgb(230, 230, 230)" }}
-			>
-				{labelProps.data.label}
-			</button>
-		);
-	};
-
 	mapValue = () => {
-		const { isMulti, value: initialValue, fullObjectValue, renderOption, idSelector } = this.props;
+		const { isMulti, value: initialValue, renderOption, idSelector } = this.props;
 		if (initialValue && renderOption) {
 			return !isMulti
 				? {
@@ -357,9 +364,65 @@ class Lookup extends React.PureComponent {
 		}
 	};
 
+	MultiValueContainer = containerProps => (
+		<div className="multivalue-container" role="region" aria-labelledby={this.props.ariaLabelledBy}>
+			<components.MultiValueContainer {...containerProps} />
+		</div>
+	);
+
+	MultiValue = multiValueProps => {
+		if (multiValueProps.isFocused) {
+			this.activeValue = multiValueProps.data;
+		}
+
+		return (
+			<components.MultiValue
+				{...multiValueProps}
+				className={classNames("multi-value", {
+					active: multiValueProps.isFocused && (this.state.focused || this.state.popupVisible)
+				})}
+			/>
+		);
+	};
+
+	MultiValueLabel = labelProps => {
+		const onClick = this.onMultiValueLabelClick(labelProps);
+		return (
+			<button
+				type="button"
+				onClick={onClick}
+				style={{ border: "none", background: "rgb(230, 230, 230)" }}
+				aria-haspopup="dialog"
+				tabIndex={-1}
+			>
+				{labelProps.data.label}
+			</button>
+		);
+	};
+
+	onKeyDown = e => {
+		const eventKey = e.key;
+		switch (eventKey) {
+			case "Enter":
+				e.preventDefault();
+				return this.onMultiValueLabelClick()(e);
+			case "ArrowLeft":
+			case "ArrowRight":
+				return this.setState({ menuIsOpen: false });
+			case "Escape":
+				if (this.state.popupVisible) {
+					this.setState({ popupVisible: false });
+				}
+				break;
+			default:
+				break;
+		}
+	};
+
+	setFocus = () => this.setState(ps => ({ focused: !ps.focused }));
+
 	render() {
 		const {
-			selectRef,
 			placeholder,
 			className,
 			isMulti,
@@ -373,6 +436,8 @@ class Lookup extends React.PureComponent {
 			isDraggable,
 			id,
 			disabled,
+			ariaLabel,
+			ariaLabelledBy,
 			inputId
 		} = this.props;
 		const { search, optionsCache, menuIsOpen, customOptions } = this.state;
@@ -392,13 +457,16 @@ class Lookup extends React.PureComponent {
 					value={valueOption}
 					inputValue={search}
 					menuIsOpen={menuIsOpen}
+					onFocus={this.setFocus}
+					onBlur={this.setFocus}
 					onMenuClose={this.onMenuClose}
 					onMenuOpen={this.onMenuOpen}
+					onKeyDown={this.onKeyDown}
 					onInputChange={this.onInputChange}
 					onMenuScrollToBottom={this.onMenuScrollToBottom}
 					isLoading={currentOptions.isLoading}
 					options={options}
-					ref={selectRef}
+					ref={this.selectRef}
 					onChange={this.onChange}
 					placeholder={placeholder}
 					className={className}
@@ -410,17 +478,25 @@ class Lookup extends React.PureComponent {
 					menuPlacement={menuPlacement}
 					noOptionsMessage={noOptionsMessage}
 					loadingMessage={loadingMessage}
-					components={Popup && { MultiValueLabel: this.renderMultiValueLabel }}
+					components={{
+						MultiValueLabel: this.MultiValueLabel,
+						MultiValueContainer: this.MultiValueContainer,
+						MultiValue: this.MultiValue
+					}}
 					openMenuOnClick={!isMulti}
 					openMenuOnFocus={!isMulti}
 					isDisabled={disabled}
 					tabSelectsValue={false}
+					aria-label={ariaLabel}
+					aria-labelledby={ariaLabelledBy}
+					className="lookup"
 				/>
 				{this.state.popupVisible && (
 					<ExtendedLookupDialog
 						close={this.togglePopup}
 						position={this.state.popupPosition}
 						isDraggable={isDraggable}
+						ariaLabelledBy={ariaLabelledBy}
 					>
 						<Popup value={this.state.popupValue} onSubmit={this.togglePopup} />
 					</ExtendedLookupDialog>
@@ -484,10 +560,6 @@ Lookup.propTypes = {
 	 * A custom error message otherwise the general error message will be used
 	 */
 	errorMessage: PropTypes.string,
-	/**
-	 * Reference to select element
-	 */
-	selectRef: PropTypes.func,
 	/**
 	 * Lookup options
 	 */
@@ -569,7 +641,22 @@ Lookup.propTypes = {
 	/**
 	 * Function that returns one or many records that will be appened to the result list
 	 */
-	customOptions: PropTypes.func
+	customOptions: PropTypes.func,
+	/** Aria label */
+	ariaLabel: PropTypes.string,
+	/** 
+	 * Labelled by Id
+	 * */
+	ariaLabelledBy: PropTypes.string,
+	/** 
+	 * Labels
+	*/
+	labels: PropTypes.shape({
+		/**
+		 * Delete button label
+		 */
+		delete: PropTypes.string
+	})
 };
 
 export default Lookup;

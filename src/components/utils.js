@@ -11,6 +11,17 @@ export function omit(obj, omitKeys) {
 	return result;
 }
 
+export function isDescendant(parent, child) {
+	let node = child.parentNode;
+	while (node !== null) {
+		if (node === parent) {
+			return true;
+		}
+		node = node.parentNode;
+	}
+	return false;
+}
+
 export const keyCodes = {
 	esc: 27,
 	space: 32,

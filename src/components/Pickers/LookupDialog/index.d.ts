@@ -18,6 +18,10 @@ export interface LookupDialogProps {
 	 * Enabled drag n drop for a diealog
 	 */
 	isDraggable?: boolean;
+	/**
+	 * Labelled by Id
+	 */
+	ariaLabelledBy?: string;
 }
 
 export default class LookupDialog extends React.Component<LookupDialogProps, any> {

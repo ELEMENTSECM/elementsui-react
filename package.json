@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.4.11",
+	"version": "0.4.28",
 	"main": "./lib/index.js",
 	"private": true,
 	"engines": {
@@ -45,7 +45,7 @@
 		"react-popper": "^1.3.0",
 		"react-router": "^4.2.0",
 		"react-router-dom": "^4.2.2",
-		"react-select": "^2.0.0",
+		"react-select": "^2.2.0",
 		"react-spinners": "^0.4.5",
 		"react-syntax-highlighter": "^7.0.4",
 		"react-treeview": "^0.4.7",

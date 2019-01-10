@@ -7,15 +7,11 @@ describe("DropdownMenu", () => {
 	let isOpen;
 	let direction;
 	let inNavbar;
-	let popperManager;
 
 	beforeEach(() => {
 		isOpen = false;
 		direction = "down";
 		inNavbar = false;
-		popperManager = {
-			getTargetNode: () => ({})
-		};
 	});
 
 	it('should not have the class "show" when isOpen context is false', () => {
@@ -25,8 +21,7 @@ describe("DropdownMenu", () => {
 				<p>Content</p>
 			</DropdownMenu>,
 			{
-				context: { isOpen, direction, inNavbar, popperManager },
-				childContextTypes: { popperManager }
+				context: { isOpen, direction, inNavbar }
 			}
 		);
 
@@ -38,8 +33,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "unknown";
 		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("bottom-start");
@@ -48,8 +42,7 @@ describe("DropdownMenu", () => {
 	it('should render down when direction is "down" on the context', () => {
 		isOpen = true;
 		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("bottom-start");
@@ -59,8 +52,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "up";
 		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("top-start");
@@ -70,8 +62,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "left";
 		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("left-start");
@@ -81,8 +72,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "right";
 		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("right-start");
@@ -91,8 +81,7 @@ describe("DropdownMenu", () => {
 	it("should not disable flip modifier by default", () => {
 		isOpen = true;
 		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("modifiers")).toBe(undefined);
@@ -101,8 +90,7 @@ describe("DropdownMenu", () => {
 	it("should disable flip modifier when flip is false", () => {
 		isOpen = true;
 		const wrapper = shallow(<DropdownMenu flip={false}>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("modifiers")).toEqual({ flip: { enabled: false } });
@@ -110,8 +98,7 @@ describe("DropdownMenu", () => {
 
 	it("should not render multiple children when isOpen is false", () => {
 		const wrapper = mount(<DropdownMenu right>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.childAt(0).children().length).toBe(0);
@@ -119,8 +106,7 @@ describe("DropdownMenu", () => {
 
 	it("should render custom tag", () => {
 		const wrapper = mount(<DropdownMenu tag="main">Yo!</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar, popperManager },
-			childContextTypes: { popperManager }
+			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.text()).toBe("Yo!");
