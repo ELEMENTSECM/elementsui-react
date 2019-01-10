@@ -42,6 +42,10 @@ export type LookupNoOptionsMessage = ((...args: any[]) => any) | any;
 
 export type LookupLoadingMessage = ((...args: any[]) => any) | any;
 
+export interface LookupLabels {
+	delete?: string;
+}
+
 export interface LookupProps {
 	/**
 	 * The id to set on the SelectContainer component
@@ -91,10 +95,6 @@ export interface LookupProps {
 	 * A custom error message otherwise the general error message will be used
 	 */
 	errorMessage?: string;
-	/**
-	 * Reference to select element
-	 */
-	selectRef?: (...args: any[]) => any;
 	/**
 	 * Lookup options
 	 */
@@ -155,6 +155,18 @@ export interface LookupProps {
 	 * Function that returns one or many records that will be appened to the result list
 	 */
 	customOptions?: (...args: any[]) => any;
+	/**
+	 * Aria label
+	 */
+	ariaLabel?: string;
+	/**
+	 * Labelled by Id
+	 */
+	ariaLabelledBy?: string;
+	/**
+	 * Labels
+	 */
+	labels?: LookupLabels;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

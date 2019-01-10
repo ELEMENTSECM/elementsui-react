@@ -1,10 +1,42 @@
 import PropTypes from "prop-types";
 import * as React from "react";
+import ReactDOM from "react-dom";
 import Draggable from "react-draggable";
+import { isDescendant } from "../../utils";
 
 export default class LookupDialog extends React.Component {
-	handleClickOutside = (event) => {
+	containerRef = React.createRef();
+
+	componentDidMount() {
+		this.focusFirstInput();
+	}
+
+	handleClickOutside = event => {
 		this.props.close(event);
+	};
+
+	focusFirstInput = () => {
+		for (let input of this.containerRef.current.querySelectorAll("input")) {
+			if (input.type !== "hidden") {
+				input.focus();
+				break;
+			}
+		}
+	};
+
+	onKeyDown = e => {
+		const eventKey = e.key;
+		switch (eventKey) {
+			case "Escape":
+				this.props.close(e);
+				break;
+			case "Tab":
+				if (!isDescendant(this.containerRef.current, e.target)) {
+					e.preventDefault();
+					this.focusFirstInput();
+				}
+				break;
+		}
 	};
 
 	render() {
@@ -30,6 +62,10 @@ export default class LookupDialog extends React.Component {
 			<Draggable handle=".popup-container" defaultPosition={defaultPosition}>
 				<div
 					className="popup-container"
+					ref={this.containerRef}
+					role="dialog"
+					onKeyDown={this.onKeyDown}
+					aria-labelledby={this.props.ariaLabelledBy}
 					style={{
 						position: "fixed",
 						top: defaultPosition.x,
@@ -53,6 +89,10 @@ export default class LookupDialog extends React.Component {
 				<div className="popup-overlay" style={{ zIndex: 1055 }} />
 				<div
 					className="popup-container ignore-react-onclickoutside"
+					ref={this.containerRef}
+					onKeyDown={this.onKeyDown}
+					role="dialog"
+					aria-labelledby={this.props.ariaLabelledBy}
 					style={{
 						top: 0,
 						left: 0,
@@ -82,5 +122,9 @@ LookupDialog.propTypes = {
 	/**
 	 * Enabled drag n drop for a diealog
 	 */
-	isDraggable: PropTypes.bool
+	isDraggable: PropTypes.bool,
+	/**
+	 * Labelled by Id
+	 */
+	ariaLabelledBy: PropTypes.string
 };

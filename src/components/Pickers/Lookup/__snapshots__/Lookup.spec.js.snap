@@ -26,7 +26,6 @@ ShallowWrapper {
     pageSize={10}
     queryProvider={[Function]}
     renderOption={[Function]}
-    selectRef={[Function]}
     styles={
       Object {
         "control": [Function],
@@ -51,13 +50,21 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Select
+          aria-label={undefined}
+          aria-labelledby={undefined}
           backspaceRemovesValue={true}
           blurInputOnSelect={true}
           captureMenuScroll={false}
-          className={undefined}
+          className="lookup"
           closeMenuOnScroll={false}
           closeMenuOnSelect={true}
-          components={Object {}}
+          components={
+            Object {
+              "MultiValue": [Function],
+              "MultiValueContainer": [Function],
+              "MultiValueLabel": [Function],
+            }
+          }
           controlShouldRenderValue={true}
           escapeClearsValue={false}
           filterOption={[Function]}
@@ -84,8 +91,11 @@ ShallowWrapper {
           menuShouldScrollIntoView={true}
           minMenuHeight={140}
           noOptionsMessage={[Function]}
+          onBlur={[Function]}
           onChange={[Function]}
+          onFocus={[Function]}
           onInputChange={[Function]}
+          onKeyDown={[Function]}
           onMenuClose={[Function]}
           onMenuOpen={[Function]}
           onMenuScrollToBottom={[Function]}
@@ -130,13 +140,19 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "aria-label": undefined,
+          "aria-labelledby": undefined,
           "backspaceRemovesValue": true,
           "blurInputOnSelect": true,
           "captureMenuScroll": false,
-          "className": undefined,
+          "className": "lookup",
           "closeMenuOnScroll": false,
           "closeMenuOnSelect": true,
-          "components": Object {},
+          "components": Object {
+            "MultiValue": [Function],
+            "MultiValueContainer": [Function],
+            "MultiValueLabel": [Function],
+          },
           "controlShouldRenderValue": true,
           "escapeClearsValue": false,
           "filterOption": [Function],
@@ -163,8 +179,11 @@ ShallowWrapper {
           "menuShouldScrollIntoView": true,
           "minMenuHeight": 140,
           "noOptionsMessage": [Function],
+          "onBlur": [Function],
           "onChange": [Function],
+          "onFocus": [Function],
           "onInputChange": [Function],
+          "onKeyDown": [Function],
           "onMenuClose": [Function],
           "onMenuOpen": [Function],
           "onMenuScrollToBottom": [Function],
@@ -195,7 +214,9 @@ ShallowWrapper {
           "theme": undefined,
           "value": undefined,
         },
-        "ref": [Function],
+        "ref": Object {
+          "current": null,
+        },
         "rendered": null,
         "type": [Function],
       },
@@ -211,13 +232,21 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Select
+            aria-label={undefined}
+            aria-labelledby={undefined}
             backspaceRemovesValue={true}
             blurInputOnSelect={true}
             captureMenuScroll={false}
-            className={undefined}
+            className="lookup"
             closeMenuOnScroll={false}
             closeMenuOnSelect={true}
-            components={Object {}}
+            components={
+              Object {
+                "MultiValue": [Function],
+                "MultiValueContainer": [Function],
+                "MultiValueLabel": [Function],
+              }
+            }
             controlShouldRenderValue={true}
             escapeClearsValue={false}
             filterOption={[Function]}
@@ -244,8 +273,11 @@ ShallowWrapper {
             menuShouldScrollIntoView={true}
             minMenuHeight={140}
             noOptionsMessage={[Function]}
+            onBlur={[Function]}
             onChange={[Function]}
+            onFocus={[Function]}
             onInputChange={[Function]}
+            onKeyDown={[Function]}
             onMenuClose={[Function]}
             onMenuOpen={[Function]}
             onMenuScrollToBottom={[Function]}
@@ -290,13 +322,19 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "aria-label": undefined,
+            "aria-labelledby": undefined,
             "backspaceRemovesValue": true,
             "blurInputOnSelect": true,
             "captureMenuScroll": false,
-            "className": undefined,
+            "className": "lookup",
             "closeMenuOnScroll": false,
             "closeMenuOnSelect": true,
-            "components": Object {},
+            "components": Object {
+              "MultiValue": [Function],
+              "MultiValueContainer": [Function],
+              "MultiValueLabel": [Function],
+            },
             "controlShouldRenderValue": true,
             "escapeClearsValue": false,
             "filterOption": [Function],
@@ -323,8 +361,11 @@ ShallowWrapper {
             "menuShouldScrollIntoView": true,
             "minMenuHeight": 140,
             "noOptionsMessage": [Function],
+            "onBlur": [Function],
             "onChange": [Function],
+            "onFocus": [Function],
             "onInputChange": [Function],
+            "onKeyDown": [Function],
             "onMenuClose": [Function],
             "onMenuOpen": [Function],
             "onMenuScrollToBottom": [Function],
@@ -355,7 +396,9 @@ ShallowWrapper {
             "theme": undefined,
             "value": undefined,
           },
-          "ref": [Function],
+          "ref": Object {
+            "current": null,
+          },
           "rendered": null,
           "type": [Function],
         },
