@@ -138,7 +138,7 @@ class Lookup extends React.PureComponent {
 
 		const { optionsCache } = this.state;
 
-		if (this.props.alwaysRefresh || (this.props.allowSearchWithEmptyFilter && !some(optionsCache[""].options))) {
+		if (this.props.allowSearchWithEmptyFilter && (this.props.alwaysRefresh || !some(optionsCache[""].options))) {
 			await this.loadOptions();
 		}
 	};
