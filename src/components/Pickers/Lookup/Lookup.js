@@ -56,6 +56,7 @@ class Lookup extends React.PureComponent {
 		options: null,
 		isMulti: false,
 		isClearable: true,
+		allowSearchWithEmptyFilter: true,
 		menuPlacement: "bottom",
 		styles: {
 			control: (base, state) => {
@@ -137,7 +138,7 @@ class Lookup extends React.PureComponent {
 
 		const { optionsCache } = this.state;
 
-		if (this.props.alwaysRefresh || !some(optionsCache[""].options)) {
+		if (this.props.alwaysRefresh || (this.props.allowSearchWithEmptyFilter && !some(optionsCache[""].options))) {
 			await this.loadOptions();
 		}
 	};
@@ -149,8 +150,8 @@ class Lookup extends React.PureComponent {
 		});
 
 		const { optionsCache } = this.state;
-
-		if (!optionsCache[search]) {
+		const shouldLoadOptions = !optionsCache[search] && (search || this.props.allowSearchWithEmptyFilter);
+		if (shouldLoadOptions) {
 			await this.loadOptions();
 		}
 	};
@@ -421,6 +422,21 @@ class Lookup extends React.PureComponent {
 
 	setFocus = () => this.setState(ps => ({ focused: !ps.focused }));
 
+	get customComponentRenderers() {
+		const { allowSearchWithEmptyFilter } = this.props;
+		let renderers = {
+			MultiValueLabel: this.MultiValueLabel,
+			MultiValueContainer: this.MultiValueContainer,
+			MultiValue: this.MultiValue
+		};
+
+		if (!allowSearchWithEmptyFilter) {
+			renderers.DropdownIndicator = null;
+		}
+
+		return renderers;
+	}
+
 	render() {
 		const {
 			placeholder,
@@ -438,7 +454,8 @@ class Lookup extends React.PureComponent {
 			disabled,
 			ariaLabel,
 			ariaLabelledBy,
-			inputId
+			inputId,
+			allowSearchWithEmptyFilter
 		} = this.props;
 		const { search, optionsCache, menuIsOpen, customOptions } = this.state;
 		const currentOptions = optionsCache[search] || initialCache;
@@ -478,13 +495,9 @@ class Lookup extends React.PureComponent {
 					menuPlacement={menuPlacement}
 					noOptionsMessage={noOptionsMessage}
 					loadingMessage={loadingMessage}
-					components={{
-						MultiValueLabel: this.MultiValueLabel,
-						MultiValueContainer: this.MultiValueContainer,
-						MultiValue: this.MultiValue
-					}}
-					openMenuOnClick={!isMulti}
-					openMenuOnFocus={!isMulti}
+					components={this.customComponentRenderers}
+					openMenuOnClick={allowSearchWithEmptyFilter && !isMulti}
+					openMenuOnFocus={allowSearchWithEmptyFilter && !isMulti}
 					isDisabled={disabled}
 					tabSelectsValue={false}
 					aria-label={ariaLabel}
@@ -656,7 +669,11 @@ Lookup.propTypes = {
 		 * Delete button label
 		 */
 		delete: PropTypes.string
-	})
+	}),
+	/**
+	 * Allows search for values without filtering text
+	 */
+	allowSearchWithEmptyFilter: PropTypes.bool
 };
 
 export default Lookup;

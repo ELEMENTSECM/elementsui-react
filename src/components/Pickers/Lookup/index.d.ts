@@ -167,6 +167,10 @@ export interface LookupProps {
 	 * Labels
 	 */
 	labels?: LookupLabels;
+	/**
+	 * Allows search for values without filtering text
+	 */
+	allowSearchWithEmptyFilter?: boolean;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {
