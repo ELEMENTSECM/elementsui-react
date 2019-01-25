@@ -80,8 +80,7 @@ class Lookup extends React.PureComponent {
 			placeholder: () => ({
 				display: "none"
 			}),
-			menuPortal: base => ({ ...base, zIndex: 9999 }),
-			menu: base => ({ ...base, position: "relative" }),
+			menu: base => ({ ...base, zIndex: 9999 }),
 			indicatorsContainer: (base, state) => ({
 				...base,
 				":before": state.isDisabled && {
@@ -490,7 +489,6 @@ class Lookup extends React.PureComponent {
 					isMulti={isMulti}
 					styles={styles}
 					theme={theme}
-					menuPortalTarget={document.body}
 					isClearable={isClearable}
 					menuPlacement={menuPlacement}
 					noOptionsMessage={noOptionsMessage}
