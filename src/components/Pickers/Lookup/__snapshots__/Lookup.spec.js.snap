@@ -32,7 +32,6 @@ ShallowWrapper {
         "control": [Function],
         "indicatorsContainer": [Function],
         "menu": [Function],
-        "menuPortal": [Function],
         "placeholder": [Function],
       }
     }
@@ -86,7 +85,6 @@ ShallowWrapper {
           maxMenuHeight={300}
           menuIsOpen={false}
           menuPlacement="bottom"
-          menuPortalTarget={<body />}
           menuPosition="absolute"
           menuShouldBlockScroll={false}
           menuShouldScrollIntoView={true}
@@ -122,7 +120,6 @@ ShallowWrapper {
               "control": [Function],
               "indicatorsContainer": [Function],
               "menu": [Function],
-              "menuPortal": [Function],
               "placeholder": [Function],
             }
           }
@@ -174,7 +171,6 @@ ShallowWrapper {
           "maxMenuHeight": 300,
           "menuIsOpen": false,
           "menuPlacement": "bottom",
-          "menuPortalTarget": <body />,
           "menuPosition": "absolute",
           "menuShouldBlockScroll": false,
           "menuShouldScrollIntoView": true,
@@ -207,7 +203,6 @@ ShallowWrapper {
             "control": [Function],
             "indicatorsContainer": [Function],
             "menu": [Function],
-            "menuPortal": [Function],
             "placeholder": [Function],
           },
           "tabIndex": "0",
@@ -268,7 +263,6 @@ ShallowWrapper {
             maxMenuHeight={300}
             menuIsOpen={false}
             menuPlacement="bottom"
-            menuPortalTarget={<body />}
             menuPosition="absolute"
             menuShouldBlockScroll={false}
             menuShouldScrollIntoView={true}
@@ -304,7 +298,6 @@ ShallowWrapper {
                 "control": [Function],
                 "indicatorsContainer": [Function],
                 "menu": [Function],
-                "menuPortal": [Function],
                 "placeholder": [Function],
               }
             }
@@ -356,7 +349,6 @@ ShallowWrapper {
             "maxMenuHeight": 300,
             "menuIsOpen": false,
             "menuPlacement": "bottom",
-            "menuPortalTarget": <body />,
             "menuPosition": "absolute",
             "menuShouldBlockScroll": false,
             "menuShouldScrollIntoView": true,
@@ -389,7 +381,6 @@ ShallowWrapper {
               "control": [Function],
               "indicatorsContainer": [Function],
               "menu": [Function],
-              "menuPortal": [Function],
               "placeholder": [Function],
             },
             "tabIndex": "0",
