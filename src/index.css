@@ -510,4 +510,61 @@ Notes on possible css class implementation:
 	padding-left: 0.75rem;
 }
 
-/** DateTimePicker **/
+/** Items **/
+.eui-items {
+    padding: 2px;
+    min-height: 26px;
+    background-color: #f8f8f8;
+}
+
+.eui-items__list {
+    max-height: 105px;
+    overflow-y: auto;
+    display: block;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eui-items__list__item {
+    margin: 0 0 1px 3px;
+    padding: 0 6px 0 3px;
+    float: left;
+    border-radius: 1px;
+    border: 1px solid #cccaca;
+    outline: solid 1px transparent;
+    background-color: #f1eeee;
+    text-shadow: 0 0 3px #fffefe;
+    color: #333;
+    cursor: default;
+}
+
+.eui-items__list__item:hover {
+    background-color: #fbfbfb;
+    border: 1px solid #c3c2c2;
+    cursor: pointer;
+}
+
+.eui-items__list__item__remove {
+    color: #676767;
+    padding: 0 1px;
+    margin-right: 3px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    background: none;
+    border: none;
+}
+
+.eui-items__list__item__remove:hover {
+    transform: scale(1.2);
+    color: #560404;
+}
+
+.eui-items__list__item__remove:focus {
+    outline: none;
+}
