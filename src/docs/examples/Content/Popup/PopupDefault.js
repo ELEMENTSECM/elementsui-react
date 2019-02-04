@@ -1,7 +1,7 @@
 import * as React from "react";
 import Popup from "elementsui-react/Content/Popup";
 import { Button } from "react-bootstrap";
-import Draggable from "react-draggable"
+import Draggable from "react-draggable";
 
 export default class PopupDefault extends React.Component {
 	constructor(props) {

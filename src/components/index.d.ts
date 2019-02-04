@@ -1,3 +1,21 @@
+export { default as DateTimePicker, DateTimePickerProps } from "./Pickers/DateTimePicker";
+export { default as Dropdown, DropdownProps } from "./Controls/Dropdown";
+export { default as DropdownItem, DropdownItemProps } from "./Controls/DropdownItem";
+export { default as DropdownMenu, DropdownMenuProps } from "./Controls/DropdownMenu";
+export { default as DropdownToggle, DropdownToggleProps } from "./Controls/DropdownToggle";
+export { default as InfiniteList, InfiniteListProps } from "./Content/InfiniteList";
+export { default as Items, ItemsProps } from "./Content/Items";
+export { default as ListItem, ListItemProps } from "./Content/ListItem";
+export { default as Lookup, LookupProps } from "./Pickers/Lookup";
+export { default as LookupDialog, LookupDialogProps } from "./Pickers/LookupDialog";
+export { default as Popup, PopupProps } from "./Content/Popup";
+export { default as RichText, RichTextProps } from "./Inputs/RichText";
+export { default as Spinner, SpinnerProps } from "./Indicators/Spinner";
+export { addLocaleData } from "react-intl";
+export { default as en } from "react-intl/locale-data/en";
+export { default as nb } from "react-intl/locale-data/nb";
+export { default as nn } from "react-intl/locale-data/nn";
+export { default as sv } from "react-intl/locale-data/sv";
 export {
 	Alert as BSAlert,
 	Badge as BSBadge,
@@ -48,20 +66,3 @@ export {
 	Checkbox as BSCheckbox,
 	Dropdown as BSDropdown
 } from "react-bootstrap";
-export { addLocaleData } from "react-intl";
-export { default as DateTimePicker, DateTimePickerProps } from "./Pickers/DateTimePicker";
-export { default as Dropdown, DropdownProps } from "./Controls/Dropdown";
-export { default as DropdownItem, DropdownItemProps } from "./Controls/DropdownItem";
-export { default as DropdownMenu, DropdownMenuProps } from "./Controls/DropdownMenu";
-export { default as DropdownToggle, DropdownToggleProps } from "./Controls/DropdownToggle";
-export { default as InfiniteList, InfiniteListProps } from "./Content/InfiniteList";
-export { default as ListItem, ListItemProps } from "./Content/ListItem";
-export { default as Lookup, LookupProps } from "./Pickers/Lookup";
-export { default as LookupDialog, LookupDialogProps } from "./Pickers/LookupDialog";
-export { default as Popup, PopupProps } from "./Content/Popup";
-export { default as RichText, RichTextProps } from "./Inputs/RichText";
-export { default as Spinner, SpinnerProps } from "./Indicators/Spinner";
-export { default as en } from "react-intl/locale-data/en";
-export { default as nb } from "react-intl/locale-data/nb";
-export { default as nn } from "react-intl/locale-data/nn";
-export { default as sv } from "react-intl/locale-data/sv";
