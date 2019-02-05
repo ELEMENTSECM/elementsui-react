@@ -37,6 +37,10 @@ export interface DropdownToggleProps {
 	 * Is part of navigation menu
 	 */
 	nav?: boolean;
+	/**
+	 * Is menuitem
+	 */
+	menuItem?: boolean;
 }
 
 export default class DropdownToggle extends React.Component<DropdownToggleProps, any> {

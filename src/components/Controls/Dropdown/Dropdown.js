@@ -34,13 +34,13 @@ class Dropdown extends React.Component {
 	};
 
 	addEvents = () => {
-		[ "click", "touchstart", "keyup" ].forEach(event =>
+		["click", "touchstart", "keyup"].forEach(event =>
 			document.addEventListener(event, this.handleDocumentClick, true)
 		);
 	};
 
 	removeEvents = () => {
-		[ "click", "touchstart", "keyup" ].forEach(event =>
+		["click", "touchstart", "keyup"].forEach(event =>
 			document.removeEventListener(event, this.handleDocumentClick, true)
 		);
 	};
@@ -63,22 +63,31 @@ class Dropdown extends React.Component {
 	handleKeyDown = e => {
 		if (
 			keyCodes.tab === e.which ||
-			(/button/i.test(e.target.tagName) && e.which === keyCodes.space) ||
-			/input|textarea/i.test(e.target.tagName)
+			(/button/i.test(e.target.tagName) && [keyCodes.space, keyCodes.enter].includes(e.which)) ||
+			/input|textarea|select/i.test(e.target.tagName)
 		) {
 			return;
 		}
 
 		e.preventDefault();
+
 		if (this.props.disabled) return;
 
 		const container = this.getContainer();
+		const isDropdown = e.target.classList.contains("dropdown-toggle");
 
-		if ((e.which === keyCodes.space || e.which === keyCodes.enter) && this.props.isOpen && container !== e.target) {
+		if (
+			(e.which === keyCodes.space || e.which === keyCodes.enter) &&
+			this.props.isOpen &&
+			container !== e.target
+		) {
 			e.target.click();
 		}
 
-		if (e.which === keyCodes.esc || !this.props.isOpen) {
+		if (
+			e.which === keyCodes.esc ||
+			(!this.props.isOpen && ![keyCodes.down, keyCodes.up].includes(e.which))
+		) {
 			this.toggle(e);
 			container.querySelector("[aria-expanded]").focus();
 			return;
@@ -88,7 +97,9 @@ class Dropdown extends React.Component {
 		const itemClass = "dropdown-item";
 		const disabledClass = "disabled";
 
-		const items = container.querySelectorAll(`.${menuClass} .${itemClass}:not(.${disabledClass})`);
+		let items = container.querySelectorAll(`.${menuClass} .${itemClass}:not(.${disabledClass})`);
+		items = Array.from(items).filter(v => v && v.offsetParent); // removes hidden elements..
+
 		if (!items.length) return;
 
 		let index = -1;
@@ -146,7 +157,7 @@ class Dropdown extends React.Component {
 			active,
 			addonType,
 			...attrs
-		} = omit(this.props, [ "toggle", "disabled", "inNavbar", "direction" ]);
+		} = omit(this.props, ["toggle", "disabled", "inNavbar", "direction"]);
 
 		const direction = this.props.direction === "down" && dropup ? "up" : this.props.direction;
 
@@ -187,7 +198,7 @@ Dropdown.propTypes = {
 	/** Is dropdown disabled */
 	disabled: PropTypes.bool,
 	/** Open direction */
-	direction: PropTypes.oneOf([ "up", "down", "left", "right" ]),
+	direction: PropTypes.oneOf(["up", "down", "left", "right"]),
 	/** Is button group */
 	group: PropTypes.bool,
 	/** Is dropdown open */
@@ -197,7 +208,7 @@ Dropdown.propTypes = {
 	/** Is dropdown active */
 	active: PropTypes.bool,
 	/** Addon type */
-	addonType: PropTypes.oneOfType([ PropTypes.bool, PropTypes.oneOf([ "prepend", "append" ]) ]),
+	addonType: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["prepend", "append"])]),
 	/** Size */
 	size: PropTypes.string,
 	/** HTML element tag */
@@ -225,7 +236,7 @@ Dropdown.defaultProps = {
 Dropdown.childContextTypes = {
 	toggle: PropTypes.func.isRequired,
 	isOpen: PropTypes.bool.isRequired,
-	direction: PropTypes.oneOf([ "up", "down", "left", "right" ]).isRequired,
+	direction: PropTypes.oneOf(["up", "down", "left", "right"]).isRequired,
 	inNavbar: PropTypes.bool.isRequired
 };
 
