@@ -27,6 +27,8 @@ export const keyCodes = {
 	space: 32,
 	enter: 13,
 	tab: 9,
+	left:37,
 	up: 38,
+	right:39,
 	down: 40
 };

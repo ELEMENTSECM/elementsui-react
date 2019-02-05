@@ -7,8 +7,12 @@ import { omit, keyCodes } from "../../utils";
 
 class Dropdown extends React.Component {
 	getChildContext() {
+		const toggle = () => {
+			if(this.props.parentToggle && this.props.isOpen) this.props.parentToggle();
+			this.props.toggle();
+		}
 		return {
-			toggle: this.props.toggle,
+			toggle: toggle,
 			isOpen: this.props.isOpen,
 			direction: this.props.direction === "down" && this.props.dropup ? "up" : this.props.direction,
 			inNavbar: this.props.inNavbar
@@ -146,7 +150,7 @@ class Dropdown extends React.Component {
 			active,
 			addonType,
 			...attrs
-		} = omit(this.props, [ "toggle", "disabled", "inNavbar", "direction" ]);
+		} = omit(this.props, [ "toggle", "parentToggle", "disabled", "inNavbar", "direction" ]);
 
 		const direction = this.props.direction === "down" && dropup ? "up" : this.props.direction;
 
@@ -211,7 +215,11 @@ Dropdown.propTypes = {
 	/** Is in nav bar */
 	inNavbar: PropTypes.bool,
 	/** Dropdoen is active if one of it's children is active */
-	setActiveFromChild: PropTypes.bool
+	setActiveFromChild: PropTypes.bool,
+	/**
+	 * Parent toggle
+	 */
+	parentToggle: PropTypes.func,
 };
 Dropdown.defaultProps = {
 	isOpen: false,

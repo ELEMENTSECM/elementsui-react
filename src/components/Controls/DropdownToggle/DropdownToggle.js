@@ -22,12 +22,13 @@ class DropdownToggle extends React.Component {
 	};
 
 	render() {
-		const { className, color, caret, split, nav, tag, ...props } = this.props;
+		const { className, color, caret, split, nav, tag, menuItem, ...props } = this.props;
 		const ariaLabel = props["aria-label"] || "Toggle Dropdown";
 		const classes = classNames(className, {
+			"dropdown-item": menuItem,
 			"dropdown-toggle": caret || split,
 			"dropdown-toggle-split": split,
-			"nav-link": nav
+			"nav-link": nav,
 		});
 		const children = props.children || <span className="sr-only">{ariaLabel}</span>;
 
@@ -51,6 +52,7 @@ class DropdownToggle extends React.Component {
 					onClick={this.onClick}
 					aria-expanded={this.context.isOpen}
 					children={children}
+					role={menuItem ? "menuitem" : ""}
 				/>
 			);
 		}
@@ -58,7 +60,7 @@ class DropdownToggle extends React.Component {
 		return (
 			<Reference>
 				{({ ref }) => (
-					<Tag className={classes} onClick={this.onClick} aria-expanded={this.context.isOpen} ref={ref}>
+					<Tag className={classes} onClick={this.onClick} aria-expanded={this.context.isOpen} ref={ref} role={menuItem ? "menuitem" : ""}>
 						{children}
 					</Tag>
 				)}
@@ -85,11 +87,13 @@ DropdownToggle.propTypes = {
 	/** Element HTML tag */
 	tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
 	/** Is part of navigation menu */
-	nav: PropTypes.bool
+	nav: PropTypes.bool,
+	/** Is menuitem */
+	menuItem: PropTypes.bool
 };
 DropdownToggle.defaultProps = {
 	"aria-haspopup": true,
-	color: "secondary"
+	color: "secondary",
 };
 DropdownToggle.contextTypes = {
 	isOpen: PropTypes.bool.isRequired,
