@@ -14,7 +14,7 @@ class DropdownItem extends React.Component {
 			this.props.onClick(e);
 		}
 
-		if (this.props.toggle) {
+		if (this.props.tag !== "select" && this.props.toggle) {
 			this.context.toggle(e);
 		}
 	};
