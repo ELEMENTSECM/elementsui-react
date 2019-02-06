@@ -61,6 +61,10 @@ export interface DropdownProps {
 	 * Dropdoen is active if one of it's children is active
 	 */
 	setActiveFromChild?: boolean;
+	/**
+	 * Parent toggle
+	 */
+	parentToggle?: (...args: any[]) => any;
 }
 
 export default class Dropdown extends React.Component<DropdownProps, any> {
