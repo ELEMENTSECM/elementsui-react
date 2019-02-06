@@ -26,7 +26,7 @@ export default class Example extends React.Component {
 			<Dropdown isOpen={this.state.dropdownOpen} toggle={() => this.toggle("dropdownOpen")}>
 				<DropdownToggle caret>Dropdown</DropdownToggle>
 				<DropdownMenu>
-					<Dropdown isOpen={this.state.submenu} toggle={() => this.toggle("submenu")} direction="right" inNavbar>
+					<Dropdown isOpen={this.state.submenu} parentToggle={() => this.toggle("dropdownOpen")} toggle={() => this.toggle("submenu")} direction="right" inNavbar>
 						<DropdownToggle menuItem caret>Dropdown2</DropdownToggle>	
 						<DropdownMenu>
 							<DropdownItem onClick={this.onClick}>Action 2</DropdownItem>
