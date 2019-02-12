@@ -22,6 +22,8 @@
 		"elements"
 	],
 	"dependencies": {
+		"@types/react-bootstrap": "^0.32.16",
+		"@types/react-select": "^2.0.11",
 		"commander": "^2.15.1",
 		"date-fns": "^2.0.0-alpha.26",
 		"inquirer": "^5.2.0",
@@ -135,8 +137,6 @@
 		"extends": "react-app"
 	},
 	"devDependencies": {
-		"@types/react-bootstrap": "^0.32.16",
-		"@types/react-select": "^2.0.11",
 		"autoprefixer": "7.1.6",
 		"babel-cli": "^6.26.0",
 		"babel-core": "6.26.0",
