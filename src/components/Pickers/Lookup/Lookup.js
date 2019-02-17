@@ -4,6 +4,8 @@ import Select from "react-select/lib/Select";
 import { components } from "react-select";
 import classNames from "classnames";
 import isNil from "lodash/isNil";
+import isEmpty from "lodash/isEmpty";
+import map from "lodash/map";
 import find from "lodash/find";
 import some from "lodash/some";
 import findIndex from "lodash/findIndex";
@@ -106,6 +108,10 @@ class Lookup extends React.PureComponent {
 		};
 	}
 
+	get allOptionValues() {
+		return flatten(map(this.state.optionsCache, search => search.values));
+	}
+
 	get currentOptions() {
 		const { search, optionsCache } = this.state;
 		return optionsCache[search] || initialCache;
@@ -119,11 +125,40 @@ class Lookup extends React.PureComponent {
 			optionsCache: this.initialOptionsCache,
 			menuIsOpen: false,
 			popupVisible: false,
-			customOptions: []
+			customOptions: [],
+			multiStringInitValues: []
 		};
 
 		this.onMenuOpen = debounce(this.onMenuOpen, 0);
 		this.mapValue = memoizeLastSingleValueReturn(this.mapValue, o => o && o.value);
+	}
+
+	componentDidMount() {
+		if (this.props.initMultiString) {
+			this.initMultiStringValues();
+		}
+	}
+
+	initMultiStringValues() {
+		const { queryProvider, multiStringIdFilterQuery } = this.props;
+
+		if (!isEmpty(multiStringIdFilterQuery)) {
+			queryProvider("")
+				.filter(multiStringIdFilterQuery)
+				.withQuery({ includeMetadata: false })
+				.fetchCollection()
+				.then(results => {
+						this.setState(prevState => ({
+							optionsCache: {
+								"": {
+									...prevState.optionsCache[""],
+									values: results.value,
+								}
+							}
+						}));
+					}
+				);
+		}
 	}
 
 	onMenuClose = () => {
@@ -377,7 +412,7 @@ class Lookup extends React.PureComponent {
 
 			return initialValue
 				? initialValue.split(delimiter).map(o => {
-						const current = find(this.currentOptions.values, v => idSelector(v) === o);
+						const current = find(this.allOptionValues, v => idSelector(v) && idSelector(v).toString() === o);
 						return {
 							label: current ? renderFn(current) : o,
 							value: o
@@ -737,7 +772,15 @@ Lookup.propTypes = {
 	/**
 	 * Conditional css classes for option
 	 */
-	optionBindings: PropTypes.func
+	optionBindings: PropTypes.func,
+	/**
+	 * Multi string lookup should initialize from ids string
+	 */
+	initMultiString: PropTypes.bool,
+	/**
+	 * Id field names filter query for initializing multi string lookup
+	 */
+	multiStringIdFilterQuery: PropTypes.string
 };
 
 export default Lookup;
