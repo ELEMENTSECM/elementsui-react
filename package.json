@@ -12,17 +12,9 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "http://evryas.github.io/elementsui-react/",
-	"files": [
-		"lib"
-	],
-	"keywords": [
-		"components",
-		"react",
-		"react-component",
-		"elements"
-	],
+	"files": [ "lib" ],
+	"keywords": [ "components", "react", "react-component", "elements" ],
 	"dependencies": {
-		"@types/react-bootstrap": "^0.32.16",
 		"@types/react-select": "^2.0.11",
 		"commander": "^2.15.1",
 		"date-fns": "^2.0.0-alpha.26",
@@ -91,9 +83,7 @@
 			"!src/**/*.spec.js",
 			"!src/docs/examples/**/*.js"
 		],
-		"setupFiles": [
-			"<rootDir>/config/polyfills.js"
-		],
+		"setupFiles": [ "<rootDir>/config/polyfills.js" ],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
 			"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -105,21 +95,11 @@
 			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
 			"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
 		},
-		"transformIgnorePatterns": [
-			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-		],
+		"transformIgnorePatterns": [ "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$" ],
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web"
 		},
-		"moduleFileExtensions": [
-			"web.js",
-			"mjs",
-			"js",
-			"json",
-			"web.jsx",
-			"jsx",
-			"node"
-		],
+		"moduleFileExtensions": [ "web.js", "mjs", "js", "json", "web.jsx", "jsx", "node" ],
 		"setupTestFrameworkScriptFile": "<rootDir>/scripts/testSetup.js"
 	},
 	"babel": {
@@ -137,6 +117,7 @@
 		"extends": "react-app"
 	},
 	"devDependencies": {
+		"@types/react-bootstrap": "^0.32.16",
 		"autoprefixer": "7.1.6",
 		"babel-cli": "^6.26.0",
 		"babel-core": "6.26.0",
