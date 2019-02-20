@@ -98,18 +98,20 @@ class Lookup extends React.PureComponent {
 	selectRef = React.createRef();
 
 	get initialOptionsCache() {
+		const { options, fullObjectValue, multiAsString, value } = this.props;
+
 		return {
 			"": {
 				isLoading: false,
-				options: this.props.options || [],
-				values: this.props.fullObjectValue && this.props.value,
+				options: options || [],
+				values: fullObjectValue && !multiAsString  && value ? value : [],
 				hasMore: true
 			}
 		};
 	}
 
 	get allOptionValues() {
-		return flatten(map(this.state.optionsCache, search => search.values));
+		return flatten(map(this.state.optionsCache, search => search.values)).concat(this.props.specialOptionValues);
 	}
 
 	get currentOptions() {
@@ -125,8 +127,7 @@ class Lookup extends React.PureComponent {
 			optionsCache: this.initialOptionsCache,
 			menuIsOpen: false,
 			popupVisible: false,
-			customOptions: [],
-			multiStringInitValues: []
+			customOptions: []
 		};
 
 		this.onMenuOpen = debounce(this.onMenuOpen, 0);
@@ -140,19 +141,19 @@ class Lookup extends React.PureComponent {
 	}
 
 	initMultiStringValues() {
-		const { queryProvider, multiStringIdFilterQuery } = this.props;
+		const { queryProvider, multiStringIdFilterString } = this.props;
 
-		if (!isEmpty(multiStringIdFilterQuery)) {
+		if (!isEmpty(multiStringIdFilterString)) {
 			queryProvider("")
-				.filter(multiStringIdFilterQuery)
+				.filter(multiStringIdFilterString)
 				.withQuery({ includeMetadata: false })
-				.fetchCollection()
+				.fetchAllPages()
 				.then(results => {
 						this.setState(prevState => ({
 							optionsCache: {
 								"": {
 									...prevState.optionsCache[""],
-									values: results.value,
+									values: results,
 								}
 							}
 						}));
@@ -412,7 +413,8 @@ class Lookup extends React.PureComponent {
 
 			return initialValue
 				? initialValue.split(delimiter).map(o => {
-						const current = find(this.allOptionValues, v => idSelector(v) && idSelector(v).toString() === o);
+						let current = find(this.allOptionValues, v => v && idSelector(v) && idSelector(v).toString() === o);
+
 						return {
 							label: current ? renderFn(current) : o,
 							value: o
@@ -449,14 +451,24 @@ class Lookup extends React.PureComponent {
 	);
 
 	MultiValue = multiValueProps => {
+		const { selectionBindings, fullObjectValue, idSelector  } = this.props;
+		let classes = "";
+
 		if (multiValueProps.isFocused) {
 			this.activeValue = multiValueProps.data;
+		}
+
+		if (selectionBindings) {
+			const value = fullObjectValue
+				? find(this.allOptionValues, x => x && idSelector(x) === multiValueProps.data.value)
+				: multiValueProps.data.value;
+			classes = classNames(selectionBindings(value));
 		}
 
 		return (
 			<components.MultiValue
 				{...multiValueProps}
-				className={classNames("multi-value", {
+				className={classNames("multi-value", classes, {
 					active: multiValueProps.isFocused && (this.state.focused || this.state.popupVisible)
 				})}
 			/>
@@ -481,7 +493,7 @@ class Lookup extends React.PureComponent {
 	Option = optionProps => {
 		const { optionBindings, fullObjectValue, idSelector } = this.props;
 		const value = fullObjectValue
-			? find(this.currentOptions.values, x => idSelector(x) === optionProps.data.value)
+			? find(this.allOptionValues, x => x && idSelector(x) === optionProps.data.value)
 			: optionProps.data.value;
 		const classes = classNames(optionBindings(value));
 		return <components.Option {...optionProps} className={classes} />;
@@ -774,13 +786,21 @@ Lookup.propTypes = {
 	 */
 	optionBindings: PropTypes.func,
 	/**
+	 * Conditional css classes for selection
+	 */
+	selectionBindings: PropTypes.func,
+	/**
 	 * Multi string lookup should initialize from ids string
 	 */
 	initMultiString: PropTypes.bool,
 	/**
 	 * Id field names filter query for initializing multi string lookup
 	 */
-	multiStringIdFilterQuery: PropTypes.string
+	multiStringIdFilterString: PropTypes.string,
+	/**
+	 * List of custom options for a lookup
+	 */
+	specialOptionValues: PropTypes.array
 };
 
 export default Lookup;
