@@ -176,6 +176,22 @@ export interface LookupProps {
 	 * Conditional css classes for option
 	 */
 	optionBindings?: (...args: any[]) => any;
+	/**
+	 * Conditional css classes for selection
+	 */
+	selectionBindings?: (...args: any[]) => any;
+	/**
+	 * Multi string lookup should initialize from ids string
+	 */
+	initMultiString?: boolean;
+	/**
+	 * Id field names filter query for initializing multi string lookup
+	 */
+	multiStringIdFilterString?: string;
+	/**
+	 * List of custom options for a lookup
+	 */
+	specialOptionValues?: any[];
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {
