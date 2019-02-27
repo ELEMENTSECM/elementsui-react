@@ -95,7 +95,7 @@ describe("Lookup", () => {
 
 		test("should initialize optionsCache with initial cache", () => {
 			expect(component.state["optionsCache"]).toEqual({
-				"": { hasMore: true, isLoading: false, options: [], values: undefined }
+				"": { hasMore: true, isLoading: false, options: [], values: [] }
 			});
 		});
 
