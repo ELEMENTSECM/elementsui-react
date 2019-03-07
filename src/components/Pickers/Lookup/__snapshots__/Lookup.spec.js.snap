@@ -12,6 +12,7 @@ ShallowWrapper {
     isClearable={true}
     isMulti={false}
     menuPlacement="bottom"
+    openMenuOnFocus={true}
     options={
       Array [
         Object {

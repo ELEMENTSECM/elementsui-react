@@ -60,6 +60,7 @@ class Lookup extends React.PureComponent {
 		isMulti: false,
 		isClearable: true,
 		allowSearchWithEmptyFilter: true,
+		openMenuOnFocus: true,
 		menuPlacement: "bottom",
 		placeholder: "",
 		styles: {
@@ -555,7 +556,8 @@ class Lookup extends React.PureComponent {
 			ariaLabel,
 			ariaLabelledBy,
 			inputId,
-			allowSearchWithEmptyFilter
+			allowSearchWithEmptyFilter,
+			openMenuOnFocus
 		} = this.props;
 		const { search, menuIsOpen, customOptions } = this.state;
 
@@ -596,7 +598,7 @@ class Lookup extends React.PureComponent {
 					loadingMessage={loadingMessage}
 					components={this.customComponentRenderers}
 					openMenuOnClick={allowSearchWithEmptyFilter && !isMulti}
-					openMenuOnFocus={allowSearchWithEmptyFilter && !isMulti}
+					openMenuOnFocus={openMenuOnFocus && allowSearchWithEmptyFilter && !isMulti}
 					isDisabled={disabled}
 					tabSelectsValue={false}
 					aria-label={ariaLabel}
@@ -800,7 +802,11 @@ Lookup.propTypes = {
 	/**
 	 * List of custom options for a lookup
 	 */
-	specialOptionValues: PropTypes.array
+	specialOptionValues: PropTypes.array,
+	/**
+	 * Allows control of whether the menu is opened when the Select is focused
+	 */
+	openMenuOnFocus: PropTypes.bool
 };
 
 export default Lookup;

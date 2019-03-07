@@ -192,6 +192,10 @@ export interface LookupProps {
 	 * List of custom options for a lookup
 	 */
 	specialOptionValues?: any[];
+	/**
+	 * Allows control of whether the menu is opened when the Select is focused
+	 */
+	openMenuOnFocus?: boolean;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {
