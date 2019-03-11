@@ -60,7 +60,7 @@ class Lookup extends React.PureComponent {
 		isMulti: false,
 		isClearable: true,
 		allowSearchWithEmptyFilter: true,
-		openMenuOnFocus: true,
+		openMenuOnFocus: false,
 		menuPlacement: "bottom",
 		placeholder: "",
 		styles: {
@@ -598,7 +598,7 @@ class Lookup extends React.PureComponent {
 					loadingMessage={loadingMessage}
 					components={this.customComponentRenderers}
 					openMenuOnClick={allowSearchWithEmptyFilter && !isMulti}
-					openMenuOnFocus={openMenuOnFocus && allowSearchWithEmptyFilter && !isMulti}
+					openMenuOnFocus={openMenuOnFocus}
 					isDisabled={disabled}
 					tabSelectsValue={false}
 					aria-label={ariaLabel}

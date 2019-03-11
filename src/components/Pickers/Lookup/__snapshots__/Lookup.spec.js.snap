@@ -12,7 +12,7 @@ ShallowWrapper {
     isClearable={true}
     isMulti={false}
     menuPlacement="bottom"
-    openMenuOnFocus={true}
+    openMenuOnFocus={false}
     options={
       Array [
         Object {
@@ -103,7 +103,7 @@ ShallowWrapper {
           onMenuOpen={[Function]}
           onMenuScrollToBottom={[Function]}
           openMenuOnClick={true}
-          openMenuOnFocus={true}
+          openMenuOnFocus={false}
           options={
             Array [
               Object {
@@ -189,7 +189,7 @@ ShallowWrapper {
           "onMenuOpen": [Function],
           "onMenuScrollToBottom": [Function],
           "openMenuOnClick": true,
-          "openMenuOnFocus": true,
+          "openMenuOnFocus": false,
           "options": Array [
             Object {
               "label": "Title 1",
@@ -281,7 +281,7 @@ ShallowWrapper {
             onMenuOpen={[Function]}
             onMenuScrollToBottom={[Function]}
             openMenuOnClick={true}
-            openMenuOnFocus={true}
+            openMenuOnFocus={false}
             options={
               Array [
                 Object {
@@ -367,7 +367,7 @@ ShallowWrapper {
             "onMenuOpen": [Function],
             "onMenuScrollToBottom": [Function],
             "openMenuOnClick": true,
-            "openMenuOnFocus": true,
+            "openMenuOnFocus": false,
             "options": Array [
               Object {
                 "label": "Title 1",
