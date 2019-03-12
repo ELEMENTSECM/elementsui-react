@@ -25,7 +25,7 @@ ShallowWrapper {
         },
       ]
     }
-    pageSize={10}
+    pageSize={30}
     placeholder=""
     queryProvider={[Function]}
     renderOption={[Function]}

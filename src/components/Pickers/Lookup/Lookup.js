@@ -53,7 +53,7 @@ function adjustOptionsAndSelected(selectedOption, options) {
 
 class Lookup extends React.PureComponent {
 	static defaultProps = {
-		pageSize: 10,
+		pageSize: 30,
 		delay: 300,
 		idSelector: x => x.Id,
 		options: null,
