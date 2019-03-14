@@ -3,6 +3,7 @@ import * as React from "react";
 import ReactDOM from "react-dom";
 import Draggable from "react-draggable";
 import { isDescendant } from "../../utils";
+import _ from "lodash";
 
 export default class LookupDialog extends React.Component {
 	containerRef = React.createRef();
@@ -16,12 +17,8 @@ export default class LookupDialog extends React.Component {
 	};
 
 	focusFirstInput = () => {
-		for (let input of this.containerRef.current.querySelectorAll("input")) {
-			if (input.type !== "hidden") {
-				input.focus();
-				break;
-			}
-		}
+		const input = _.first(this.containerRef.current.querySelectorAll("input"), input => input.type !== "hidden");
+		input && input.focus();
 	};
 
 	onKeyDown = e => {
