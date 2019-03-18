@@ -1,14 +1,26 @@
 import PropTypes from "prop-types";
 import * as React from "react";
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 import Draggable from "react-draggable";
 import { isDescendant } from "../../utils";
 import _ from "lodash";
 
 export default class LookupDialog extends React.Component {
+	static defaultProps = {
+		dragHandle: ".popup-container",
+		className: "popup-container dialog"
+	};
+	draggableContainer = React.createRef();
 	containerRef = React.createRef();
 
 	componentDidMount() {
+		if (this.props.isDraggable) {
+			this.draggableContainer.current = this.props.portalTarget
+				? this.props.portalTarget.charAt(0) === "."
+					? document.getElementsByClassName(this.props.portalTarget.substr(1))[0]
+					: document.getElementById(this.props.portalTarget.substr(1))
+				: document.body;
+		}
 		this.focusFirstInput();
 	}
 
@@ -47,7 +59,10 @@ export default class LookupDialog extends React.Component {
 			enableOnClickOutside,
 			position,
 			isDraggable,
+			dragHandle,
 			children,
+			portalTarget,
+			ariaLabelledBy,
 			...rest
 		} = this.props;
 		const defaultPosition = {
@@ -55,33 +70,34 @@ export default class LookupDialog extends React.Component {
 			y: position.y + 5
 		};
 
-		return isDraggable ? (
-			<Draggable handle=".popup-container" defaultPosition={defaultPosition}>
-				<div
-					className="popup-container"
-					ref={this.containerRef}
-					role="dialog"
-					onKeyDown={this.onKeyDown}
-					aria-labelledby={this.props.ariaLabelledBy}
-					style={{
-						position: "fixed",
-						top: defaultPosition.x,
-						left: defaultPosition.y,
-						minWidth: 100,
-						minHeight: 100,
-						background: "#fff",
-						zIndex: 99999,
-						boxShadow: "2px 7px 24px 2px rgba(144,143,143,.8)",
-						overflow: "hidden",
-						display: "contents",
-						opacity: 1
-					}}
-					{...rest}
-				>
-					{children}
-				</div>
-			</Draggable>
-		) : (
+		if (isDraggable) {
+			const DraggableDialog = (
+				<Draggable handle={dragHandle} defaultPosition={defaultPosition}>
+					<div
+						ref={this.containerRef}
+						role="dialog"
+						onKeyDown={this.onKeyDown}
+						aria-labelledby={ariaLabelledBy}
+						style={{
+							minWidth: 100,
+							minHeight: 100,
+							background: "#fff",
+							zIndex: 99999,
+							boxShadow: "2px 7px 24px 2px rgba(144,143,143,.8)",
+							opacity: 1
+						}}
+						{...rest}
+					>
+						{children}
+					</div>
+				</Draggable>
+			);
+			return this.draggableContainer.current
+				? createPortal(DraggableDialog, this.draggableContainer.current)
+				: DraggableDialog;
+		}
+
+		return (
 			<React.Fragment>
 				<div className="popup-overlay" style={{ zIndex: 1055 }} />
 				<div
@@ -89,7 +105,7 @@ export default class LookupDialog extends React.Component {
 					ref={this.containerRef}
 					onKeyDown={this.onKeyDown}
 					role="dialog"
-					aria-labelledby={this.props.ariaLabelledBy}
+					aria-labelledby={ariaLabelledBy}
 					style={{
 						top: 0,
 						left: 0,
@@ -123,5 +139,17 @@ LookupDialog.propTypes = {
 	/**
 	 * Labelled by Id
 	 */
-	ariaLabelledBy: PropTypes.string
+	ariaLabelledBy: PropTypes.string,
+	/** 
+	 * Draggable handle selector 
+	*/
+	dragHandle: PropTypes.string,
+	/**
+	 * Portal target id
+	 */
+	portalTarget: PropTypes.string,
+	/**
+	 * Popup container class name
+	 */
+	className: PropTypes.string
 };
