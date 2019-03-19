@@ -376,7 +376,8 @@ class Lookup extends React.PureComponent {
 			return;
 		}
 		const rect = e && e.target && e.target.parentElement.getBoundingClientRect();
-		const availableValues = _(_.values(this.state.optionsCache))
+		const availableValues = _(this.state.optionsCache)
+			.values()
 			.flatMap(x => x.values)
 			.uniqBy(this.props.idSelector)
 			.value();
