@@ -9,6 +9,7 @@ ShallowWrapper {
     delimiter=";"
     id="testLookup"
     idSelector={[Function]}
+    includeMetadata={false}
     isClearable={true}
     isMulti={false}
     menuPlacement="bottom"
@@ -89,6 +90,7 @@ ShallowWrapper {
           maxMenuHeight={300}
           menuIsOpen={false}
           menuPlacement="bottom"
+          menuPortalTarget={undefined}
           menuPosition="absolute"
           menuShouldBlockScroll={false}
           menuShouldScrollIntoView={true}
@@ -175,6 +177,7 @@ ShallowWrapper {
           "maxMenuHeight": 300,
           "menuIsOpen": false,
           "menuPlacement": "bottom",
+          "menuPortalTarget": undefined,
           "menuPosition": "absolute",
           "menuShouldBlockScroll": false,
           "menuShouldScrollIntoView": true,
@@ -267,6 +270,7 @@ ShallowWrapper {
             maxMenuHeight={300}
             menuIsOpen={false}
             menuPlacement="bottom"
+            menuPortalTarget={undefined}
             menuPosition="absolute"
             menuShouldBlockScroll={false}
             menuShouldScrollIntoView={true}
@@ -353,6 +357,7 @@ ShallowWrapper {
             "maxMenuHeight": 300,
             "menuIsOpen": false,
             "menuPlacement": "bottom",
+            "menuPortalTarget": undefined,
             "menuPosition": "absolute",
             "menuShouldBlockScroll": false,
             "menuShouldScrollIntoView": true,

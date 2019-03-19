@@ -22,6 +22,18 @@ export interface LookupDialogProps {
 	 * Labelled by Id
 	 */
 	ariaLabelledBy?: string;
+	/**
+	 * Draggable handle selector
+	 */
+	dragHandle?: string;
+	/**
+	 * Portal target id
+	 */
+	portalTarget?: string;
+	/**
+	 * Popup container class name
+	 */
+	className?: string;
 }
 
 export default class LookupDialog extends React.Component<LookupDialogProps, any> {

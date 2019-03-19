@@ -121,6 +121,10 @@ export interface LookupProps {
 	 */
 	menuPlacement?: LookupMenuPlacement;
 	/**
+	 * Whether the menu should use a portal, and where it should attach
+	 */
+	menuPortalTarget?: Object;
+	/**
 	 * Text to display when there are no options
 	 */
 	noOptionsMessage?: LookupNoOptionsMessage;
@@ -140,6 +144,14 @@ export interface LookupProps {
 	 * Is popup draggable
 	 */
 	isDraggable?: boolean;
+	/**
+	 * Draggable handle selector
+	 */
+	dragHandle?: string;
+	/**
+	 * Draggable dialog portal target Id
+	 */
+	draggablePortalTarget?: string;
 	/**
 	 * Always fetch values when menu opens
 	 */
@@ -196,6 +208,15 @@ export interface LookupProps {
 	 * Allows control of whether the menu is opened when the Select is focused
 	 */
 	openMenuOnFocus?: boolean;
+	/**
+	 * This complex object includes all the compositional components that are used in react-select.
+	 * If you wish to overwrite a component, pass in an object with the appropriate namespace.
+	 */
+	components?: Object;
+	/**
+	 * Include metadata odata property
+	 */
+	includeMetadata?: boolean;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

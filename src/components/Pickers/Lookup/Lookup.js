@@ -15,6 +15,7 @@ import LookupDialog from "../LookupDialog";
 import { isArray } from "util";
 import onClickOutside from "react-onclickoutside";
 
+const ExtendedLookupDialog = onClickOutside(LookupDialog);
 const initialCache = {
 	options: [],
 	hasMore: true,
@@ -92,7 +93,8 @@ class Lookup extends React.PureComponent {
 				}
 			})
 		},
-		delimiter: ";"
+		delimiter: ";",
+		includeMetadata: false
 	};
 
 	activeValue = null;
@@ -105,7 +107,7 @@ class Lookup extends React.PureComponent {
 			"": {
 				isLoading: false,
 				options: options || [],
-				values: fullObjectValue && !multiAsString  && value ? value : [],
+				values: fullObjectValue && !multiAsString && value ? value : [],
 				hasMore: true
 			}
 		};
@@ -142,24 +144,23 @@ class Lookup extends React.PureComponent {
 	}
 
 	initMultiStringValues() {
-		const { queryProvider, multiStringIdFilterString } = this.props;
+		const { queryProvider, multiStringIdFilterString, includeMetadata } = this.props;
 
 		if (!isEmpty(multiStringIdFilterString)) {
 			queryProvider("")
 				.filter(multiStringIdFilterString)
-				.withQuery({ includeMetadata: false })
+				.withQuery({ includeMetadata })
 				.fetchAllPages()
 				.then(results => {
-						this.setState(prevState => ({
-							optionsCache: {
-								"": {
-									...prevState.optionsCache[""],
-									values: results,
-								}
+					this.setState(prevState => ({
+						optionsCache: {
+							"": {
+								...prevState.optionsCache[""],
+								values: results
 							}
-						}));
-					}
-				);
+						}
+					}));
+				});
 		}
 	}
 
@@ -261,10 +262,18 @@ class Lookup extends React.PureComponent {
 	}
 
 	load(inputValue, previousOptions) {
-		const { queryProvider, pageSize, resultsFilter, renderOption, idSelector, errorMessage } = this.props;
+		const {
+			queryProvider,
+			pageSize,
+			resultsFilter,
+			renderOption,
+			idSelector,
+			errorMessage,
+			includeMetadata
+		} = this.props;
 		return new Promise((resolve, reject) => {
 			queryProvider(inputValue)
-				.withQuery({ includeMetadata: false })
+				.withQuery({ includeMetadata })
 				.take(pageSize)
 				.skip(previousOptions ? previousOptions.length : 0)
 				.fetchCollection()
@@ -367,7 +376,13 @@ class Lookup extends React.PureComponent {
 			return;
 		}
 		const rect = e && e.target && e.target.parentElement.getBoundingClientRect();
-		if (!this.state.optionsCache[this.state.search] || !some(this.state.optionsCache[this.state.search].options)) {
+		const availableValues = _(this.state.optionsCache)
+			.values()
+			.flatMap(x => x.values)
+			.uniqBy(this.props.idSelector)
+			.value();
+
+		if (!_.some(availableValues)) {
 			await this.loadOptions();
 		}
 
@@ -378,9 +393,7 @@ class Lookup extends React.PureComponent {
 		}
 
 		const value = fullObjectValue
-			? option.custom
-				? option.fullObjectValue
-				: find(this.currentOptions.values, x => idSelector(x) === option.value)
+			? option.custom ? option.fullObjectValue : find(availableValues, x => idSelector(x) === option.value)
 			: this.stripOptions(option);
 
 		this.togglePopup(rect, value);
@@ -414,7 +427,10 @@ class Lookup extends React.PureComponent {
 
 			return initialValue
 				? initialValue.split(delimiter).map(o => {
-						let current = find(this.allOptionValues, v => v && idSelector(v) && idSelector(v).toString() === o);
+						let current = find(
+							this.allOptionValues,
+							v => v && idSelector(v) && idSelector(v).toString() === o
+						);
 
 						return {
 							label: current ? renderFn(current) : o,
@@ -452,7 +468,7 @@ class Lookup extends React.PureComponent {
 	);
 
 	MultiValue = multiValueProps => {
-		const { selectionBindings, fullObjectValue, idSelector  } = this.props;
+		const { selectionBindings, fullObjectValue, idSelector } = this.props;
 		let classes = "";
 
 		if (multiValueProps.isFocused) {
@@ -481,6 +497,7 @@ class Lookup extends React.PureComponent {
 		return (
 			<button
 				type="button"
+				className="multi-value-button"
 				onClick={onClick}
 				style={{ border: "none", background: "rgb(230, 230, 230)" }}
 				aria-haspopup="dialog"
@@ -521,7 +538,7 @@ class Lookup extends React.PureComponent {
 	setFocus = () => this.setState(ps => ({ focused: !ps.focused }));
 
 	get customComponentRenderers() {
-		const { allowSearchWithEmptyFilter, optionBindings } = this.props;
+		const { allowSearchWithEmptyFilter, optionBindings, components } = this.props;
 		let renderers = {
 			MultiValueLabel: this.MultiValueLabel,
 			MultiValueContainer: this.MultiValueContainer,
@@ -535,7 +552,7 @@ class Lookup extends React.PureComponent {
 		if (optionBindings) {
 			renderers.Option = this.Option;
 		}
-		return renderers;
+		return { ...renderers, ...components };
 	}
 
 	render() {
@@ -557,11 +574,12 @@ class Lookup extends React.PureComponent {
 			ariaLabelledBy,
 			inputId,
 			allowSearchWithEmptyFilter,
-			openMenuOnFocus
+			openMenuOnFocus,
+			menuPortalTarget,
+			dragHandle,
+			draggablePortalTarget
 		} = this.props;
 		const { search, menuIsOpen, customOptions } = this.state;
-
-		const ExtendedLookupDialog = onClickOutside(LookupDialog);
 
 		const options = this.currentOptions.options.concat(customOptions);
 		let valueOption = this.mapValue();
@@ -594,6 +612,7 @@ class Lookup extends React.PureComponent {
 					theme={theme}
 					isClearable={isClearable}
 					menuPlacement={menuPlacement}
+					menuPortalTarget={menuPortalTarget}
 					noOptionsMessage={noOptionsMessage}
 					loadingMessage={loadingMessage}
 					components={this.customComponentRenderers}
@@ -610,6 +629,8 @@ class Lookup extends React.PureComponent {
 						close={this.togglePopup}
 						position={this.state.popupPosition}
 						isDraggable={isDraggable}
+						dragHandle={dragHandle}
+						portalTarget={draggablePortalTarget}
 						ariaLabelledBy={ariaLabelledBy}
 					>
 						<Popup value={this.state.popupValue} onSubmit={this.togglePopup} />
@@ -729,6 +750,10 @@ Lookup.propTypes = {
 	 */
 	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ]),
 	/**
+	 * Whether the menu should use a portal, and where it should attach
+	 */
+	menuPortalTarget: PropTypes.object,
+	/**
 	 * Text to display when there are no options
 	 */
 	noOptionsMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
@@ -748,6 +773,14 @@ Lookup.propTypes = {
 	 * Is popup draggable
 	 */
 	isDraggable: PropTypes.bool,
+	/**
+	 * Draggable handle selector 
+	 */
+	dragHandle: PropTypes.string,
+	/**
+	 * Draggable dialog portal target Id
+	 */
+	draggablePortalTarget: PropTypes.string,
 	/**
 	 * Always fetch values when menu opens
 	 */
@@ -806,7 +839,16 @@ Lookup.propTypes = {
 	/**
 	 * Allows control of whether the menu is opened when the Select is focused
 	 */
-	openMenuOnFocus: PropTypes.bool
+	openMenuOnFocus: PropTypes.bool,
+	/**
+	 * This complex object includes all the compositional components that are used in react-select.
+	 * If you wish to overwrite a component, pass in an object with the appropriate namespace.
+	 */
+	components: PropTypes.object,
+	/**
+	 * Include metadata odata property
+	 */
+	includeMetadata: PropTypes.bool
 };
 
 export default Lookup;
