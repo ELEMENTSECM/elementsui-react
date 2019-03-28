@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import Draggable from "react-draggable";
 import { isDescendant } from "../../utils";
 import _ from "lodash";
+import classNames from "classnames";
 
 export default class LookupDialog extends React.Component {
 	static defaultProps = {
@@ -101,7 +102,7 @@ export default class LookupDialog extends React.Component {
 			<React.Fragment>
 				<div className="popup-overlay" style={{ zIndex: 1055 }} />
 				<div
-					className="popup-container ignore-react-onclickoutside"
+					className={classNames("popup-container ignore-react-onclickoutside", this.props.className)}
 					ref={this.containerRef}
 					onKeyDown={this.onKeyDown}
 					role="dialog"
@@ -140,8 +141,8 @@ LookupDialog.propTypes = {
 	 * Labelled by Id
 	 */
 	ariaLabelledBy: PropTypes.string,
-	/** 
-	 * Draggable handle selector 
+	/**
+	 * Draggable handle selector
 	*/
 	dragHandle: PropTypes.string,
 	/**
