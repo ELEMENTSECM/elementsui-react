@@ -34,6 +34,10 @@ class DateTimePicker extends React.Component {
 			this.dateFormatId = this.currentNls[`longDateFormat_${dateFormat}`];
 		}
 
+		if (this.showTimeSelectOnly) {
+			return;
+		}
+
 		if (timeFormat === undefined) {
 			this.timeFormatId = this.currentNls["time"];
 		} else if (typeof timeFormat === "string") {
