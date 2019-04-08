@@ -149,10 +149,6 @@ export interface LookupProps {
 	 */
 	dragHandle?: string;
 	/**
-	 * Draggable dialog portal target Id
-	 */
-	draggablePortalTarget?: string;
-	/**
 	 * Always fetch values when menu opens
 	 */
 	alwaysRefresh?: boolean;

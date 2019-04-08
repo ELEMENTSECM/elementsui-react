@@ -36,7 +36,7 @@ export default class LookupMultiple extends React.Component {
 
 	renderOptionPopup = popupOptions => {
 		return (
-			<div style={{ width: 400, height: 200, padding: 20 }}>
+			<div style={{ padding: 20 }}>
 				<h4>Label: {popupOptions.value.label}</h4>
 				<span>Value: {popupOptions.value.value}</span>
 			</div>
@@ -49,7 +49,6 @@ export default class LookupMultiple extends React.Component {
 				value={this.state.values}
 				queryProvider={queryProvider}
 				renderOption={x => x.Title}
-				onChange={values => this.setState({ values })}
 				isMulti={true}
 				popup={this.renderOptionPopup}
 				theme={theme => {

@@ -11,11 +11,9 @@ import some from "lodash/some";
 import findIndex from "lodash/findIndex";
 import debounce from "lodash/debounce";
 import flatten from "lodash/flatten";
-import LookupDialog from "../LookupDialog";
 import { isArray } from "util";
-import onClickOutside from "react-onclickoutside";
+import Popup from "../../Content/Popup";
 
-const ExtendedLookupDialog = onClickOutside(LookupDialog);
 const initialCache = {
 	options: [],
 	hasMore: true,
@@ -343,7 +341,7 @@ class Lookup extends React.PureComponent {
 		}
 	};
 
-	togglePopup = async (rect, popupValue) => {
+	togglePopup = async (popupTarget, popupValue) => {
 		if (!this.state.popupVisible && popupValue) {
 			this.props.onChange &&
 				this.props.onChange(null, {
@@ -356,10 +354,7 @@ class Lookup extends React.PureComponent {
 			ps => ({
 				...ps,
 				popupVisible: !ps.popupVisible,
-				popupPosition: rect && {
-					x: rect.left,
-					y: rect.bottom
-				},
+				popupTarget,
 				popupValue,
 				menuIsOpen: false
 			}),
@@ -375,7 +370,7 @@ class Lookup extends React.PureComponent {
 		if (!this.props.popup) {
 			return;
 		}
-		const rect = e && e.target && e.target.parentElement.getBoundingClientRect();
+		e.persist();
 		const availableValues = _(this.state.optionsCache)
 			.values()
 			.flatMap(x => x.values)
@@ -396,7 +391,7 @@ class Lookup extends React.PureComponent {
 			? option.custom ? option.fullObjectValue : find(availableValues, x => idSelector(x) === option.value)
 			: this.stripOptions(option);
 
-		this.togglePopup(rect, value);
+		this.togglePopup(e.target, value);
 	};
 
 	mapValue = () => {
@@ -566,7 +561,7 @@ class Lookup extends React.PureComponent {
 			menuPlacement,
 			noOptionsMessage,
 			loadingMessage,
-			popup: Popup,
+			popup: PopupContent,
 			isDraggable,
 			id,
 			disabled,
@@ -576,8 +571,7 @@ class Lookup extends React.PureComponent {
 			allowSearchWithEmptyFilter,
 			openMenuOnFocus,
 			menuPortalTarget,
-			dragHandle,
-			draggablePortalTarget
+			dragHandle
 		} = this.props;
 		const { search, menuIsOpen, customOptions } = this.state;
 
@@ -625,16 +619,16 @@ class Lookup extends React.PureComponent {
 					className="lookup"
 				/>
 				{this.state.popupVisible && (
-					<ExtendedLookupDialog
-						close={this.togglePopup}
-						position={this.state.popupPosition}
+					<Popup
+						onHide={this.togglePopup}
 						isDraggable={isDraggable}
-						dragHandle={dragHandle}
-						portalTarget={draggablePortalTarget}
-						ariaLabelledBy={ariaLabelledBy}
+						handle={dragHandle}
+						aria-labelledby={ariaLabelledBy}
+						targetNode={this.state.popupTarget}
+						placement="bottom-start"
 					>
-						<Popup value={this.state.popupValue} onSubmit={this.togglePopup} />
-					</ExtendedLookupDialog>
+						<PopupContent value={this.state.popupValue} onSubmit={this.togglePopup} />
+					</Popup>
 				)}
 			</React.Fragment>
 		);
@@ -777,10 +771,6 @@ Lookup.propTypes = {
 	 * Draggable handle selector 
 	 */
 	dragHandle: PropTypes.string,
-	/**
-	 * Draggable dialog portal target Id
-	 */
-	draggablePortalTarget: PropTypes.string,
 	/**
 	 * Always fetch values when menu opens
 	 */
