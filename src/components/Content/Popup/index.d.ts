@@ -1,10 +1,20 @@
 import * as React from "react";
 
+export interface PopupTargetNode {
+	clientHeight?: number;
+	clientWidth?: number;
+	getBoundingClientRect?: (...args: any[]) => any;
+}
+
 export interface PopupProps {
 	/**
 	 * Whether popup can be dragged on the screen. Default: true
 	 */
 	isDraggable?: boolean;
+	/**
+	 * CSS class for the <div> that hosts popup and backdrop(overlay). Default: "popup-dialog"
+	 */
+	hostClassName?: string;
 	/**
 	 * CSS class for the top <div> of the popup. Default: "popup-container"
 	 */
@@ -24,7 +34,7 @@ export interface PopupProps {
 	/**
 	 * Target node used for positioning of popup relative to it. Popper.js lib used behind the scene.
 	 */
-	targetNode?: React.ReactNode;
+	targetNode?: PopupTargetNode;
 	/**
 	 * One of the placements supported by Popper.js relative to target node.
 	 */
