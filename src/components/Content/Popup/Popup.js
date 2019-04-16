@@ -22,6 +22,7 @@ export default class Popup extends React.PureComponent {
 			"aria-labelledby": ariaLabelledBy,
 			isDraggable,
 			show,
+			hostClassName,
 			containerClassName,
 			backdropClassName,
 			targetNode,
@@ -37,6 +38,7 @@ export default class Popup extends React.PureComponent {
 				onHide={this.onHide}
 				show={show}
 				autoFocus={autoFocus}
+				className={hostClassName}
 			>
 				<Popper referenceElement={targetNode} placement={placement}>
 					{({ ref, style }) => (
@@ -61,6 +63,7 @@ export default class Popup extends React.PureComponent {
 
 Popup.defaultProps = {
 	isDraggable: true,
+	hostClassName: "popup-dialog",
 	containerClassName: "popup-container",
 	backdropClassName: "popup-overlay",
 	handle: ".popup-container",
@@ -75,6 +78,8 @@ Popup.defaultProps = {
 Popup.propTypes = {
 	/** Whether popup can be dragged on the screen. Default: true */
 	isDraggable: PropTypes.bool,
+	/** CSS class for the <div> that hosts popup and backdrop(overlay). Default: "popup-dialog" */
+	hostClassName: PropTypes.string,
 	/** CSS class for the top <div> of the popup. Default: "popup-container" */
 	containerClassName: PropTypes.string,
 	/** CSS class for the backdrop (overlay) <div>. Default: "popup-overlay" */
@@ -84,7 +89,11 @@ Popup.propTypes = {
 	/** Whether popup should be made visible. Default: true */
 	show: PropTypes.bool,
 	/** Target node used for positioning of popup relative to it. Popper.js lib used behind the scene. */
-	targetNode: PropTypes.node,
+	targetNode: PropTypes.shape({
+		clientHeight: PropTypes.number,
+		clientWidth: PropTypes.number,
+		getBoundingClientRect: PropTypes.func
+	}),
 	/** One of the placements supported by Popper.js relative to target node. */
 	placement: PropTypes.string,
 	/** Handler that is called when backdrop is clicked or ESC key pressed. Typically in this handler you will update state so that popup is removed. */

@@ -9,6 +9,7 @@ ShallowWrapper {
     backdropClassName="popup-overlay"
     containerClassName="popup-container"
     handle=".popup-container"
+    hostClassName="popup-dialog"
     isDraggable={true}
     onHide={undefined}
     placement={undefined}
@@ -46,6 +47,7 @@ ShallowWrapper {
       >
         [Function]
       </Popper>,
+      "className": "popup-dialog",
       "enforceFocus": true,
       "keyboard": true,
       "manager": ModalManager {
@@ -98,6 +100,7 @@ ShallowWrapper {
         >
           [Function]
         </Popper>,
+        "className": "popup-dialog",
         "enforceFocus": true,
         "keyboard": true,
         "manager": ModalManager {
