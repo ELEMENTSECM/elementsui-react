@@ -521,6 +521,9 @@ class Lookup extends React.PureComponent {
 		const eventKey = e.key;
 		switch (eventKey) {
 			case "Enter":
+				if (!this.state.menuIsOpen) {
+					e.preventDefault();
+				}
 				return this.onMultiValueLabelClick()(e);
 			case "ArrowLeft":
 			case "ArrowRight":
