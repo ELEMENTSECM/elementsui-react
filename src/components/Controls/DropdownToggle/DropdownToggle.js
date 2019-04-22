@@ -2,7 +2,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Reference } from "react-popper";
-import { Button } from "react-bootstrap";
 
 class DropdownToggle extends React.Component {
 	onClick = e => {
@@ -24,7 +23,7 @@ class DropdownToggle extends React.Component {
 	render() {
 		const { className, color, caret, split, nav, tag, menuItem, ...props } = this.props;
 		const ariaLabel = props["aria-label"] || "Toggle Dropdown";
-		const classes = classNames(className, {
+		let classes = classNames(className, {
 			"dropdown-item": menuItem,
 			"dropdown-toggle": caret || split,
 			"dropdown-toggle-split": split,
@@ -38,7 +37,8 @@ class DropdownToggle extends React.Component {
 			Tag = "a";
 			props.href = "#";
 		} else if (!tag) {
-			Tag = Button;
+			Tag = "button";
+			classes = classNames(classes, "btn btn-default");
 			props.color = color;
 		} else {
 			Tag = tag;
@@ -60,7 +60,13 @@ class DropdownToggle extends React.Component {
 		return (
 			<Reference>
 				{({ ref }) => (
-					<Tag className={classes} onClick={this.onClick} aria-expanded={this.context.isOpen} ref={ref} role={menuItem ? "menuitem" : ""}>
+					<Tag className={classes}
+						 type={Tag === "button" ? "button" : undefined}
+						 onClick={this.onClick}
+						 aria-expanded={this.context.isOpen}
+						 ref={ref}
+						 role={menuItem ? "menuitem" : ""}
+					>
 						{children}
 					</Tag>
 				)}
