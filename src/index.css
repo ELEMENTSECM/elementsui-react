@@ -314,14 +314,14 @@ Notes on possible css class implementation:
 	}
 }
 
-.dropup > .dropdown-menu {
+.dropup .dropdown-menu {
 	top: auto;
 	bottom: 100%;
 	margin-top: 0;
 	margin-bottom: 0.125rem;
 }
 
-.dropup > .dropdown-toggle::after {
+.dropup .dropdown-toggle::after {
 	display: inline-block;
 	margin-left: 0.255em;
 	vertical-align: 0.255em;
@@ -332,20 +332,19 @@ Notes on possible css class implementation:
 	border-left: 0.3em solid transparent;
 }
 
-.dropup > .dropdown-toggle:empty::after {
+.dropup .dropdown-toggle:empty::after {
 	margin-left: 0;
 }
 
-.dropright > .dropdown-menu {
+.dropright .dropdown-menu {
 	top: 0;
 	right: auto;
-    bottom: auto;
 	left: 100%;
 	margin-top: 0;
 	margin-left: 0.125rem;
 }
 
-.dropright > .dropdown-toggle::after {
+.dropright .dropdown-toggle::after {
 	display: inline-block;
 	margin-left: 0.255em;
 	vertical-align: 0.255em;
@@ -356,35 +355,34 @@ Notes on possible css class implementation:
 	border-left: 0.3em solid;
 }
 
-.dropright > .dropdown-toggle:empty::after {
+.dropright .dropdown-toggle:empty::after {
 	margin-left: 0;
 }
 
-.dropright > .dropdown-toggle::after {
+.dropright .dropdown-toggle::after {
 	vertical-align: 0;
 }
 
-.dropleft > .dropdown-menu {
+.dropleft .dropdown-menu {
 	top: 0;
-    bottom: auto;
-    right: 100%;
+	right: 100%;
 	left: auto;
 	margin-top: 0;
 	margin-right: 0.125rem;
 }
 
-.dropleft > .dropdown-toggle::after {
+.dropleft .dropdown-toggle::after {
 	display: inline-block;
 	margin-left: 0.255em;
 	vertical-align: 0.255em;
 	content: "";
 }
 
-.dropleft > .dropdown-toggle::after {
+.dropleft .dropdown-toggle::after {
 	display: none;
 }
 
-.dropleft > .dropdown-toggle::before {
+.dropleft .dropdown-toggle::before {
 	display: inline-block;
 	margin-right: 0.255em;
 	vertical-align: 0.255em;
@@ -394,11 +392,11 @@ Notes on possible css class implementation:
 	border-bottom: 0.3em solid transparent;
 }
 
-.dropleft > .dropdown-toggle:empty::after {
+.dropleft .dropdown-toggle:empty::after {
 	margin-left: 0;
 }
 
-.dropleft > .dropdown-toggle::before {
+.dropleft .dropdown-toggle::before {
 	vertical-align: 0;
 }
 

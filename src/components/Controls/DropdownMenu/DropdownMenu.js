@@ -36,14 +36,14 @@ const DropdownMenu = (props, context) => {
 				{({ ref, style, placement }) => {
 					const { left, right, ...innerStyle } = style;
 					return (
-						<div role="presentation">
+						<div style={{ position: "relative" }} role="presentation">
 							<Tag
 								className={classes}
 								ref={ref}
 								role="presentation"
 								aria-hidden={!context.isOpen}
 								style={rightPlacement ? innerStyle : style}
-								x-placement={placement}
+								data-placement={placement}
 								{...attrs}
 							/>
 						</div>
