@@ -7,7 +7,7 @@ export default class Example extends React.Component {
 
 		this.state = {
 			dropdownOpen: false,
-			submenu:false,
+			submenu: false
 		};
 	}
 
@@ -15,7 +15,7 @@ export default class Example extends React.Component {
 		this.setState(prevState => ({
 			[menu]: !prevState[menu]
 		}));
-	};
+	}
 
 	onClick = e => {
 		console.log(e.target.innerHTML);
@@ -26,24 +26,27 @@ export default class Example extends React.Component {
 			<Dropdown isOpen={this.state.dropdownOpen} toggle={() => this.toggle("dropdownOpen")}>
 				<DropdownToggle caret>Dropdown</DropdownToggle>
 				<DropdownMenu>
-					<Dropdown isOpen={this.state.submenu} parentToggle={() => this.toggle("dropdownOpen")} toggle={() => this.toggle("submenu")} direction="right" inNavbar>
-						<DropdownToggle menuItem caret>Dropdown2</DropdownToggle>	
-						<DropdownMenu>
-							<DropdownItem onClick={this.onClick}>Action 2</DropdownItem>
-							<DropdownItem onClick={this.onClick}>Action 3</DropdownItem>
-						</DropdownMenu>
-					</Dropdown>
-					
+					<DropdownItem>
+						<Dropdown
+							isOpen={this.state.submenu}
+							parentToggle={() => this.toggle("dropdownOpen")}
+							toggle={() => this.toggle("submenu")}
+							direction="right"
+							inNavbar>
+							<DropdownToggle menuItem caret>
+								Dropdown2
+							</DropdownToggle>
+							<DropdownMenu>
+								<DropdownItem onClick={this.onClick}>Action 2</DropdownItem>
+								<DropdownItem onClick={this.onClick}>Action 3</DropdownItem>
+							</DropdownMenu>
+						</Dropdown>
+					</DropdownItem>
+
 					<DropdownItem onClick={this.onClick}>Action 2</DropdownItem>
 					<DropdownItem onClick={this.onClick}>Action 3</DropdownItem>
 					<DropdownItem divider />
 					<DropdownItem onClick={this.onClick}>Action 4</DropdownItem>
-					
-					<DropdownItem tag="select">
-						<option>test1</option>
-						<option>test2</option>
-						<option>test3</option>
-					</DropdownItem>
 				</DropdownMenu>
 			</Dropdown>
 		);

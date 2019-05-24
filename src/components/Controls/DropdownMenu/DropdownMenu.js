@@ -36,17 +36,14 @@ const DropdownMenu = (props, context) => {
 				{({ ref, style, placement }) => {
 					const { left, right, ...innerStyle } = style;
 					return (
-						<div role="presentation">
-							<Tag
-								className={classes}
-								ref={ref}
-								role="presentation"
-								aria-hidden={!context.isOpen}
-								style={rightPlacement ? innerStyle : style}
-								x-placement={placement}
-								{...attrs}
-							/>
-						</div>
+						<Tag
+							className={classes}
+							ref={ref}
+							role="menu"
+							aria-hidden={!context.isOpen}
+							x-placement={placement}
+							{...attrs}
+						/>
 					);
 				}}
 			</Popper>
@@ -82,7 +79,7 @@ DropdownMenu.propTypes = {
 	persist: PropTypes.bool
 };
 DropdownMenu.defaultProps = {
-	tag: "div",
+	tag: "ul",
 	flip: true
 };
 DropdownMenu.contextTypes = {

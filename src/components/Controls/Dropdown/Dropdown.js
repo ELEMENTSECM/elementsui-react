@@ -195,7 +195,7 @@ class Dropdown extends React.Component {
 
 		return (
 			<Manager>
-				<div {...attrs} className={classes} onKeyDown={this.handleKeyDown} role="menu" />
+				<div {...attrs} className={classes} onKeyDown={this.handleKeyDown} role={this.props.inNavbar ? "presentation" : "menu"} />
 			</Manager>
 		);
 	}

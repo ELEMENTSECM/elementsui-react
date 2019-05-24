@@ -24,7 +24,7 @@ class DropdownItem extends React.Component {
 	}
 
 	render() {
-		let { className, divider, tag: Tag, header, active, ...props } = omit(this.props, [ "toggle" ]);
+		let { className, divider, tag: Tag, header, active, ...props } = omit(this.props, ["toggle"]);
 
 		const classes = classNames(className, {
 			disabled: props.disabled,
@@ -45,13 +45,23 @@ class DropdownItem extends React.Component {
 		}
 
 		return (
-			<Tag
-				type={Tag === "button" && (this.props.onClick || this.props.toggle) ? "button" : undefined}
-				{...props}
-				role={this.role}
-				className={classes}
-				onClick={this.onItemClick}
-			/>
+			<li role="presentation">
+				{React.isValidElement(this.props.children) ? (
+					this.props.children
+				) : (
+					<Tag
+						type={
+							Tag === "button" && (this.props.onClick || this.props.toggle)
+								? "button"
+								: undefined
+						}
+						{...props}
+						role={this.role}
+						className={classes}
+						onClick={this.onItemClick}
+					/>
+				)}
+			</li>
 		);
 	}
 }
@@ -66,7 +76,7 @@ DropdownItem.propTypes = {
 	/** Is item a divider */
 	divider: PropTypes.bool,
 	/** HTML element tag */
-	tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
+	tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	/** Is item a header */
 	header: PropTypes.bool,
 	/** onClickevent handler */
