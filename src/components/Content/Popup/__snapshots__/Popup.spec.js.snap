@@ -8,6 +8,7 @@ ShallowWrapper {
     autoFocus={true}
     backdropClassName="popup-overlay"
     containerClassName="popup-container"
+    dragCancel="input"
     handle=".popup-container"
     hostClassName="popup-dialog"
     isDraggable={true}

@@ -27,7 +27,8 @@ export default class Popup extends React.PureComponent {
 			backdropClassName,
 			targetNode,
 			placement,
-			autoFocus
+			autoFocus,
+			dragCancel
 		} = this.props;
 
 		return (
@@ -42,7 +43,7 @@ export default class Popup extends React.PureComponent {
 			>
 				<Popper referenceElement={targetNode} placement={placement}>
 					{({ ref, style }) => (
-						<PositionedDraggable handle={handle} disabled={!isDraggable} bounds="html">
+						<PositionedDraggable handle={handle} disabled={!isDraggable} bounds="html" cancel={dragCancel}>
 							<div
 								ref={ref}
 								className={containerClassName}
@@ -72,7 +73,8 @@ Popup.defaultProps = {
 	placement: undefined,
 	onHide: undefined,
 	"aria-labelledby": undefined,
-	autoFocus: true
+	autoFocus: true,
+	dragCancel : "input"
 };
 
 Popup.propTypes = {
@@ -101,5 +103,7 @@ Popup.propTypes = {
 	/** Standard ARIA attribute that will be set on popup root element */
 	"aria-labelledby": PropTypes.string,
 	/** Should modal become focused on render */
-	autoFocus: PropTypes.bool
+	autoFocus: PropTypes.bool,
+	/** Should not be dragged when mouseclick on element */
+	dragCancel: PropTypes.string,
 };

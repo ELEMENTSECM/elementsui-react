@@ -39,6 +39,7 @@ export default class PopupDefault extends React.Component {
 				)}
 				{this.state.popup2Opened && (
 					<Popup onHide={this.onHide} targetNode={this.state.popup2target} placement="bottom-start">
+						<input type="text" style={{color:"black"}}/>
 						<span>You can drag me!</span>
 					</Popup>
 				)}
