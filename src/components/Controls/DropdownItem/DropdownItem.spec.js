@@ -115,7 +115,7 @@ describe("DropdownItem", () => {
 				}
 			});
 
-			wrapper.simulate("click");
+			wrapper.find("button").simulate("click");
 			expect(clickHandler).toHaveBeenCalled();
 			expect(toggle).toHaveBeenCalled();
 		});
@@ -128,7 +128,7 @@ describe("DropdownItem", () => {
 				}
 			});
 
-			wrapper.simulate("click");
+			wrapper.find("button").simulate("click");
 			expect(toggle).toHaveBeenCalled();
 		});
 	});
