@@ -53,8 +53,181 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": Array [
-        <Select
+      "children": <Select
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        backspaceRemovesValue={true}
+        blurInputOnSelect={true}
+        captureMenuScroll={false}
+        className="lookup"
+        closeMenuOnScroll={false}
+        closeMenuOnSelect={true}
+        components={
+          Object {
+            "MultiValue": [Function],
+            "MultiValueContainer": [Function],
+            "MultiValueLabel": [Function],
+          }
+        }
+        controlShouldRenderValue={true}
+        escapeClearsValue={false}
+        filterOption={[Function]}
+        formatGroupLabel={[Function]}
+        getOptionLabel={[Function]}
+        getOptionValue={[Function]}
+        id="testLookup"
+        inputId={undefined}
+        inputValue=""
+        isClearable={true}
+        isDisabled={false}
+        isLoading={false}
+        isMulti={false}
+        isOptionDisabled={[Function]}
+        isRtl={false}
+        isSearchable={true}
+        loadingMessage={[Function]}
+        maxMenuHeight={300}
+        menuIsOpen={false}
+        menuPlacement="bottom"
+        menuPortalTarget={undefined}
+        menuPosition="absolute"
+        menuShouldBlockScroll={false}
+        menuShouldScrollIntoView={true}
+        minMenuHeight={140}
+        noOptionsMessage={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInputChange={[Function]}
+        onKeyDown={[Function]}
+        onMenuClose={[Function]}
+        onMenuOpen={[Function]}
+        onMenuScrollToBottom={[Function]}
+        openMenuOnClick={true}
+        openMenuOnFocus={false}
+        options={
+          Array [
+            Object {
+              "label": "Title 1",
+              "value": 1,
+            },
+            Object {
+              "label": "Title 2",
+              "value": 2,
+            },
+          ]
+        }
+        pageSize={5}
+        placeholder=""
+        screenReaderStatus={[Function]}
+        styles={
+          Object {
+            "control": [Function],
+            "indicatorsContainer": [Function],
+            "menu": [Function],
+            "menuPortal": [Function],
+          }
+        }
+        tabIndex="0"
+        tabSelectsValue={false}
+        theme={undefined}
+        value={undefined}
+      />,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "aria-label": undefined,
+        "aria-labelledby": undefined,
+        "backspaceRemovesValue": true,
+        "blurInputOnSelect": true,
+        "captureMenuScroll": false,
+        "className": "lookup",
+        "closeMenuOnScroll": false,
+        "closeMenuOnSelect": true,
+        "components": Object {
+          "MultiValue": [Function],
+          "MultiValueContainer": [Function],
+          "MultiValueLabel": [Function],
+        },
+        "controlShouldRenderValue": true,
+        "escapeClearsValue": false,
+        "filterOption": [Function],
+        "formatGroupLabel": [Function],
+        "getOptionLabel": [Function],
+        "getOptionValue": [Function],
+        "id": "testLookup",
+        "inputId": undefined,
+        "inputValue": "",
+        "isClearable": true,
+        "isDisabled": false,
+        "isLoading": false,
+        "isMulti": false,
+        "isOptionDisabled": [Function],
+        "isRtl": false,
+        "isSearchable": true,
+        "loadingMessage": [Function],
+        "maxMenuHeight": 300,
+        "menuIsOpen": false,
+        "menuPlacement": "bottom",
+        "menuPortalTarget": undefined,
+        "menuPosition": "absolute",
+        "menuShouldBlockScroll": false,
+        "menuShouldScrollIntoView": true,
+        "minMenuHeight": 140,
+        "noOptionsMessage": [Function],
+        "onBlur": [Function],
+        "onChange": [Function],
+        "onFocus": [Function],
+        "onInputChange": [Function],
+        "onKeyDown": [Function],
+        "onMenuClose": [Function],
+        "onMenuOpen": [Function],
+        "onMenuScrollToBottom": [Function],
+        "openMenuOnClick": true,
+        "openMenuOnFocus": false,
+        "options": Array [
+          Object {
+            "label": "Title 1",
+            "value": 1,
+          },
+          Object {
+            "label": "Title 2",
+            "value": 2,
+          },
+        ],
+        "pageSize": 5,
+        "placeholder": "",
+        "screenReaderStatus": [Function],
+        "styles": Object {
+          "control": [Function],
+          "indicatorsContainer": [Function],
+          "menu": [Function],
+          "menuPortal": [Function],
+        },
+        "tabIndex": "0",
+        "tabSelectsValue": false,
+        "theme": undefined,
+        "value": undefined,
+      },
+      "ref": Object {
+        "current": null,
+      },
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Select
           aria-label={undefined}
           aria-labelledby={undefined}
           backspaceRemovesValue={true}
@@ -134,12 +307,9 @@ ShallowWrapper {
           theme={undefined}
           value={undefined}
         />,
-        false,
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
+      },
+      "ref": null,
+      "rendered": Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
@@ -223,188 +393,6 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      false,
-    ],
-    "type": Symbol(react.fragment),
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": Array [
-          <Select
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            backspaceRemovesValue={true}
-            blurInputOnSelect={true}
-            captureMenuScroll={false}
-            className="lookup"
-            closeMenuOnScroll={false}
-            closeMenuOnSelect={true}
-            components={
-              Object {
-                "MultiValue": [Function],
-                "MultiValueContainer": [Function],
-                "MultiValueLabel": [Function],
-              }
-            }
-            controlShouldRenderValue={true}
-            escapeClearsValue={false}
-            filterOption={[Function]}
-            formatGroupLabel={[Function]}
-            getOptionLabel={[Function]}
-            getOptionValue={[Function]}
-            id="testLookup"
-            inputId={undefined}
-            inputValue=""
-            isClearable={true}
-            isDisabled={false}
-            isLoading={false}
-            isMulti={false}
-            isOptionDisabled={[Function]}
-            isRtl={false}
-            isSearchable={true}
-            loadingMessage={[Function]}
-            maxMenuHeight={300}
-            menuIsOpen={false}
-            menuPlacement="bottom"
-            menuPortalTarget={undefined}
-            menuPosition="absolute"
-            menuShouldBlockScroll={false}
-            menuShouldScrollIntoView={true}
-            minMenuHeight={140}
-            noOptionsMessage={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onInputChange={[Function]}
-            onKeyDown={[Function]}
-            onMenuClose={[Function]}
-            onMenuOpen={[Function]}
-            onMenuScrollToBottom={[Function]}
-            openMenuOnClick={true}
-            openMenuOnFocus={false}
-            options={
-              Array [
-                Object {
-                  "label": "Title 1",
-                  "value": 1,
-                },
-                Object {
-                  "label": "Title 2",
-                  "value": 2,
-                },
-              ]
-            }
-            pageSize={5}
-            placeholder=""
-            screenReaderStatus={[Function]}
-            styles={
-              Object {
-                "control": [Function],
-                "indicatorsContainer": [Function],
-                "menu": [Function],
-                "menuPortal": [Function],
-              }
-            }
-            tabIndex="0"
-            tabSelectsValue={false}
-            theme={undefined}
-            value={undefined}
-          />,
-          false,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "aria-label": undefined,
-            "aria-labelledby": undefined,
-            "backspaceRemovesValue": true,
-            "blurInputOnSelect": true,
-            "captureMenuScroll": false,
-            "className": "lookup",
-            "closeMenuOnScroll": false,
-            "closeMenuOnSelect": true,
-            "components": Object {
-              "MultiValue": [Function],
-              "MultiValueContainer": [Function],
-              "MultiValueLabel": [Function],
-            },
-            "controlShouldRenderValue": true,
-            "escapeClearsValue": false,
-            "filterOption": [Function],
-            "formatGroupLabel": [Function],
-            "getOptionLabel": [Function],
-            "getOptionValue": [Function],
-            "id": "testLookup",
-            "inputId": undefined,
-            "inputValue": "",
-            "isClearable": true,
-            "isDisabled": false,
-            "isLoading": false,
-            "isMulti": false,
-            "isOptionDisabled": [Function],
-            "isRtl": false,
-            "isSearchable": true,
-            "loadingMessage": [Function],
-            "maxMenuHeight": 300,
-            "menuIsOpen": false,
-            "menuPlacement": "bottom",
-            "menuPortalTarget": undefined,
-            "menuPosition": "absolute",
-            "menuShouldBlockScroll": false,
-            "menuShouldScrollIntoView": true,
-            "minMenuHeight": 140,
-            "noOptionsMessage": [Function],
-            "onBlur": [Function],
-            "onChange": [Function],
-            "onFocus": [Function],
-            "onInputChange": [Function],
-            "onKeyDown": [Function],
-            "onMenuClose": [Function],
-            "onMenuOpen": [Function],
-            "onMenuScrollToBottom": [Function],
-            "openMenuOnClick": true,
-            "openMenuOnFocus": false,
-            "options": Array [
-              Object {
-                "label": "Title 1",
-                "value": 1,
-              },
-              Object {
-                "label": "Title 2",
-                "value": 2,
-              },
-            ],
-            "pageSize": 5,
-            "placeholder": "",
-            "screenReaderStatus": [Function],
-            "styles": Object {
-              "control": [Function],
-              "indicatorsContainer": [Function],
-              "menu": [Function],
-              "menuPortal": [Function],
-            },
-            "tabIndex": "0",
-            "tabSelectsValue": false,
-            "theme": undefined,
-            "value": undefined,
-          },
-          "ref": Object {
-            "current": null,
-          },
-          "rendered": null,
-          "type": [Function],
-        },
-        false,
-      ],
       "type": Symbol(react.fragment),
     },
   ],

@@ -137,21 +137,13 @@ export interface LookupProps {
 	 */
 	fullObjectValue?: boolean;
 	/**
-	 * JSX elements to be rendered as draggable dialog when option is clicked
+	 * The function to be called on value click if multi-value mode is enabled
 	 */
-	popup?: (...args: any[]) => any;
+	onValueClick?: (...args: any[]) => any;
 	/**
-	 * Is popup draggable
+	 * The function to be called when user presses Escape key
 	 */
-	isDraggable?: boolean;
-	/**
-	 * Draggable handle selector
-	 */
-	dragHandle?: string;
-	/**
-	 * Draggable dialog portal target Id
-	 */
-	draggablePortalTarget?: string;
+	onEscape?: (...args: any[]) => any;
 	/**
 	 * Always fetch values when menu opens
 	 */
@@ -217,6 +209,10 @@ export interface LookupProps {
 	 * Include metadata odata property
 	 */
 	includeMetadata?: boolean;
+	/**
+	 * The function that maps lookup values
+	 */
+	map?: (...args: any[]) => any;
 }
 
 export default class Lookup extends React.Component<LookupProps, any> {

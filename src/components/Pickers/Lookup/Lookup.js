@@ -11,11 +11,9 @@ import some from "lodash/some";
 import findIndex from "lodash/findIndex";
 import debounce from "lodash/debounce";
 import flatten from "lodash/flatten";
-import LookupDialog from "../LookupDialog";
+import differenceBy from "lodash/differenceBy";
 import { isArray } from "util";
-import onClickOutside from "react-onclickoutside";
 
-const ExtendedLookupDialog = onClickOutside(LookupDialog);
 const initialCache = {
 	options: [],
 	hasMore: true,
@@ -114,7 +112,9 @@ class Lookup extends React.PureComponent {
 	}
 
 	get allOptionValues() {
-		return flatten(map(this.state.optionsCache, search => search.values)).concat(this.props.specialOptionValues);
+		return flatten(map(this.state.optionsCache, search => search.values))
+			.concat(this.props.specialOptionValues)
+			.filter(x => x);
 	}
 
 	get currentOptions() {
@@ -129,7 +129,6 @@ class Lookup extends React.PureComponent {
 			search: "",
 			optionsCache: this.initialOptionsCache,
 			menuIsOpen: false,
-			popupVisible: false,
 			customOptions: []
 		};
 
@@ -140,6 +139,24 @@ class Lookup extends React.PureComponent {
 	componentDidMount() {
 		if (this.props.initMultiString) {
 			this.initMultiStringValues();
+		}
+	}
+
+	componentDidUpdate() {
+		const { isMulti, multiAsString, value, fullObjectValue, idSelector, map: lookupMap } = this.props;
+		if (isMulti && fullObjectValue && !multiAsString) {
+			let newValues = value && differenceBy(value, this.allOptionValues || [], idSelector);
+			lookupMap && (newValues = map(newValues, lookupMap));
+			some(newValues) &&
+				this.setState(prevState => ({
+					optionsCache: {
+						...prevState.optionsCache,
+						[prevState.search]: {
+							...prevState.optionsCache[prevState.search],
+							values: [ ...newValues, ...this.currentOptions.values ]
+						}
+					}
+				}));
 		}
 	}
 
@@ -175,7 +192,6 @@ class Lookup extends React.PureComponent {
 	onMenuOpen = async () => {
 		await this.setState({
 			menuIsOpen: true,
-			popupVisible: false,
 			optionsCache: this.props.alwaysRefresh ? this.initialOptionsCache : this.state.optionsCache
 		});
 
@@ -299,7 +315,8 @@ class Lookup extends React.PureComponent {
 			isMulti,
 			value: lookupValues,
 			multiAsString,
-			delimiter
+			delimiter,
+			map: lookupMap
 		} = this.props;
 		if (fullObjectValue) {
 			if (!isMulti) {
@@ -313,6 +330,7 @@ class Lookup extends React.PureComponent {
 				const availableValues = this.currentOptions.values
 					? this.currentOptions.values.concat(lookupValues)
 					: lookupValues;
+
 				if (!multiAsString) {
 					meta.value = some(option)
 						? option.reduce((values, o) => {
@@ -324,6 +342,7 @@ class Lookup extends React.PureComponent {
 								return value ? [ ...values, value ] : values;
 							}, [])
 						: [];
+					lookupMap && (meta.value = map(meta.value, lookupMap));
 				} else {
 					meta.value = (option || []).map(o => o.value).join(delimiter);
 				}
@@ -343,39 +362,11 @@ class Lookup extends React.PureComponent {
 		}
 	};
 
-	togglePopup = async (rect, popupValue) => {
-		if (!this.state.popupVisible && popupValue) {
-			this.props.onChange &&
-				this.props.onChange(null, {
-					action: "update-value",
-					value: popupValue
-				});
-		}
-
-		this.setState(
-			ps => ({
-				...ps,
-				popupVisible: !ps.popupVisible,
-				popupPosition: rect && {
-					x: rect.left,
-					y: rect.bottom
-				},
-				popupValue,
-				menuIsOpen: false
-			}),
-			() => {
-				if (!this.state.popupVisible) {
-					this.selectRef.current.focus();
-				}
-			}
-		);
-	};
-
 	onMultiValueLabelClick = labelProps => async e => {
-		if (!this.props.popup) {
+		if (!this.props.onValueClick) {
 			return;
 		}
-		const rect = e && e.target && e.target.parentElement.getBoundingClientRect();
+		e.persist();
 		const availableValues = _(this.state.optionsCache)
 			.values()
 			.flatMap(x => x.values)
@@ -396,7 +387,7 @@ class Lookup extends React.PureComponent {
 			? option.custom ? option.fullObjectValue : find(availableValues, x => idSelector(x) === option.value)
 			: this.stripOptions(option);
 
-		this.togglePopup(rect, value);
+		this.props.onValueClick(e.target, value);
 	};
 
 	mapValue = () => {
@@ -486,7 +477,7 @@ class Lookup extends React.PureComponent {
 			<components.MultiValue
 				{...multiValueProps}
 				className={classNames("multi-value", classes, {
-					active: multiValueProps.isFocused && (this.state.focused || this.state.popupVisible)
+					active: multiValueProps.isFocused && this.state.focused
 				})}
 			/>
 		);
@@ -529,9 +520,7 @@ class Lookup extends React.PureComponent {
 			case "ArrowRight":
 				return this.setState({ menuIsOpen: false });
 			case "Escape":
-				if (this.state.popupVisible) {
-					this.setState({ popupVisible: false });
-				}
+				this.props.onEscape && this.props.onEscape();
 				break;
 			default:
 				break;
@@ -569,8 +558,6 @@ class Lookup extends React.PureComponent {
 			menuPlacement,
 			noOptionsMessage,
 			loadingMessage,
-			popup: Popup,
-			isDraggable,
 			id,
 			disabled,
 			ariaLabel,
@@ -579,8 +566,7 @@ class Lookup extends React.PureComponent {
 			allowSearchWithEmptyFilter,
 			openMenuOnFocus,
 			menuPortalTarget,
-			dragHandle,
-			draggablePortalTarget
+			onSelect
 		} = this.props;
 		const { search, menuIsOpen, customOptions } = this.state;
 
@@ -627,18 +613,6 @@ class Lookup extends React.PureComponent {
 					aria-labelledby={ariaLabelledBy}
 					className="lookup"
 				/>
-				{this.state.popupVisible && (
-					<ExtendedLookupDialog
-						close={this.togglePopup}
-						position={this.state.popupPosition}
-						isDraggable={isDraggable}
-						dragHandle={dragHandle}
-						portalTarget={draggablePortalTarget}
-						ariaLabelledBy={ariaLabelledBy}
-					>
-						<Popup value={this.state.popupValue} onSubmit={this.togglePopup} />
-					</ExtendedLookupDialog>
-				)}
 			</React.Fragment>
 		);
 	}
@@ -769,21 +743,13 @@ Lookup.propTypes = {
 	 */
 	fullObjectValue: PropTypes.bool,
 	/**
-	 * JSX elements to be rendered as draggable dialog when option is clicked
+	 * The function to be called on value click if multi-value mode is enabled
 	 */
-	popup: PropTypes.func,
+	onValueClick: PropTypes.func,
 	/**
-	 * Is popup draggable
+	 * The function to be called when user presses Escape key
 	 */
-	isDraggable: PropTypes.bool,
-	/**
-	 * Draggable handle selector 
-	 */
-	dragHandle: PropTypes.string,
-	/**
-	 * Draggable dialog portal target Id
-	 */
-	draggablePortalTarget: PropTypes.string,
+	onEscape: PropTypes.func,
 	/**
 	 * Always fetch values when menu opens
 	 */
@@ -851,7 +817,11 @@ Lookup.propTypes = {
 	/**
 	 * Include metadata odata property
 	 */
-	includeMetadata: PropTypes.bool
+	includeMetadata: PropTypes.bool,
+	/**
+	 * The function that maps lookup values
+	 */
+	map: PropTypes.func
 };
 
 export default Lookup;
