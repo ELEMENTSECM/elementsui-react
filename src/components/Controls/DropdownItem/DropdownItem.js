@@ -47,7 +47,7 @@ class DropdownItem extends React.Component {
 
 		return (
 			<li role="presentation">
-				{this.props.children.type === Dropdown ? (
+				{this.props.children && this.props.children.type === Dropdown ? (
 					this.props.children
 				) : (
 					<Tag
