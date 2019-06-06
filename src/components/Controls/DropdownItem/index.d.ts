@@ -39,6 +39,10 @@ export interface DropdownItemProps {
 	 * Should toggle menu
 	 */
 	toggle?: boolean;
+	/**
+	 * External reference
+	 */
+	innerRef?: any;
 }
 
 export default class DropdownItem extends React.Component<DropdownItemProps, any> {
