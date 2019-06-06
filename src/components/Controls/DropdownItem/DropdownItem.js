@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { omit } from "../../utils";
+import Dropdown from "../Dropdown";
 
 class DropdownItem extends React.Component {
 	onItemClick = e => {
@@ -24,7 +25,7 @@ class DropdownItem extends React.Component {
 	}
 
 	render() {
-		let { className, divider, tag: Tag, header, active, ...props } = omit(this.props, ["toggle"]);
+		let { className, divider, tag: Tag, header, active, ...props } = omit(this.props, [ "toggle" ]);
 
 		const classes = classNames(className, {
 			disabled: props.disabled,
@@ -46,15 +47,11 @@ class DropdownItem extends React.Component {
 
 		return (
 			<li role="presentation">
-				{React.isValidElement(this.props.children) ? (
+				{this.props.children.type === Dropdown ? (
 					this.props.children
 				) : (
 					<Tag
-						type={
-							Tag === "button" && (this.props.onClick || this.props.toggle)
-								? "button"
-								: undefined
-						}
+						type={Tag === "button" && (this.props.onClick || this.props.toggle) ? "button" : undefined}
 						{...props}
 						role={this.role}
 						className={classes}
@@ -76,7 +73,7 @@ DropdownItem.propTypes = {
 	/** Is item a divider */
 	divider: PropTypes.bool,
 	/** HTML element tag */
-	tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	tag: PropTypes.oneOfType([ PropTypes.func, PropTypes.string ]),
 	/** Is item a header */
 	header: PropTypes.bool,
 	/** onClickevent handler */
