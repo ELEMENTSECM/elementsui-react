@@ -33,7 +33,7 @@ function generateTypings(folder) {
 			try {
 				definition = react2dts.generateFromFile(x, filePath);
 			} catch (e) {
-				console.log(chalk.red(`exec error: ${error}`));
+				console.log(chalk.red(`exec error: ${e}`));
 			}
 
 			let res = `import * as React from 'react';\r\n
