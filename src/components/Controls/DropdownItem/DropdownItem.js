@@ -25,7 +25,7 @@ class DropdownItem extends React.Component {
 	}
 
 	render() {
-		let { className, divider, tag: Tag, header, active, ...props } = omit(this.props, [ "toggle" ]);
+		let { className, divider, tag: Tag, header, active, innerRef, ...props } = omit(this.props, [ "toggle" ]);
 
 		const classes = classNames(className, {
 			disabled: props.disabled,
@@ -56,6 +56,7 @@ class DropdownItem extends React.Component {
 						role={this.role}
 						className={classes}
 						onClick={this.onItemClick}
+						ref={innerRef}
 					/>
 				)}
 			</li>
@@ -81,7 +82,9 @@ DropdownItem.propTypes = {
 	/** Class name */
 	className: PropTypes.string,
 	/** Should toggle menu */
-	toggle: PropTypes.bool
+	toggle: PropTypes.bool,
+	/** External reference */
+	innerRef: PropTypes.any
 };
 DropdownItem.defaultProps = {
 	tag: "button",
