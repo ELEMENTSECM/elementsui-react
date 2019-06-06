@@ -1,6 +1,7 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 import Lookup from "./index";
+// import Select from "react-select";
 
 describe("Lookup", () => {
 	const queryProvider = filter => filter;
@@ -27,7 +28,12 @@ describe("Lookup", () => {
 	describe("with options property", () => {
 		beforeEach(() => {
 			wrapper = shallow(
-				<Lookup id="testLookup" queryProvider={queryProvider} renderOption={renderOption} options={options} />
+				<Lookup
+					id="testLookup"
+					queryProvider={queryProvider}
+					renderOption={renderOption}
+					options={options}
+				/>
 			);
 			component = wrapper.instance();
 		});
@@ -42,11 +48,11 @@ describe("Lookup", () => {
 
 		test("should update state on 'onMenuOpen'", async () => {
 			const mockLoadOptions = jest.spyOn(component, "loadOptions");
-			await wrapper.find("Select").simulate("menuOpen");		
+			await wrapper.find("Select").simulate("menuOpen");
 			setTimeout(() => {
 				expect(component.state["menuIsOpen"]).toBeTruthy();
 				expect(mockLoadOptions).not.toBeCalled();
-			  }, 0);
+			}, 0);
 		});
 
 		test("should update state on 'onMenuClose'", () => {
@@ -89,7 +95,9 @@ describe("Lookup", () => {
 
 	describe("without options property", () => {
 		beforeEach(() => {
-			wrapper = shallow(<Lookup id="testLookup" queryProvider={queryProvider} renderOption={renderOption} />);
+			wrapper = shallow(
+				<Lookup id="testLookup" queryProvider={queryProvider} renderOption={renderOption} />
+			);
 			component = wrapper.instance();
 		});
 
@@ -105,7 +113,7 @@ describe("Lookup", () => {
 			setTimeout(() => {
 				expect(component.state["menuIsOpen"]).toBeTruthy();
 				expect(mockLoadOptions).toBeCalled();
-			  }, 0);
+			}, 0);
 		});
 
 		test("should load options", async () => {

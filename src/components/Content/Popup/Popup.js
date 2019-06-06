@@ -38,8 +38,7 @@ export default class Popup extends React.PureComponent {
 				onHide={this.onHide}
 				show={show}
 				autoFocus={autoFocus}
-				className={hostClassName}
-			>
+				className={hostClassName}>
 				<Popper referenceElement={targetNode} placement={placement}>
 					{({ ref, style }) => (
 						<PositionedDraggable handle={handle} disabled={!isDraggable} bounds="html">
@@ -49,8 +48,7 @@ export default class Popup extends React.PureComponent {
 								style={{
 									...styles.container,
 									...(targetNode ? style : styles.centerToScreen)
-								}}
-							>
+								}}>
 								{children}
 							</div>
 						</PositionedDraggable>

@@ -42,7 +42,10 @@ export default class InfiniteList extends React.Component {
 		this.el = this.props.height ? this._infScroll : this._scrollableNode || window;
 		this.el.addEventListener("scroll", this.throttledOnScrollListener);
 
-		if (typeof this.props.initialScrollY === "number" && this.el.scrollHeight > this.props.initialScrollY) {
+		if (
+			typeof this.props.initialScrollY === "number" &&
+			this.el.scrollHeight > this.props.initialScrollY
+		) {
 			this.el.scrollTo(0, this.props.initialScrollY);
 		}
 
@@ -94,7 +97,7 @@ export default class InfiniteList extends React.Component {
 		return null;
 	};
 
-	onStart = (evt) => {
+	onStart = evt => {
 		if (this.state.lastScrollTop) return;
 
 		this.dragging = true;
@@ -105,7 +108,7 @@ export default class InfiniteList extends React.Component {
 		this._infScroll.style.transition = `transform 0.2s cubic-bezier(0,0,0.31,1)`;
 	};
 
-	onMove = (evt) => {
+	onMove = evt => {
 		if (!this.dragging) return;
 		this.currentY = evt.pageY || evt.touches[0].pageY;
 
@@ -113,7 +116,7 @@ export default class InfiniteList extends React.Component {
 
 		const threshold = this.props.pullDownToRefreshThreshold || 100;
 		if (this.currentY - this.startY >= threshold) {
-			this.setState((ps) => ({
+			this.setState(ps => ({
 				...ps,
 				pullToRefreshThresholdBreached: true
 			}));
@@ -125,7 +128,7 @@ export default class InfiniteList extends React.Component {
 		this._infScroll.style.transform = `translate3d(0px, ${this.currentY - this.startY}px, 0px)`;
 	};
 
-	onEnd = (evt) => {
+	onEnd = evt => {
 		this.startY = 0;
 		this.currentY = 0;
 
@@ -153,7 +156,7 @@ export default class InfiniteList extends React.Component {
 		return target.scrollHeight - target.scrollTop === clientHeight;
 	}
 
-	onScrollListener = (event) => {
+	onScrollListener = event => {
 		if (typeof this.props.onScroll === "function") {
 			setTimeout(() => this.props.onScroll(event), 0);
 		}
@@ -161,17 +164,19 @@ export default class InfiniteList extends React.Component {
 		let target =
 			this.props.height || this._scrollableNode
 				? event.target
-				: document.documentElement.scrollTop ? document.documentElement : document.body;
+				: document.documentElement.scrollTop
+				? document.documentElement
+				: document.body;
 
 		if (this.state.actionTriggered) return;
 
 		let atBottom = this.isElementAtBottom(target);
 
 		if (atBottom && this.props.hasMore && this.props.dataLength) {
-			this.setState((ps) => ({ ...ps, actionTriggered: true, showLoader: true }));
+			this.setState(ps => ({ ...ps, actionTriggered: true, showLoader: true }));
 			this.props.next();
 		}
-		this.setState((ps) => ({ ...ps, lastScrollTop: target.scrollTop }));
+		this.setState(ps => ({ ...ps, lastScrollTop: target.scrollTop }));
 	};
 
 	throttle = (fn, threshhold, scope) => {
@@ -206,11 +211,13 @@ export default class InfiniteList extends React.Component {
 				<div
 					style={Object.assign(style, outerDivStyle, styles.InfiniteList)}
 					className={`InfiniteList ${this.props.className}`}
-					ref={(infScroll) => (this._infScroll = infScroll)}
-				>
+					ref={infScroll => (this._infScroll = infScroll)}>
 					{this.props.pullDownToRefresh && (
-						<div style={styles.pulldown} ref={(pullDown) => (this._pullDown = pullDown)}>
-							<div style={Object.assign({}, styles.pulldownHandle, { top: -1 * this.maxPullDownDistance })} >
+						<div style={styles.pulldown} ref={pullDown => (this._pullDown = pullDown)}>
+							<div
+								style={Object.assign({}, styles.pulldownHandle, {
+									top: -1 * this.maxPullDownDistance
+								})}>
 								{!this.state.pullToRefreshThresholdBreached && (
 									<h3>
 										<FormattedMessage id="pullDownToRefresh" />
@@ -248,7 +255,7 @@ InfiniteList.propTypes = {
 	/** This message is shown to the user when he has seen all the records which means he's at the bottom and hasMore is false */
 	endMessage: PropTypes.node,
 	/** Optional, give only if you want to have a fixed height scrolling content */
-	height: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
+	height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	/** Optional, reference to a (parent) DOM element that is already providing overflow scrollbars to the InfiniteList component. You should provide the id of the DOM node preferably. */
 	scrollableTarget: PropTypes.node,
 	/** Children is by default assumed to be of type array and it's length is used to determine if loader needs to be shown or not, if your children is not an array, specify this prop to tell if your items are 0 or more. */

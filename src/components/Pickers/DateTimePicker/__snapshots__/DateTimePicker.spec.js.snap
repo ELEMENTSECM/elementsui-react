@@ -1,135 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateTimePicker displays correctly 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DateTimePicker
-    dateFormat="LLL"
-    id="testDatePicker"
-    locale="en"
-    timeFormat="LT"
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "checkPropTypes": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "class",
-    "props": Object {
-      "adjustDateOnChange": true,
-      "allowSameDay": false,
-      "customInput": <DateTimeInput />,
-      "dateFormat": "MMMM Do yyyy LT",
-      "dateFormatCalendar": "LLLL yyyy",
-      "disabled": false,
-      "disabledKeyboardNavigation": false,
-      "dropdownMode": "scroll",
-      "id": "testDatePicker",
-      "locale": "en",
-      "monthsShown": 1,
-      "nextMonthButtonLabel": "Next month",
-      "onBlur": [Function],
-      "onChange": [Function],
-      "onClickOutside": [Function],
-      "onFocus": [Function],
-      "onInputClick": [Function],
-      "onInputError": [Function],
-      "onKeyDown": [Function],
-      "onMonthChange": [Function],
-      "onSelect": [Function],
-      "onYearChange": [Function],
-      "preventOpenOnFocus": false,
-      "previousMonthButtonLabel": "Previous Month",
-      "readOnly": false,
-      "renderDayContents": [Function],
-      "selected": undefined,
-      "shouldCloseOnSelect": true,
-      "showTimeSelect": false,
-      "showTimeSelectOnly": false,
-      "timeCaption": "Time",
-      "timeFormat": "h:mm A",
-      "timeIntervals": 15,
-      "todayButton": null,
-      "withPortal": false,
-    },
-    "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "adjustDateOnChange": true,
-        "allowSameDay": false,
-        "customInput": <DateTimeInput />,
-        "dateFormat": "MMMM Do yyyy LT",
-        "dateFormatCalendar": "LLLL yyyy",
-        "disabled": false,
-        "disabledKeyboardNavigation": false,
-        "dropdownMode": "scroll",
-        "id": "testDatePicker",
-        "locale": "en",
-        "monthsShown": 1,
-        "nextMonthButtonLabel": "Next month",
-        "onBlur": [Function],
-        "onChange": [Function],
-        "onClickOutside": [Function],
-        "onFocus": [Function],
-        "onInputClick": [Function],
-        "onInputError": [Function],
-        "onKeyDown": [Function],
-        "onMonthChange": [Function],
-        "onSelect": [Function],
-        "onYearChange": [Function],
-        "preventOpenOnFocus": false,
-        "previousMonthButtonLabel": "Previous Month",
-        "readOnly": false,
-        "renderDayContents": [Function],
-        "selected": undefined,
-        "shouldCloseOnSelect": true,
-        "showTimeSelect": false,
-        "showTimeSelectOnly": false,
-        "timeCaption": "Time",
-        "timeFormat": "h:mm A",
-        "timeIntervals": 15,
-        "todayButton": null,
-        "withPortal": false,
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": false,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+<DatePicker
+  adjustDateOnChange={true}
+  allowSameDay={false}
+  customInput={<DateTimeInput />}
+  dateFormat="MMMM Do yyyy LT"
+  dateFormatCalendar="LLLL yyyy"
+  disabled={false}
+  disabledKeyboardNavigation={false}
+  dropdownMode="scroll"
+  id="testDatePicker"
+  locale="en"
+  monthsShown={1}
+  nextMonthButtonLabel="Next month"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onClickOutside={[Function]}
+  onFocus={[Function]}
+  onInputClick={[Function]}
+  onInputError={[Function]}
+  onKeyDown={[Function]}
+  onMonthChange={[Function]}
+  onSelect={[Function]}
+  onYearChange={[Function]}
+  preventOpenOnFocus={false}
+  previousMonthButtonLabel="Previous Month"
+  readOnly={false}
+  renderDayContents={[Function]}
+  shouldCloseOnSelect={true}
+  showTimeSelect={false}
+  showTimeSelectOnly={false}
+  timeCaption="Time"
+  timeFormat="h:mm A"
+  timeIntervals={15}
+  todayButton={null}
+  withPortal={false}
+/>
 `;

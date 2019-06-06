@@ -28,7 +28,7 @@ const DropdownMenu = (props, context) => {
 			? {
 					...modifiers,
 					...noFlipModifier
-				}
+			  }
 			: modifiers;
 
 		return (
@@ -84,7 +84,7 @@ DropdownMenu.defaultProps = {
 };
 DropdownMenu.contextTypes = {
 	isOpen: PropTypes.bool.isRequired,
-	direction: PropTypes.oneOf([ "up", "down", "left", "right" ]).isRequired,
+	direction: PropTypes.oneOf(["up", "down", "left", "right"]).isRequired,
 	inNavbar: PropTypes.bool.isRequired
 };
 
