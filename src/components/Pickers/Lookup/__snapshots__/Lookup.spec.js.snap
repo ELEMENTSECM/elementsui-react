@@ -11,6 +11,7 @@ exports[`Lookup with options property should be displayed correctly 1`] = `
     closeMenuOnSelect={true}
     components={
       Object {
+        "Input": [Function],
         "MultiValue": [Function],
         "MultiValueContainer": [Function],
         "MultiValueLabel": [Function],
@@ -20,6 +21,7 @@ exports[`Lookup with options property should be displayed correctly 1`] = `
     escapeClearsValue={false}
     filterOption={[Function]}
     formatGroupLabel={[Function]}
+    formatOptionLabel={[Function]}
     getOptionLabel={[Function]}
     getOptionValue={[Function]}
     id="testLookup"

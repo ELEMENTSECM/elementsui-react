@@ -457,8 +457,27 @@ class Lookup extends React.PureComponent {
 		}
 	};
 
+	getLabel = ({ label }) => {
+		return (
+		  <div id={this.getLookupValueId()}>{label}</div>
+		);
+	}
+
+	getLookupValueId = () => {
+		return `${this.props.inputId}ValueId`;
+	}
+
+	Input = inputProps => {
+		return (
+			<components.Input
+				{...inputProps}
+				aria-activedescendant={this.getLookupValueId()}
+			/>
+		);
+	}
+
 	MultiValueContainer = containerProps => (
-		<div className="multivalue-container" role="region" aria-labelledby={this.props.ariaLabelledBy}>
+		<div className="multivalue-container" role="region" aria-labelledby={this.props.ariaLabelledBy} id={this.getLookupValueId()}>
 			<components.MultiValueContainer {...containerProps} />
 		</div>
 	);
@@ -538,7 +557,8 @@ class Lookup extends React.PureComponent {
 		let renderers = {
 			MultiValueLabel: this.MultiValueLabel,
 			MultiValueContainer: this.MultiValueContainer,
-			MultiValue: this.MultiValue
+			MultiValue: this.MultiValue,
+			Input: this.Input
 		};
 
 		if (!allowSearchWithEmptyFilter) {
@@ -616,6 +636,7 @@ class Lookup extends React.PureComponent {
 					aria-label={ariaLabel}
 					aria-labelledby={ariaLabelledBy}
 					className="lookup"
+					formatOptionLabel={this.getLabel}
 				/>
 			</React.Fragment>
 		);
