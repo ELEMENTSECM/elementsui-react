@@ -7,13 +7,13 @@ import { omit, keyCodes } from "../../utils";
 
 class Dropdown extends React.Component {
 	getChildContext() {
-		const toggle = (e) => {
+		const toggle = e => {
 			const isDropdownToggle = e.target.classList.contains("dropdown-toggle");
-			if(this.props.parentToggle && this.props.isOpen && !isDropdownToggle) {
+			if (this.props.parentToggle && this.props.isOpen && !isDropdownToggle) {
 				this.props.parentToggle(e);
 			}
 			this.props.toggle(e);
-		}
+		};
 		return {
 			toggle: toggle,
 			isOpen: this.props.isOpen,
@@ -164,7 +164,7 @@ class Dropdown extends React.Component {
 			active,
 			addonType,
 			...attrs
-		} = omit(this.props, [ "toggle", "parentToggle", "disabled", "inNavbar", "direction" ]);
+		} = omit(this.props, ["toggle", "parentToggle", "disabled", "inNavbar", "direction"]);
 
 		const direction = this.props.direction === "down" && dropup ? "up" : this.props.direction;
 
@@ -195,7 +195,12 @@ class Dropdown extends React.Component {
 
 		return (
 			<Manager>
-				<div {...attrs} className={classes} onKeyDown={this.handleKeyDown} role={this.props.inNavbar ? "presentation" : "menu"} />
+				<div
+					{...attrs}
+					className={classes}
+					onKeyDown={this.handleKeyDown}
+					role={this.props.inNavbar ? "presentation" : "menu"}
+				/>
 			</Manager>
 		);
 	}
@@ -233,7 +238,7 @@ Dropdown.propTypes = {
 	/**
 	 * Parent toggle
 	 */
-	parentToggle: PropTypes.func,
+	parentToggle: PropTypes.func
 };
 Dropdown.defaultProps = {
 	isOpen: false,

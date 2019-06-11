@@ -1,262 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Items displays correctly 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Items
-    items={
-      Array [
-        "test item",
-      ]
-    }
-    onItemRemove={[Function]}
-    renderItem={[Function]}
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "checkPropTypes": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "class",
-    "props": Object {
-      "bsClass": "well",
-      "bsSize": "sm",
-      "children": <ul
-        className="eui-items__list"
+<Well
+  bsClass="well"
+  bsSize="sm"
+  className="eui-items"
+>
+  <ul
+    className="eui-items__list"
+  >
+    <li
+      className="eui-items__list__item"
+      key="0"
+    >
+      <button
+        className="eui-items__list__item__remove"
+        onClick={[Function]}
+        type="button"
       >
-        <li
-          className="eui-items__list__item"
-        >
-          <button
-            className="eui-items__list__item__remove"
-            onClick={[Function]}
-            type="button"
-          >
-            ×
-          </button>
-          <span>
-            test item
-          </span>
-        </li>
-      </ul>,
-      "className": "eui-items",
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <li
-            className="eui-items__list__item"
-          >
-            <button
-              className="eui-items__list__item__remove"
-              onClick={[Function]}
-              type="button"
-            >
-              ×
-            </button>
-            <span>
-              test item
-            </span>
-          </li>,
-        ],
-        "className": "eui-items__list",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": "0",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <button
-                className="eui-items__list__item__remove"
-                onClick={[Function]}
-                type="button"
-              >
-                ×
-              </button>,
-              <span>
-                test item
-              </span>,
-            ],
-            "className": "eui-items__list__item",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "×",
-                "className": "eui-items__list__item__remove",
-                "onClick": [Function],
-                "type": "button",
-              },
-              "ref": null,
-              "rendered": "×",
-              "type": "button",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "test item",
-              },
-              "ref": null,
-              "rendered": "test item",
-              "type": "span",
-            },
-          ],
-          "type": "li",
-        },
-      ],
-      "type": "ul",
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "bsClass": "well",
-        "bsSize": "sm",
-        "children": <ul
-          className="eui-items__list"
-        >
-          <li
-            className="eui-items__list__item"
-          >
-            <button
-              className="eui-items__list__item__remove"
-              onClick={[Function]}
-              type="button"
-            >
-              ×
-            </button>
-            <span>
-              test item
-            </span>
-          </li>
-        </ul>,
-        "className": "eui-items",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <li
-              className="eui-items__list__item"
-            >
-              <button
-                className="eui-items__list__item__remove"
-                onClick={[Function]}
-                type="button"
-              >
-                ×
-              </button>
-              <span>
-                test item
-              </span>
-            </li>,
-          ],
-          "className": "eui-items__list",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": "0",
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <button
-                  className="eui-items__list__item__remove"
-                  onClick={[Function]}
-                  type="button"
-                >
-                  ×
-                </button>,
-                <span>
-                  test item
-                </span>,
-              ],
-              "className": "eui-items__list__item",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "×",
-                  "className": "eui-items__list__item__remove",
-                  "onClick": [Function],
-                  "type": "button",
-                },
-                "ref": null,
-                "rendered": "×",
-                "type": "button",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "test item",
-                },
-                "ref": null,
-                "rendered": "test item",
-                "type": "span",
-              },
-            ],
-            "type": "li",
-          },
-        ],
-        "type": "ul",
-      },
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": false,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+        ×
+      </button>
+      <span>
+        test item
+      </span>
+    </li>
+  </ul>
+</Well>
 `;

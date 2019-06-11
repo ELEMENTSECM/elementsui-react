@@ -153,7 +153,7 @@ class Lookup extends React.PureComponent {
 						...prevState.optionsCache,
 						[prevState.search]: {
 							...prevState.optionsCache[prevState.search],
-							values: [ ...newValues, ...this.currentOptions.values ]
+							values: [...newValues, ...this.currentOptions.values]
 						}
 					}
 				}));
@@ -197,7 +197,10 @@ class Lookup extends React.PureComponent {
 
 		const { optionsCache } = this.state;
 
-		if (this.props.allowSearchWithEmptyFilter && (this.props.alwaysRefresh || !some(optionsCache[""].options))) {
+		if (
+			this.props.allowSearchWithEmptyFilter &&
+			(this.props.alwaysRefresh || !some(optionsCache[""].options))
+		) {
 			await this.loadOptions();
 		}
 	};
@@ -325,7 +328,7 @@ class Lookup extends React.PureComponent {
 					(option.custom
 						? option.fullObjectValue
 						: !isNil(option.value) &&
-							find(this.currentOptions.values, x => idSelector(x) === option.value));
+						  find(this.currentOptions.values, x => idSelector(x) === option.value));
 			} else {
 				const availableValues = this.currentOptions.values
 					? this.currentOptions.values.concat(lookupValues)
@@ -335,12 +338,12 @@ class Lookup extends React.PureComponent {
 					meta.value = some(option)
 						? option.reduce((values, o) => {
 								if (o.custom) {
-									return [ ...values, o.fullObjectValue ];
+									return [...values, o.fullObjectValue];
 								}
 
 								const value = find(availableValues, x => idSelector(x) === o.value);
-								return value ? [ ...values, value ] : values;
-							}, [])
+								return value ? [...values, value] : values;
+						  }, [])
 						: [];
 					lookupMap && (meta.value = map(meta.value, lookupMap));
 				} else {
@@ -384,7 +387,9 @@ class Lookup extends React.PureComponent {
 		}
 
 		const value = fullObjectValue
-			? option.custom ? option.fullObjectValue : find(availableValues, x => idSelector(x) === option.value)
+			? option.custom
+				? option.fullObjectValue
+				: find(availableValues, x => idSelector(x) === option.value)
 			: this.stripOptions(option);
 
 		this.props.onValueClick(e.target, value);
@@ -427,7 +432,7 @@ class Lookup extends React.PureComponent {
 							label: current ? renderFn(current) : o,
 							value: o
 						};
-					})
+				  })
 				: null;
 		} else {
 			return initialValue;
@@ -442,12 +447,12 @@ class Lookup extends React.PureComponent {
 			const customValues = customOptions(search.trim());
 
 			return customValues
-				? flatten([ customValues ]).map(x => ({
+				? flatten([customValues]).map(x => ({
 						value: idSelector(x),
 						label: renderOption(x),
 						custom: true,
 						fullObjectValue: fullObjectValue && x
-					}))
+				  }))
 				: [];
 		}
 	};
@@ -492,8 +497,7 @@ class Lookup extends React.PureComponent {
 				onClick={onClick}
 				style={{ border: "none", background: "rgb(230, 230, 230)" }}
 				aria-haspopup="dialog"
-				tabIndex={-1}
-			>
+				tabIndex={-1}>
 				{labelProps.data.label}
 			</button>
 		);
@@ -725,7 +729,7 @@ Lookup.propTypes = {
 	/**
 	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
 	 */
-	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ]),
+	menuPlacement: PropTypes.oneOf(["bottom", "top", "auto"]),
 	/**
 	 * Whether the menu should use a portal, and where it should attach
 	 */
@@ -733,11 +737,11 @@ Lookup.propTypes = {
 	/**
 	 * Text to display when there are no options
 	 */
-	noOptionsMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	noOptionsMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
 	/**
 	 * Async: Text to display when loading options
 	 */
-	loadingMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	loadingMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
 	/**
 	 * Include full object value
 	 */
@@ -760,13 +764,13 @@ Lookup.propTypes = {
 	customOptions: PropTypes.func,
 	/** Aria label */
 	ariaLabel: PropTypes.string,
-	/** 
+	/**
 	 * Labelled by Id
 	 * */
 	ariaLabelledBy: PropTypes.string,
-	/** 
+	/**
 	 * Labels
-	*/
+	 */
 	labels: PropTypes.shape({
 		/**
 		 * Delete button label

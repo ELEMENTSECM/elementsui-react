@@ -1,474 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListItem displays correctly 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ListItem
-    link="#"
-  >
-    Test title
-  </ListItem>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "checkPropTypes": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": <a
-        className={undefined}
-        href="#"
-        onClick={undefined}
-        style={
-          Object {
-            "borderRadius": 0,
-            "borderWidth": 0,
-            "color": "#555",
-            "display": "block",
-            "fontSize": "1.2em",
-            "marginLeft": 17,
-            "minHeight": 49,
-            "padding": "15px 20px 4px 37px",
-          }
-        }
-      >
-        <div
-          className="row"
-        >
-          <div
-            className="col-xs-1"
-          >
-            <i
-              className={undefined}
-              style={
-                Object {
-                  "marginLeft": -13,
-                }
-              }
-            />
-          </div>
-          <div
-            className="col-xs-10"
-          >
-            <span>
-              <span>
-                Test title
-              </span>
-            </span>
-          </div>
-        </div>
-      </a>,
-      "className": undefined,
-      "style": Object {
-        "marginBottom": -1,
-        "overflow": "hidden",
-        "position": "relative",
-        "selectors": Object {
-          ":nth-child(odd)": Object {
-            "background": "#f7f7f7",
-          },
-        },
-      },
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <div
-          className="row"
-        >
-          <div
-            className="col-xs-1"
-          >
-            <i
-              className={undefined}
-              style={
-                Object {
-                  "marginLeft": -13,
-                }
-              }
-            />
-          </div>
-          <div
-            className="col-xs-10"
-          >
-            <span>
-              <span>
-                Test title
-              </span>
-            </span>
-          </div>
-        </div>,
-        "className": undefined,
-        "href": "#",
-        "onClick": undefined,
-        "style": Object {
-          "borderRadius": 0,
-          "borderWidth": 0,
-          "color": "#555",
-          "display": "block",
-          "fontSize": "1.2em",
-          "marginLeft": 17,
-          "minHeight": 49,
-          "padding": "15px 20px 4px 37px",
-        },
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <div
-              className="col-xs-1"
-            >
-              <i
-                className={undefined}
-                style={
-                  Object {
-                    "marginLeft": -13,
-                  }
-                }
-              />
-            </div>,
-            <div
-              className="col-xs-10"
-            >
-              <span>
-                <span>
-                  Test title
-                </span>
-              </span>
-            </div>,
-          ],
-          "className": "row",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": <i
-                className={undefined}
-                style={
-                  Object {
-                    "marginLeft": -13,
-                  }
-                }
-              />,
-              "className": "col-xs-1",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "className": undefined,
-                "style": Object {
-                  "marginLeft": -13,
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "i",
-            },
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": <span>
-                <span>
-                  Test title
-                </span>
-              </span>,
-              "className": "col-xs-10",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <span>
-                  Test title
-                </span>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Test title",
-                },
-                "ref": null,
-                "rendered": "Test title",
-                "type": "span",
-              },
-              "type": "span",
-            },
-            "type": "div",
-          },
-        ],
-        "type": "div",
-      },
-      "type": "a",
-    },
-    "type": "li",
-  },
-  Symbol(enzyme.__nodes__): Array [
+<li
+  style={
     Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <a
-          className={undefined}
-          href="#"
-          onClick={undefined}
+      "marginBottom": -1,
+      "overflow": "hidden",
+      "position": "relative",
+      "selectors": Object {
+        ":nth-child(odd)": Object {
+          "background": "#f7f7f7",
+        },
+      },
+    }
+  }
+>
+  <a
+    href="#"
+    style={
+      Object {
+        "borderRadius": 0,
+        "borderWidth": 0,
+        "color": "#555",
+        "display": "block",
+        "fontSize": "1.2em",
+        "marginLeft": 17,
+        "minHeight": 49,
+        "padding": "15px 20px 4px 37px",
+      }
+    }
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-xs-1"
+      >
+        <i
           style={
             Object {
-              "borderRadius": 0,
-              "borderWidth": 0,
-              "color": "#555",
-              "display": "block",
-              "fontSize": "1.2em",
-              "marginLeft": 17,
-              "minHeight": 49,
-              "padding": "15px 20px 4px 37px",
+              "marginLeft": -13,
             }
           }
-        >
-          <div
-            className="row"
-          >
-            <div
-              className="col-xs-1"
-            >
-              <i
-                className={undefined}
-                style={
-                  Object {
-                    "marginLeft": -13,
-                  }
-                }
-              />
-            </div>
-            <div
-              className="col-xs-10"
-            >
-              <span>
-                <span>
-                  Test title
-                </span>
-              </span>
-            </div>
-          </div>
-        </a>,
-        "className": undefined,
-        "style": Object {
-          "marginBottom": -1,
-          "overflow": "hidden",
-          "position": "relative",
-          "selectors": Object {
-            ":nth-child(odd)": Object {
-              "background": "#f7f7f7",
-            },
-          },
-        },
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <div
-            className="row"
-          >
-            <div
-              className="col-xs-1"
-            >
-              <i
-                className={undefined}
-                style={
-                  Object {
-                    "marginLeft": -13,
-                  }
-                }
-              />
-            </div>
-            <div
-              className="col-xs-10"
-            >
-              <span>
-                <span>
-                  Test title
-                </span>
-              </span>
-            </div>
-          </div>,
-          "className": undefined,
-          "href": "#",
-          "onClick": undefined,
-          "style": Object {
-            "borderRadius": 0,
-            "borderWidth": 0,
-            "color": "#555",
-            "display": "block",
-            "fontSize": "1.2em",
-            "marginLeft": 17,
-            "minHeight": 49,
-            "padding": "15px 20px 4px 37px",
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div
-                className="col-xs-1"
-              >
-                <i
-                  className={undefined}
-                  style={
-                    Object {
-                      "marginLeft": -13,
-                    }
-                  }
-                />
-              </div>,
-              <div
-                className="col-xs-10"
-              >
-                <span>
-                  <span>
-                    Test title
-                  </span>
-                </span>
-              </div>,
-            ],
-            "className": "row",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <i
-                  className={undefined}
-                  style={
-                    Object {
-                      "marginLeft": -13,
-                    }
-                  }
-                />,
-                "className": "col-xs-1",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "className": undefined,
-                  "style": Object {
-                    "marginLeft": -13,
-                  },
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "i",
-              },
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <span>
-                  <span>
-                    Test title
-                  </span>
-                </span>,
-                "className": "col-xs-10",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <span>
-                    Test title
-                  </span>,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Test title",
-                  },
-                  "ref": null,
-                  "rendered": "Test title",
-                  "type": "span",
-                },
-                "type": "span",
-              },
-              "type": "div",
-            },
-          ],
-          "type": "div",
-        },
-        "type": "a",
-      },
-      "type": "li",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": false,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+        />
+      </div>
+      <div
+        className="col-xs-10"
+      >
+        <span>
+          <span>
+            Test title
+          </span>
+        </span>
+      </div>
+    </div>
+  </a>
+</li>
 `;
