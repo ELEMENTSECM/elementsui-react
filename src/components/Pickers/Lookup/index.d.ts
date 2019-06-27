@@ -145,10 +145,6 @@ export interface LookupProps {
 	 */
 	onEscape?: (...args: any[]) => any;
 	/**
-	 * Always fetch values when menu opens
-	 */
-	alwaysRefresh?: boolean;
-	/**
 	 * Function that returns one or many records that will be appened to the result list
 	 */
 	customOptions?: (...args: any[]) => any;
