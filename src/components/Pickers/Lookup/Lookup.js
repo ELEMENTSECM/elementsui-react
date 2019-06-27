@@ -191,16 +191,12 @@ class Lookup extends React.PureComponent {
 
 	onMenuOpen = async () => {
 		await this.setState({
-			menuIsOpen: true,
-			optionsCache: this.props.alwaysRefresh ? this.initialOptionsCache : this.state.optionsCache
+			menuIsOpen: true
 		});
 
 		const { optionsCache } = this.state;
 
-		if (
-			this.props.allowSearchWithEmptyFilter &&
-			(this.props.alwaysRefresh || !some(optionsCache[""].options))
-		) {
+		if (this.props.allowSearchWithEmptyFilter && !some(optionsCache[""].options)) {
 			await this.loadOptions();
 		}
 	};
@@ -754,10 +750,6 @@ Lookup.propTypes = {
 	 * The function to be called when user presses Escape key
 	 */
 	onEscape: PropTypes.func,
-	/**
-	 * Always fetch values when menu opens
-	 */
-	alwaysRefresh: PropTypes.bool,
 	/**
 	 * Function that returns one or many records that will be appened to the result list
 	 */
