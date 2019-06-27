@@ -13,6 +13,7 @@ import debounce from "lodash/debounce";
 import flatten from "lodash/flatten";
 import differenceBy from "lodash/differenceBy";
 import { isArray } from "util";
+import { allOptions } from "./lookupOptions";
 
 const initialCache = {
 	options: [],
@@ -92,7 +93,8 @@ class Lookup extends React.PureComponent {
 			})
 		},
 		delimiter: ";",
-		includeMetadata: false
+		includeMetadata: false,
+		includeFreetextValues: false
 	};
 
 	activeValue = null;
@@ -566,11 +568,20 @@ class Lookup extends React.PureComponent {
 			allowSearchWithEmptyFilter,
 			openMenuOnFocus,
 			menuPortalTarget,
-			onSelect
+			includeFreetextValues,
+			fullObjectValue
 		} = this.props;
-		const { search, menuIsOpen, customOptions } = this.state;
+		const { search, menuIsOpen, customOptions, idSelector } = this.state;
 
-		const options = this.currentOptions.options.concat(customOptions);
+		const options = allOptions(
+			this.currentOptions.options,
+			customOptions,
+			idSelector,
+			includeFreetextValues,
+			fullObjectValue,
+			search
+		);
+
 		let valueOption = this.mapValue();
 
 		adjustOptionsAndSelected(valueOption, options);
@@ -814,6 +825,10 @@ Lookup.propTypes = {
 	 * Include metadata odata property
 	 */
 	includeMetadata: PropTypes.bool,
+	/**
+	 * Allow freetext values in the lookup. If the id already exist in options, the freetext id will not be duplicated.
+	 */
+	includeFreetextValues: PropTypes.bool,
 	/**
 	 * The function that maps lookup values
 	 */

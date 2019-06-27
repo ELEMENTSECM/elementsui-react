@@ -206,6 +206,10 @@ export interface LookupProps {
 	 */
 	includeMetadata?: boolean;
 	/**
+	 * Allow freetext values in the lookup. If the id already exist in options, the freetext id will not be duplicated.
+	 */
+	includeFreetextValues?: boolean;
+	/**
 	 * The function that maps lookup values
 	 */
 	map?: (...args: any[]) => any;

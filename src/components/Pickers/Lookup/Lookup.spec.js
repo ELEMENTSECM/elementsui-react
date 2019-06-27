@@ -1,7 +1,7 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 import Lookup from "./index";
-// import Select from "react-select";
+import Select from "react-select/lib/Select";
 
 describe("Lookup", () => {
 	const queryProvider = filter => filter;
@@ -149,6 +149,55 @@ describe("Lookup", () => {
 			await component.loadOptions();
 			expect(component.state["optionsCache"][""]["options"]).toEqual(options);
 			expect(component.state["optionsCache"][""]["values"]).toEqual(values);
+		});
+	});
+
+	describe("customOptions are displayed", () => {
+		// beforeEach(() => {
+		// 	wrapper = shallow(
+		// 		<Lookup
+		// 			id="testLookup"
+		// 			queryProvider={queryProvider}
+		// 			renderOption={renderOption}
+		// 		/>
+		// 	);
+		// 	component = wrapper.instance();
+		// });
+
+		test("customOptions are displayed", async () => {
+			function customValues() {
+				return [
+					{
+						Id: 3,
+						Title: "Custom Title 3"
+					},
+					{
+						Id: 4,
+						Title: "Custom Title 4"
+					}
+				];
+			}
+
+			const wrapper2 = shallow(
+				<Lookup
+					id="testLookup"
+					queryProvider={queryProvider}
+					renderOption={renderOption}
+					customOptions={customValues}
+				/>
+			);
+
+			await wrapper.find(Select).simulate("inputChange", "test");
+
+			expect(wrapper2.find(Select).props()).toEqual("hehe");
+
+			// component.load = jest.fn(() => ({
+			// 	options,
+			// 	values
+			// }));
+			// await component.loadOptions();
+			// expect(component.state["optionsCache"][""]["options"]).toEqual(options);
+			// expect(component.state["optionsCache"][""]["values"]).toEqual(values);
 		});
 	});
 });

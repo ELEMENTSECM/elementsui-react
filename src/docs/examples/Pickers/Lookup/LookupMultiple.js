@@ -51,6 +51,7 @@ export default class LookupMultiple extends React.Component {
 						}
 					};
 				}}
+				includeFreetextValues={true}
 			/>
 		);
 	}
