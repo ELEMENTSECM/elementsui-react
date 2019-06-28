@@ -108,4 +108,21 @@ describe("lookupOptions", () => {
 		const sut = allOptions([], [getOneValidCustomOption()], true, false, "SimpleCustomValue");
 		expect(sut).toEqual([getOneValidCustomOption()]);
 	});
+
+	test("renders only freetext option when nothing else is defined", () => {
+		const sut = allOptions([], [], true, false, "freetext");
+		expect(sut).toEqual([
+			{
+				value: "freetext",
+				label: "freetext",
+				custom: true,
+				fullObjectValue: false
+			}
+		]);
+	});
+
+	test("does not render freetext value when it is empty", () => {
+		const sut = allOptions([], [], true, false, "");
+		expect(sut).toEqual([]);
+	});
 });

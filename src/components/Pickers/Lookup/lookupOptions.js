@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 function addFreetextValue(includeFreetextValues, fullObjectValue, search) {
-	if (!includeFreetextValues || _.isNaN(search)) return [];
+	if (!includeFreetextValues || !search) return [];
 
 	return [
 		{
