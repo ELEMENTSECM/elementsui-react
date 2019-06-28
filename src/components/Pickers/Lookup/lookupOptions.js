@@ -1,8 +1,6 @@
 import _ from "lodash";
 
-function addFreetextValue(includeFreetextValues, fullObjectValue, search) {
-	if (!includeFreetextValues || !search) return [];
-
+function freetextValue(search, fullObjectValue) {
 	return [
 		{
 			value: search,
@@ -20,11 +18,19 @@ export function allOptions(
 	fullObjectValue,
 	search
 ) {
-	const optionsWithCustomOptions = currentOptionsOptions.concat(customOptions);
+	let allOptions = [];
 
-	const allOptions = optionsWithCustomOptions.concat(
-		addFreetextValue(includeFreetextValues, fullObjectValue, search)
-	);
+	if (_.isArray(currentOptionsOptions)) {
+		allOptions = allOptions.concat(currentOptionsOptions);
+	}
+
+	if (_.isArray(customOptions)) {
+		allOptions = allOptions.concat(customOptions);
+	}
+
+	if (includeFreetextValues && !_.isNil(search) && !_.isEmpty(search)) {
+		allOptions = allOptions.concat(freetextValue(search, fullObjectValue));
+	}
 
 	// Note the priority here:
 	// If an option exist in both lookup + custom lookups + freetext - it will only show the lookup version

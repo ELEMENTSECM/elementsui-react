@@ -16,6 +16,15 @@ describe("lookupOptions", () => {
 		};
 	}
 
+	function getOneValidFreetextObject(freetext, fullObjectValue = false) {
+		return {
+			value: freetext,
+			label: freetext,
+			custom: true,
+			fullObjectValue: fullObjectValue
+		};
+	}
+
 	test("renders currentOptionsOptions alone if nothing else is defined", () => {
 		const sut = allOptions([getOneValidOption()], [], false, false, "irrelevant");
 		expect(sut).toEqual([getOneValidOption()]);
@@ -50,28 +59,12 @@ describe("lookupOptions", () => {
 
 	test("renders both currentOptionsOption and freetext option", () => {
 		const sut = allOptions([getOneValidOption()], [], true, false, "freetext");
-		expect(sut).toEqual([
-			getOneValidOption(),
-			{
-				value: "freetext",
-				label: "freetext",
-				custom: true,
-				fullObjectValue: false
-			}
-		]);
+		expect(sut).toEqual([getOneValidOption(), getOneValidFreetextObject("freetext")]);
 	});
 
 	test("renders both currentOptionsOption and freetext option with fullObjectValue true", () => {
 		const sut = allOptions([getOneValidOption()], [], true, true, "freetext");
-		expect(sut).toEqual([
-			getOneValidOption(),
-			{
-				value: "freetext",
-				label: "freetext",
-				custom: true,
-				fullObjectValue: true
-			}
-		]);
+		expect(sut).toEqual([getOneValidOption(), getOneValidFreetextObject("freetext", true)]);
 	});
 
 	test("renders both currentOptionsOption, custom option and freetext option", () => {
@@ -79,12 +72,7 @@ describe("lookupOptions", () => {
 		expect(sut).toEqual([
 			getOneValidOption(),
 			getOneValidCustomOption(),
-			{
-				value: "freetext",
-				label: "freetext",
-				custom: true,
-				fullObjectValue: false
-			}
+			getOneValidFreetextObject("freetext")
 		]);
 	});
 
@@ -111,18 +99,21 @@ describe("lookupOptions", () => {
 
 	test("renders only freetext option when nothing else is defined", () => {
 		const sut = allOptions([], [], true, false, "freetext");
-		expect(sut).toEqual([
-			{
-				value: "freetext",
-				label: "freetext",
-				custom: true,
-				fullObjectValue: false
-			}
-		]);
+		expect(sut).toEqual([getOneValidFreetextObject("freetext")]);
 	});
 
 	test("does not render freetext value when it is empty", () => {
 		const sut = allOptions([], [], true, false, "");
+		expect(sut).toEqual([]);
+	});
+
+	test("renders OK when all arrays are undefined", () => {
+		const sut = allOptions(undefined, undefined, true, false, undefined);
+		expect(sut).toEqual([]);
+	});
+
+	test("renders OK when all arrays are null", () => {
+		const sut = allOptions(null, null, true, false, null);
 		expect(sut).toEqual([]);
 	});
 });
