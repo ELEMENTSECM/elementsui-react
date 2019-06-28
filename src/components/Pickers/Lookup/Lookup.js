@@ -571,12 +571,11 @@ class Lookup extends React.PureComponent {
 			includeFreetextValues,
 			fullObjectValue
 		} = this.props;
-		const { search, menuIsOpen, customOptions, idSelector } = this.state;
+		const { search, menuIsOpen, customOptions } = this.state;
 
 		const options = allOptions(
 			this.currentOptions.options,
 			customOptions,
-			idSelector,
 			includeFreetextValues,
 			fullObjectValue,
 			search

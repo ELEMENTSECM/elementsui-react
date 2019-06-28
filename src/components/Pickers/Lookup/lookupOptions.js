@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 function addFreetextValue(includeFreetextValues, fullObjectValue, search) {
 	if (!includeFreetextValues || _.isNaN(search)) return [];
 
@@ -12,14 +14,13 @@ function addFreetextValue(includeFreetextValues, fullObjectValue, search) {
 }
 
 export function allOptions(
-	currentOptions,
+	currentOptionsOptions,
 	customOptions,
-	idSelector,
 	includeFreetextValues,
 	fullObjectValue,
 	search
 ) {
-	const optionsWithCustomOptions = currentOptions.concat(customOptions);
+	const optionsWithCustomOptions = currentOptionsOptions.concat(customOptions);
 
 	const allOptions = optionsWithCustomOptions.concat(
 		addFreetextValue(includeFreetextValues, fullObjectValue, search)
@@ -28,7 +29,7 @@ export function allOptions(
 	// Note the priority here:
 	// If an option exist in both lookup + custom lookups + freetext - it will only show the lookup version
 	// If the option exists in custom lookups + freetext - it will only show the custom lookup version
-	const allOptionsWithoutDuplicates = _.uniqBy(allOptions, idSelector);
+	const allOptionsWithoutDuplicates = _.uniqBy(allOptions, "value");
 
 	return allOptionsWithoutDuplicates;
 }
