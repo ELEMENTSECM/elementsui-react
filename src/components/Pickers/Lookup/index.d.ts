@@ -207,6 +207,7 @@ export interface LookupProps {
 	includeMetadata?: boolean;
 	/**
 	 * Allow freetext values in the lookup. If the id already exist in options, the freetext id will not be duplicated.
+	 * Note that fullObject value will be missing.
 	 */
 	includeFreetextValues?: boolean;
 	/**

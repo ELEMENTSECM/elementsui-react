@@ -1,23 +1,24 @@
 import _ from "lodash";
 
-function freetextValue(search, fullObjectValue) {
+function freetextValue(search) {
 	return [
 		{
 			value: search,
 			label: search,
-			custom: true,
-			fullObjectValue: fullObjectValue
+			custom: true
 		}
 	];
 }
 
-export function allOptions(
-	currentOptionsOptions,
-	customOptions,
-	includeFreetextValues,
-	fullObjectValue,
-	search
-) {
+function addFreetextValue(search) {
+	if (_.isNil(search) || _.isEmpty(search)) {
+		return [];
+	}
+
+	return freetextValue(search);
+}
+
+export function allOptions(currentOptionsOptions, customOptions, includeFreetextValues, search) {
 	let allOptions = [];
 
 	if (_.isArray(currentOptionsOptions)) {
@@ -28,8 +29,8 @@ export function allOptions(
 		allOptions = allOptions.concat(customOptions);
 	}
 
-	if (includeFreetextValues && !_.isNil(search) && !_.isEmpty(search)) {
-		allOptions = allOptions.concat(freetextValue(search, fullObjectValue));
+	if (includeFreetextValues) {
+		allOptions = allOptions.concat(addFreetextValue(search));
 	}
 
 	// Note the priority here:

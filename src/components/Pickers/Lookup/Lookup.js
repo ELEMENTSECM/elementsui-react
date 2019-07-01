@@ -573,13 +573,7 @@ class Lookup extends React.PureComponent {
 		} = this.props;
 		const { search, menuIsOpen, customOptions } = this.state;
 
-		const options = allOptions(
-			this.currentOptions.options,
-			customOptions,
-			includeFreetextValues,
-			fullObjectValue,
-			search
-		);
+		const options = allOptions(this.currentOptions.options, customOptions, includeFreetextValues, search);
 
 		let valueOption = this.mapValue();
 
@@ -826,6 +820,7 @@ Lookup.propTypes = {
 	includeMetadata: PropTypes.bool,
 	/**
 	 * Allow freetext values in the lookup. If the id already exist in options, the freetext id will not be duplicated.
+	 * Note that fullObject value will be missing.
 	 */
 	includeFreetextValues: PropTypes.bool,
 	/**
