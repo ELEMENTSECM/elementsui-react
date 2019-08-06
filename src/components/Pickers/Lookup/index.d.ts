@@ -69,7 +69,7 @@ export interface LookupProps {
 	 */
 	idSelector?: (...args: any[]) => any;
 	/**
-	 * Function that returns odata query for provied search term
+	 * Function that returns odata query for provided search term
 	 */
 	queryProvider?: (...args: any[]) => any;
 	/**
@@ -161,9 +161,9 @@ export interface LookupProps {
 	 */
 	labels?: LookupLabels;
 	/**
-	 * Allows search for values without filtering text
+	 * Minimum length of search term to start fetching options
 	 */
-	allowSearchWithEmptyFilter?: boolean;
+	minInputLength?: number;
 	/**
 	 * Should multi lookup return values as delimiter-separated string
 	 */
