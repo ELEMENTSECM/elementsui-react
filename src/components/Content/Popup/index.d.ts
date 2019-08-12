@@ -51,6 +51,10 @@ export interface PopupProps {
 	 * Should modal become focused on render
 	 */
 	autoFocus?: boolean;
+	/**
+	 * Disable automatic positioning when popup is opened
+	 */
+	manualPlacement?: boolean;
 }
 
 export default class Popup extends React.Component<PopupProps, any> {
