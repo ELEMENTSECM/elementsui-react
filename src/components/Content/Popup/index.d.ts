@@ -6,6 +6,8 @@ export interface PopupTargetNode {
 	getBoundingClientRect?: (...args: any[]) => any;
 }
 
+export type PopupPlacement = string | boolean;
+
 export interface PopupProps {
 	/**
 	 * Whether popup can be dragged on the screen. Default: true
@@ -36,9 +38,9 @@ export interface PopupProps {
 	 */
 	targetNode?: PopupTargetNode;
 	/**
-	 * One of the placements supported by Popper.js relative to target node.
+	 * One of the placements supported by Popper.js relative to target node. If boolean 'false' value is passed, Popper positioning will not be applied.
 	 */
-	placement?: string;
+	placement?: PopupPlacement;
 	/**
 	 * Handler that is called when backdrop is clicked or ESC key pressed. Typically in this handler you will update state so that popup is removed.
 	 */
@@ -51,10 +53,6 @@ export interface PopupProps {
 	 * Should modal become focused on render
 	 */
 	autoFocus?: boolean;
-	/**
-	 * Disable automatic positioning when popup is opened
-	 */
-	manualPlacement?: boolean;
 }
 
 export default class Popup extends React.Component<PopupProps, any> {

@@ -27,8 +27,7 @@ export default class Popup extends React.PureComponent {
 			backdropClassName,
 			targetNode,
 			placement,
-			autoFocus,
-			manualPlacement
+			autoFocus
 		} = this.props;
 
 		return (
@@ -49,7 +48,7 @@ export default class Popup extends React.PureComponent {
 								className={containerClassName}
 								style={{
 									...styles.container,
-									...(manualPlacement ? {} : targetNode ? style : styles.centerToScreen)
+									...(placement === false ? {} : targetNode ? style : styles.centerToScreen)
 								}}
 							>
 								{children}
@@ -95,14 +94,12 @@ Popup.propTypes = {
 		clientWidth: PropTypes.number,
 		getBoundingClientRect: PropTypes.func
 	}),
-	/** One of the placements supported by Popper.js relative to target node. */
-	placement: PropTypes.string,
+	/** One of the placements supported by Popper.js relative to target node. If boolean 'false' value is passed, Popper positioning will not be applied. */
+	placement: PropTypes.oneOfType([ PropTypes.string, PropTypes.bool ]),
 	/** Handler that is called when backdrop is clicked or ESC key pressed. Typically in this handler you will update state so that popup is removed. */
 	onHide: PropTypes.func,
 	/** Standard ARIA attribute that will be set on popup root element */
 	"aria-labelledby": PropTypes.string,
 	/** Should modal become focused on render */
-	autoFocus: PropTypes.bool,
-	/** Disable automatic positioning when popup is opened */
-	manualPlacement: PropTypes.bool
+	autoFocus: PropTypes.bool
 };
