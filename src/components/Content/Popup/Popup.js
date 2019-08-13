@@ -38,7 +38,8 @@ export default class Popup extends React.PureComponent {
 				onHide={this.onHide}
 				show={show}
 				autoFocus={autoFocus}
-				className={hostClassName}>
+				className={hostClassName}
+			>
 				<Popper referenceElement={targetNode} placement={placement}>
 					{({ ref, style }) => (
 						<PositionedDraggable handle={handle} disabled={!isDraggable} bounds="html">
@@ -47,8 +48,9 @@ export default class Popup extends React.PureComponent {
 								className={containerClassName}
 								style={{
 									...styles.container,
-									...(targetNode ? style : styles.centerToScreen)
-								}}>
+									...(placement === false ? {} : targetNode ? style : styles.centerToScreen)
+								}}
+							>
 								{children}
 							</div>
 						</PositionedDraggable>
@@ -92,8 +94,8 @@ Popup.propTypes = {
 		clientWidth: PropTypes.number,
 		getBoundingClientRect: PropTypes.func
 	}),
-	/** One of the placements supported by Popper.js relative to target node. */
-	placement: PropTypes.string,
+	/** One of the placements supported by Popper.js relative to target node. If boolean 'false' value is passed, Popper positioning will not be applied. */
+	placement: PropTypes.oneOfType([ PropTypes.string, PropTypes.bool ]),
 	/** Handler that is called when backdrop is clicked or ESC key pressed. Typically in this handler you will update state so that popup is removed. */
 	onHide: PropTypes.func,
 	/** Standard ARIA attribute that will be set on popup root element */
