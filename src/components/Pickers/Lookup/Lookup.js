@@ -12,6 +12,7 @@ import findIndex from "lodash/findIndex";
 import debounce from "lodash/debounce";
 import flatten from "lodash/flatten";
 import differenceBy from "lodash/differenceBy";
+import size from "lodash/size";
 import { isArray } from "util";
 
 const initialCache = {
@@ -58,7 +59,7 @@ class Lookup extends React.PureComponent {
 		options: null,
 		isMulti: false,
 		isClearable: true,
-		allowSearchWithEmptyFilter: true,
+		minInputLength: 0,
 		openMenuOnFocus: false,
 		menuPlacement: "bottom",
 		placeholder: "",
@@ -196,7 +197,7 @@ class Lookup extends React.PureComponent {
 
 		const { optionsCache } = this.state;
 
-		if (this.props.allowSearchWithEmptyFilter && !some(optionsCache[""].options)) {
+		if (this.props.minInputLength === 0 && !some(optionsCache[""].options)) {
 			await this.loadOptions();
 		}
 	};
@@ -208,7 +209,7 @@ class Lookup extends React.PureComponent {
 		});
 
 		const { optionsCache } = this.state;
-		const shouldLoadOptions = !optionsCache[search] && (search || this.props.allowSearchWithEmptyFilter);
+		const shouldLoadOptions = !optionsCache[search] && (size(search) >= this.props.minInputLength);
 		if (shouldLoadOptions) {
 			await this.loadOptions();
 		}
@@ -529,14 +530,14 @@ class Lookup extends React.PureComponent {
 	setFocus = () => this.setState(ps => ({ focused: !ps.focused }));
 
 	get customComponentRenderers() {
-		const { allowSearchWithEmptyFilter, optionBindings, components } = this.props;
+		const { minInputLength, optionBindings, components } = this.props;
 		let renderers = {
 			MultiValueLabel: this.MultiValueLabel,
 			MultiValueContainer: this.MultiValueContainer,
 			MultiValue: this.MultiValue
 		};
 
-		if (!allowSearchWithEmptyFilter) {
+		if (minInputLength > 0) {
 			renderers.DropdownIndicator = null;
 		}
 
@@ -562,7 +563,7 @@ class Lookup extends React.PureComponent {
 			ariaLabel,
 			ariaLabelledBy,
 			inputId,
-			allowSearchWithEmptyFilter,
+			minInputLength,
 			openMenuOnFocus,
 			menuPortalTarget
 		} = this.props;
@@ -603,7 +604,7 @@ class Lookup extends React.PureComponent {
 					noOptionsMessage={noOptionsMessage}
 					loadingMessage={loadingMessage}
 					components={this.customComponentRenderers}
-					openMenuOnClick={allowSearchWithEmptyFilter && !isMulti}
+					openMenuOnClick={minInputLength === 0 && !isMulti}
 					openMenuOnFocus={openMenuOnFocus}
 					isDisabled={disabled}
 					tabSelectsValue={false}
@@ -650,7 +651,7 @@ Lookup.propTypes = {
 	 */
 	idSelector: PropTypes.func,
 	/**
-	 * Function that returns odata query for provied search term
+	 * Function that returns odata query for provided search term
 	 */
 	queryProvider: PropTypes.func,
 	/**
@@ -768,9 +769,9 @@ Lookup.propTypes = {
 		delete: PropTypes.string
 	}),
 	/**
-	 * Allows search for values without filtering text
+	 * Minimum length of search term to start fetching options
 	 */
-	allowSearchWithEmptyFilter: PropTypes.bool,
+	minInputLength: PropTypes.number,
 	/**
 	 * Should multi lookup return values as delimiter-separated string
 	 */
