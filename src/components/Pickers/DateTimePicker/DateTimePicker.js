@@ -7,11 +7,16 @@ import en from "date-fns/locale/en-GB";
 import sv from "date-fns/locale/sv";
 import nb from "date-fns/locale/nb";
 import DateTimeInput from "./DateTimeInput";
+import { Portal } from "react-overlays";
 
 const localeMap = {
 	en,
 	sv,
 	nb
+};
+
+const getPortalContainer = container => {
+	return ({ children }) => <Portal container={container}>{children}</Portal>;
 };
 
 class DateTimePicker extends React.Component {
@@ -21,7 +26,7 @@ class DateTimePicker extends React.Component {
 
 	constructor(props) {
 		super(props);
-		const { dateFormat, timeFormat, viewMode, locale } = this.props;
+		const { dateFormat, timeFormat, viewMode, locale, portalPopupTo } = this.props;
 		registerLocale(locale, localeMap[locale]);
 
 		this.showTimeSelect = includes([ "datetime", "time" ], viewMode);
@@ -47,6 +52,10 @@ class DateTimePicker extends React.Component {
 		if (this.showTimeSelect) {
 			this.dateFormatId += ` ${this.timeFormatId}`;
 		}
+
+		if (portalPopupTo) {
+			this.popperContainer = getPortalContainer(portalPopupTo);
+		}
 	}
 
 	render() {
@@ -65,6 +74,7 @@ class DateTimePicker extends React.Component {
 				timeIntervals={15}
 				shouldCloseOnSelect={true}
 				customInput={<DateTimeInput />}
+				popperContainer={this.popperContainer}
 				adjustDateOnChange
 			/>
 		);
@@ -109,7 +119,9 @@ DateTimePicker.propTypes = {
 	/** Allow same day selection */
 	allowSameDay: PropTypes.bool,
 	/** Show 'Today' button */
-	todayButton: PropTypes.bool
+	todayButton: PropTypes.bool,
+	/** Portal popup to element (ReactNode or Function) */
+	portalPopupTo: PropTypes.any
 };
 
 export default DateTimePicker;
