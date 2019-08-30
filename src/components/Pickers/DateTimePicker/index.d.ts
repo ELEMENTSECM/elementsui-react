@@ -93,6 +93,10 @@ export interface DateTimePickerProps {
 	 * Show 'Today' button
 	 */
 	todayButton?: boolean;
+	/**
+	 * Portal popup to element (ReactNode or Function)
+	 */
+	portalPopupTo?: any;
 }
 
 export default class DateTimePicker extends React.Component<DateTimePickerProps, any> {
