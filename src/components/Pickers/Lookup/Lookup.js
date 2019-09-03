@@ -154,7 +154,7 @@ class Lookup extends React.PureComponent {
 						...prevState.optionsCache,
 						[prevState.search]: {
 							...prevState.optionsCache[prevState.search],
-							values: [ ...newValues, ...this.currentOptions.values ]
+							values: [...newValues, ...this.currentOptions.values]
 						}
 					}
 				}));
@@ -209,7 +209,7 @@ class Lookup extends React.PureComponent {
 		});
 
 		const { optionsCache } = this.state;
-		const shouldLoadOptions = !optionsCache[search] && (size(search) >= this.props.minInputLength);
+		const shouldLoadOptions = !optionsCache[search] && size(search) >= this.props.minInputLength;
 		if (shouldLoadOptions) {
 			await this.loadOptions();
 		}
@@ -298,7 +298,7 @@ class Lookup extends React.PureComponent {
 					resolve({
 						options: results.map(x => ({
 							value: idSelector(x),
-							label: renderOption(x)
+							label: renderOption(x) || idSelector(x)
 						})),
 						values: results
 					})
@@ -335,11 +335,11 @@ class Lookup extends React.PureComponent {
 					meta.value = some(option)
 						? option.reduce((values, o) => {
 								if (o.custom) {
-									return [ ...values, o.fullObjectValue ];
+									return [...values, o.fullObjectValue];
 								}
 
 								const value = find(availableValues, x => idSelector(x) === o.value);
-								return value ? [ ...values, value ] : values;
+								return value ? [...values, value] : values;
 							}, [])
 						: [];
 					lookupMap && (meta.value = map(meta.value, lookupMap));
@@ -404,14 +404,14 @@ class Lookup extends React.PureComponent {
 		if (initialValue && renderFn) {
 			if (!isMulti) {
 				return {
-					label: initialValue.label || renderFn(initialValue),
+					label: initialValue.label || renderFn(initialValue) || idSelector(initialValue),
 					value: initialValue.value || idSelector(initialValue)
 				};
 			}
 
 			if (!multiAsString) {
 				return initialValue.map(x => ({
-					label: x.label || renderFn(x),
+					label: x.label || renderFn(x) || idSelector(x),
 					value: x.value || idSelector(x)
 				}));
 			}
@@ -442,9 +442,9 @@ class Lookup extends React.PureComponent {
 			const customValues = customOptions(search.trim());
 
 			return customValues
-				? flatten([ customValues ]).map(x => ({
+				? flatten([customValues]).map(x => ({
 						value: idSelector(x),
-						label: renderOption(x),
+						label: renderOption(x) || idSelector(x),
 						custom: true,
 						fullObjectValue: fullObjectValue && x
 					}))
@@ -485,10 +485,12 @@ class Lookup extends React.PureComponent {
 
 	MultiValueLabel = labelProps => {
 		const onClick = this.onMultiValueLabelClick(labelProps);
+		const { optionBindings } = this.props;
+		const classes = (optionBindings && optionBindings(labelProps.data.value)) || [];
 		return (
 			<button
 				type="button"
-				className="multi-value-button"
+				className={classNames("multi-value-button", ...classes)}
 				onClick={onClick}
 				style={{ border: "none", background: "rgb(230, 230, 230)" }}
 				aria-haspopup="dialog"
@@ -724,7 +726,7 @@ Lookup.propTypes = {
 	/**
 	 * Default placement of the menu in relation to the control. 'auto' will flip when there isn't enough space below the control.
 	 */
-	menuPlacement: PropTypes.oneOf([ "bottom", "top", "auto" ]),
+	menuPlacement: PropTypes.oneOf(["bottom", "top", "auto"]),
 	/**
 	 * Whether the menu should use a portal, and where it should attach
 	 */
@@ -732,11 +734,11 @@ Lookup.propTypes = {
 	/**
 	 * Text to display when there are no options
 	 */
-	noOptionsMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	noOptionsMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
 	/**
 	 * Async: Text to display when loading options
 	 */
-	loadingMessage: PropTypes.oneOfType([ PropTypes.func, PropTypes.exact(null) ]),
+	loadingMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.exact(null)]),
 	/**
 	 * Include full object value
 	 */
