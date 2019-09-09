@@ -1,7 +1,7 @@
 export const styles = {
 	backdrop: { zIndex: 2000 },
 	container: {
-		zIndex: 2001,
+		zIndex: 2000,
 		opacity: 1
 	},
 	centerToScreen: {
