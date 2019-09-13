@@ -41,7 +41,7 @@ const defaultConfig = {
 		"Times New Roman/Times New Roman, Times, serif",
 		"Verdana/Verdana, Geneva, sans-serif"
 	].join(";"),
-	extraPlugins: "base64image,pastefromword",
+	extraPlugins: "base64image,pastefromword,ckeditor-image-to-base",
 	allowedContent: true,
 	resize_enabled: false,
 	forcePasteAsPlainText: false,
