@@ -24,6 +24,7 @@
 	"dependencies": {
 		"@babel/runtime": "^7.4.5",
 		"@types/react-select": "^2.0.11",
+		"ckeditor-image-to-base": "^0.0.3",
 		"commander": "^2.15.1",
 		"date-fns": "^2.0.0-alpha.26",
 		"inquirer": "^5.2.0",
