@@ -13,6 +13,7 @@ import debounce from "lodash/debounce";
 import flatten from "lodash/flatten";
 import differenceBy from "lodash/differenceBy";
 import size from "lodash/size";
+import isEqual from "lodash/isEqual";
 import { isArray } from "util";
 
 const initialCache = {
@@ -112,6 +113,11 @@ class Lookup extends React.PureComponent {
 		};
 	}
 
+	get currentQueryParams() {
+		const oDataQuery = this.props.queryProvider && this.props.queryProvider("");
+		return oDataQuery && oDataQuery.settings.params;
+	}
+
 	get allOptionValues() {
 		return flatten(map(this.state.optionsCache, search => search.values))
 			.concat(this.props.specialOptionValues)
@@ -130,7 +136,8 @@ class Lookup extends React.PureComponent {
 			search: "",
 			optionsCache: this.initialOptionsCache,
 			menuIsOpen: false,
-			customOptions: []
+			customOptions: [],
+			queryParams: this.currentQueryParams
 		};
 
 		this.onMenuOpen = debounce(this.onMenuOpen, 0);
@@ -191,8 +198,12 @@ class Lookup extends React.PureComponent {
 	};
 
 	onMenuOpen = async () => {
+		const reloadOptions = !isEqual(this.currentQueryParams, this.state.queryParams)
 		await this.setState({
-			menuIsOpen: true
+			menuIsOpen: true,
+			optionsCache: reloadOptions
+				? this.initialOptionsCache
+				: this.state.optionsCache
 		});
 
 		const { optionsCache } = this.state;
@@ -287,13 +298,19 @@ class Lookup extends React.PureComponent {
 			errorMessage,
 			includeMetadata
 		} = this.props;
+		const oDataQuery = queryProvider(inputValue);
 		return new Promise((resolve, reject) => {
-			queryProvider(inputValue)
+			oDataQuery
 				.withQuery({ includeMetadata })
 				.take(pageSize)
 				.skip(previousOptions ? previousOptions.length : 0)
 				.fetchCollection()
-				.then(results => (resultsFilter ? results.value.filter(resultsFilter) : results.value))
+				.then(results =>  {
+					this.setState({ queryParams: oDataQuery.settings.params});
+					return resultsFilter
+						? results.value.filter(resultsFilter)
+						: results.value;
+				})
 				.then(results =>
 					resolve({
 						options: results.map(x => ({
@@ -373,7 +390,7 @@ class Lookup extends React.PureComponent {
 			.uniqBy(this.props.idSelector)
 			.value();
 
-		if (!_.some(availableValues)) {
+		if (!some(availableValues)) {
 			await this.loadOptions();
 		}
 
@@ -596,7 +613,7 @@ class Lookup extends React.PureComponent {
 					ref={this.selectRef}
 					onChange={this.onChange}
 					placeholder={placeholder}
-					className={className}
+					className={classNames("lookup", className)}
 					isMulti={isMulti}
 					styles={styles}
 					theme={theme}
@@ -612,7 +629,6 @@ class Lookup extends React.PureComponent {
 					tabSelectsValue={false}
 					aria-label={ariaLabel}
 					aria-labelledby={ariaLabelledBy}
-					className="lookup"
 				/>
 			</React.Fragment>
 		);
