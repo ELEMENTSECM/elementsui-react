@@ -4,7 +4,18 @@ import Lookup from "./index";
 // import Select from "react-select";
 
 describe("Lookup", () => {
-	const queryProvider = filter => filter;
+	function getQueryProvider() {
+		return () => {
+			return {
+				settings: {
+					params: {
+						Id: "U"
+					}
+				}
+			}
+		}
+	};
+
 	const renderOption = lookupValue => lookupValue.Title;
 	const values = [
 		{
@@ -30,7 +41,6 @@ describe("Lookup", () => {
 			wrapper = shallow(
 				<Lookup
 					id="testLookup"
-					queryProvider={queryProvider}
 					renderOption={renderOption}
 					options={options}
 				/>
@@ -96,7 +106,7 @@ describe("Lookup", () => {
 	describe("without options property", () => {
 		beforeEach(() => {
 			wrapper = shallow(
-				<Lookup id="testLookup" queryProvider={queryProvider} renderOption={renderOption} />
+				<Lookup id="testLookup" queryProvider={getQueryProvider()} renderOption={renderOption} />
 			);
 			component = wrapper.instance();
 		});
@@ -132,7 +142,7 @@ describe("Lookup", () => {
 			wrapper = shallow(
 				<Lookup
 					id="testLookup"
-					queryProvider={queryProvider}
+					queryProvider={getQueryProvider()}
 					renderOption={renderOption}
 					onChange={mockOnChange}
 					fullObjectValue={true}
