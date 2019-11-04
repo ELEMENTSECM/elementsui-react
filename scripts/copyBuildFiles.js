@@ -1,7 +1,7 @@
-var path = require('path');
-var fse = require('fs-extra');
+var path = require("path");
+var fse = require("fs-extra");
 
-const files = ['README.md', 'LICENSE', 'bin'];
+const files = ["README.md", "LICENSE"];
 
 Promise.all(files.map(file => copyFile(file))).then(() => createPackageFile());
 
@@ -16,12 +16,12 @@ function copyFile(file) {
 }
 
 function resolveBuildPath(file) {
-	return path.resolve(__dirname, '../lib/', path.basename(file));
+	return path.resolve(__dirname, "../dist/", path.basename(file));
 }
 
 function createPackageFile() {
 	return new Promise(resolve => {
-		fse.readFile(path.resolve(__dirname, '../package.json'), 'utf8', (err, data) => {
+		fse.readFile(path.resolve(__dirname, "../package.json"), "utf8", (err, data) => {
 			if (err) {
 				throw err;
 			}
@@ -43,15 +43,15 @@ function createPackageFile() {
 				peerDependencies,
 				dependencies,
 				typings,
-				bin
+				main
 			} = packageData;
 
 			const minimalPackage = {
-				name: 'elementsui-react',
+				name             : "elementsui-react",
 				author,
 				version,
 				description,
-				main: './index.js',
+				main,
 				keywords,
 				repository,
 				license,
@@ -59,12 +59,11 @@ function createPackageFile() {
 				homepage,
 				peerDependencies,
 				dependencies,
-				typings,
-				bin
+				typings
 			};
 
 			return new Promise(resolve => {
-				const libPath = path.resolve(__dirname, '../lib/package.json');
+				const libPath = path.resolve(__dirname, "../dist/package.json");
 				const data = JSON.stringify(minimalPackage, null, 2);
 				fse.writeFile(libPath, data, err => {
 					if (err) throw err;
