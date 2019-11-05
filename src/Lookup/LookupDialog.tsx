@@ -34,8 +34,8 @@ export interface LookupDialogProps {
 	 * Popup container class name
 	 */
 	className?: string;
-	/** 
-	 * clickoutside props 
+	/**
+	 * clickoutside props
 	 */
 	[key: string]: any;
 }
@@ -45,12 +45,12 @@ export default class LookupDialog extends React.Component<LookupDialogProps> {
 		dragHandle: ".popup-container",
 		className: "popup-container dialog"
 	};
-	draggableContainer = React.createRef() as React.MutableRefObject<HTMLElement>;
+	draggableContainer: HTMLElement | null = null;
 	containerRef = React.createRef<HTMLDivElement>();
 
 	componentDidMount() {
 		if (this.props.isDraggable) {
-			this.draggableContainer.current = (this.props.portalTarget
+			this.draggableContainer = (this.props.portalTarget
 				? this.props.portalTarget.charAt(0) === "."
 					? document.getElementsByClassName(this.props.portalTarget.substr(1))[0]
 					: document.getElementById(this.props.portalTarget.substr(1))
@@ -130,8 +130,8 @@ export default class LookupDialog extends React.Component<LookupDialogProps> {
 					</div>
 				</Draggable>
 			);
-			return this.draggableContainer.current
-				? createPortal(DraggableDialog, this.draggableContainer.current)
+			return this.draggableContainer
+				? createPortal(DraggableDialog, this.draggableContainer)
 				: DraggableDialog;
 		}
 

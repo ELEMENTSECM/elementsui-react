@@ -93,7 +93,7 @@ export default class Popup extends React.PureComponent<PopupProps> {
 			<Modal
 				aria-labelledby={ariaLabelledBy}
 				backdropClassName={backdropClassName}
-				backdropStyle={{ zIndex: 2000 }}
+				backdropStyle={styles.backdrop}
 				onHide={this.onHide}
 				show={show}
 				autoFocus={autoFocus}

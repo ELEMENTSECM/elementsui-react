@@ -178,7 +178,7 @@ export default class Dropdown extends React.Component<DropdownProps> {
 		const charPressed = String.fromCharCode(e.which).toLowerCase();
 
 		for (let i = 0; i < items.length; i += 1) {
-			const firstLetter = items[i].textContent![0].toLowerCase();
+			const firstLetter = items[i].textContent && items[i].textContent![0].toLowerCase();
 			if (firstLetter === charPressed || items[i] === e.target) {
 				index = i;
 				break;

@@ -238,11 +238,13 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		const style = {
 			height: this.props.height || "auto"
 		};
-		const hasChildren = this.props.hasChildren || !!this.props.children;
+		const hasChildren =
+			this.props.hasChildren ||
+			!!(this.props.children && (this.props.children as React.ReactNodeArray).length);
 		const outerDivStyle = this.props.pullDownToRefresh && this.props.height ? { overflow: "auto" } : {};
 		return (
 			<InfiniteListContainer
-				style={Object.assign(style, outerDivStyle)}
+				style={{ ...style, ...outerDivStyle }}
 				className={`InfiniteList ${this.props.className}`}
 				ref={infScroll => (this._infScroll = infScroll)}
 			>

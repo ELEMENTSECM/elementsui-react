@@ -97,6 +97,12 @@ export interface RichTextProps {
 	throttle?: number;
 }
 
+declare global {
+	interface Window {
+		CKEDITOR: any;
+	}
+}
+
 export default class RichText extends React.PureComponent<RichTextProps> {
 	private mounted = false;
 	static defaultProps = {
@@ -121,7 +127,7 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 
 	componentDidMount() {
 		this.mounted = true;
-		if (!window["CKEDITOR"]) {
+		if (!window.CKEDITOR) {
 			loadScript(this.props.scriptUrl, this.onLoad);
 		} else {
 			this.onLoad();
@@ -147,12 +153,12 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 		const { id, config, value, events } = this.props;
 		if (!this.mounted) return;
 
-		if (!window["CKEDITOR"]) {
+		if (!window.CKEDITOR) {
 			console.error("CKEditor not found");
 			return;
 		}
 
-		RichText.editorInstances[id!] = window["CKEDITOR"].appendTo(
+		RichText.editorInstances[id!] = window.CKEDITOR.appendTo(
 			ReactDOM.findDOMNode(this),
 			extend(defaultConfig, config),
 			value
@@ -171,7 +177,7 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 			RichText.editorInstances[id!].on(
 				"selectionChange",
 				event => {
-					const initialStyle = new window["CKEDITOR"].style({
+					const initialStyle = new window.CKEDITOR.style({
 						element: "span",
 						styles: {
 							"font-family": "Calibri, Tahoma, sans-serif",
