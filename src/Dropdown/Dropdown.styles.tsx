@@ -7,7 +7,6 @@ export const DropdownContainer = styled.div`
 	&.dropleft {
 		position: relative;
 	}
-	background-color: #fff;
 	.dropdown-menu {
 		position: absolute;
 		top: 100%;

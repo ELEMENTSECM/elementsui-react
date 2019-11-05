@@ -31,7 +31,8 @@
 		"build:lib": "npm run clean && npm run build:types && npm run build:cjs && npm run build:copy-files",
 		"build:types": "tsc -p tsconfig.declaration.json --emitDeclarationOnly",
 		"build:cjs": "cross-env NODE_ENV=production babel src --out-dir dist/lib --extensions \".ts,.tsx\" --source-maps inline",
-		"build:copy-files": "node scripts/copyBuildFiles.js"
+		"build:copy-files": "node scripts/copyBuildFiles.js",
+		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
 	},
 	"dependencies": {
 		"@types/react-select": "^3.0.6",
@@ -90,6 +91,7 @@
 		"babel-plugin-named-asset-import": "^0.3.4",
 		"babel-preset-react-app": "^9.0.2",
 		"camelcase": "^5.2.0",
+		"coveralls": "^3.0.7",
 		"cross-env": "^6.0.3",
 		"dotenv": "6.2.0",
 		"dotenv-expand": "5.1.0",
