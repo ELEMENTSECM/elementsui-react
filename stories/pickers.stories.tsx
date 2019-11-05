@@ -6,6 +6,7 @@ import { padDecorator } from ".";
 import DateTimePicker from "../src/DateTimePicker";
 import { Lookup } from "../src";
 import { withState } from "@dump247/storybook-state";
+import "react-ada-datepicker/dist/react-ada-datepicker.css";
 
 class Query {
 	_value;
