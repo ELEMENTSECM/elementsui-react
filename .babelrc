@@ -2,12 +2,18 @@
 	"presets": [
 		"@babel/env",
 		"@babel/typescript",
-		"react-app"
+		"@babel/preset-react"
 	],
 	"plugins": [
 		"@babel/plugin-proposal-numeric-separator",
 		"@babel/proposal-class-properties",
 		"@babel/proposal-object-rest-spread",
+		[
+			"@babel/transform-runtime",
+			{
+				"regenerator": true
+			}
+		],
 		[
 			"inline-json-import",
 			{}

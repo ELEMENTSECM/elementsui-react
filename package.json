@@ -46,16 +46,18 @@
 		"xmldom": "^0.1.27"
 	},
 	"peerDependencies": {
-		"react": "^16.11.0",
-		"react-dom": "^16.11.0"
+		"react": "^16.8.0",
+		"react-dom": "^16.8.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.6.4",
 		"@babel/core": "^7.6.4",
+		"@babel/plugin-transform-runtime": "^7.6.2",
 		"@babel/plugin-proposal-class-properties": "^7.5.5",
 		"@babel/plugin-proposal-numeric-separator": "^7.2.0",
 		"@babel/plugin-transform-modules-umd": "^7.2.0",
 		"@babel/preset-env": "^7.6.3",
+		"@babel/preset-react": "^7.7.0",
 		"@babel/preset-typescript": "^7.6.0",
 		"@dump247/storybook-state": "^1.6.1",
 		"@storybook/addon-a11y": "^5.2.5",
@@ -82,7 +84,6 @@
 		"babel-loader": "^8.0.6",
 		"babel-plugin-inline-json-import": "^0.3.2",
 		"babel-plugin-named-asset-import": "^0.3.4",
-		"babel-preset-react-app": "^9.0.2",
 		"coveralls": "^3.0.7",
 		"cross-env": "^6.0.3",
 		"enzyme": "^3.10.0",
