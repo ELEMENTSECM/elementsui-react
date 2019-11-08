@@ -13,15 +13,8 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "http://evryas.github.io/elementsui-react/",
-	"files": [
-		"lib"
-	],
-	"keywords": [
-		"components",
-		"react",
-		"react-component",
-		"elements"
-	],
+	"files": ["lib"],
+	"keywords": ["components", "react", "react-component", "elements"],
 	"scripts": {
 		"test": "node scripts/test.js",
 		"start": "start-storybook -s public",
@@ -30,7 +23,7 @@
 		"clean": "rimraf dist",
 		"build:lib": "npm run clean && npm run build:types && npm run build:cjs && npm run build:copy-files",
 		"build:types": "tsc -p tsconfig.declaration.json --emitDeclarationOnly",
-		"build:cjs": "cross-env NODE_ENV=production babel src --out-dir dist/lib --extensions \".ts,.tsx\" --source-maps inline",
+		"build:cjs": "tsc -p tsconfig.cjs.json",
 		"build:copy-files": "node scripts/copyBuildFiles.js",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
 	},
@@ -53,8 +46,8 @@
 		"xmldom": "^0.1.27"
 	},
 	"peerDependencies": {
-		"react": "^16.8.0",
-		"react-dom": "^16.8.0"
+		"react": "^16.11.0",
+		"react-dom": "^16.11.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.6.4",
@@ -120,25 +113,16 @@
 		"storybook-addon-jsx": "^7.1.13",
 		"storybook-addon-smart-knobs": "^6.0.0",
 		"ts-loader": "^6.2.1",
-		"typescript": "3.6.4"
+		"typescript": "^3.7.2"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
 	},
 	"jest": {
-		"roots": [
-			"<rootDir>/src"
-		],
-		"collectCoverageFrom": [
-			"src/**/*.{js,jsx,ts,tsx}",
-			"!src/**/*.d.ts"
-		],
-		"setupFiles": [
-			"react-app-polyfill/jsdom"
-		],
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/setupTests.js"
-		],
+		"roots": ["<rootDir>/src"],
+		"collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts"],
+		"setupFiles": ["react-app-polyfill/jsdom"],
+		"setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
 			"<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
@@ -170,24 +154,11 @@
 			"jsx",
 			"node"
 		],
-		"watchPlugins": [
-			"jest-watch-typeahead/filename",
-			"jest-watch-typeahead/testname"
-		],
-		"snapshotSerializers": [
-			"enzyme-to-json/serializer"
-		]
+		"watchPlugins": ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
+		"snapshotSerializers": ["enzyme-to-json/serializer"]
 	},
 	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+		"production": [">0.2%", "not dead", "not op_mini all"],
+		"development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
 	}
 }

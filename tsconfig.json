@@ -4,7 +4,14 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+	  "esnext",
+	"es5",
+	"scripthost",
+	"es2015",
+	"es2015.iterable",
+	"es2015.generator",
+	"es2015.symbol",
+	"es2017.object"
     ],
     "allowJs": true,
     "skipLibCheck": true,
