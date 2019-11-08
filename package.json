@@ -1,6 +1,6 @@
 {
 	"name": "elementsui-react",
-	"version": "0.9.0",
+	"version": "0.9.1",
 	"main": "./lib/index.js",
 	"typings": "./types/index.d.ts",
 	"private": true,
@@ -13,8 +13,15 @@
 		"url": "https://github.com/EVRYAS/elementsui-react"
 	},
 	"homepage": "http://evryas.github.io/elementsui-react/",
-	"files": ["lib"],
-	"keywords": ["components", "react", "react-component", "elements"],
+	"files": [
+		"lib"
+	],
+	"keywords": [
+		"components",
+		"react",
+		"react-component",
+		"elements"
+	],
 	"scripts": {
 		"test": "node scripts/test.js",
 		"start": "start-storybook -s public",
@@ -119,10 +126,19 @@
 		"extends": "react-app"
 	},
 	"jest": {
-		"roots": ["<rootDir>/src"],
-		"collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts"],
-		"setupFiles": ["react-app-polyfill/jsdom"],
-		"setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"],
+		"roots": [
+			"<rootDir>/src"
+		],
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx,ts,tsx}",
+			"!src/**/*.d.ts"
+		],
+		"setupFiles": [
+			"react-app-polyfill/jsdom"
+		],
+		"setupFilesAfterEnv": [
+			"<rootDir>/src/setupTests.js"
+		],
 		"testMatch": [
 			"<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
 			"<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
@@ -154,11 +170,24 @@
 			"jsx",
 			"node"
 		],
-		"watchPlugins": ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
-		"snapshotSerializers": ["enzyme-to-json/serializer"]
+		"watchPlugins": [
+			"jest-watch-typeahead/filename",
+			"jest-watch-typeahead/testname"
+		],
+		"snapshotSerializers": [
+			"enzyme-to-json/serializer"
+		]
 	},
 	"browserslist": {
-		"production": [">0.2%", "not dead", "not op_mini all"],
-		"development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	}
 }
