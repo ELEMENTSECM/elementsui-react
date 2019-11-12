@@ -167,7 +167,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		const target =
 			this.props.height || this._scrollableNode
 				? event.target
-				: document.documentElement.scrollTop ? document.documentElement : document.body;
+				: document.documentElement!.scrollTop ? document.documentElement : document.body;
 
 		if (this.state.actionTriggered) return;
 
