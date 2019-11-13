@@ -22,7 +22,7 @@
 		"deploy:docs": "gh-pages -d storybook-static",
 		"clean": "rimraf dist",
 		"build:lib": "npm run clean && npm run build:types && npm run build:cjs && npm run build:copy-files",
-		"build:types": "tsc -p tsconfig.declaration.json --emitDeclarationOnly",
+		"build:types": "tsc -p tsconfig.declaration.json",
 		"build:cjs": "tsc -p tsconfig.cjs.json",
 		"build:copy-files": "node scripts/copyBuildFiles.js",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"

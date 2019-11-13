@@ -15,9 +15,11 @@ export interface InfiniteListItemProps {
 	className?: string;
 	/** Link className */
 	linkClassName?: string;
+	/** HTML element tag that will rendered for this item. Default: <li> */
+	tag?: keyof JSX.IntrinsicElements;
 }
 
-const Li = styled.li`
+const ListItem = styled.li`
 	overflow: hidden;
 	margin-bottom: -1px;
 	position: relative;
@@ -38,7 +40,9 @@ const A = styled.a`
 	display: block;
 `;
 
-const I = styled.i`margin-left: -13px;`;
+const I = styled.i`
+	margin-left: -13px;
+`;
 
 const InfiniteListItem: React.FC<InfiniteListItemProps> = ({
 	children,
@@ -47,9 +51,10 @@ const InfiniteListItem: React.FC<InfiniteListItemProps> = ({
 	icon,
 	iconColor,
 	className,
-	linkClassName
+	linkClassName,
+	tag
 }) => (
-	<Li tabIndex={0} className={className}>
+	<ListItem as={tag} tabIndex={0} className={className} role="listitem">
 		<A href={link} onClick={onClick} className={linkClassName}>
 			<Row>
 				<Col xs={1}>
@@ -58,7 +63,7 @@ const InfiniteListItem: React.FC<InfiniteListItemProps> = ({
 				<Col xs={10}>{children}</Col>
 			</Row>
 		</A>
-	</Li>
+	</ListItem>
 );
 
 export default InfiniteListItem;

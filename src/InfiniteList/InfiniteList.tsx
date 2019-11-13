@@ -1,6 +1,6 @@
 import * as React from "react";
 import { throttle } from "lodash";
-import Spinner from "../Spinner";
+import { BarLoader } from "react-spinners";
 import { nls } from "./InfiniteList.nls";
 import styled from "styled-components";
 import InfiniteListItem from "./InfiniteListItem";
@@ -40,6 +40,10 @@ export interface InfiniteListProps {
 	className?: string;
 	/** List class name */
 	listClassName?: string;
+	/** Spinner color in a form accepted in CSS stylesheet */
+	spinnerColor?: string;
+	/** HTML element tag that will rendered for this item. Default: <li> */
+	tag?: keyof JSX.IntrinsicElements;
 }
 
 type State = {
@@ -49,6 +53,16 @@ type State = {
 	actionTriggered: boolean;
 	pullToRefreshThresholdBreached: boolean;
 };
+
+const Root = styled.div`
+	overflow: hidden;
+`; // Establish new Block Formatting Context
+
+const List = styled.ul`
+	list-style: none;
+	margin: 0;
+	padding: 0;
+`;
 
 const InfiniteListContainer = styled.div`
 	overflow: auto;
@@ -76,6 +90,10 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 	private _scrollableNode;
 	private _pullDown;
 	private translations;
+
+	static defaultProps: Partial<InfiniteListProps> = {
+		spinnerColor: "#2180c0"
+	};
 
 	constructor(props) {
 		super(props);
@@ -133,7 +151,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		this._infScroll.style.transform = `translate3d(0px, ${this.currentY - this.startY}px, 0px)`;
 	};
 
-	onEnd = evt => {
+	onEnd = _evt => {
 		this.startY = 0;
 		this.currentY = 0;
 
@@ -167,7 +185,9 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		const target =
 			this.props.height || this._scrollableNode
 				? event.target
-				: document.documentElement!.scrollTop ? document.documentElement : document.body;
+				: document.documentElement!.scrollTop
+				? document.documentElement
+				: document.body;
 
 		if (this.state.actionTriggered) return;
 
@@ -238,37 +258,54 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		const style = {
 			height: this.props.height || "auto"
 		};
+
 		const hasChildren =
 			this.props.hasChildren ||
 			!!(this.props.children && (this.props.children as React.ReactNodeArray).length);
+
 		const outerDivStyle = this.props.pullDownToRefresh && this.props.height ? { overflow: "auto" } : {};
+
+		const loading =
+			(!this.state.showLoader && !hasChildren && this.props.hasMore) ||
+			(this.state.showLoader && this.props.hasMore);
+
 		return (
-			<InfiniteListContainer
-				style={{ ...style, ...outerDivStyle }}
-				className={`InfiniteList ${this.props.className}`}
-				ref={infScroll => (this._infScroll = infScroll)}
-			>
-				{this.props.pullDownToRefresh && (
-					<PullDown ref={pullDown => (this._pullDown = pullDown)}>
-						<div
-							style={{
-								top: -1 * this.maxPullDownDistance
-							}}
-						>
-							{!this.state.pullToRefreshThresholdBreached && (
-								<h3>{this.translations.pullDownToRefresh}</h3>
-							)}
-							{this.state.pullToRefreshThresholdBreached && (
-								<h3>{this.translations.releaseToRefresh}</h3>
-							)}
-						</div>
-					</PullDown>
-				)}
-				<ul className={this.props.listClassName}>{this.props.children}</ul>
-				{!this.state.showLoader && !hasChildren && this.props.hasMore && <Spinner size={50} />}
-				{this.state.showLoader && this.props.hasMore && <Spinner size={50} />}
-				{!this.props.hasMore && this.props.endMessage}
-			</InfiniteListContainer>
+			<Root style={style}>
+				<BarLoader
+					width={100}
+					widthUnit="%"
+					height={4}
+					heightUnit="px"
+					color="#2180c0"
+					loading={loading}
+				/>
+				<InfiniteListContainer
+					style={{ ...style, ...outerDivStyle }}
+					className={this.props.className}
+					ref={infScroll => (this._infScroll = infScroll)}
+				>
+					{this.props.pullDownToRefresh && (
+						<PullDown ref={pullDown => (this._pullDown = pullDown)}>
+							<div
+								style={{
+									top: -1 * this.maxPullDownDistance
+								}}
+							>
+								{!this.state.pullToRefreshThresholdBreached && (
+									<h3>{this.translations.pullDownToRefresh}</h3>
+								)}
+								{this.state.pullToRefreshThresholdBreached && (
+									<h3>{this.translations.releaseToRefresh}</h3>
+								)}
+							</div>
+						</PullDown>
+					)}
+					<List as={this.props.tag} className={this.props.listClassName} role="list">
+						{this.props.children}
+					</List>
+					{!this.props.hasMore && this.props.endMessage}
+				</InfiniteListContainer>
+			</Root>
 		);
 	}
 }
