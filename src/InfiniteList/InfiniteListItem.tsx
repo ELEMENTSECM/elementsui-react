@@ -21,7 +21,6 @@ export interface InfiniteListItemProps {
 
 const ListItem = styled.li`
 	overflow: hidden;
-	margin-bottom: -1px;
 	position: relative;
 
 	&:nth-child(odd) {

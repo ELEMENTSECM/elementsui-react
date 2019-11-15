@@ -27,13 +27,10 @@ storiesOf("Content/InfiniteList", module).addDecorator(padDecorator).add("Defaul
 		};
 		return (
 			<InfiniteList
-				locale="en"
 				dataLength={store.state.items.length}
 				next={fetchMore}
 				hasMore={true}
-				pullDownToRefresh={true}
 				height={600}
-				refreshFunction={() => store.set({ items: getItems() })}
 			>
 				{store.state.items.map((x, i) => (
 					<InfiniteList.Item
