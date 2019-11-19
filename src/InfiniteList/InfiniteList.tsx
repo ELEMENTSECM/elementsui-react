@@ -3,6 +3,8 @@ import { throttle } from "lodash";
 import { BarLoader } from "react-spinners";
 import styled from "styled-components";
 import InfiniteListItem from "./InfiniteListItem";
+import { HotKeys } from "react-hotkeys";
+import { keyMap, handlers } from "./keyboardNavigation";
 
 export interface InfiniteListProps {
 	/** DOM element's id attribute */
@@ -31,6 +33,10 @@ export interface InfiniteListProps {
 	spinnerColor?: string;
 	/** HTML element tag that will rendered for this item. Default: <li> */
 	tag?: keyof JSX.IntrinsicElements;
+	/** Enable keyboard navigation. False by default. */
+	keyboardNavigationEnabled?: boolean;
+	/** Number of items to skip when navigating  */
+	keyboardNavigationPageSize?: number;
 }
 
 type State = {
@@ -61,12 +67,16 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 	private el;
 	private _infScroll;
 	private _scrollableNode;
+	private listRef = React.createRef<HTMLUListElement>();
+	private keyboardHandlers;
 
 	static defaultProps: Partial<InfiniteListProps> = {
-		spinnerColor: "#2180c0"
+		spinnerColor: "#2180c0",
+		keyboardNavigationEnabled: false,
+		keyboardNavigationPageSize: 3
 	};
 
-	constructor(props) {
+	constructor(props: InfiniteListProps) {
 		super(props);
 		this.state = {
 			dataLength: props.dataLength,
@@ -74,6 +84,8 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 			lastScrollTop: 0,
 			actionTriggered: false
 		};
+
+		this.keyboardHandlers = props.keyboardNavigationEnabled ? handlers(this.listRef, { pageSize: this.props.keyboardNavigationPageSize }) : null;
 	}
 
 	getScrollableTarget = () => {
@@ -82,7 +94,9 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 			return document.getElementById(this.props.scrollableTarget);
 		}
 		if (this.props.scrollableTarget === null) {
-			console.warn(`You are trying to pass scrollableTarget but it is null. This might happen because the element may not have been added to DOM yet.`);
+			console.warn(
+				`You are trying to pass scrollableTarget but it is null. This might happen because the element may not have been added to DOM yet.`
+			);
 		}
 		return null;
 	};
@@ -167,9 +181,17 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 					className={this.props.className}
 					ref={infScroll => (this._infScroll = infScroll)}
 				>
-					<List as={this.props.tag} className={this.props.listClassName} role="list">
-						{this.props.children}
-					</List>
+					<HotKeys keyMap={keyMap} handlers={this.keyboardHandlers}>
+						<List
+							ref={this.listRef}
+							as={this.props.tag}
+							className={this.props.listClassName}
+							role="list"
+						>
+							{this.props.children}
+						</List>
+					</HotKeys>
+
 					{!this.props.hasMore && this.props.endMessage}
 				</InfiniteListContainer>
 			</Root>
