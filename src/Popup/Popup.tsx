@@ -3,8 +3,6 @@ import { PositionedDraggable } from "react-draggable-elements";
 import { Modal } from "react-overlays";
 import { Popper } from "react-popper";
 import { ReferenceObject } from "popper.js";
-import styled from "styled-components";
-import { isNil } from "lodash";
 import { styles } from "./Popup.styles";
 
 type PopupTargetNode = {

@@ -1,33 +1,35 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-	  "esnext",
-	"es5",
-	"scripthost",
-	"es2015",
-	"es2015.iterable",
-	"es2015.generator",
-	"es2015.symbol",
-	"es2017.object"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "jsx": "react",
-    "noImplicitAny": false
-  },
-  "include": [
-    "src",
-    "stories"
-  ]
+	"compilerOptions": {
+		"target": "es5",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext",
+			"es5",
+			"scripthost",
+			"es2015",
+			"es2015.iterable",
+			"es2015.generator",
+			"es2015.symbol",
+			"es2017.object"
+		],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"removeComments": true,
+		"downlevelIteration": true,
+		"noEmit": true,
+		"jsx": "react",
+		"noImplicitAny": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"importHelpers": true
+	},
+	"include": ["src", "stories"]
 }

@@ -1,7 +1,5 @@
 import * as React from "react";
-import { Well } from "react-bootstrap";
 import classNames from "classnames";
-import styled from "styled-components";
 import { ItemsContainer } from "./Items.components";
 
 export interface ItemsProps<TItem> {

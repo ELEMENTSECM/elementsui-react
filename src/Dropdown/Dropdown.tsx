@@ -141,7 +141,6 @@ export default class Dropdown extends React.Component<DropdownProps> {
 		if (this.props.disabled) return;
 
 		const container = this.getContainer();
-		const isDropdown = e.target.classList.contains("dropdown-toggle");
 
 		if (
 			(e.which === keyCodes.space || e.which === keyCodes.enter) &&
