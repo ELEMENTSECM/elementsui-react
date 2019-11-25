@@ -5,13 +5,15 @@ import includes from "lodash/includes";
 import en from "date-fns/locale/en-GB";
 import sv from "date-fns/locale/sv";
 import nb from "date-fns/locale/nb";
+import nn from "date-fns/locale/nn";
 import DateTimeInput from "./DateTimeInput";
 import { Portal } from "react-overlays";
 
 const localeMap = {
 	en,
 	sv,
-	nb
+	nb,
+	nn
 };
 
 const getPortalContainer = container => {
