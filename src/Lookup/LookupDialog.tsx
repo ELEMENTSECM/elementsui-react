@@ -64,7 +64,7 @@ export default class LookupDialog extends React.Component<LookupDialogProps> {
 	};
 
 	focusFirstInput = () => {
-		const input = _.first(
+		const input = _.find(
 			this.containerRef.current!.querySelectorAll("input"),
 			input => input.type !== "hidden"
 		);

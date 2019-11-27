@@ -46,7 +46,7 @@ function memoizeLastSingleValueReturn(returnFunc, compareByFunc) {
 // with memorized selected object
 // to make them equal by reference
 // (only for a single value lookup)
-function adjustOptionsAndSelected(selectedOption, options) {
+function adjustOptionsAndSelected(selectedOption, options: any[]) {
 	if (selectedOption && !isArray(selectedOption)) {
 		const valueIndex = findIndex(options, o => o.value === selectedOption.value);
 		if (valueIndex > -1) {
@@ -246,7 +246,7 @@ type State = {
 		};
 	};
 	menuIsOpen: boolean;
-	customOptions: [];
+	customOptions: any[];
 	queryParams: any;
 	focused?: boolean;
 };
@@ -352,7 +352,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	componentDidUpdate() {
 		const { isMulti, multiAsString, value, fullObjectValue, idSelector, map: lookupMap } = this.props;
 		if (isMulti && fullObjectValue && !multiAsString) {
-			let newValues = value && differenceBy(value, this.allOptionValues || [], idSelector);
+			let newValues = value && differenceBy(value, this.allOptionValues || [], idSelector!);
 			lookupMap && (newValues = map(newValues, lookupMap));
 			some(newValues) &&
 				this.setState(prevState => ({
@@ -537,7 +537,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 					(option.custom
 						? option.fullObjectValue
 						: !isNil(option.value) &&
-							find(this.currentOptions.values, x => idSelector!(x) === option.value));
+						  find(this.currentOptions.values, x => idSelector!(x) === option.value));
 			} else {
 				const availableValues = this.currentOptions.values
 					? this.currentOptions.values.concat(lookupValues)
@@ -552,7 +552,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 
 								const value = find(availableValues, x => idSelector!(x) === o.value);
 								return value ? [...values, value] : values;
-							}, [])
+						  }, [])
 						: [];
 					lookupMap && (meta.value = map(meta.value, lookupMap));
 				} else {
@@ -582,7 +582,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		const availableValues = _(this.state.optionsCache)
 			.values()
 			.flatMap(x => x.values)
-			.uniqBy(this.props.idSelector)
+			.uniqBy(this.props.idSelector!)
 			.value();
 
 		if (!some(availableValues)) {
@@ -641,7 +641,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 							label: current ? renderFn(current) : o,
 							value: o
 						};
-					})
+				  })
 				: null;
 		} else {
 			return initialValue;
@@ -661,7 +661,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 						label: renderOption!(x) || idSelector!(x),
 						custom: true,
 						fullObjectValue: fullObjectValue && x
-					}))
+				  }))
 				: [];
 		}
 	};
