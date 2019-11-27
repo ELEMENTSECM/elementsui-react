@@ -1,5 +1,5 @@
 import * as React from "react";
-import { throttle } from "lodash";
+import { throttle, delay } from "lodash";
 import { BarLoader } from "react-spinners";
 import styled from "styled-components";
 import InfiniteListItem from "./InfiniteListItem";
@@ -29,6 +29,8 @@ export interface InfiniteListProps {
 	className?: string;
 	/** List class name */
 	listClassName?: string;
+	/** Load button class name */
+	loadButtonClassName?: string;
 	/** Spinner color in a form accepted in CSS stylesheet */
 	spinnerColor?: string;
 	/** HTML element tag that will rendered for this item. Default: <li> */
@@ -42,8 +44,8 @@ export interface InfiniteListProps {
 type State = {
 	dataLength: number;
 	showLoader: boolean;
-	lastScrollTop: number;
 	actionTriggered: boolean;
+	canScroll: boolean;
 };
 
 const Root = styled.div`
@@ -51,14 +53,27 @@ const Root = styled.div`
 `; // Establish new Block Formatting Context
 
 const List = styled.ul`
+	box-sizing: border-box;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 `;
 
 const InfiniteListContainer = styled.div`
+	box-sizing: border-box;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
+`;
+
+const LoadButton = styled.button`
+	box-sizing: border-box;
+	border: 0;
+	padding: 0;
+	width: 100%;
+	background: #2180c0;
+	> .caret {
+		color: #fff;
+	}
 `;
 
 export default class InfiniteList extends React.Component<InfiniteListProps, State> {
@@ -81,11 +96,13 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		this.state = {
 			dataLength: props.dataLength,
 			showLoader: false,
-			lastScrollTop: 0,
-			actionTriggered: false
+			actionTriggered: false,
+			canScroll: false
 		};
 
-		this.keyboardHandlers = props.keyboardNavigationEnabled ? handlers(this.listRef, { pageSize: this.props.keyboardNavigationPageSize }) : null;
+		this.keyboardHandlers = props.keyboardNavigationEnabled
+			? handlers(this.listRef, { pageSize: this.props.keyboardNavigationPageSize })
+			: null;
 	}
 
 	getScrollableTarget = () => {
@@ -99,6 +116,21 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 			);
 		}
 		return null;
+	};
+
+	private updateCanScroll = () => {
+		const canScroll =
+			!(this.el && this.listRef.current) || this.el.offsetHeight < this.listRef.current.offsetHeight;
+		if (this.state.canScroll !== canScroll) {
+			this.setState({ canScroll });
+		}
+
+		delay(this.updateCanScroll, 50);
+	};
+
+	private next = () => {
+		this.setState(ps => ({ ...ps, actionTriggered: true, showLoader: true }));
+		this.props.next?.();
 	};
 
 	isElementAtBottom(target) {
@@ -125,10 +157,8 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		const atBottom = this.isElementAtBottom(target);
 
 		if (atBottom && this.props.hasMore && this.props.dataLength) {
-			this.setState(ps => ({ ...ps, actionTriggered: true, showLoader: true }));
-			this.props.next && this.props.next();
+			this.next();
 		}
-		this.setState(ps => ({ ...ps, lastScrollTop: target.scrollTop }));
 	};
 
 	private throttledOnScrollListener = throttle(this.onScrollListener, 150);
@@ -147,6 +177,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		this._scrollableNode = this.getScrollableTarget();
 		this.el = this.props.height ? this._infScroll : this._scrollableNode || window;
 		this.el.addEventListener("scroll", this.throttledOnScrollListener);
+		this.updateCanScroll();
 	}
 
 	componentWillUnmount() {
@@ -192,6 +223,11 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 						</List>
 					</HotKeys>
 
+					{!loading && this.props.hasMore && !this.state.canScroll && (
+						<LoadButton onClick={this.next} className={this.props.loadButtonClassName}>
+							<div className="caret" />
+						</LoadButton>
+					)}
 					{!this.props.hasMore && this.props.endMessage}
 				</InfiniteListContainer>
 			</Root>

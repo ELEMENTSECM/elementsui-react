@@ -225,10 +225,9 @@ export default class Dropdown extends React.Component<DropdownProps> {
 			setActiveFromChild,
 			active,
 			addonType,
+			direction,
 			...attrs
-		} = omit(this.props, ["toggle", "parentToggle", "disabled", "inNavbar", "direction"]);
-
-		const direction = this.props.direction;
+		} = omit(this.props, ["toggle", "parentToggle", "disabled", "inNavbar"]);
 
 		attrs.tag = attrs.tag || (nav ? "li" : "div");
 
