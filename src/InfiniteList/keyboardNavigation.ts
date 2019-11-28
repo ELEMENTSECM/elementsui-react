@@ -64,8 +64,8 @@ export const handlers = (listRef: React.RefObject<HTMLElement>, { pageSize = 3 }
 	const down = navigate((start, itemsPerRow) => next(stepForward, itemsPerRow, start));
 	const pageDown = navigate(partial(next, stepForward, pageSize));
 	const pageUp = navigate(partial(next, stepBackward, pageSize));
-	const top = navigate(() => first(listRef.current?.children));
-	const bottom = navigate(() => last(listRef.current?.children));
+	const top = navigate(() => first(listRef.current?.children) as HTMLElement);
+	const bottom = navigate(() => last(listRef.current?.children) as HTMLElement);
 
 	return {
 		left,

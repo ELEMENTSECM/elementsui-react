@@ -12,7 +12,7 @@ export interface DropdownItemProps {
 	/** Is item a divider */
 	divider?: boolean;
 	/** HTML element tag */
-	tag?: React.ComponentType | string;
+	tag?: React.ComponentType | keyof JSX.IntrinsicElements;
 	/** Is item a header */
 	header?: boolean;
 	/** onClickevent handler */
@@ -59,9 +59,9 @@ export default class DropdownItem extends React.Component<DropdownItemProps> {
 	}
 
 	render() {
-		let { className, divider, tag: Tag, header, active, innerRef, ...props } = omit(this.props, [
-			"toggle"
-		]);
+		let { className, divider, tag, header, active, innerRef, ...props } = omit(this.props, ["toggle"]);
+
+		let Tag = tag as any;
 
 		const classes = classNames(className, {
 			disabled: props.disabled,
@@ -88,11 +88,9 @@ export default class DropdownItem extends React.Component<DropdownItemProps> {
 				) : (
 					<Tag
 						type={
-							Tag === "button" && (this.props.onClick || this.props.toggle) ? (
-								"button"
-							) : (
-								undefined
-							)
+							Tag === "button" && (this.props.onClick || this.props.toggle)
+								? "button"
+								: undefined
 						}
 						{...props}
 						role={this.role}

@@ -218,7 +218,6 @@ export default class Dropdown extends React.Component<DropdownProps> {
 	render() {
 		const {
 			className,
-			dropup,
 			isOpen,
 			group,
 			size,
@@ -226,10 +225,9 @@ export default class Dropdown extends React.Component<DropdownProps> {
 			setActiveFromChild,
 			active,
 			addonType,
+			direction,
 			...attrs
-		} = omit(this.props, ["toggle", "parentToggle", "disabled", "inNavbar", "direction"]);
-
-		const direction = this.props.direction === "down" && dropup ? "up" : this.props.direction;
+		} = omit(this.props, ["toggle", "parentToggle", "disabled", "inNavbar"]);
 
 		attrs.tag = attrs.tag || (nav ? "li" : "div");
 
