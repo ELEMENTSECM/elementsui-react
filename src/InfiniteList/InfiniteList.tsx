@@ -62,7 +62,14 @@ const List = styled.ul`
 const InfiniteListContainer = styled.div`
 	box-sizing: border-box;
 	overflow: auto;
+	height: calc(100% - 4px);
 	-webkit-overflow-scrolling: touch;
+`;
+
+const LoaderContainer = styled.div`
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 4px;
 `;
 
 const LoadButton = styled.button`
@@ -199,16 +206,17 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 
 		return (
 			<Root style={style}>
-				<BarLoader
-					width={100}
-					widthUnit="%"
-					height={4}
-					heightUnit="px"
-					color={this.props.spinnerColor}
-					loading={loading}
-				/>
+				<LoaderContainer>
+					<BarLoader
+						width={100}
+						widthUnit="%"
+						height={4}
+						heightUnit="px"
+						color={this.props.spinnerColor}
+						loading={loading}
+					/>
+				</LoaderContainer>
 				<InfiniteListContainer
-					style={{ ...style }}
 					className={this.props.className}
 					ref={infScroll => (this._infScroll = infScroll)}
 				>

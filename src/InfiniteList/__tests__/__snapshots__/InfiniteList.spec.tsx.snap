@@ -8,22 +8,18 @@ exports[`InfiniteList displays correctly 1`] = `
     }
   }
 >
-  <Loader
-    color="#2180c0"
-    css={Object {}}
-    height={4}
-    heightUnit="px"
-    loading={false}
-    width={100}
-    widthUnit="%"
-  />
-  <styled.div
-    style={
-      Object {
-        "height": "auto",
-      }
-    }
-  >
+  <styled.div>
+    <Loader
+      color="#2180c0"
+      css={Object {}}
+      height={4}
+      heightUnit="px"
+      loading={false}
+      width={100}
+      widthUnit="%"
+    />
+  </styled.div>
+  <styled.div>
     <HotKeysEnabled
       handlers={null}
       keyMap={
