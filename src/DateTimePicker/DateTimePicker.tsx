@@ -89,22 +89,22 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
 			this.dateFormatId = this.currentNls![`longDateFormat_${dateFormat}`];
 		}
 
-		if (this.showTimeSelectOnly) {
-			return;
-		}
-
 		if (timeFormat === undefined) {
 			this.timeFormatId = this.currentNls!["time"];
 		} else if (typeof timeFormat === "string") {
 			this.timeFormatId = this.currentNls![`longDateFormat_${timeFormat}`];
 		}
 
-		if (this.showTimeSelect) {
-			this.dateFormatId += ` ${this.timeFormatId}`;
-		}
-
 		if (portalPopupTo) {
 			this.popperContainer = getPortalContainer(portalPopupTo);
+		}
+
+		if (this.showTimeSelectOnly) {
+			return;
+		}
+
+		if (this.showTimeSelect) {
+			this.dateFormatId += ` ${this.timeFormatId}`;
 		}
 	}
 
