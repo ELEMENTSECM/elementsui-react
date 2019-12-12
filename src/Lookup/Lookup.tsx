@@ -762,8 +762,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	MultiValueLabel = (labelProps: MultiValueGenericProps<any>) => {
 		const onClick = this.onMultiValueLabelClick(labelProps);
 		const { optionBindings } = this.props;
-		const classes =
-			(optionBindings && optionBindings(labelProps.data.value)) || [];
+		const classes = optionBindings?.(labelProps.data.value) || [];
 		return (
 			<button
 				type="button"
