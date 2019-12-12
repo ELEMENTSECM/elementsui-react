@@ -16,7 +16,10 @@ import isEqual from "lodash/isEqual";
 import { isArray } from "util";
 import { StylesConfig } from "react-select/src/styles";
 import { ThemeConfig } from "react-select/src/theme";
-import { SelectComponentsConfig, SelectComponents } from "react-select/src/components";
+import {
+	SelectComponentsConfig,
+	SelectComponents
+} from "react-select/src/components";
 import _ from "lodash";
 import { MultiValueGenericProps } from "react-select/src/components/MultiValue";
 import { ActionMeta } from "react-select/src/types";
@@ -48,7 +51,10 @@ function memoizeLastSingleValueReturn(returnFunc, compareByFunc) {
 // (only for a single value lookup)
 function adjustOptionsAndSelected(selectedOption, options: any[]) {
 	if (selectedOption && !isArray(selectedOption)) {
-		const valueIndex = findIndex(options, o => o.value === selectedOption.value);
+		const valueIndex = findIndex(
+			options,
+			o => o.value === selectedOption.value
+		);
 		if (valueIndex > -1) {
 			options[valueIndex] = selectedOption;
 		} else {
@@ -268,7 +274,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 				let border, boxShadow;
 				if (state.isFocused) {
 					border = "1px solid #66afe9;";
-					boxShadow = "inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);";
+					boxShadow =
+						"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);";
 				} else {
 					border = "1px solid #ccc;";
 					boxShadow = "inset 0 1px 1px rgba(0,0,0,.075);";
@@ -313,8 +320,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	}
 
 	get currentQueryParams() {
-		const oDataQuery = this.props.queryProvider && this.props.queryProvider("");
-		return (oDataQuery && oDataQuery.settings && oDataQuery.settings.params) || {};
+		const oDataQuery = this.props.queryProvider?.("");
+		return oDataQuery?.settings?.params || {};
 	}
 
 	get allOptionValues() {
@@ -340,7 +347,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		};
 
 		this.onMenuOpen = debounce(this.onMenuOpen, 0);
-		this.mapValue = memoizeLastSingleValueReturn(this.mapValue, o => o && o.value);
+		this.mapValue = memoizeLastSingleValueReturn(
+			this.mapValue,
+			o => o && o.value
+		);
 	}
 
 	componentDidMount() {
@@ -350,9 +360,17 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	}
 
 	componentDidUpdate() {
-		const { isMulti, multiAsString, value, fullObjectValue, idSelector, map: lookupMap } = this.props;
+		const {
+			isMulti,
+			multiAsString,
+			value,
+			fullObjectValue,
+			idSelector,
+			map: lookupMap
+		} = this.props;
 		if (isMulti && fullObjectValue && !multiAsString) {
-			let newValues = value && differenceBy(value, this.allOptionValues || [], idSelector!);
+			let newValues =
+				value && differenceBy(value, this.allOptionValues || [], idSelector!);
 			lookupMap && (newValues = map(newValues, lookupMap));
 			some(newValues) &&
 				this.setState(prevState => ({
@@ -368,10 +386,14 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	}
 
 	initMultiStringValues() {
-		const { queryProvider, multiStringIdFilterString, includeMetadata } = this.props;
+		const {
+			queryProvider,
+			multiStringIdFilterString,
+			includeMetadata
+		} = this.props;
 
 		if (!isEmpty(multiStringIdFilterString)) {
-			queryProvider!("")
+			queryProvider?.("")
 				.filter(multiStringIdFilterString)
 				.withQuery({ includeMetadata })
 				.fetchAllPages()
@@ -397,10 +419,15 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	};
 
 	onMenuOpen = async () => {
-		const reloadOptions = !isEqual(this.currentQueryParams, this.state.queryParams);
+		const reloadOptions = !isEqual(
+			this.currentQueryParams,
+			this.state.queryParams
+		);
 		await this.setState({
 			menuIsOpen: true,
-			optionsCache: reloadOptions ? this.initialOptionsCache : this.state.optionsCache
+			optionsCache: reloadOptions
+				? this.initialOptionsCache
+				: this.state.optionsCache
 		});
 
 		const { optionsCache } = this.state;
@@ -413,11 +440,14 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	onInputChange = async search => {
 		await this.setState({
 			search,
-			customOptions: this.props.customOptions ? this.getCustomOptions(search) : []
+			customOptions: this.props.customOptions
+				? this.getCustomOptions(search)
+				: []
 		});
 
 		const { optionsCache } = this.state;
-		const shouldLoadOptions = !optionsCache[search] && size(search) >= (this.props.minInputLength || 0);
+		const shouldLoadOptions =
+			!optionsCache[search] && size(search) >= (this.props.minInputLength || 0);
 		if (shouldLoadOptions) {
 			await this.loadOptions();
 		}
@@ -433,6 +463,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	};
 
 	async loadOptions() {
+		if (!this.props.queryProvider) {
+			return;
+		}
+
 		const { search } = this.state;
 
 		if (this.currentOptions.isLoading || !this.currentOptions.hasMore) {
@@ -485,7 +519,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		}
 	}
 
-	load(inputValue, previousOptions): Promise<{ options: LookupOption[]; values: any[] }> {
+	load(
+		inputValue,
+		previousOptions
+	): Promise<{ options: LookupOption[]; values: any[] }> {
 		const {
 			queryProvider,
 			pageSize,
@@ -504,7 +541,9 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 				.fetchCollection()
 				.then(results => {
 					this.setState({ queryParams: oDataQuery.settings.params });
-					return resultsFilter ? results.value.filter(resultsFilter) : results.value;
+					return resultsFilter
+						? results.value.filter(resultsFilter)
+						: results.value;
 				})
 				.then(results =>
 					resolve({
@@ -537,7 +576,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 					(option.custom
 						? option.fullObjectValue
 						: !isNil(option.value) &&
-						  find(this.currentOptions.values, x => idSelector!(x) === option.value));
+						  find(
+								this.currentOptions.values,
+								x => idSelector!(x) === option.value
+						  ));
 			} else {
 				const availableValues = this.currentOptions.values
 					? this.currentOptions.values.concat(lookupValues)
@@ -550,7 +592,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 									return [...values, o.fullObjectValue];
 								}
 
-								const value = find(availableValues, x => idSelector!(x) === o.value);
+								const value = find(
+									availableValues,
+									x => idSelector!(x) === o.value
+								);
 								return value ? [...values, value] : values;
 						  }, [])
 						: [];
@@ -574,7 +619,9 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		}
 	};
 
-	onMultiValueLabelClick = (labelProps?: MultiValueGenericProps<any>) => async e => {
+	onMultiValueLabelClick = (
+		labelProps?: MultiValueGenericProps<any>
+	) => async e => {
 		if (!this.props.onValueClick) {
 			return;
 		}
@@ -618,7 +665,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		if (initialValue && renderFn) {
 			if (!isMulti) {
 				return {
-					label: initialValue.label || renderFn(initialValue) || idSelector!(initialValue),
+					label:
+						initialValue.label ||
+						renderFn(initialValue) ||
+						idSelector!(initialValue),
 					value: initialValue.value || idSelector!(initialValue)
 				};
 			}
@@ -652,7 +702,12 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		if (!(search && search.trim())) {
 			return [];
 		} else {
-			const { idSelector, renderOption, customOptions, fullObjectValue } = this.props;
+			const {
+				idSelector,
+				renderOption,
+				customOptions,
+				fullObjectValue
+			} = this.props;
 			const customValues = customOptions!(search.trim());
 
 			return customValues
@@ -667,7 +722,11 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	};
 
 	MultiValueContainer = containerProps => (
-		<div className="multivalue-container" role="region" aria-labelledby={this.props.ariaLabelledBy}>
+		<div
+			className="multivalue-container"
+			role="region"
+			aria-labelledby={this.props.ariaLabelledBy}
+		>
 			<components.MultiValueContainer {...containerProps} />
 		</div>
 	);
@@ -682,7 +741,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 
 		if (selectionBindings) {
 			const value = fullObjectValue
-				? find(this.allOptionValues, x => x && idSelector!(x) === multiValueProps.data.value)
+				? find(
+						this.allOptionValues,
+						x => x && idSelector!(x) === multiValueProps.data.value
+				  )
 				: multiValueProps.data.value;
 			classes = classNames(selectionBindings(value));
 		}
@@ -700,7 +762,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	MultiValueLabel = (labelProps: MultiValueGenericProps<any>) => {
 		const onClick = this.onMultiValueLabelClick(labelProps);
 		const { optionBindings } = this.props;
-		const classes = (optionBindings && optionBindings(labelProps.data.value)) || [];
+		const classes =
+			(optionBindings && optionBindings(labelProps.data.value)) || [];
 		return (
 			<button
 				type="button"
@@ -718,7 +781,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	Option = optionProps => {
 		const { optionBindings, fullObjectValue, idSelector } = this.props;
 		const value = fullObjectValue
-			? find(this.allOptionValues, x => x && idSelector!(x) === optionProps.data.value)
+			? find(
+					this.allOptionValues,
+					x => x && idSelector!(x) === optionProps.data.value
+			  )
 			: optionProps.data.value;
 		const classes = classNames(optionBindings!(value));
 		return <components.Option {...optionProps} className={classes} />;
