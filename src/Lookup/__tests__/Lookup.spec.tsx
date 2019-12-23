@@ -1,5 +1,5 @@
 import * as React from "react";
-import { shallow } from "enzyme";
+import { shallow, ShallowWrapper } from "enzyme";
 import Lookup from "..";
 
 describe("Lookup", () => {
@@ -32,7 +32,7 @@ describe("Lookup", () => {
 		label: x.Title
 	}));
 
-	let wrapper;
+	let wrapper: ShallowWrapper;
 	let component;
 
 	describe("with options property", () => {
@@ -101,12 +101,26 @@ describe("Lookup", () => {
 			await component.loadOptions();
 			expect(mockLoad).not.toBeCalled();
 		});
+
+		test("should not crash without queryProvider", async () => {
+			wrapper.setProps({ queryProvider: undefined });
+			const mockLoadOptions = jest.spyOn(component, "loadOptions");
+			await wrapper.find("Select").simulate("menuOpen");
+			setTimeout(() => {
+				expect(component.state["menuIsOpen"]).toBeTruthy();
+				expect(mockLoadOptions).not.toBeCalled();
+			}, 0);
+		});
 	});
 
 	describe("without options property", () => {
 		beforeEach(() => {
 			wrapper = shallow(
-				<Lookup id="testLookup" queryProvider={getQueryProvider()} renderOption={renderOption} />
+				<Lookup
+					id="testLookup"
+					queryProvider={getQueryProvider()}
+					renderOption={renderOption}
+				/>
 			);
 			component = wrapper.instance();
 		});

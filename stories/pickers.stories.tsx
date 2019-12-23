@@ -8,6 +8,17 @@ import { Lookup } from "../src";
 import { withState } from "@dump247/storybook-state";
 import "react-ada-datepicker/dist/react-ada-datepicker.css";
 
+const options = [
+	{
+		Id: 1,
+		Title: "John"
+	},
+	{
+		Id: 2,
+		Title: "Marry"
+	}
+];
+
 class Query {
 	_value;
 	take = () => this;
@@ -15,16 +26,7 @@ class Query {
 	withQuery = () => this;
 	fetchCollection = () =>
 		Promise.resolve({
-			value: [
-				{
-					Id: 1,
-					Title: "John"
-				},
-				{
-					Id: 2,
-					Title: "Marry"
-				}
-			]
+			value: options
 		});
 	settings = { params: {} };
 }
@@ -145,6 +147,30 @@ storiesOf("Pickers/Lookup", module)
 		}
 	)
 	.add(
+		"Multi value with predefined options",
+		withState({
+			value: [{ value: 1, label: "John" }]
+		})(
+			withInfo()(({ store }) => {
+				return (
+					<Lookup
+						inputId="TestLookup"
+						value={store.state.value}
+						renderOption={x => x.Title}
+						options={options.map(x => ({ value: x.Id, label: x.Title }))}
+						onChange={selected => {
+							store.set({ options: store.state.options, value: selected });
+						}}
+						isMulti
+					/>
+				);
+			})
+		),
+		{
+			info: { inline: true, header: false }
+		}
+	)
+	.add(
 		"Option bindings",
 		withState({
 			value: { value: 1, label: "John" }
@@ -152,7 +178,11 @@ storiesOf("Pickers/Lookup", module)
 			withInfo()(({ store }) => {
 				const queryProvider = () => new Query();
 				const bindClasses = value =>
-					value === 1 ? ["text-primary"] : value === 2 ? ["text-secondary"] : [];
+					value === 1
+						? ["text-primary"]
+						: value === 2
+						? ["text-secondary"]
+						: [];
 
 				return (
 					<Lookup
