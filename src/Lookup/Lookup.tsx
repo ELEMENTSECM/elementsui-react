@@ -241,15 +241,17 @@ export interface LookupProps {
 	map?: (value: any) => any;
 }
 
+type OptionsCacheValue = {
+	isLoading: boolean;
+	options: any[];
+	values: any;
+	hasMore?: boolean;
+}
+
 type State = {
 	search: string;
 	optionsCache: {
-		[key: string]: {
-			isLoading: boolean;
-			options: any[];
-			values: any;
-			hasMore?: boolean;
-		};
+		[key: string]: OptionsCacheValue;
 	};
 	menuIsOpen: boolean;
 	customOptions: any[];
@@ -359,13 +361,14 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		}
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate(prev) {
 		const {
 			isMulti,
 			multiAsString,
 			value,
 			fullObjectValue,
 			idSelector,
+			options,
 			map: lookupMap
 		} = this.props;
 		if (isMulti && fullObjectValue && !multiAsString) {
@@ -382,6 +385,12 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 						}
 					}
 				}));
+		}
+
+		if (options && !_.isEqual(prev.options, options)) {
+			this.setState(() => ({
+				optionsCache: this.initialOptionsCache
+			}));
 		}
 	}
 
@@ -463,26 +472,24 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	};
 
 	async loadOptions() {
+		const { search } = this.state;
 		if (!this.props.queryProvider) {
+			if (this.props.options) {
+				this.setOptionsCache(search, {
+					options: this.props.options!.filter(x => _.includes(x.label.toLowerCase(), search.toLowerCase())),
+					isLoading: false
+				})
+			}
 			return;
 		}
-
-		const { search } = this.state;
 
 		if (this.currentOptions.isLoading || !this.currentOptions.hasMore) {
 			return;
 		}
 
-		await this.setState(prevState => ({
-			search,
-			optionsCache: {
-				...prevState.optionsCache,
-				[search]: {
-					...this.currentOptions,
-					isLoading: true
-				}
-			}
-		}));
+		await this.setOptionsCache(search, {
+			isLoading: true
+		});
 
 		try {
 			let results = await this.load(search, this.currentOptions.options);
@@ -490,32 +497,21 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 				results.options = [];
 			}
 			const hasMore = results.options.length > 0;
-			await this.setState(prevState => ({
-				optionsCache: {
-					...prevState.optionsCache,
-					[search]: {
-						...this.currentOptions,
-						options: this.currentOptions.options.concat(results.options),
-						values:
-							this.props.fullObjectValue &&
-							(this.currentOptions.values
-								? results.values.concat(this.currentOptions.values)
-								: results.values),
-						hasMore,
-						isLoading: false
-					}
-				}
-			}));
+
+			await this.setOptionsCache(search, {
+				options: this.currentOptions.options.concat(results.options),
+				values:
+					this.props.fullObjectValue &&
+					(this.currentOptions.values
+						? results.values.concat(this.currentOptions.values)
+						: results.values),
+				hasMore,
+				isLoading: false
+			});
 		} catch (e) {
-			await this.setState(prevState => ({
-				optionsCache: {
-					...prevState.optionsCache,
-					[search]: {
-						...this.currentOptions,
-						isLoading: false
-					}
-				}
-			}));
+			await this.setOptionsCache(search, {
+				isLoading: false
+			});
 		}
 	}
 
@@ -827,6 +823,19 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			renderers.Option = this.Option;
 		}
 		return renderers;
+	}
+
+	private setOptionsCache(search: string, value: Partial<OptionsCacheValue>) {
+		return this.setState(prevState => ({
+			search,
+			optionsCache: {
+				...prevState.optionsCache,
+				[search]: {
+					...this.currentOptions,
+					...value
+				}
+			}
+		}));
 	}
 
 	render() {
