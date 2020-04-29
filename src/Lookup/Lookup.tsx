@@ -107,7 +107,7 @@ export interface LookupProps {
 	 */
 	resultsFilter?: (value: any) => boolean;
 	/**
-	 * Scroll pagination. 20 by default
+	 * Scroll pagination. 30 by default
 	 */
 	pageSize?: number;
 	/**
@@ -419,6 +419,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	};
 
 	onMenuOpen = async () => {
+		if (this.state.menuIsOpen)  {
+			return;
+		}
+
 		const reloadOptions = !isEqual(
 			this.currentQueryParams,
 			this.state.queryParams
@@ -489,7 +493,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			if (!results.options) {
 				results.options = [];
 			}
-			const hasMore = results.options.length > 0;
+			const hasMore = results.options.length > 0 && results.options.length === this.props.pageSize;
 			await this.setState(prevState => ({
 				optionsCache: {
 					...prevState.optionsCache,
