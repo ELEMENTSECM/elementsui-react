@@ -61,6 +61,8 @@ export interface DateTimePickerProps {
 	todayButton?: boolean;
 	/** Portal popup to element (ReactNode or Function) */
 	portalPopupTo?: React.ReactNode;
+	/** Show datepicker inline */
+	inline?: boolean;
 }
 
 export default class DateTimePicker extends React.Component<DateTimePickerProps> {
@@ -109,7 +111,7 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
 	}
 
 	render() {
-		const { dateFormat, timeFormat, viewMode, disabled, defaultValue, todayButton, ...rest } = this.props;
+		const { dateFormat, timeFormat, viewMode, disabled, defaultValue, todayButton, inline, ...rest } = this.props;
 
 		return (
 			<DatePicker
@@ -126,6 +128,7 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
 				customInput={<DateTimeInput />}
 				popperContainer={this.popperContainer}
 				adjustDateOnChange
+				inline={inline}
 			/>
 		);
 	}
