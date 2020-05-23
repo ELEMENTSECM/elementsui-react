@@ -22,7 +22,7 @@ import {
 } from "react-select/src/components";
 import _ from "lodash";
 import { MultiValueGenericProps } from "react-select/src/components/MultiValue";
-import { ActionMeta } from "react-select/src/types";
+import { ActionMeta, OptionTypeBase } from "react-select/src/types";
 
 const initialCache = {
 	options: [],
@@ -562,7 +562,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		});
 	}
 
-	onChange = (option: any, meta: ActionMeta & { value?: any }) => {
+	onChange = (option: any, meta: ActionMeta<OptionTypeBase> & { value?: any }) => {
 		const {
 			fullObjectValue,
 			onChange,

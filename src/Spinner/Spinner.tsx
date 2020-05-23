@@ -14,9 +14,7 @@ export interface SpinnerProps {
 	/** HTML id tag of the root element */
 	id?: string;
 	/** Spinner size */
-	size?: number;
-	/** Spinner size units */
-	sizeUnit?: string;
+	size?: number | string;
 	/** Spinner state */
 	loading?: boolean;
 	/** Spinner label */

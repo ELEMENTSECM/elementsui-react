@@ -1,119 +1,104 @@
 import * as React from "react";
-import { PositionedDraggable } from "react-draggable-elements";
 import { Modal } from "react-overlays";
-import { Popper } from "react-popper";
-import { ReferenceObject } from "popper.js";
+import type { ModalProps, RenderModalBackdropProps, RenderModalDialogProps } from "react-overlays/Modal";
 import { styles } from "./Popup.styles";
+import usePopper from "react-overlays/usePopper";
+import { PositionedDraggable } from "react-draggable-elements";
+import { Options as PopperOptions } from "@popperjs/core";
 
-type PopupTargetNode = {
-	clientHeight: number;
-	clientWidth: number;
-	getBoundingClientRect: () => ClientRect | DOMRect;
-};
+export type Placement = PopperOptions["placement"];
 
 export interface PopupProps {
 	/** Whether popup can be dragged on the screen. Default: true */
 	isDraggable?: boolean;
-	/** CSS class for the <div> that hosts popup and backdrop(overlay). Default: "popup-dialog" */
-	hostClassName?: string;
-	/** CSS class for the top <div> of the popup. Default: "popup-container" */
-	containerClassName?: string;
-	/** CSS class for the backdrop (overlay) <div>. Default: "popup-overlay" */
+	/** CSS class for the dialog element. Default: "popup__dialog" */
+	className: ModalProps["className"];
+	/** CSS class for the backdrop (overlay) element. Default: "popup__overlay" */
 	backdropClassName?: string;
-	/** CSS selector for the HTML element serving as a handle of draggable popup. Default: ".popup-container" */
+	/** CSS selector for the HTML element serving as a handle of draggable popup. Default: ".popup__dialog" */
 	handle?: string;
 	/** Whether popup should be made visible. Default: true */
-	show?: boolean;
+	show: ModalProps["show"];
 	/** Target node used for positioning of popup relative to it. Popper.js lib used behind the scene. */
-	targetNode?: PopupTargetNode | HTMLElement | null;
+	targetNode?: HTMLElement;
 	/** One of the placements supported by Popper.js relative to target node. If boolean 'false' value is passed, Popper positioning will not be applied. */
-	placement?:
-		| "auto-start"
-		| "auto"
-		| "auto-end"
-		| "top-start"
-		| "top"
-		| "top-end"
-		| "right-start"
-		| "right"
-		| "right-end"
-		| "bottom-end"
-		| "bottom"
-		| "bottom-start"
-		| "left-end"
-		| "left"
-		| "left-start"
-		| boolean;
+	placement: Placement | false;
 	/** Handler that is called when backdrop is clicked or ESC key pressed. Typically in this handler you will update state so that popup is removed. */
-	onHide: (event?: any) => any;
+	onHide: ModalProps["onHide"];
 	/** Standard ARIA attribute that will be set on popup root element */
 	"aria-labelledby": string;
 	/** Should modal become focused on render */
-	autoFocus?: boolean;
+	autoFocus: ModalProps["autoFocus"];
+	/** Allow popup to overlap target node in case of overflow. Default: true */
+	allowOverlapOnOverflow?: boolean;
 }
 
-export default class Popup extends React.PureComponent<PopupProps> {
-	static defaultProps = {
-		isDraggable: true,
-		hostClassName: "popup-dialog",
-		containerClassName: "popup-container",
-		backdropClassName: "popup-overlay",
-		handle: ".popup-container",
-		show: true,
-		targetNode: undefined,
-		placement: undefined,
-		onHide: undefined,
-		"aria-labelledby": undefined,
-		autoFocus: true
-	};
+Popup.defaultProps = {
+	isDraggable: true,
+	className: "popup__dialog",
+	backdropClassName: "popup__overlay",
+	handle: ".popup__dialog",
+	show: true,
+	targetNode: undefined,
+	placement: undefined,
+	onHide: undefined,
+	"aria-labelledby": undefined,
+	autoFocus: true,
+	allowOverlapOnOverflow: true,
+};
 
-	onHide = () => {
-		const { onHide } = this.props;
-		onHide && onHide();
-	};
+export default function Popup(props: React.PropsWithChildren<PopupProps>) {
+	const {
+		handle,
+		children,
+		"aria-labelledby": ariaLabelledBy,
+		isDraggable,
+		show,
+		className,
+		backdropClassName,
+		targetNode,
+		placement,
+		onHide,
+		autoFocus,
+		allowOverlapOnOverflow,
+	} = props;
 
-	render() {
-		const {
-			handle,
-			children,
-			"aria-labelledby": ariaLabelledBy,
-			isDraggable,
-			show,
-			hostClassName,
-			containerClassName,
-			backdropClassName,
-			targetNode,
-			placement,
-			autoFocus
-		} = this.props;
+	const [modalElement, setModalElement] = React.useState<HTMLElement | null>();
+	const renderBackdrop = React.useMemo(
+		() => (props: RenderModalBackdropProps) => {
+			return <div className={backdropClassName} style={styles.backdrop} {...props} />;
+		},
+		[backdropClassName]
+	);
+	const renderDialog = React.useMemo(
+		() => (props: RenderModalDialogProps) => {
+			return (
+				<PositionedDraggable disabled={!isDraggable} handle={handle} bounds="html">
+					<div {...props}>{children}</div>
+				</PositionedDraggable>
+			);
+		},
+		[isDraggable, handle, children]
+	);
+	const { styles: popperStyle } = usePopper(targetNode, modalElement, {
+		placement: placement === false ? undefined : placement,
+		modifiers: allowOverlapOnOverflow ? { preventOverflow: { options: { altAxis: true } } } : undefined,
+	});
 
-		return (
-			<Modal
-				aria-labelledby={ariaLabelledBy}
-				backdropClassName={backdropClassName}
-				backdropStyle={styles.backdrop}
-				onHide={this.onHide}
-				show={show}
-				autoFocus={autoFocus}
-				className={hostClassName}
-			>
-				<Popper referenceElement={targetNode as ReferenceObject} placement={placement as any}>
-					{({ ref, style }) => (
-						<PositionedDraggable handle={handle} disabled={!isDraggable} bounds="html">
-							<div
-								ref={ref}
-								className={containerClassName}
-								style={{
-									...styles.container,
-									...placement === false ? {} : targetNode ? style : styles.centerToScreen
-								}}
-							>
-								{children}
-							</div>
-						</PositionedDraggable>
-					)}
-				</Popper>
-			</Modal>
-		);
-	}
+	return (
+		<Modal
+			ref={(handle) => setModalElement(handle?.dialog)}
+			aria-labelledby={ariaLabelledBy}
+			className={className}
+			renderBackdrop={renderBackdrop}
+			renderDialog={renderDialog}
+			onHide={onHide}
+			show={show}
+			autoFocus={autoFocus}
+			style={{
+				...styles.dialog,
+				...(placement === false ? {} : targetNode ? (popperStyle as any) : styles.centerToScreen),
+			}}
+		/>
+	);
 }

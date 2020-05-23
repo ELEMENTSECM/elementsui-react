@@ -14,7 +14,7 @@ describe("DropdownMenu", () => {
 		inNavbar = false;
 	});
 
-	it('should not have the class "show" when isOpen context is false', () => {
+	test('should not have the class "show" when isOpen context is false', () => {
 		isOpen = false;
 		const wrapper = mount(
 			<DropdownMenu>
@@ -29,82 +29,74 @@ describe("DropdownMenu", () => {
 		expect(wrapper.find(".show").hostNodes().length).toBe(0);
 	});
 
-	it("should render down when direction is unknown on the context", () => {
+	test("should render down when direction is unknown on the context", () => {
 		isOpen = true;
 		direction = "unknown";
-		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
+		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("bottom-start");
 	});
 
-	it('should render down when direction is "down" on the context', () => {
+	test('should render down when direction is "down" on the context', () => {
 		isOpen = true;
-		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
+		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("bottom-start");
 	});
 
-	it('should render up when direction is "up" on the context', () => {
+	test('should render up when direction is "up" on the context', () => {
 		isOpen = true;
 		direction = "up";
-		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
+		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("top-start");
 	});
 
-	it('should render left when direction is "left" on the context', () => {
+	test('should render left when direction is "left" on the context', () => {
 		isOpen = true;
 		direction = "left";
-		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
+		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("left-start");
 	});
 
-	it('should render right when direction is "right" on the context', () => {
+	test('should render right when direction is "right" on the context', () => {
 		isOpen = true;
 		direction = "right";
-		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
+		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("right-start");
 	});
 
-	it("should not disable flip modifier by default", () => {
+	test("should not disable flip modifier by default", () => {
 		isOpen = true;
-		const wrapper = shallow(<DropdownMenu>Ello world</DropdownMenu>, {
+		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("modifiers")).toBe(undefined);
 	});
 
-	it("should disable flip modifier when flip is false", () => {
+	test("should disable flip modifier when flip is false", () => {
 		isOpen = true;
-		const wrapper = shallow(<DropdownMenu flip={false}>Ello world</DropdownMenu>, {
+		const wrapper = shallow(<DropdownMenu flip={false}>Hello, world</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
 
 		expect(wrapper.find(Popper).prop("modifiers")).toEqual({ flip: { enabled: false } });
 	});
 
-	it("should not render multiple children when isOpen is false", () => {
-		const wrapper = mount(<DropdownMenu right>Ello world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
-		});
-
-		expect(wrapper.childAt(0).children().length).toBe(0);
-	});
-
-	it("should render custom tag", () => {
+	test("should render custom tag", () => {
 		const wrapper = mount(<DropdownMenu tag="main">Yo!</DropdownMenu>, {
 			context: { isOpen, direction, inNavbar }
 		});
