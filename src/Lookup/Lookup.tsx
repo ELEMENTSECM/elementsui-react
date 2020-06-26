@@ -534,7 +534,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			renderOption,
 			idSelector,
 			errorMessage,
-			includeMetadata
+			includeMetadata,
+			fullObjectValue
 		} = this.props;
 		const oDataQuery = queryProvider!(inputValue);
 		return new Promise((resolve, reject) => {
@@ -553,7 +554,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 					resolve({
 						options: results.map(x => ({
 							value: idSelector!(x),
-							label: renderOption!(x) || idSelector!(x)
+							label: renderOption!(x) || idSelector!(x),
+							fullObjectValue: fullObjectValue && x
 						})),
 						values: results
 					})
@@ -663,7 +665,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			renderSelection,
 			idSelector,
 			multiAsString,
-			delimiter
+			delimiter,
+			fullObjectValue
 		} = this.props;
 		const renderFn = renderSelection || renderOption;
 		if (initialValue && renderFn) {
@@ -680,7 +683,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			if (!multiAsString) {
 				return initialValue.map(x => ({
 					label: x.label || renderFn(x) || idSelector!(x),
-					value: x.value || idSelector!(x)
+					value: x.value || idSelector!(x),
+					fullObjectValue: fullObjectValue && x
 				}));
 			}
 
