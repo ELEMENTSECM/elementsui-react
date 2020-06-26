@@ -3,35 +3,18 @@
 exports[`Popup displays correctly 1`] = `
 <Modal
   autoFocus={true}
-  backdrop={true}
-  backdropClassName="popup-overlay"
-  backdropStyle={
+  className="popup__dialog"
+  renderBackdrop={[Function]}
+  renderDialog={[Function]}
+  show={true}
+  style={
     Object {
+      "left": "50%",
+      "opacity": 1,
+      "top": "50%",
+      "transform": "translate(-50%, -50%)",
       "zIndex": 2000,
     }
   }
-  className="popup-dialog"
-  enforceFocus={true}
-  keyboard={true}
-  manager={
-    ModalManager {
-      "add": [Function],
-      "containers": Array [],
-      "data": Array [],
-      "handleContainerOverflow": true,
-      "hideSiblingNodes": true,
-      "isTopModal": [Function],
-      "modals": Array [],
-      "remove": [Function],
-    }
-  }
-  onHide={[Function]}
-  renderBackdrop={[Function]}
-  restoreFocus={true}
-  show={true}
->
-  <Popper>
-    <Component />
-  </Popper>
-</Modal>
+/>
 `;

@@ -208,10 +208,8 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 			<Root style={style}>
 				<LoaderContainer>
 					<BarLoader
-						width={100}
-						widthUnit="%"
+						width="100%"
 						height={4}
-						heightUnit="px"
 						color={this.props.spinnerColor}
 						loading={loading}
 					/>

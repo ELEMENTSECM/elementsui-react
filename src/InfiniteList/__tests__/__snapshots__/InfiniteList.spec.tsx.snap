@@ -11,12 +11,10 @@ exports[`InfiniteList displays correctly 1`] = `
   <styled.div>
     <Loader
       color="#2180c0"
-      css={Object {}}
+      css=""
       height={4}
-      heightUnit="px"
       loading={false}
-      width={100}
-      widthUnit="%"
+      width="100%"
     />
   </styled.div>
   <styled.div>

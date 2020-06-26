@@ -1,6 +1,6 @@
 export const styles = {
 	backdrop: { zIndex: 2000 },
-	container: {
+	dialog: {
 		zIndex: 2000,
 		opacity: 1
 	},

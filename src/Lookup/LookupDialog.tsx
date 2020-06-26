@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
-import Draggable from "react-draggable";
+import Draggable from "react-draggable-elements";
 import _ from "lodash";
 import classNames from "classnames";
 import { isDescendant } from "../utils";

@@ -42,10 +42,9 @@ storiesOf("Indicators/Spinner", module)
 			return (
 				<Spinner
 					label="Please wait while we're fetching your 🌮..."
-					size={size}
+					size={`${size}${unit}`}
 					color={clr}
 					type={type}
-					sizeUnit={unit}
 				/>
 			);
 		},
