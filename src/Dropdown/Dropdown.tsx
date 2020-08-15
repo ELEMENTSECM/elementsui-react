@@ -43,7 +43,7 @@ export interface DropdownProps {
 	parentToggle?: (e?: any) => void;
 }
 
-export default class Dropdown extends React.Component<DropdownProps> {
+class Dropdown extends React.Component<DropdownProps> {
 	static Toggle = DropdownToggle;
 	static Menu = DropdownMenu;
 	static Item = DropdownItem;
@@ -266,3 +266,5 @@ export default class Dropdown extends React.Component<DropdownProps> {
 		);
 	}
 }
+
+export default Dropdown;

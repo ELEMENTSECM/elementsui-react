@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"target": "es6",
 		"lib": [
 			"dom",
 			"dom.iterable",
@@ -25,11 +25,11 @@
 		"removeComments": true,
 		"downlevelIteration": true,
 		"noEmit": true,
-		"jsx": "react",
+		"jsx": "react-jsx",
 		"noImplicitAny": false,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"importHelpers": true
+		"importHelpers": true,
 	},
 	"include": ["src", "stories"]
 }

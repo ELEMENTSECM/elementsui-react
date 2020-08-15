@@ -59,7 +59,7 @@ export default class DropdownItem extends React.Component<DropdownItemProps> {
 	}
 
 	render() {
-		let { className, divider, tag, header, active, innerRef, ...props } = omit(this.props, ["toggle"]);
+		const { className, divider, tag, header, active, innerRef, ...props } = omit(this.props, ["toggle"]);
 
 		let Tag = tag as any;
 

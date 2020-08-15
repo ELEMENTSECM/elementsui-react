@@ -41,7 +41,7 @@ const Spinner: React.FC<SpinnerProps> = ({ type, label, ...props }) => {
 	return (
 		<React.Suspense fallback="">
 			<SpinnerContainer>
-				<Loader {...props} />
+				<Loader {...props as any} />
 				{label && <SpinnerLabel>{label}</SpinnerLabel>}
 			</SpinnerContainer>
 		</React.Suspense>

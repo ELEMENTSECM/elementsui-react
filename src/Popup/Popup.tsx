@@ -80,10 +80,12 @@ export default function Popup(props: React.PropsWithChildren<PopupProps>) {
 		},
 		[isDraggable, handle, children]
 	);
-	const { styles: popperStyle } = usePopper(targetNode, modalElement, {
+	const popperStyle = usePopper(targetNode, modalElement, {
 		placement: placement === false ? undefined : placement,
-		modifiers: allowOverlapOnOverflow ? { preventOverflow: { options: { altAxis: true } } } : undefined,
-	});
+		modifiers: allowOverlapOnOverflow
+			? [{ name: "preventOverflow", options: { altAxis: true } }]
+			: undefined,
+	})?.styles?.popper;
 
 	return (
 		<Modal
