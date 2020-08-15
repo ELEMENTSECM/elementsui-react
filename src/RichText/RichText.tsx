@@ -52,7 +52,7 @@ const defaultConfig = {
 		"Arial/Arial, Helvetica, sans-serif",
 		"Calibri/Calibri, Tahoma, sans-serif",
 		"Courier New/Courier New, Courier, monospace",
-		"Georgia/Georgia, serif;" + "Lucida Sans Unicode/Lucida Sans Unicode, Lucida Grande, sans-serif",
+		"Georgia/Georgia, serif;Lucida Sans Unicode/Lucida Sans Unicode, Lucida Grande, sans-serif",
 		"Tahoma/Tahoma, Geneva, sans-serif",
 		"Times New Roman/Times New Roman, Times, serif",
 		"Verdana/Verdana, Geneva, sans-serif"
@@ -110,8 +110,7 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 		config: {},
 		events: {},
 		scriptUrl: "https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js",
-		throttle: 500,
-		withPlugins: true
+		throttle: 500
 	};
 
 	static editorInstances = {};
@@ -128,7 +127,7 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 	componentDidMount() {
 		this.mounted = true;
 		if (!window.CKEDITOR) {
-			loadScript(this.props.scriptUrl, this.onLoad);
+			loadScript(this.props.scriptUrl!, this.onLoad);
 		} else {
 			this.onLoad();
 		}

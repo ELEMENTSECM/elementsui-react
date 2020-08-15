@@ -23,7 +23,7 @@ const ListItem = styled.li`
 	position: relative;
 `;
 
-const InfiniteListItem: React.SFC<InfiniteListItemProps> = ({
+const InfiniteListItem: React.FunctionComponent<InfiniteListItemProps> = ({
 	children,
 	className,
 	tag,
@@ -37,7 +37,7 @@ const InfiniteListItem: React.SFC<InfiniteListItemProps> = ({
 	const onClickCallback = React.useCallback(() => onClick?.(itemId), [onClick, itemId]);
 	const onKeyDownCallback = React.useCallback((e) => onKeyDown?.(e, itemId), [onKeyDown, itemId]);
 	return (
-		<ListItem as={tag} tabIndex={tabIndex} className={className} role="listitem" onFocus={onFocusCallback} onClick={onClickCallback} onKeyDown={onKeyDownCallback}>
+		<ListItem as={tag as any} tabIndex={tabIndex} className={className} role="listitem" onFocus={onFocusCallback} onClick={onClickCallback} onKeyDown={onKeyDownCallback}>
 			{children}
 		</ListItem>
 	);
