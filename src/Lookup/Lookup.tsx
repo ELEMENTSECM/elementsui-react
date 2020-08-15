@@ -346,7 +346,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			queryParams: this.currentQueryParams
 		};
 
-		this.onMenuOpen = debounce(this.onMenuOpen, 0);
+		this.onMenuOpen = debounce(this.onMenuOpen, 0) as () => Promise<void>;
 		this.mapValue = memoizeLastSingleValueReturn(
 			this.mapValue,
 			o => o && o.value
