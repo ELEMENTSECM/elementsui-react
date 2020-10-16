@@ -801,10 +801,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		const eventKey = e.key;
 		switch (eventKey) {
 			case "Enter":
-				if (!this.state.menuIsOpen) {
-					e.preventDefault();
+				if (this.state.menuIsOpen) {
+					this.onMultiValueLabelClick()(e);
 				}
-				return this.onMultiValueLabelClick()(e);
+				break;
 			case "ArrowLeft":
 			case "ArrowRight":
 				return this.setState({ menuIsOpen: false });
