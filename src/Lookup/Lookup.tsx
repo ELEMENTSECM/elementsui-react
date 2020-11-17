@@ -13,7 +13,7 @@ import flatten from "lodash/flatten";
 import differenceBy from "lodash/differenceBy";
 import size from "lodash/size";
 import isEqual from "lodash/isEqual";
-import { isArray } from "util";
+import isArray from "lodash/isArray";
 import { StylesConfig } from "react-select/src/styles";
 import { ThemeConfig } from "react-select/src/theme";
 import {
