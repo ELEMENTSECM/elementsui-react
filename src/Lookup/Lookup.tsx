@@ -65,6 +65,8 @@ function adjustOptionsAndSelected(selectedOption, options: any[]) {
 
 export type LookupOption = { value: any; label: string };
 
+export type AllowSameOptionSettings = { uniqueIdFieldName: any, originalIdSelector: (value: any) => any };
+
 export interface LookupProps {
 	/**
 	 * The id to set on the SelectContainer component
@@ -239,6 +241,11 @@ export interface LookupProps {
 	 * The function that maps lookup values
 	 */
 	map?: (value: any) => any;
+	/**
+	 * Id setter for duplicated lookup values functionality.
+	 * Make sure that each option and value passed to lookup have unique Id
+	 */
+	duplicatedValuesIdSetter?: (value: any) => any;
 }
 
 type State = {
@@ -573,7 +580,8 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			value: lookupValues,
 			multiAsString,
 			delimiter,
-			map: lookupMap
+			map: lookupMap,
+			duplicatedValuesIdSetter
 		} = this.props;
 		if (fullObjectValue) {
 			if (!isMulti) {
@@ -613,7 +621,61 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		}
 
 		onChange && onChange(this.stripOptions(option), meta);
+
+		if (duplicatedValuesIdSetter && fullObjectValue) {
+			this.adjustOptionsForSameValuesSelection(meta);
+		}
 	};
+
+	adjustOptionsForSameValuesSelection(meta: ActionMeta<OptionTypeBase> & { value?: any }) {
+		const { duplicatedValuesIdSetter, idSelector } = this.props;
+		const search = this.state.search;
+
+		if (meta.action === "select-option" && meta.option) {
+			const duplicatedOption = _.cloneDeep(meta.option);
+			duplicatedValuesIdSetter!(duplicatedOption.fullObjectValue);
+			duplicatedOption.value = idSelector!(duplicatedOption.fullObjectValue);
+
+			const optionIndex = _.findIndex(this.currentOptions.options, meta.option);
+			const options = [...this.currentOptions.options];
+			const values = [...this.currentOptions.values];
+			options.splice(optionIndex, 0, duplicatedOption);
+			values.splice(optionIndex, 0, duplicatedOption.fullObjectValue);
+
+			this.setState(prevState => ({
+				...prevState,
+				optionsCache: {
+					...prevState.optionsCache,
+					[search]: {
+						...this.currentOptions,
+						options,
+						values
+					}
+				}
+			}));
+		}
+
+		if (meta.action === "remove-value") {
+			_.each(this.state.optionsCache, (cache, searchTerm) => {
+				const redundantOption = _.find(
+					cache.options,
+					option => idSelector!(option.fullObjectValue) === idSelector!(meta.removedValue?.fullObjectValue)
+				);
+				if (redundantOption) {
+					this.setState(prevState => ({
+						...prevState,
+						optionsCache: {
+							...prevState.optionsCache,
+							[searchTerm]: {
+								...cache,
+								options: _.without(cache.options, redundantOption)
+							}
+						}
+					}));
+				}
+			});
+		}
+	}
 
 	stripOptions = (option: LookupOption | LookupOption[]) => {
 		if (!option) {
