@@ -34,7 +34,7 @@ const InfiniteListItem: React.SFC<InfiniteListItemProps> = ({
 	const onClickCallback = React.useCallback(() => onClick?.(itemId), [onClick, itemId]);
 	const onKeyDownCallback = React.useCallback((e) => onKeyDown?.(e, itemId), [onKeyDown, itemId]);
 	return (
-		<ListItem as={tag} tabIndex={0} className={className} role="listitem" onFocus={onFocusCallback} onClick={onClickCallback} onKeyDown={onKeyDownCallback}>
+		<ListItem as={tag} className={className} role="listitem" onFocus={onFocusCallback} onClick={onClickCallback} onKeyDown={onKeyDownCallback}>
 			{children}
 		</ListItem>
 	);
