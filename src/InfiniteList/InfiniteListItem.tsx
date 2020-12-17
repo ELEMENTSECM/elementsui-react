@@ -14,6 +14,8 @@ export interface InfiniteListItemProps {
 	onClick?: (index?: number) => void;
 	/** onKeyDown event handler */
 	onKeyDown?: (e: any, index?: number) => void;
+	/** Tabindex*/
+	tabIndex?: number;
 }
 
 const ListItem = styled.li`
@@ -28,13 +30,14 @@ const InfiniteListItem: React.SFC<InfiniteListItemProps> = ({
 	onFocus,
 	onClick,
 	onKeyDown,
-	itemId
+	itemId,
+	tabIndex = 0
 }) => {
 	const onFocusCallback = React.useCallback(() => onFocus?.(itemId), [onFocus, itemId]);
 	const onClickCallback = React.useCallback(() => onClick?.(itemId), [onClick, itemId]);
 	const onKeyDownCallback = React.useCallback((e) => onKeyDown?.(e, itemId), [onKeyDown, itemId]);
 	return (
-		<ListItem as={tag} tabIndex={0} className={className} role="listitem" onFocus={onFocusCallback} onClick={onClickCallback} onKeyDown={onKeyDownCallback}>
+		<ListItem as={tag} tabIndex={tabIndex} className={className} role="listitem" onFocus={onFocusCallback} onClick={onClickCallback} onKeyDown={onKeyDownCallback}>
 			{children}
 		</ListItem>
 	);
