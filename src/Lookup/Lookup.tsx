@@ -313,6 +313,10 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 	activeValue = null;
 	selectRef = React.createRef<Select<any>>();
 
+	static filterOption() {
+		return true;
+	}
+
 	get initialOptionsCache() {
 		const { options, fullObjectValue, multiAsString, value } = this.props;
 
@@ -962,6 +966,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 					tabSelectsValue={false}
 					aria-label={ariaLabel}
 					aria-labelledby={ariaLabelledBy}
+					filterOption={Lookup.filterOption}
 				/>
 			</React.Fragment>
 		);
