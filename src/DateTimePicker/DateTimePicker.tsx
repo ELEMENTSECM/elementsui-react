@@ -63,6 +63,10 @@ export interface DateTimePickerProps {
 	portalPopupTo?: React.ReactNode;
 	/** Show datepicker inline */
 	inline?: boolean;
+	/** Aria describedby will reference common label*/
+	ariaDescribedby?: string;
+	/** Aria label*/
+	ariaLabel?: string;
 }
 
 export default class DateTimePicker extends React.Component<DateTimePickerProps> {
