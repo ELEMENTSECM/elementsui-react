@@ -246,6 +246,11 @@ export interface LookupProps {
 	 * Make sure that each option and value passed to lookup have unique Id
 	 */
 	duplicatedValuesIdSetter?: (value: any) => any;
+	/**
+	 * Should display custom options before search result options
+	 */
+	displayCustomOptionsOnTop?: boolean;
+
 }
 
 type State = {
@@ -921,11 +926,12 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			inputId,
 			minInputLength,
 			openMenuOnFocus,
-			menuPortalTarget
+			menuPortalTarget,
+			displayCustomOptionsOnTop,
 		} = this.props;
 		const { search, menuIsOpen, customOptions } = this.state;
 
-		const options = this.currentOptions.options.concat(customOptions);
+		const options = displayCustomOptionsOnTop ? customOptions.concat(this.currentOptions.options) : this.currentOptions.options.concat(customOptions);
 		let valueOption = this.mapValue();
 
 		adjustOptionsAndSelected(valueOption, options);
