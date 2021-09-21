@@ -17,7 +17,7 @@ export interface DropdownToggleProps {
 	"aria-haspopup"?: boolean;
 	split?: boolean;
 	/** Element HTML tag */
-	tag?: React.ComponentType | string;
+	tag?: React.ComponentType | keyof JSX.IntrinsicElements;
 	/** Is part of navigation menu */
 	nav?: boolean;
 	/** Is menuitem */
@@ -27,16 +27,16 @@ export interface DropdownToggleProps {
 export default class DropdownToggle extends React.Component<DropdownToggleProps> {
 	static defaultProps = {
 		"aria-haspopup": true,
-		color: "secondary"
+		color: "secondary",
 	};
 
 	static contextTypes = {
 		isOpen: PropTypes.bool.isRequired,
 		toggle: PropTypes.func.isRequired,
-		inNavbar: PropTypes.bool.isRequired
+		inNavbar: PropTypes.bool.isRequired,
 	};
 
-	onClick = e => {
+	onClick = (e) => {
 		const { disabled, nav, tag, onClick } = this.props;
 		if (disabled) {
 			e.preventDefault();
@@ -59,7 +59,7 @@ export default class DropdownToggle extends React.Component<DropdownToggleProps>
 			"dropdown-item": menuItem,
 			"dropdown-toggle": caret || split,
 			"dropdown-toggle-split": split,
-			"nav-link": nav
+			"nav-link": nav,
 		});
 		const children = props.children || <span className="sr-only">{ariaLabel}</span>;
 
@@ -100,6 +100,7 @@ export default class DropdownToggle extends React.Component<DropdownToggleProps>
 						aria-expanded={this.context.isOpen}
 						ref={ref}
 						role={menuItem ? "menuitem" : undefined}
+						disabled={props.disabled}
 					>
 						{children}
 					</Tag>
