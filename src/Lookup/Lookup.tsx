@@ -250,6 +250,11 @@ export interface LookupProps {
 	 * Should display custom options before search result options
 	 */
 	displayCustomOptionsOnTop?: boolean;
+	/**
+	 * When False disables caching of initial options and re-fetches the data everytime the menu is opened.
+	 * True by default.
+	 */
+	cacheInitialOptions?: boolean;
 
 }
 
@@ -281,6 +286,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		openMenuOnFocus: false,
 		menuPlacement: "bottom",
 		placeholder: "",
+		cacheInitialOptions: true,
 		styles: {
 			control: (base, state) => {
 				let border, boxShadow;
@@ -439,7 +445,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			return;
 		}
 
-		const reloadOptions = !isEqual(
+		const reloadOptions = !this.props.cacheInitialOptions || !isEqual(
 			this.currentQueryParams,
 			this.state.queryParams
 		);
