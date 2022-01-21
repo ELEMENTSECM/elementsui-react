@@ -221,7 +221,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 					<HotKeys keyMap={keyMap} handlers={this.keyboardHandlers}>
 						<List
 							ref={this.listRef}
-							as={this.props.tag}
+							as={this.props.tag as any}
 							className={this.props.listClassName}
 							role="list"
 						>

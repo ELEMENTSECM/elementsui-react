@@ -22,6 +22,8 @@ export interface DropdownToggleProps {
 	nav?: boolean;
 	/** Is menuitem */
 	menuItem?: boolean;
+	/** Title attribute value */
+	title?: HTMLElement["title"]
 }
 
 export default class DropdownToggle extends React.Component<DropdownToggleProps> {
@@ -47,13 +49,12 @@ export default class DropdownToggle extends React.Component<DropdownToggleProps>
 			e.preventDefault();
 		}
 
-		onClick && onClick(e);
-
+		onClick?.(e);
 		this.context.toggle(e);
 	};
 
 	render() {
-		const { className, color, caret, split, nav, tag, menuItem, ...props } = this.props;
+		const { className, color, caret, split, nav, tag, menuItem, title, ...props } = this.props;
 		const ariaLabel = props["aria-label"] || "Toggle Dropdown";
 		let classes = classNames(className, {
 			"dropdown-item": menuItem,
@@ -101,6 +102,7 @@ export default class DropdownToggle extends React.Component<DropdownToggleProps>
 						ref={ref}
 						role={menuItem ? "menuitem" : undefined}
 						disabled={props.disabled}
+						title={title}
 					>
 						{children}
 					</Tag>

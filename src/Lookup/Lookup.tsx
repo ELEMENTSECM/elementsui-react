@@ -139,7 +139,7 @@ export interface LookupProps {
 	/**
 	 * Custom styles
 	 */
-	styles?: StylesConfig;
+	styles?: StylesConfig<OptionTypeBase, boolean>;
 	/**
 	 * Theme override
 	 */
@@ -232,7 +232,7 @@ export interface LookupProps {
 	 * This complex object includes all the compositional components that are used in react-select.
 	 * If you wish to overwrite a component, pass in an object with the appropriate namespace.
 	 */
-	components?: SelectComponentsConfig<any>;
+	components?: SelectComponentsConfig<OptionTypeBase, boolean>;
 	/**
 	 * Include metadata odata property
 	 */
@@ -368,7 +368,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 			queryParams: this.currentQueryParams
 		};
 
-		this.onMenuOpen = debounce(this.onMenuOpen, 0);
+		this.onMenuOpen = debounce(this.onMenuOpen, 0) as () => Promise<void>;
 		this.mapValue = memoizeLastSingleValueReturn(
 			this.mapValue,
 			o => o && o.value
@@ -720,7 +720,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		}
 
 		const { fullObjectValue, idSelector } = this.props;
-		let option = labelProps ? labelProps!.data : this.activeValue;
+		const option = labelProps ? labelProps.data : this.activeValue;
 		if (!option) {
 			return;
 		}
@@ -897,7 +897,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 
 	get customComponentRenderers() {
 		const { minInputLength, optionBindings, components } = this.props;
-		let renderers: Partial<SelectComponents<any>> = {
+		const renderers: Partial<SelectComponents<OptionTypeBase, boolean>> = {
 			MultiValueLabel: this.MultiValueLabel,
 			MultiValueContainer: this.MultiValueContainer,
 			MultiValue: this.MultiValue,
@@ -938,7 +938,7 @@ export default class Lookup extends React.PureComponent<LookupProps, State> {
 		const { search, menuIsOpen, customOptions } = this.state;
 
 		const options = displayCustomOptionsOnTop ? customOptions.concat(this.currentOptions.options) : this.currentOptions.options.concat(customOptions);
-		let valueOption = this.mapValue();
+		const valueOption = this.mapValue();
 
 		adjustOptionsAndSelected(valueOption, options);
 
