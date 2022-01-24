@@ -1,4 +1,3 @@
-import * as React from "react";
 import { mount } from "enzyme";
 import DropdownItem from "../DropdownItem";
 
@@ -36,7 +35,7 @@ describe("DropdownItem", () => {
 	});
 
 	it('should render type as "button" by default when tag is "button" and onClick is provided', () => {
-		const wrapper = mount(<DropdownItem onClick={() => {}}>Home</DropdownItem>);
+		const wrapper = mount(<DropdownItem>Home</DropdownItem>);
 
 		expect(wrapper.find("button").hostNodes().prop("type")).toBe("button");
 		expect(wrapper.text()).toBe("Home");
@@ -57,7 +56,7 @@ describe("DropdownItem", () => {
 	});
 
 	it("should render custom element", () => {
-		const Link = props => (
+		const Link = (props) => (
 			<a href="/home" {...props}>
 				{props.children}
 			</a>
@@ -111,8 +110,8 @@ describe("DropdownItem", () => {
 			const clickHandler = jest.fn();
 			const wrapper = mount(<DropdownItem onClick={clickHandler}>Click me</DropdownItem>, {
 				context: {
-					toggle: toggle
-				}
+					toggle: toggle,
+				},
 			});
 
 			wrapper.find("button").simulate("click");
@@ -124,8 +123,8 @@ describe("DropdownItem", () => {
 			toggle = jest.fn();
 			const wrapper = mount(<DropdownItem>Click me</DropdownItem>, {
 				context: {
-					toggle: toggle
-				}
+					toggle: toggle,
+				},
 			});
 
 			wrapper.find("button").simulate("click");

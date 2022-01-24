@@ -55,18 +55,18 @@ class Dropdown extends React.Component<DropdownProps> {
 		active: false,
 		addonType: false,
 		inNavbar: false,
-		setActiveFromChild: false
+		setActiveFromChild: false,
 	};
 
 	static childContextTypes = {
 		toggle: PropTypes.func.isRequired,
 		isOpen: PropTypes.bool.isRequired,
 		direction: PropTypes.oneOf(["up", "down", "left", "right"]).isRequired,
-		inNavbar: PropTypes.bool.isRequired
+		inNavbar: PropTypes.bool.isRequired,
 	};
 
 	getChildContext() {
-		const toggle = e => {
+		const toggle = (e) => {
 			const isDropdownToggle = e.target.classList.contains("dropdown-toggle");
 			if (this.props.parentToggle && this.props.isOpen && !isDropdownToggle) {
 				this.props.parentToggle(e);
@@ -77,7 +77,7 @@ class Dropdown extends React.Component<DropdownProps> {
 			toggle: toggle,
 			isOpen: this.props.isOpen,
 			direction: this.props.direction,
-			inNavbar: this.props.inNavbar
+			inNavbar: this.props.inNavbar,
 		};
 	}
 
@@ -100,18 +100,18 @@ class Dropdown extends React.Component<DropdownProps> {
 	};
 
 	addEvents = () => {
-		["click", "touchstart", "keyup"].forEach(event =>
+		["click", "touchstart", "keyup"].forEach((event) =>
 			document.addEventListener(event, this.handleDocumentClick, true)
 		);
 	};
 
 	removeEvents = () => {
-		["click", "touchstart", "keyup"].forEach(event =>
+		["click", "touchstart", "keyup"].forEach((event) =>
 			document.removeEventListener(event, this.handleDocumentClick, true)
 		);
 	};
 
-	handleDocumentClick = e => {
+	handleDocumentClick = (e) => {
 		if (e && (e.which === 3 || (e.type === "keyup" && e.which !== keyCodes.tab))) return;
 		const container = this.getContainer();
 
@@ -127,7 +127,7 @@ class Dropdown extends React.Component<DropdownProps> {
 		this.toggle(e);
 	};
 
-	handleKeyDown = e => {
+	handleKeyDown = (e) => {
 		if (
 			keyCodes.tab === e.which ||
 			(/button/i.test(e.target.tagName) && [keyCodes.space, keyCodes.enter].includes(e.which)) ||
@@ -207,7 +207,7 @@ class Dropdown extends React.Component<DropdownProps> {
 		}
 	};
 
-	toggle = e => {
+	toggle = (e) => {
 		if (this.props.disabled) {
 			return e && e.preventDefault();
 		}
@@ -233,7 +233,7 @@ class Dropdown extends React.Component<DropdownProps> {
 
 		let subItemIsActive = false;
 		if (setActiveFromChild) {
-			React.Children.map((this.props.children as any[])[1].props.children, dropdownItem => {
+			React.Children.map((this.props.children as any[])[1].props.children, (dropdownItem) => {
 				if (dropdownItem && dropdownItem.props.active) subItemIsActive = true;
 			});
 		}
@@ -250,7 +250,7 @@ class Dropdown extends React.Component<DropdownProps> {
 				[`btn-group-${size}`]: !!size,
 				dropdown: !group && !addonType,
 				show: isOpen,
-				"nav-item": nav
+				"nav-item": nav,
 			}
 		);
 

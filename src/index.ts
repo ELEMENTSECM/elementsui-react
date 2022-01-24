@@ -8,7 +8,7 @@ export {
 	DropdownProps,
 	DropdownItemProps,
 	DropdownMenuProps,
-	DropdownToggleProps
+	DropdownToggleProps,
 } from "./Dropdown";
 export { default as InfiniteList, ListItem, InfiniteListProps, InfiniteListItemProps } from "./InfiniteList";
 export { default as Items, ItemsProps } from "./Items";

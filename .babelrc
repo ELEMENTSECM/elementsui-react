@@ -2,7 +2,12 @@
 	"presets": [
 		"@babel/env",
 		"@babel/preset-typescript",
-		"@babel/preset-react"
+		[
+			"@babel/preset-react",
+			{
+				"runtime": "automatic"
+			}
+		]
 	],
 	"plugins": [
 		"@babel/plugin-proposal-numeric-separator",
@@ -15,9 +20,6 @@
 				"regenerator": true
 			}
 		],
-		[
-			"inline-json-import",
-			{}
-		]
+		["inline-json-import", {}]
 	]
 }

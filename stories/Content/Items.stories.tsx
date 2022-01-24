@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import Items, { ItemsProps } from "../../src/Items";
 import { State, Store } from "@sambego/storybook-state";

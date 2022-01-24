@@ -1,6 +1,6 @@
 import * as React from "react";
 import { throttle, delay } from "lodash";
-import { BarLoader } from "react-spinners";
+import BarLoader from "react-spinners/BarLoader";
 import styled from "styled-components";
 import InfiniteListItem from "./InfiniteListItem";
 import { HotKeys } from "react-hotkeys";
@@ -70,6 +70,7 @@ const LoaderContainer = styled.div`
 	box-sizing: border-box;
 	overflow: hidden;
 	height: 4px;
+	display: flex;
 `;
 
 const LoadButton = styled.button`
@@ -95,7 +96,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 	static defaultProps: Partial<InfiniteListProps> = {
 		spinnerColor: "#2180c0",
 		keyboardNavigationEnabled: false,
-		keyboardNavigationPageSize: 3
+		keyboardNavigationPageSize: 3,
 	};
 
 	constructor(props: InfiniteListProps) {
@@ -104,7 +105,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 			dataLength: props.dataLength,
 			showLoader: false,
 			actionTriggered: false,
-			canScroll: false
+			canScroll: false,
 		};
 
 		this.keyboardHandlers = props.keyboardNavigationEnabled
@@ -136,7 +137,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 	};
 
 	private next = () => {
-		this.setState(ps => ({ ...ps, actionTriggered: true, showLoader: true }));
+		this.setState((ps) => ({ ...ps, actionTriggered: true, showLoader: true }));
 		this.props.next?.();
 	};
 
@@ -149,13 +150,13 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		return target.scrollHeight - target.scrollTop === clientHeight;
 	}
 
-	onScrollListener = event => {
+	onScrollListener = (event) => {
 		setTimeout(() => this.props.onScroll && this.props.onScroll(event), 0);
 
 		const target =
 			this.props.height || this._scrollableNode
 				? event.target
-				: document.documentElement!.scrollTop
+				: document.documentElement.scrollTop
 				? document.documentElement
 				: document.body;
 
@@ -176,7 +177,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		return {
 			dataLength: props.dataLength,
 			showLoader: false,
-			actionTriggered: false
+			actionTriggered: false,
 		};
 	}
 
@@ -193,7 +194,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 
 	render() {
 		const style = {
-			height: this.props.height || "auto"
+			height: this.props.height || "auto",
 		};
 
 		const hasChildren =
@@ -207,16 +208,11 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		return (
 			<Root style={style}>
 				<LoaderContainer>
-					<BarLoader
-						width="100%"
-						height={4}
-						color={this.props.spinnerColor}
-						loading={loading}
-					/>
+					<BarLoader width="100%" height={4} color={this.props.spinnerColor} loading={loading} />
 				</LoaderContainer>
 				<InfiniteListContainer
 					className={this.props.className}
-					ref={infScroll => (this._infScroll = infScroll)}
+					ref={(infScroll) => (this._infScroll = infScroll)}
 				>
 					<HotKeys keyMap={keyMap} handlers={this.keyboardHandlers}>
 						<List

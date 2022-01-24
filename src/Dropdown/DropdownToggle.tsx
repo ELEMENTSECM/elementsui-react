@@ -23,7 +23,7 @@ export interface DropdownToggleProps {
 	/** Is menuitem */
 	menuItem?: boolean;
 	/** Title attribute value */
-	title?: HTMLElement["title"]
+	title?: HTMLElement["title"];
 }
 
 export default class DropdownToggle extends React.Component<DropdownToggleProps> {
@@ -65,7 +65,7 @@ export default class DropdownToggle extends React.Component<DropdownToggleProps>
 		const children = props.children || <span className="sr-only">{ariaLabel}</span>;
 
 		let Tag;
-		let tagProps = { ...props } as any;
+		const tagProps = { ...props } as any;
 
 		if (nav && !tag) {
 			Tag = "a";

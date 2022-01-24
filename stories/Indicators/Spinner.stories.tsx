@@ -1,4 +1,3 @@
-import * as React from "react";
 import Spinner, { SpinnerProps } from "../../src/Spinner";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { withKnobs, number, radios } from "@storybook/addon-knobs";

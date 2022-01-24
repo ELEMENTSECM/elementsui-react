@@ -12,7 +12,7 @@ export const nls = {
 		time: "HH:mm:ss",
 		datetime: "dd/MM/yyyy HH:mm",
 		fullHour: "dd/MM/yyyy HH:00P",
-		todayLbl: "Today"
+		todayLbl: "Today",
 	},
 	nb: {
 		moment_g: "dd.MM.yyyy HH:mm",
@@ -27,7 +27,7 @@ export const nls = {
 		time: "HH:mm:ss",
 		datetime: "dd.MM.yyyy HH:mm",
 		fullHour: "dd.MM.yyyy HH:00P",
-		todayLbl: "I dag"
+		todayLbl: "I dag",
 	},
 	nn: {
 		moment_g: "dd.MM.yyyy HH:mm",
@@ -42,7 +42,7 @@ export const nls = {
 		time: "HH:mm:ss",
 		datetime: "dd.MM.yyyy HH:mm",
 		fullHour: "dd.MM.yyyy HH:00P",
-		todayLbl: "I dag"
+		todayLbl: "I dag",
 	},
 	sv: {
 		moment_g: "yyyy-MM-dd HH:mm",
@@ -57,6 +57,6 @@ export const nls = {
 		time: "HH:mm:ss",
 		datetime: "yyyy-MM-dd HH:mm",
 		fullHour: "yyyy-MM-dd HH:00P",
-		todayLbl: "I dag"
-	}
+		todayLbl: "I dag",
+	},
 };

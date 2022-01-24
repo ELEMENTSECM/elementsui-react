@@ -10,7 +10,7 @@ export const keyMap: KeyMap = {
 	pageDown: "pagedown",
 	pageUp: "pageup",
 	top: "home",
-	bottom: "end"
+	bottom: "end",
 } as const;
 
 type NextItem = (start: HTMLElement, itemsPerRow: number) => HTMLElement | undefined;
@@ -19,14 +19,14 @@ type StepItem = (start: HTMLElement) => HTMLElement | undefined;
 const currentItem = (list: HTMLElement | null) =>
 	find(
 		list?.children,
-		x => x === document.activeElement || x.contains(document.activeElement)
+		(x) => x === document.activeElement || x.contains(document.activeElement)
 	) as HTMLElement;
 const itemsPerRow = (list: HTMLElement | null) => {
 	if (isEmpty(list?.children)) {
 		return 0;
 	} else {
 		const top = list?.children?.[0]?.getBoundingClientRect().top;
-		return takeWhile(list?.children, child => child.getBoundingClientRect().top === top).length;
+		return takeWhile(list?.children, (child) => child.getBoundingClientRect().top === top).length;
 	}
 };
 
@@ -40,13 +40,13 @@ const next = (step: StepItem, stepCount: number, start: HTMLElement) => {
 		} else if (remained === 0) {
 			return next;
 		} else {
-			cursor = next!;
+			cursor = next;
 		}
 	}
 };
 
-const stepForward: StepItem = x => x?.nextElementSibling as HTMLElement;
-const stepBackward: StepItem = x => x?.previousElementSibling as HTMLElement;
+const stepForward: StepItem = (x) => x?.nextElementSibling as HTMLElement;
+const stepBackward: StepItem = (x) => x?.previousElementSibling as HTMLElement;
 
 export const handlers = (listRef: React.RefObject<HTMLElement>, { pageSize = 3 }) => {
 	const navigate = (nextItem: NextItem) => (e?: KeyboardEvent) => {
@@ -75,6 +75,6 @@ export const handlers = (listRef: React.RefObject<HTMLElement>, { pageSize = 3 }
 		pageDown,
 		pageUp,
 		top,
-		bottom
+		bottom,
 	};
 };

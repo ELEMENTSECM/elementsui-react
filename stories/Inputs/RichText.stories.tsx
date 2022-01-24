@@ -1,4 +1,3 @@
-import * as React from "react";
 import RichText, { RichTextProps } from "../../src/RichText";
 import { Story, Meta } from "@storybook/react/types-6-0";
 

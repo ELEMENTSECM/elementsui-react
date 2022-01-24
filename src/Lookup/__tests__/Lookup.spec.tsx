@@ -1,4 +1,3 @@
-import * as React from "react";
 import { shallow, ShallowWrapper } from "enzyme";
 import Lookup from "..";
 
@@ -8,28 +7,28 @@ describe("Lookup", () => {
 			return {
 				settings: {
 					params: {
-						Id: "U"
-					}
-				}
+						Id: "U",
+					},
+				},
 			};
 		};
 	}
 
-	const renderOption = lookupValue => lookupValue.Title;
+	const renderOption = (lookupValue) => lookupValue.Title;
 	const values = [
 		{
 			Id: 1,
-			Title: "Title 1"
+			Title: "Title 1",
 		},
 		{
 			Id: 2,
-			Title: "Title 2"
-		}
+			Title: "Title 2",
+		},
 	];
 
-	const options = values.map(x => ({
+	const options = values.map((x) => ({
 		value: x.Id,
-		label: x.Title
+		label: x.Title,
 	}));
 
 	let wrapper: ShallowWrapper;
@@ -116,18 +115,14 @@ describe("Lookup", () => {
 	describe("without options property", () => {
 		beforeEach(() => {
 			wrapper = shallow(
-				<Lookup
-					id="testLookup"
-					queryProvider={getQueryProvider()}
-					renderOption={renderOption}
-				/>
+				<Lookup id="testLookup" queryProvider={getQueryProvider()} renderOption={renderOption} />
 			);
 			component = wrapper.instance();
 		});
 
 		test("should initialize optionsCache with initial cache", () => {
 			expect(component.state["optionsCache"]).toEqual({
-				"": { hasMore: true, isLoading: false, options: [], values: [] }
+				"": { hasMore: true, isLoading: false, options: [], values: [] },
 			});
 		});
 
@@ -143,7 +138,7 @@ describe("Lookup", () => {
 		test("should load options", async () => {
 			component.load = jest.fn(() => ({
 				options,
-				values
+				values,
 			}));
 			await component.loadOptions();
 			expect(component.state["optionsCache"][""]["options"]).toEqual(options);
@@ -168,7 +163,7 @@ describe("Lookup", () => {
 		test("should return full object value", async () => {
 			component.load = jest.fn(() => ({
 				options,
-				values
+				values,
 			}));
 			await component.loadOptions();
 			expect(component.state["optionsCache"][""]["options"]).toEqual(options);

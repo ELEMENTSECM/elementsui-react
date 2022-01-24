@@ -7,7 +7,7 @@ const spinnerMap = {
 	bar: React.lazy(() => import("react-spinners/BarLoader")),
 	sync: React.lazy(() => import("react-spinners/SyncLoader")),
 	pulse: React.lazy(() => import("react-spinners/PulseLoader")),
-	bounce: React.lazy(() => import("react-spinners/BounceLoader"))
+	bounce: React.lazy(() => import("react-spinners/BounceLoader")),
 };
 
 export interface SpinnerProps {
@@ -22,7 +22,7 @@ export interface SpinnerProps {
 	/** Spinner color */
 	color?: string;
 	/** Spinner type */
-	type?: keyof typeof spinnerMap;
+	type: keyof typeof spinnerMap;
 }
 
 const SpinnerContainer = styled.div`
@@ -34,14 +34,16 @@ const SpinnerContainer = styled.div`
 	padding: 10px;
 `;
 
-const SpinnerLabel = styled.div`margin-left: 10px;`;
+const SpinnerLabel = styled.div`
+	margin-left: 10px;
+`;
 
-const Spinner: React.FC<SpinnerProps> = ({ type, label, ...props }) => {
-	const Loader = spinnerMap[type!];
+const Spinner: React.FunctionComponent<SpinnerProps> = ({ type, label, ...props }) => {
+	const Loader = spinnerMap[type];
 	return (
 		<React.Suspense fallback="">
 			<SpinnerContainer>
-				<Loader {...props as any} />
+				<Loader {...(props as any)} />
 				{label && <SpinnerLabel>{label}</SpinnerLabel>}
 			</SpinnerContainer>
 		</React.Suspense>
@@ -50,7 +52,7 @@ const Spinner: React.FC<SpinnerProps> = ({ type, label, ...props }) => {
 
 Spinner.defaultProps = {
 	type: "clip",
-	color: "#2180c0"
+	color: "#2180c0",
 };
 
 export default Spinner;
