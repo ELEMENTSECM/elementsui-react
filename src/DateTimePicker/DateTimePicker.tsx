@@ -13,10 +13,10 @@ const localeMap = {
 	en,
 	sv,
 	nb,
-	nn
+	nn,
 };
 
-const getPortalContainer = container => {
+const getPortalContainer = (container) => {
 	return ({ children }) => <Portal container={container}>{children}</Portal>;
 };
 
@@ -67,7 +67,7 @@ export interface DateTimePickerProps {
 
 export default class DateTimePicker extends React.Component<DateTimePickerProps> {
 	static defaultProps = {
-		locale: "nb"
+		locale: "nb",
 	};
 	showTimeSelect = false;
 	showTimeSelectOnly = false;
@@ -111,7 +111,8 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
 	}
 
 	render() {
-		const { dateFormat, timeFormat, viewMode, disabled, defaultValue, todayButton, inline, ...rest } = this.props;
+		const { dateFormat, timeFormat, viewMode, disabled, defaultValue, todayButton, inline, ...rest } =
+			this.props;
 
 		return (
 			<DatePicker

@@ -1,80 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Lookup with options property should be displayed correctly 1`] = `
-<Fragment>
-  <Select
-    backspaceRemovesValue={true}
-    blurInputOnSelect={true}
-    captureMenuScroll={false}
-    className="lookup"
-    closeMenuOnScroll={false}
-    closeMenuOnSelect={true}
-    components={
+<Select
+  backspaceRemovesValue={true}
+  blurInputOnSelect={true}
+  captureMenuScroll={false}
+  className="lookup"
+  closeMenuOnScroll={false}
+  closeMenuOnSelect={true}
+  components={
+    Object {
+      "MultiValue": [Function],
+      "MultiValueContainer": [Function],
+      "MultiValueLabel": [Function],
+    }
+  }
+  controlShouldRenderValue={true}
+  escapeClearsValue={false}
+  filterOption={[Function]}
+  formatGroupLabel={[Function]}
+  getOptionLabel={[Function]}
+  getOptionValue={[Function]}
+  id="testLookup"
+  inputValue=""
+  isClearable={true}
+  isDisabled={false}
+  isLoading={false}
+  isMulti={false}
+  isOptionDisabled={[Function]}
+  isRtl={false}
+  isSearchable={true}
+  loadingMessage={[Function]}
+  maxMenuHeight={300}
+  menuIsOpen={false}
+  menuPlacement="bottom"
+  menuPosition="absolute"
+  menuShouldBlockScroll={false}
+  menuShouldScrollIntoView={true}
+  minMenuHeight={140}
+  noOptionsMessage={[Function]}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  onInputChange={[Function]}
+  onKeyDown={[Function]}
+  onMenuClose={[Function]}
+  onMenuOpen={[Function]}
+  onMenuScrollToBottom={[Function]}
+  openMenuOnClick={true}
+  openMenuOnFocus={false}
+  options={
+    Array [
       Object {
-        "MultiValue": [Function],
-        "MultiValueContainer": [Function],
-        "MultiValueLabel": [Function],
-      }
-    }
-    controlShouldRenderValue={true}
-    escapeClearsValue={false}
-    filterOption={[Function]}
-    formatGroupLabel={[Function]}
-    getOptionLabel={[Function]}
-    getOptionValue={[Function]}
-    id="testLookup"
-    inputValue=""
-    isClearable={true}
-    isDisabled={false}
-    isLoading={false}
-    isMulti={false}
-    isOptionDisabled={[Function]}
-    isRtl={false}
-    isSearchable={true}
-    loadingMessage={[Function]}
-    maxMenuHeight={300}
-    menuIsOpen={false}
-    menuPlacement="bottom"
-    menuPosition="absolute"
-    menuShouldBlockScroll={false}
-    menuShouldScrollIntoView={true}
-    minMenuHeight={140}
-    noOptionsMessage={[Function]}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    onInputChange={[Function]}
-    onKeyDown={[Function]}
-    onMenuClose={[Function]}
-    onMenuOpen={[Function]}
-    onMenuScrollToBottom={[Function]}
-    openMenuOnClick={true}
-    openMenuOnFocus={false}
-    options={
-      Array [
-        Object {
-          "label": "Title 1",
-          "value": 1,
-        },
-        Object {
-          "label": "Title 2",
-          "value": 2,
-        },
-      ]
-    }
-    pageSize={5}
-    placeholder=""
-    screenReaderStatus={[Function]}
-    styles={
+        "label": "Title 1",
+        "value": 1,
+      },
       Object {
-        "control": [Function],
-        "indicatorsContainer": [Function],
-        "menu": [Function],
-        "menuPortal": [Function],
-      }
+        "label": "Title 2",
+        "value": 2,
+      },
+    ]
+  }
+  pageSize={5}
+  placeholder=""
+  screenReaderStatus={[Function]}
+  styles={
+    Object {
+      "control": [Function],
+      "indicatorsContainer": [Function],
+      "menu": [Function],
+      "menuPortal": [Function],
     }
-    tabIndex="0"
-    tabSelectsValue={false}
-  />
-</Fragment>
+  }
+  tabIndex="0"
+  tabSelectsValue={false}
+/>
 `;

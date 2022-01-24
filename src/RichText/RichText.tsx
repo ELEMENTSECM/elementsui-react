@@ -26,7 +26,7 @@ const defaultConfig = {
 		"link",
 		"easyImage",
 		"maximize",
-		"preview"
+		"preview",
 	],
 	fontSize_sizes: [
 		"8",
@@ -44,9 +44,9 @@ const defaultConfig = {
 		"28",
 		"36",
 		"48",
-		"72"
+		"72",
 	]
-		.map(size => size + "/" + size + "pt")
+		.map((size) => size + "/" + size + "pt")
 		.join(";"),
 	font_names: [
 		"Arial/Arial, Helvetica, sans-serif",
@@ -55,7 +55,7 @@ const defaultConfig = {
 		"Georgia/Georgia, serif;Lucida Sans Unicode/Lucida Sans Unicode, Lucida Grande, sans-serif",
 		"Tahoma/Tahoma, Geneva, sans-serif",
 		"Times New Roman/Times New Roman, Times, serif",
-		"Verdana/Verdana, Geneva, sans-serif"
+		"Verdana/Verdana, Geneva, sans-serif",
 	].join(";"),
 	allowedContent: true,
 	resize_enabled: false,
@@ -63,7 +63,7 @@ const defaultConfig = {
 	applyInitialStyle: true,
 	bodyClass: "",
 	startupFocus: false,
-	disableNativeSpellChecker: false
+	disableNativeSpellChecker: false,
 };
 
 export interface RichTextProps {
@@ -110,7 +110,7 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 		config: {},
 		events: {},
 		scriptUrl: "https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js",
-		throttle: 500
+		throttle: 500,
 	};
 
 	static editorInstances = {};
@@ -144,7 +144,7 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 	onChange = () => {
 		const data = RichText.editorInstances[this.props.id!].getData().trim();
 		if (data !== this.props.value) {
-			this.props.events!["change"] && this.props.events!["change"](data);
+			this.props.events?.["change"](data);
 		}
 	};
 
@@ -175,13 +175,13 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 		if (config.applyInitialStyle) {
 			RichText.editorInstances[id!].on(
 				"selectionChange",
-				event => {
+				(event) => {
 					const initialStyle = new window.CKEDITOR.style({
 						element: "span",
 						styles: {
 							"font-family": "Calibri, Tahoma, sans-serif",
-							"font-size": "11pt"
-						}
+							"font-size": "11pt",
+						},
 					});
 
 					if (
@@ -199,7 +199,7 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 
 		RichText.editorInstances[id!].on(
 			"toHtml",
-			event => {
+			(event) => {
 				// Dirty trick to remove comments from internal style blocks
 				const cleanHtml = event.data.dataValue
 					.replace(/<style[^>]*>\s*<!--/, "<style>")

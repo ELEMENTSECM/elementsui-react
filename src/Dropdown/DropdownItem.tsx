@@ -32,14 +32,14 @@ export interface DropdownItemProps {
 export default class DropdownItem extends React.Component<DropdownItemProps> {
 	static defaultProps = {
 		tag: "button",
-		toggle: true
+		toggle: true,
 	};
 
 	static contextTypes = {
-		toggle: PropTypes.func
+		toggle: PropTypes.func,
 	};
 
-	onItemClick = e => {
+	onItemClick = (e) => {
 		if (this.props.disabled || this.props.header || this.props.divider) {
 			e.preventDefault();
 			return;
@@ -68,7 +68,7 @@ export default class DropdownItem extends React.Component<DropdownItemProps> {
 			"dropdown-item": !divider && !header,
 			active: active,
 			"dropdown-header": header,
-			"dropdown-divider": divider
+			"dropdown-divider": divider,
 		});
 
 		if (Tag === "button") {

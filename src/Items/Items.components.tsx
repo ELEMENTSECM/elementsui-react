@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { Well } from "react-bootstrap";
 
 export const ItemsContainer = styled(Well)`
-    padding: 2px;
-    min-height: 26px;
-    background-color: #f8f8f8;
+	padding: 2px;
+	min-height: 26px;
+	background-color: #f8f8f8;
 
 	> ul.eui-items__list {
 		max-height: 105px;

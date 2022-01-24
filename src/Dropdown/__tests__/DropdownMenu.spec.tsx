@@ -1,4 +1,3 @@
-import * as React from "react";
 import { mount, shallow } from "enzyme";
 import { Popper } from "react-popper";
 import DropdownMenu from "../DropdownMenu";
@@ -21,7 +20,7 @@ describe("DropdownMenu", () => {
 				<p>Content</p>
 			</DropdownMenu>,
 			{
-				context: { isOpen, direction, inNavbar }
+				context: { isOpen, direction, inNavbar },
 			}
 		);
 
@@ -33,7 +32,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "unknown";
 		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("bottom-start");
@@ -42,7 +41,7 @@ describe("DropdownMenu", () => {
 	test('should render down when direction is "down" on the context', () => {
 		isOpen = true;
 		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("bottom-start");
@@ -52,7 +51,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "up";
 		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("top-start");
@@ -62,7 +61,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "left";
 		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("left-start");
@@ -72,7 +71,7 @@ describe("DropdownMenu", () => {
 		isOpen = true;
 		direction = "right";
 		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.find(Popper).prop("placement")).toBe("right-start");
@@ -81,7 +80,7 @@ describe("DropdownMenu", () => {
 	test("should not disable flip modifier by default", () => {
 		isOpen = true;
 		const wrapper = shallow(<DropdownMenu>Hello, world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.find(Popper).prop("modifiers")).toBe(undefined);
@@ -90,7 +89,7 @@ describe("DropdownMenu", () => {
 	test("should disable flip modifier when flip is false", () => {
 		isOpen = true;
 		const wrapper = shallow(<DropdownMenu flip={false}>Hello, world</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.find(Popper).prop("modifiers")).toEqual({ flip: { enabled: false } });
@@ -98,7 +97,7 @@ describe("DropdownMenu", () => {
 
 	test("should render custom tag", () => {
 		const wrapper = mount(<DropdownMenu tag="main">Yo!</DropdownMenu>, {
-			context: { isOpen, direction, inNavbar }
+			context: { isOpen, direction, inNavbar },
 		});
 
 		expect(wrapper.text()).toBe("Yo!");

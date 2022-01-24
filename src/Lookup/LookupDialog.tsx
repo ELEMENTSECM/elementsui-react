@@ -24,7 +24,7 @@ export interface LookupDialogProps {
 	ariaLabelledBy?: string;
 	/**
 	 * Draggable handle selector
-	*/
+	 */
 	dragHandle?: string;
 	/**
 	 * Portal target id
@@ -43,35 +43,37 @@ export interface LookupDialogProps {
 export default class LookupDialog extends React.Component<LookupDialogProps> {
 	static defaultProps = {
 		dragHandle: ".popup-container",
-		className: "popup-container dialog"
+		className: "popup-container dialog",
 	};
 	draggableContainer: HTMLElement | null = null;
 	containerRef = React.createRef<HTMLDivElement>();
 
 	componentDidMount() {
 		if (this.props.isDraggable) {
-			this.draggableContainer = (this.props.portalTarget
-				? this.props.portalTarget.charAt(0) === "."
-					? document.getElementsByClassName(this.props.portalTarget.substr(1))[0]
-					: document.getElementById(this.props.portalTarget.substr(1))
-				: document.body) as HTMLElement;
+			this.draggableContainer = (
+				this.props.portalTarget
+					? this.props.portalTarget.charAt(0) === "."
+						? document.getElementsByClassName(this.props.portalTarget.substring(1))[0]
+						: document.getElementById(this.props.portalTarget.substring(1))
+					: document.body
+			) as HTMLElement;
 		}
 		this.focusFirstInput();
 	}
 
-	handleClickOutside = event => {
+	handleClickOutside = (event) => {
 		this.props.close(event);
 	};
 
 	focusFirstInput = () => {
 		const input = _.find(
-			this.containerRef.current!.querySelectorAll("input"),
-			input => input.type !== "hidden"
+			this.containerRef.current?.querySelectorAll("input"),
+			(input) => input.type !== "hidden"
 		);
 		input && input.focus();
 	};
 
-	onKeyDown = e => {
+	onKeyDown = (e) => {
 		const eventKey = e.key;
 		switch (eventKey) {
 			case "Escape":
@@ -105,7 +107,7 @@ export default class LookupDialog extends React.Component<LookupDialogProps> {
 		} = this.props;
 		const defaultPosition = {
 			x: position.x,
-			y: position.y + 5
+			y: position.y + 5,
 		};
 
 		if (isDraggable) {
@@ -122,7 +124,7 @@ export default class LookupDialog extends React.Component<LookupDialogProps> {
 							background: "#fff",
 							zIndex: 99999,
 							boxShadow: "2px 7px 24px 2px rgba(144,143,143,.8)",
-							opacity: 1
+							opacity: 1,
 						}}
 						{...rest}
 					>
@@ -151,7 +153,7 @@ export default class LookupDialog extends React.Component<LookupDialogProps> {
 						top: 0,
 						left: 0,
 						opacity: 1,
-						zIndex: 1056
+						zIndex: 1056,
 					}}
 				>
 					{children}

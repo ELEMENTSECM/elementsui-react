@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import Lookup, { LookupProps } from "../../src/Lookup";
 import { State, Store } from "@sambego/storybook-state";

@@ -28,7 +28,7 @@ export interface DropdownMenuProps {
 	persist?: boolean;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = (props, context) => {
+const DropdownMenu: React.FunctionComponent<DropdownMenuProps> = (props, context) => {
 	const { className, right: rightPlacement, tag: Tag = "ul", flip, modifiers, persist, ...attrs } = props;
 	const classes = classNames(className, "dropdown-menu", {
 		"dropdown-menu-right": rightPlacement,

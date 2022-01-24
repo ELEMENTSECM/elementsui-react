@@ -31,13 +31,21 @@ const InfiniteListItem: React.FunctionComponent<InfiniteListItemProps> = ({
 	onClick,
 	onKeyDown,
 	itemId,
-	tabIndex = 0
+	tabIndex = 0,
 }) => {
 	const onFocusCallback = React.useCallback(() => onFocus?.(itemId), [onFocus, itemId]);
 	const onClickCallback = React.useCallback(() => onClick?.(itemId), [onClick, itemId]);
 	const onKeyDownCallback = React.useCallback((e) => onKeyDown?.(e, itemId), [onKeyDown, itemId]);
 	return (
-		<ListItem as={tag as any} tabIndex={tabIndex} className={className} role="listitem" onFocus={onFocusCallback} onClick={onClickCallback} onKeyDown={onKeyDownCallback}>
+		<ListItem
+			as={tag as any}
+			tabIndex={tabIndex}
+			className={className}
+			role="listitem"
+			onFocus={onFocusCallback}
+			onClick={onClickCallback}
+			onKeyDown={onKeyDownCallback}
+		>
 			{children}
 		</ListItem>
 	);

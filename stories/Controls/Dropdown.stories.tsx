@@ -1,4 +1,3 @@
-import * as React from "react";
 import Dropdown, { DropdownProps } from "../../src/Dropdown";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { State, Store } from "@sambego/storybook-state";
