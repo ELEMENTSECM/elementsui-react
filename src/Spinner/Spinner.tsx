@@ -22,7 +22,7 @@ export interface SpinnerProps {
 	/** Spinner color */
 	color?: string;
 	/** Spinner type */
-	type: keyof typeof spinnerMap;
+	type?: keyof typeof spinnerMap;
 }
 
 const SpinnerContainer = styled.div`
@@ -39,7 +39,7 @@ const SpinnerLabel = styled.div`
 `;
 
 const Spinner: React.FunctionComponent<SpinnerProps> = ({ type, label, ...props }) => {
-	const Loader = spinnerMap[type];
+	const Loader = spinnerMap[type!];
 	return (
 		<React.Suspense fallback="">
 			<SpinnerContainer>
