@@ -31,6 +31,10 @@ export interface PopupProps {
 	autoFocus: ModalProps["autoFocus"];
 	/** Allow popup to overlap target node in case of overflow. Default: true */
 	allowOverlapOnOverflow?: boolean;
+	/** Include a backdrop component. Specify 'static' for a backdrop that doesn't trigger an "onHide" when clicked. Default: true */
+	backdrop?: ModalProps["backdrop"];
+	/** When true The modal will prevent focus from leaving the Modal while open. Consider leaving the default value here, as it is necessary to make the Modal work well with assistive technologies, such as screen readers. Default: true */
+	enforceFocus?: ModalProps["enforceFocus"];
 }
 
 Popup.defaultProps = {
@@ -61,6 +65,8 @@ export default function Popup(props: React.PropsWithChildren<PopupProps>) {
 		onHide,
 		autoFocus,
 		allowOverlapOnOverflow,
+		backdrop,
+		enforceFocus,
 	} = props;
 
 	const [modalElement, setModalElement] = React.useState<HTMLElement | null>();
@@ -95,6 +101,8 @@ export default function Popup(props: React.PropsWithChildren<PopupProps>) {
 			onHide={onHide}
 			show={show}
 			autoFocus={autoFocus}
+			backdrop={backdrop}
+			enforceFocus={enforceFocus}
 			style={{
 				...styles.dialog,
 				...(placement === false ? {} : targetNode ? (popperStyle as any) : styles.centerToScreen),
