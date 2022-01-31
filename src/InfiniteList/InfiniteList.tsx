@@ -141,13 +141,13 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 		this.props.next?.();
 	};
 
-	isElementAtBottom(target) {
+	isElementAtBottom(target: HTMLElement) {
 		const clientHeight =
 			target === document.body || target === document.documentElement
 				? window.screen.availHeight
 				: target.clientHeight;
 
-		return target.scrollHeight - target.scrollTop === clientHeight;
+		return target.scrollHeight - Math.ceil(target.scrollTop) <= clientHeight;
 	}
 
 	onScrollListener = (event) => {
@@ -155,7 +155,7 @@ export default class InfiniteList extends React.Component<InfiniteListProps, Sta
 
 		const target =
 			this.props.height || this._scrollableNode
-				? event.target
+				? event.target as HTMLElement
 				: document.documentElement.scrollTop
 				? document.documentElement
 				: document.body;
