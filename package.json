@@ -40,7 +40,7 @@
 		"classnames": "^2.3.1",
 		"load-script": "^2.0.0",
 		"lodash": "^4.17.21",
-		"react-ada-datepicker": "^0.0.10",
+		"react-datepicker": "^4.6.0",
 		"react-bootstrap": "^0.33.1",
 		"react-draggable-elements": "^4.4.2",
 		"react-hotkeys": "^2.0.0",

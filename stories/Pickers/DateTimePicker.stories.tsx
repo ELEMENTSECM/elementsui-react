@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react/types-6-0";
 import DateTimePicker, { DateTimePickerProps } from "../../src/DateTimePicker";
-import "react-ada-datepicker/dist/react-ada-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default {
 	title: "Pickers/DateTimePicker",
