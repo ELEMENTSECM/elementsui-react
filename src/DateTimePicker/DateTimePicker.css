@@ -1,0 +1,6 @@
+.react-datepicker__triangle {
+	transform: translate3d(78px, 0px, 0px) !important;
+}
+.react-datepicker__time-container--with-today-button {
+	right: -87px !important;
+}

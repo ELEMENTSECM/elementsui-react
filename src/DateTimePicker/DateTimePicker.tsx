@@ -1,5 +1,5 @@
 import * as React from "react";
-import DatePicker, { registerLocale } from "react-ada-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import { nls } from "./DateTimePicker.nls";
 import includes from "lodash/includes";
 import en from "date-fns/locale/en-GB";
@@ -8,6 +8,7 @@ import nb from "date-fns/locale/nb";
 import nn from "date-fns/locale/nn";
 import DateTimeInput from "./DateTimeInput";
 import { Portal } from "react-overlays";
+import "./DateTimePicker.css"
 
 const localeMap = {
 	en,
