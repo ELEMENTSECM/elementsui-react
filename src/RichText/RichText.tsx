@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 import extend from "lodash/extend";
-import { throttle, forOwn } from "lodash";
+import { forOwn, throttle } from "lodash";
 import loadScript from "load-script";
 
 const defaultConfig = {

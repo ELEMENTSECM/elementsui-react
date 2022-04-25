@@ -8,7 +8,6 @@ import nb from "date-fns/locale/nb";
 import nn from "date-fns/locale/nn";
 import DateTimeInput from "./DateTimeInput";
 import { Portal } from "react-overlays";
-import "./DateTimePicker.css"
 
 const localeMap = {
 	en,

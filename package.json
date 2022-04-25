@@ -30,7 +30,10 @@
 		"build:lib": "npm run clean && npm run build:types && npm run build:es && npm run build:copy-files",
 		"build:types": "tsc -p tsconfig.declaration.json",
 		"build:es": "tsc -p tsconfig.cjs.json",
-		"build:copy-files": "node scripts/copyBuildFiles.js",
+		"build:copy-files": "npm run build:copy-packagejson && npm run build:copy-packagefiles && npm run build:copy-css",
+		"build:copy-packagejson": "node scripts/copyPackageJson.js",
+		"build:copy-css": "copyfiles -u 1 src/**/*.css dist/lib",
+		"build:copy-packagefiles": "copyfiles LICENSE README.md dist",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
 		"storybook": "start-storybook -s public",
 		"storybook:build": "build-storybook -s public",
@@ -40,8 +43,8 @@
 		"classnames": "^2.3.1",
 		"load-script": "^2.0.0",
 		"lodash": "^4.17.21",
-		"react-datepicker": "^4.6.0",
 		"react-bootstrap": "^0.33.1",
+		"react-datepicker": "^4.6.0",
 		"react-draggable-elements": "^4.4.2",
 		"react-hotkeys": "^2.0.0",
 		"react-overlays": "^4.1.1",
@@ -49,7 +52,7 @@
 		"react-select": "^3.1.0",
 		"react-spinners": "^0.11.0",
 		"styled-components": "^5.3.3",
-		"tslib": "^2.3.1"
+		"tslib": "^2.4.0"
 	},
 	"peerDependencies": {
 		"react": "^17.0.0",
@@ -93,6 +96,7 @@
 		"babel-loader": "^8.2.3",
 		"babel-plugin-inline-json-import": "^0.3.2",
 		"babel-plugin-named-asset-import": "^0.3.8",
+		"copyfiles": "^2.4.1",
 		"coveralls": "^3.1.1",
 		"enzyme": "^3.11.0",
 		"enzyme-to-json": "^3.6.2",
@@ -113,7 +117,7 @@
 		"react-dom": "^17.0.2",
 		"react-is": "^17.0.2",
 		"rimraf": "^3.0.2",
-		"typescript": "^4.5.5",
+		"typescript": "^4.6.3",
 		"webpack": "^5.67.0"
 	},
 	"jest": {
