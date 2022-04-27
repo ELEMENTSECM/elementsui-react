@@ -109,16 +109,17 @@ export default class RichText extends React.PureComponent<RichTextProps> {
 		id: "richText",
 		config: {},
 		events: {},
-		scriptUrl: "https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js",
+		scriptUrl: "https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js",
 		throttle: 500,
 	};
 
 	static editorInstances = {};
 
-	componentDidUpdate() {
+	componentDidUpdate(prevProps: RichTextProps) {
 		if (
 			RichText.editorInstances[this.props.id!] &&
-			RichText.editorInstances[this.props.id!].getData().trim() !== this.props.value
+			RichText.editorInstances[this.props.id!].getData().trim() !== this.props.value &&
+			prevProps.value !== this.props.value
 		) {
 			RichText.editorInstances[this.props.id!].setData(this.props.value);
 		}
