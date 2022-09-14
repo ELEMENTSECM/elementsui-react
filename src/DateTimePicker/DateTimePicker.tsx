@@ -8,6 +8,7 @@ import nb from "date-fns/locale/nb";
 import nn from "date-fns/locale/nn";
 import DateTimeInput from "./DateTimeInput";
 import { Portal } from "react-overlays";
+import { Options } from "@popperjs/core";
 
 const localeMap = {
 	en,
@@ -63,6 +64,8 @@ export interface DateTimePickerProps {
 	portalPopupTo?: React.ReactNode;
 	/** Show datepicker inline */
 	inline?: boolean;
+	/** Placement of datetime picker popup */
+	popperPlacement?: Options["placement"];
 }
 
 export default class DateTimePicker extends React.Component<DateTimePickerProps> {
