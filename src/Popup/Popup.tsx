@@ -49,6 +49,7 @@ Popup.defaultProps = {
 	"aria-labelledby": undefined,
 	autoFocus: true,
 	allowOverlapOnOverflow: true,
+	enforceFocus: false,
 };
 
 export default function Popup(props: React.PropsWithChildren<PopupProps>) {
